@@ -1,0 +1,4 @@
+enum AiutaConsentMode {
+  builtInWithOnboardingPage,
+  standaloneOnboardingPage,
+}
