@@ -14,6 +14,11 @@ part 'aiuta_features.g.dart';
 @JsonSerializable()
 class AiutaFeatures {
   final AiutaWelcomeScreenFeature? welcomeScreen;
+
+  /// Feature for the onboarding screen (optional).
+  /// If not provided, the onboarding will not be shown.
+  ///
+  /// The onboarding feature is used to show the user how the virtual try-on works.
   final AiutaOnboardingFeature? onboarding;
 
   /// Feature for the consent screen (optional).

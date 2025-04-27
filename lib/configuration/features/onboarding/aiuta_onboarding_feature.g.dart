@@ -19,13 +19,24 @@ AiutaOnboardingFeature _$AiutaOnboardingFeatureFromJson(
           json['strings'] as Map<String, dynamic>),
       shapes: AiutaOnboardingShapes.fromJson(
           json['shapes'] as Map<String, dynamic>),
+      dataProvider: toNull(json['dataProvider']),
     );
 
 Map<String, dynamic> _$AiutaOnboardingFeatureToJson(
-        AiutaOnboardingFeature instance) =>
-    <String, dynamic>{
-      'howItWorksPage': instance.howItWorksPage,
-      'bestResultsPage': instance.bestResultsPage,
-      'strings': instance.strings,
-      'shapes': instance.shapes,
-    };
+    AiutaOnboardingFeature instance) {
+  final val = <String, dynamic>{
+    'howItWorksPage': instance.howItWorksPage,
+    'bestResultsPage': instance.bestResultsPage,
+    'strings': instance.strings,
+    'shapes': instance.shapes,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('dataProvider', toNull(instance.dataProvider));
+  return val;
+}
