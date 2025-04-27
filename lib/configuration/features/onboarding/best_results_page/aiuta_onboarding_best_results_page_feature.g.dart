@@ -16,8 +16,8 @@ AiutaOnboardingBestResultsPageFeature
               json['icons'] as Map<String, dynamic>),
           strings: AiutaOnboardingBestResultsPageStrings.fromJson(
               json['strings'] as Map<String, dynamic>),
-          toggles: AiutaOnboardingBestResultsPageToggles.fromJson(
-              json['toggles'] as Map<String, dynamic>),
+          styles: AiutaOnboardingBestResultsPageStyles.fromJson(
+              json['styles'] as Map<String, dynamic>),
         );
 
 Map<String, dynamic> _$AiutaOnboardingBestResultsPageFeatureToJson(
@@ -26,5 +26,5 @@ Map<String, dynamic> _$AiutaOnboardingBestResultsPageFeatureToJson(
       'images': instance.images,
       'icons': instance.icons,
       'strings': instance.strings,
-      'toggles': instance.toggles,
+      'styles': instance.styles,
     };

@@ -8,7 +8,7 @@ class AiutaConsentStandaloneStyles {
   /// If true, the consents will be drawn with borders around them.
   final bool drawBordersAroundConsents;
 
-  /// Create an [AiutaConsentStandaloneStyles] with the given style options.
+  /// Creates an [AiutaConsentStandaloneStyles] with the given style options.
   AiutaConsentStandaloneStyles({
     required this.drawBordersAroundConsents,
   });

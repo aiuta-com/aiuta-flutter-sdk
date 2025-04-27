@@ -15,7 +15,7 @@ class AiutaConsentStandaloneDataProvider {
   /// [List] of consent identifiers that the user has given will be passed to the callback.
   final void Function(List<String>) obtainConsentsIds;
 
-  /// Creates an [AiutaConsentStandaloneDataProvider] with listenable
+  /// Creates an [AiutaConsentStandaloneDataProvider] with the listenable
   /// [obtainedConsentsIds] list with already obtained consents identifiers and
   /// [obtainConsentsIds] callback to be called when the user has given consents.
   AiutaConsentStandaloneDataProvider({

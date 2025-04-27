@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_onboarding_shapes.g.dart';
 
+/// This class represents the shapes used in the onboarding feature.
 @JsonSerializable()
 class AiutaOnboardingShapes {
   /// Shape for the large onboarding image.
@@ -10,15 +11,15 @@ class AiutaOnboardingShapes {
   /// Shape for the small onboarding image.
   final double onboardingImageS;
 
+  /// Creates an [AiutaOnboardingShapes] instance with the given shapes.
   AiutaOnboardingShapes({
     required this.onboardingImageL,
     required this.onboardingImageS,
   });
 
-  /// Create a new instance of AiutaOnboardingShapes from a json map.
+  // Internal json staff
   factory AiutaOnboardingShapes.fromJson(Map<String, dynamic> json) =>
       _$AiutaOnboardingShapesFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaOnboardingShapesToJson(this);
 }

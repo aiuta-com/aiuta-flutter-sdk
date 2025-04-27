@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_onboarding_try_on_page_strings.g.dart';
 
+/// This class represents the strings used in the Try-On page of the Aiuta onboarding process.
 @JsonSerializable()
 class AiutaOnboardingTryOnPageStrings {
   /// Title for the Try-On page (nullable).
@@ -13,16 +14,17 @@ class AiutaOnboardingTryOnPageStrings {
   /// Description for the Try-On section.
   final String onboardingTryOnDescription;
 
+  /// Creates an [AiutaOnboardingTryOnPageStrings] instance with the given strings.
   AiutaOnboardingTryOnPageStrings({
     this.onboardingTryOnPageTitle,
     required this.onboardingTryOnTitle,
     required this.onboardingTryOnDescription,
   });
 
-  /// Create a new instance of AiutaOnboardingTryOnPageStrings from a json map.
+  // Internal json staff
   factory AiutaOnboardingTryOnPageStrings.fromJson(Map<String, dynamic> json) =>
       _$AiutaOnboardingTryOnPageStringsFromJson(json);
 
-  /// Convert this object to a json map.
-  Map<String, dynamic> toJson() => _$AiutaOnboardingTryOnPageStringsToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaOnboardingTryOnPageStringsToJson(this);
 }

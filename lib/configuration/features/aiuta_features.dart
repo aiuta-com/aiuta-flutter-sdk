@@ -10,11 +10,23 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_features.g.dart';
 
+/// This class is used to manage the features of the Aiuta SDK.
 @JsonSerializable()
 class AiutaFeatures {
   final AiutaWelcomeScreenFeature? welcomeScreen;
   final AiutaOnboardingFeature? onboarding;
 
+  /// Feature for the consent screen (optional).
+  /// If not provided, the consent will not be requested from the user.
+  /// The consent can be embedded into the onboarding or displayed as a standalone page.
+  ///
+  /// To embed the consent into the onboarding, use [AiutaConsentEmbeddedIntoOnboardingFeature].
+  ///
+  /// To display the consent as a standalone page, use [AiutaConsentStandaloneOnboardingPageFeature]
+  /// to display as the last page of the onboarding if it is enabled, or as a separate page otherwise.
+  ///
+  /// To display the consent as a standalone page in the bottom sheet over the image picker,
+  /// when the user taps on the "Upload a photo" button, use [AiutaConsentStandaloneImagePickerPageFeature].
   final AiutaConsentFeature? consent;
   final AiutaImagePickerFeature imagePicker;
   final AiutaTryOnFeature tryOn;
@@ -22,6 +34,10 @@ class AiutaFeatures {
   final AiutaShareFeature? share;
   final AiutaWishlistFeature? wishlist;
 
+  /// Creates an [AiutaFeatures] instance with the given features configurations.
+  ///
+  /// The [consent] describes the consent feature, which can be embedded into
+  /// the onboarding pages or displayed as a standalone page.
   AiutaFeatures({
     this.welcomeScreen,
     this.onboarding,
@@ -33,10 +49,9 @@ class AiutaFeatures {
     this.wishlist,
   });
 
-  /// Create a new instance of AiutaFeatures from a json map.
+  // Internal json staff
   factory AiutaFeatures.fromJson(Map<String, dynamic> json) =>
       _$AiutaFeaturesFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaFeaturesToJson(this);
 }

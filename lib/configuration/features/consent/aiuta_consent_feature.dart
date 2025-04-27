@@ -79,6 +79,8 @@ class AiutaConsentStandaloneOnboardingPageFeature extends AiutaConsentFeature {
   final AiutaConsentStandaloneData data;
 
   /// Data provider for the consent feature.
+  /// Used to control the obtaining of the consent and provide the list
+  /// of consents that already have been accepted by the user.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaConsentStandaloneDataProvider dataProvider;
 
@@ -118,9 +120,12 @@ class AiutaConsentStandaloneImagePickerPageFeature extends AiutaConsentFeature {
   final AiutaConsentStandaloneStyles styles;
 
   /// Data used in the consent feature.
+  /// Contains the list of consents with their properties.
   final AiutaConsentStandaloneData data;
 
   /// Data provider for the consent feature.
+  /// Used to control the obtaining of the consent and provide the list
+  /// of consents that already have been accepted by the user.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaConsentStandaloneDataProvider dataProvider;
 
