@@ -1,5 +1,5 @@
 /// Enum for the different pages in the Aiuta app.
-enum AiutaAnalyticPageId {
+enum AiutaAnalyticsPageId {
   /// The pre-onboarding screen.
   welcome,
 

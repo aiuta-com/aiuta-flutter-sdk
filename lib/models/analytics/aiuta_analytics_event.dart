@@ -1,47 +1,45 @@
-import 'package:aiuta_flutter/models/analytic/aiuta_analytic_event_type.dart';
-import 'package:aiuta_flutter/models/analytic/aiuta_analytic_onboarding_event_type.dart';
-import 'package:aiuta_flutter/models/analytic/aiuta_analytic_page_id.dart';
-import 'package:aiuta_flutter/models/analytic/aiuta_analytics_feedback_event_type.dart';
-import 'package:aiuta_flutter/models/analytic/aiuta_analytics_history_event_type.dart';
-import 'package:aiuta_flutter/models/analytic/aiuta_analytics_picker_event_type.dart';
-import 'package:aiuta_flutter/models/analytic/aiuta_analytics_results_event_type.dart';
-import 'package:aiuta_flutter/models/analytic/aiuta_analytics_tryon_event_type.dart';
-import 'package:aiuta_flutter/models/consent/aiuta_supplementary_consent.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_onboarding_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_page_id.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_feedback_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_history_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_picker_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_results_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_event_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'aiuta_analytic_event.g.dart';
+part 'aiuta_analytics_event.g.dart';
 
 /// Base class for all analytic events.
-sealed class AiutaAnalyticEvent {
+sealed class AiutaAnalyticsEvent {
   /// Type of the analytic event.
-  final AiutaAnalyticEventType type;
+  final AiutaAnalyticsEventType type;
 
   /// Id of the page.
-  final AiutaAnalyticPageId pageId;
+  final AiutaAnalyticsPageId pageId;
 
   /// Id of the product that the user interacts with.
   /// Matches the id of either the product which is passed to the SDK by starting try-on
   final String productId;
 
   /// Creates an analytic event.
-  AiutaAnalyticEvent({
+  AiutaAnalyticsEvent({
     required this.type,
     required this.pageId,
     required this.productId,
   });
 
   // Json staff
-  /// Creates an analytic event from a JSON object.
-  factory AiutaAnalyticEvent.fromJson(Map<String, dynamic> json) {
+  factory AiutaAnalyticsEvent.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as String) {
       case 'pageEvent':
-        return AiutaAnalyticPageEvent.fromJson(json);
+        return AiutaAnalyticsPageEvent.fromJson(json);
       case 'onboardingEvent':
-        return AiutaAnalyticOnboardingEvent.fromJson(json);
+        return AiutaAnalyticsOnboardingEvent.fromJson(json);
       case 'pickerEvent':
         return AiutaAnalyticsPickerEvent.fromJson(json);
       case 'exitEvent':
-        return AiutaAnalyticExitEvent.fromJson(json);
+        return AiutaAnalyticsExitEvent.fromJson(json);
       case 'tryOnEvent':
         return AiutaAnalyticsTryOnEvent.fromJson(json);
       case 'resultsEvent':
@@ -55,86 +53,85 @@ sealed class AiutaAnalyticEvent {
     }
   }
 
-  /// Converts the analytic event to a JSON object.
   Map<String, dynamic> toJson();
 }
 
 /// Event that represents a page view.
 /// This event is sent when a user navigates to a new page.
 @JsonSerializable()
-class AiutaAnalyticPageEvent extends AiutaAnalyticEvent {
+class AiutaAnalyticsPageEvent extends AiutaAnalyticsEvent {
   /// Id of the page.
-  final AiutaAnalyticPageId pageId;
+  final AiutaAnalyticsPageId pageId;
 
   /// Id of the product that the user interacts with.
   final String productId;
 
   /// Creates a page view event.
-  AiutaAnalyticPageEvent({
+  AiutaAnalyticsPageEvent({
     required this.pageId,
     required this.productId,
   }) : super(
-          type: AiutaAnalyticEventType.pageEvent,
+          type: AiutaAnalyticsEventType.pageEvent,
           pageId: pageId,
           productId: productId,
         );
 
   // Json staff
   /// Creates a page view event from a JSON object.
-  factory AiutaAnalyticPageEvent.fromJson(Map<String, dynamic> json) =>
-      _$AiutaAnalyticPageEventFromJson(json);
+  factory AiutaAnalyticsPageEvent.fromJson(Map<String, dynamic> json) =>
+      _$AiutaAnalyticsPageEventFromJson(json);
 
   /// Converts the page view event to a JSON object.
   @override
-  Map<String, dynamic> toJson() => _$AiutaAnalyticPageEventToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaAnalyticsPageEventToJson(this);
 }
 
 /// This event is sent when a user interacts with an onboarding screens.
 @JsonSerializable()
-class AiutaAnalyticOnboardingEvent extends AiutaAnalyticEvent {
+class AiutaAnalyticsOnboardingEvent extends AiutaAnalyticsEvent {
   /// Type of the onboarding event.
-  final AiutaAnalyticOnboardingEventType event;
+  final AiutaAnalyticsOnboardingEventType event;
 
   /// Id of the page.
-  final AiutaAnalyticPageId pageId;
+  final AiutaAnalyticsPageId pageId;
 
   /// Id of the product that the user interacts with.
   final String productId;
 
-  final List<AiutaSupplementaryConsent>? supplementaryConsents;
+  final List<String>? consentIds;
 
   /// Creates an onboarding event.
-  AiutaAnalyticOnboardingEvent({
+  AiutaAnalyticsOnboardingEvent({
     required this.event,
     required this.pageId,
     required this.productId,
-    this.supplementaryConsents,
+    this.consentIds,
   }) : super(
-          type: AiutaAnalyticEventType.onboardingEvent,
+          type: AiutaAnalyticsEventType.onboardingEvent,
           pageId: pageId,
           productId: productId,
         );
 
   // Json staff
   /// Creates an onboarding event from a JSON object.
-  factory AiutaAnalyticOnboardingEvent.fromJson(Map<String, dynamic> json) =>
-      _$AiutaAnalyticOnboardingEventFromJson(json);
+  factory AiutaAnalyticsOnboardingEvent.fromJson(Map<String, dynamic> json) =>
+      _$AiutaAnalyticsOnboardingEventFromJson(json);
 
   /// Converts the onboarding event to a JSON object.
   @override
-  Map<String, dynamic> toJson() => _$AiutaAnalyticOnboardingEventToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaAnalyticsOnboardingEventToJson(this);
 }
 
 /// This event is sent when a user interacts with the picker.
 /// This includes selecting an uploaded image, taking a photo, choosing gallery image, etc.
 @JsonSerializable()
-class AiutaAnalyticsPickerEvent extends AiutaAnalyticEvent {
+class AiutaAnalyticsPickerEvent extends AiutaAnalyticsEvent {
   /// Type of the picker event representing the user action.
   final AiutaAnalyticsPickerEventType event;
 
   /// Id of the page where the picker is located.
   /// For this event, the pageId is either AiutaAnalyticPageId.imagePicker or AiutaAnalyticPageId.results.
-  final AiutaAnalyticPageId pageId;
+  final AiutaAnalyticsPageId pageId;
 
   /// Id of the product that the user interacts with.
   final String productId;
@@ -145,7 +142,7 @@ class AiutaAnalyticsPickerEvent extends AiutaAnalyticEvent {
     required this.pageId,
     required this.productId,
   }) : super(
-          type: AiutaAnalyticEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.pickerEvent,
           pageId: pageId,
           productId: productId,
         );
@@ -163,47 +160,45 @@ class AiutaAnalyticsPickerEvent extends AiutaAnalyticEvent {
 /// This event is sent when a user exits the SDK.
 /// This includes pressing the back/close button, closing the bottom sheet with the SDK, etc.
 @JsonSerializable()
-class AiutaAnalyticExitEvent extends AiutaAnalyticEvent {
+class AiutaAnalyticsExitEvent extends AiutaAnalyticsEvent {
   /// Id of the page where the exit event is triggered.
-  final AiutaAnalyticPageId pageId;
+  final AiutaAnalyticsPageId pageId;
 
   /// Id of the product that the user interacts with.
   final String productId;
 
   /// Creates an exit event.
-  AiutaAnalyticExitEvent({
+  AiutaAnalyticsExitEvent({
     required this.pageId,
     required this.productId,
   }) : super(
-          type: AiutaAnalyticEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.pickerEvent,
           pageId: pageId,
           productId: productId,
         );
 
   // Json staff
-  /// Creates an exit event from a JSON object.
-  factory AiutaAnalyticExitEvent.fromJson(Map<String, dynamic> json) =>
-      _$AiutaAnalyticExitEventFromJson(json);
+  factory AiutaAnalyticsExitEvent.fromJson(Map<String, dynamic> json) =>
+      _$AiutaAnalyticsExitEventFromJson(json);
 
-  /// Converts the exit event to a JSON object.
   @override
-  Map<String, dynamic> toJson() => _$AiutaAnalyticExitEventToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaAnalyticsExitEventToJson(this);
 }
 
 /// This event is sent when a user is waiting for the try-on to be processed.
 @JsonSerializable()
-class AiutaAnalyticsTryOnEvent extends AiutaAnalyticEvent {
+class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
   /// Type of the try-on event.
   final AiutaAnalyticsTryOnEventType event;
 
-  /// Additional message in case of try on progress
-  final String? errorMessage;
-
   /// Id of the page.
-  final AiutaAnalyticPageId pageId;
+  final AiutaAnalyticsPageId pageId;
 
   /// Id of the product that the user interacts with.
   final String productId;
+
+  /// Additional message in case of try on progress
+  final String? errorMessage;
 
   /// Creates a try-on event.
   AiutaAnalyticsTryOnEvent({
@@ -212,7 +207,7 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticEvent {
     required this.productId,
     this.errorMessage,
   }) : super(
-          type: AiutaAnalyticEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.pickerEvent,
           pageId: pageId,
           productId: productId,
         );
@@ -229,12 +224,12 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticEvent {
 
 /// This event is sent when a user interacts with the results screen.
 @JsonSerializable()
-class AiutaAnalyticsResultsEvent extends AiutaAnalyticEvent {
+class AiutaAnalyticsResultsEvent extends AiutaAnalyticsEvent {
   /// Type of the results event.
   final AiutaAnalyticsResultsEventType event;
 
   /// Id of the page.
-  final AiutaAnalyticPageId pageId;
+  final AiutaAnalyticsPageId pageId;
 
   /// Id of the product that the user interacts with.
   /// Matches the id of either the product which is passed to the SDK by starting try-on
@@ -246,7 +241,7 @@ class AiutaAnalyticsResultsEvent extends AiutaAnalyticEvent {
     required this.pageId,
     required this.productId,
   }) : super(
-          type: AiutaAnalyticEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.pickerEvent,
           pageId: pageId,
           productId: productId,
         );
@@ -263,7 +258,7 @@ class AiutaAnalyticsResultsEvent extends AiutaAnalyticEvent {
 
 /// This event is sent when a user provides feedback for generated images.
 @JsonSerializable()
-class AiutaAnalyticsFeedbackEvent extends AiutaAnalyticEvent {
+class AiutaAnalyticsFeedbackEvent extends AiutaAnalyticsEvent {
   /// Type of the feedback event.
   final AiutaAnalyticsFeedbackEventType event;
 
@@ -276,7 +271,7 @@ class AiutaAnalyticsFeedbackEvent extends AiutaAnalyticEvent {
   final String? negativeFeedbackText;
 
   /// Id of the page.
-  final AiutaAnalyticPageId pageId;
+  final AiutaAnalyticsPageId pageId;
 
   /// Id of the product that the user interacts with.
   final String productId;
@@ -289,7 +284,7 @@ class AiutaAnalyticsFeedbackEvent extends AiutaAnalyticEvent {
     this.negativeFeedbackOptionIndex,
     this.negativeFeedbackText,
   }) : super(
-          type: AiutaAnalyticEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.pickerEvent,
           pageId: pageId,
           productId: productId,
         );
@@ -306,12 +301,12 @@ class AiutaAnalyticsFeedbackEvent extends AiutaAnalyticEvent {
 
 /// This event is sent when a user interacts with the try-on history screen.
 @JsonSerializable()
-class AiutaAnalyticsHistoryEvent extends AiutaAnalyticEvent {
+class AiutaAnalyticsHistoryEvent extends AiutaAnalyticsEvent {
   /// Type of the history event.
   final AiutaAnalyticsHistoryEventType event;
 
   /// Id of the page.
-  final AiutaAnalyticPageId pageId;
+  final AiutaAnalyticsPageId pageId;
 
   /// Id of the product that the user interacts with.
   final String productId;
@@ -322,17 +317,15 @@ class AiutaAnalyticsHistoryEvent extends AiutaAnalyticEvent {
     required this.pageId,
     required this.productId,
   }) : super(
-          type: AiutaAnalyticEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.pickerEvent,
           pageId: pageId,
           productId: productId,
         );
 
-  // Json staff
-  /// Creates a history event from a JSON object.
+  // Internal json staff
   factory AiutaAnalyticsHistoryEvent.fromJson(Map<String, dynamic> json) =>
       _$AiutaAnalyticsHistoryEventFromJson(json);
 
-  /// Converts the history event to a JSON object.
   @override
   Map<String, dynamic> toJson() => _$AiutaAnalyticsHistoryEventToJson(this);
 }

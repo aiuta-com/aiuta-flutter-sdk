@@ -1,4 +1,3 @@
-import 'package:aiuta_flutter/models/consent/aiuta_supplementary_consent.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_data_action_type.dart';
 import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -10,11 +9,10 @@ sealed class AiutaDataAction {
 
   AiutaDataAction(this.type);
 
-  // Json staff
   factory AiutaDataAction.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as String) {
-      case 'obtainUserConsent':
-        return ObtainUserConsentAction.fromJson(json);
+      case 'obtainUserConsentsIds':
+        return ObtainUserConsentsIdsAction.fromJson(json);
       case 'addUploadedImages':
         return AddUploadedImagesAction.fromJson(json);
       case 'selectUploadedImage':
@@ -33,21 +31,24 @@ sealed class AiutaDataAction {
   Map<String, dynamic> toJson();
 }
 
+// Consents
+
 @JsonSerializable()
-class ObtainUserConsentAction extends AiutaDataAction {
-  final List<AiutaSupplementaryConsent> supplementaryConsents;
+class ObtainUserConsentsIdsAction extends AiutaDataAction {
+  final List<String> consentIds;
 
-  ObtainUserConsentAction({
-    required this.supplementaryConsents,
-  }) : super(AiutaDataActionType.obtainUserConsent);
+  ObtainUserConsentsIdsAction({
+    required this.consentIds,
+  }) : super(AiutaDataActionType.obtainUserConsentsIds);
 
-  // Json staff
-  factory ObtainUserConsentAction.fromJson(Map<String, dynamic> json) =>
-      _$ObtainUserConsentActionFromJson(json);
+  factory ObtainUserConsentsIdsAction.fromJson(Map<String, dynamic> json) =>
+      _$ObtainUserConsentsIdsActionFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$ObtainUserConsentActionToJson(this);
+  Map<String, dynamic> toJson() => _$ObtainUserConsentsIdsActionToJson(this);
 }
+
+// Uploaded images
 
 @JsonSerializable()
 class AddUploadedImagesAction extends AiutaDataAction {
@@ -96,6 +97,8 @@ class DeleteUploadedImagesAction extends AiutaDataAction {
   @override
   Map<String, dynamic> toJson() => _$DeleteUploadedImagesActionToJson(this);
 }
+
+// Generated images
 
 @JsonSerializable()
 class AddGeneratedImagesAction extends AiutaDataAction {

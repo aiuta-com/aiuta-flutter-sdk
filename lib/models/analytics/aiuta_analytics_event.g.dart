@@ -1,69 +1,68 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'aiuta_analytic_event.dart';
+part of 'aiuta_analytics_event.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaAnalyticPageEvent _$AiutaAnalyticPageEventFromJson(
+AiutaAnalyticsPageEvent _$AiutaAnalyticsPageEventFromJson(
         Map<String, dynamic> json) =>
-    AiutaAnalyticPageEvent(
-      pageId: $enumDecode(_$AiutaAnalyticPageIdEnumMap, json['pageId']),
+    AiutaAnalyticsPageEvent(
+      pageId: $enumDecode(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
       productId: json['productId'] as String,
     );
 
-Map<String, dynamic> _$AiutaAnalyticPageEventToJson(
-        AiutaAnalyticPageEvent instance) =>
+Map<String, dynamic> _$AiutaAnalyticsPageEventToJson(
+        AiutaAnalyticsPageEvent instance) =>
     <String, dynamic>{
-      'pageId': _$AiutaAnalyticPageIdEnumMap[instance.pageId]!,
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
     };
 
-const _$AiutaAnalyticPageIdEnumMap = {
-  AiutaAnalyticPageId.welcome: 'welcome',
-  AiutaAnalyticPageId.howItWorks: 'howItWorks',
-  AiutaAnalyticPageId.bestResults: 'bestResults',
-  AiutaAnalyticPageId.consent: 'consent',
-  AiutaAnalyticPageId.imagePicker: 'imagePicker',
-  AiutaAnalyticPageId.loading: 'loading',
-  AiutaAnalyticPageId.results: 'results',
-  AiutaAnalyticPageId.history: 'history',
+const _$AiutaAnalyticsPageIdEnumMap = {
+  AiutaAnalyticsPageId.welcome: 'welcome',
+  AiutaAnalyticsPageId.howItWorks: 'howItWorks',
+  AiutaAnalyticsPageId.bestResults: 'bestResults',
+  AiutaAnalyticsPageId.consent: 'consent',
+  AiutaAnalyticsPageId.imagePicker: 'imagePicker',
+  AiutaAnalyticsPageId.loading: 'loading',
+  AiutaAnalyticsPageId.results: 'results',
+  AiutaAnalyticsPageId.history: 'history',
 };
 
-AiutaAnalyticOnboardingEvent _$AiutaAnalyticOnboardingEventFromJson(
+AiutaAnalyticsOnboardingEvent _$AiutaAnalyticsOnboardingEventFromJson(
         Map<String, dynamic> json) =>
-    AiutaAnalyticOnboardingEvent(
-      event:
-          $enumDecode(_$AiutaAnalyticOnboardingEventTypeEnumMap, json['event']),
-      pageId: $enumDecode(_$AiutaAnalyticPageIdEnumMap, json['pageId']),
+    AiutaAnalyticsOnboardingEvent(
+      event: $enumDecode(
+          _$AiutaAnalyticsOnboardingEventTypeEnumMap, json['event']),
+      pageId: $enumDecode(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
       productId: json['productId'] as String,
-      supplementaryConsents: (json['supplementaryConsents'] as List<dynamic>?)
-          ?.map((e) =>
-              AiutaSupplementaryConsent.fromJson(e as Map<String, dynamic>))
+      consentIds: (json['consentIds'] as List<dynamic>?)
+          ?.map((e) => e as String)
           .toList(),
     );
 
-Map<String, dynamic> _$AiutaAnalyticOnboardingEventToJson(
-        AiutaAnalyticOnboardingEvent instance) =>
+Map<String, dynamic> _$AiutaAnalyticsOnboardingEventToJson(
+        AiutaAnalyticsOnboardingEvent instance) =>
     <String, dynamic>{
-      'event': _$AiutaAnalyticOnboardingEventTypeEnumMap[instance.event]!,
-      'pageId': _$AiutaAnalyticPageIdEnumMap[instance.pageId]!,
+      'event': _$AiutaAnalyticsOnboardingEventTypeEnumMap[instance.event]!,
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
-      'supplementaryConsents': instance.supplementaryConsents,
+      'consentIds': instance.consentIds,
     };
 
-const _$AiutaAnalyticOnboardingEventTypeEnumMap = {
-  AiutaAnalyticOnboardingEventType.welcomeStartClicked: 'welcomeStartClicked',
-  AiutaAnalyticOnboardingEventType.consentGiven: 'consentGiven',
-  AiutaAnalyticOnboardingEventType.onboardingFinished: 'onboardingFinished',
+const _$AiutaAnalyticsOnboardingEventTypeEnumMap = {
+  AiutaAnalyticsOnboardingEventType.welcomeStartClicked: 'welcomeStartClicked',
+  AiutaAnalyticsOnboardingEventType.consentGiven: 'consentGiven',
+  AiutaAnalyticsOnboardingEventType.onboardingFinished: 'onboardingFinished',
 };
 
 AiutaAnalyticsPickerEvent _$AiutaAnalyticsPickerEventFromJson(
         Map<String, dynamic> json) =>
     AiutaAnalyticsPickerEvent(
       event: $enumDecode(_$AiutaAnalyticsPickerEventTypeEnumMap, json['event']),
-      pageId: $enumDecode(_$AiutaAnalyticPageIdEnumMap, json['pageId']),
+      pageId: $enumDecode(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
       productId: json['productId'] as String,
     );
 
@@ -71,7 +70,7 @@ Map<String, dynamic> _$AiutaAnalyticsPickerEventToJson(
         AiutaAnalyticsPickerEvent instance) =>
     <String, dynamic>{
       'event': _$AiutaAnalyticsPickerEventTypeEnumMap[instance.event]!,
-      'pageId': _$AiutaAnalyticPageIdEnumMap[instance.pageId]!,
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
     };
 
@@ -85,17 +84,17 @@ const _$AiutaAnalyticsPickerEventTypeEnumMap = {
   AiutaAnalyticsPickerEventType.uploadedPhotoDeleted: 'uploadedPhotoDeleted',
 };
 
-AiutaAnalyticExitEvent _$AiutaAnalyticExitEventFromJson(
+AiutaAnalyticsExitEvent _$AiutaAnalyticsExitEventFromJson(
         Map<String, dynamic> json) =>
-    AiutaAnalyticExitEvent(
-      pageId: $enumDecode(_$AiutaAnalyticPageIdEnumMap, json['pageId']),
+    AiutaAnalyticsExitEvent(
+      pageId: $enumDecode(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
       productId: json['productId'] as String,
     );
 
-Map<String, dynamic> _$AiutaAnalyticExitEventToJson(
-        AiutaAnalyticExitEvent instance) =>
+Map<String, dynamic> _$AiutaAnalyticsExitEventToJson(
+        AiutaAnalyticsExitEvent instance) =>
     <String, dynamic>{
-      'pageId': _$AiutaAnalyticPageIdEnumMap[instance.pageId]!,
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
     };
 
@@ -103,7 +102,7 @@ AiutaAnalyticsTryOnEvent _$AiutaAnalyticsTryOnEventFromJson(
         Map<String, dynamic> json) =>
     AiutaAnalyticsTryOnEvent(
       event: $enumDecode(_$AiutaAnalyticsTryOnEventTypeEnumMap, json['event']),
-      pageId: $enumDecode(_$AiutaAnalyticPageIdEnumMap, json['pageId']),
+      pageId: $enumDecode(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
       productId: json['productId'] as String,
       errorMessage: json['errorMessage'] as String?,
     );
@@ -112,9 +111,9 @@ Map<String, dynamic> _$AiutaAnalyticsTryOnEventToJson(
         AiutaAnalyticsTryOnEvent instance) =>
     <String, dynamic>{
       'event': _$AiutaAnalyticsTryOnEventTypeEnumMap[instance.event]!,
-      'errorMessage': instance.errorMessage,
-      'pageId': _$AiutaAnalyticPageIdEnumMap[instance.pageId]!,
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
+      'errorMessage': instance.errorMessage,
     };
 
 const _$AiutaAnalyticsTryOnEventTypeEnumMap = {
@@ -130,7 +129,7 @@ AiutaAnalyticsResultsEvent _$AiutaAnalyticsResultsEventFromJson(
     AiutaAnalyticsResultsEvent(
       event:
           $enumDecode(_$AiutaAnalyticsResultsEventTypeEnumMap, json['event']),
-      pageId: $enumDecode(_$AiutaAnalyticPageIdEnumMap, json['pageId']),
+      pageId: $enumDecode(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
       productId: json['productId'] as String,
     );
 
@@ -138,7 +137,7 @@ Map<String, dynamic> _$AiutaAnalyticsResultsEventToJson(
         AiutaAnalyticsResultsEvent instance) =>
     <String, dynamic>{
       'event': _$AiutaAnalyticsResultsEventTypeEnumMap[instance.event]!,
-      'pageId': _$AiutaAnalyticPageIdEnumMap[instance.pageId]!,
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
     };
 
@@ -154,7 +153,7 @@ AiutaAnalyticsFeedbackEvent _$AiutaAnalyticsFeedbackEventFromJson(
     AiutaAnalyticsFeedbackEvent(
       event:
           $enumDecode(_$AiutaAnalyticsFeedbackEventTypeEnumMap, json['event']),
-      pageId: $enumDecode(_$AiutaAnalyticPageIdEnumMap, json['pageId']),
+      pageId: $enumDecode(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
       productId: json['productId'] as String,
       negativeFeedbackOptionIndex:
           (json['negativeFeedbackOptionIndex'] as num?)?.toInt(),
@@ -167,7 +166,7 @@ Map<String, dynamic> _$AiutaAnalyticsFeedbackEventToJson(
       'event': _$AiutaAnalyticsFeedbackEventTypeEnumMap[instance.event]!,
       'negativeFeedbackOptionIndex': instance.negativeFeedbackOptionIndex,
       'negativeFeedbackText': instance.negativeFeedbackText,
-      'pageId': _$AiutaAnalyticPageIdEnumMap[instance.pageId]!,
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
     };
 
@@ -181,7 +180,7 @@ AiutaAnalyticsHistoryEvent _$AiutaAnalyticsHistoryEventFromJson(
     AiutaAnalyticsHistoryEvent(
       event:
           $enumDecode(_$AiutaAnalyticsHistoryEventTypeEnumMap, json['event']),
-      pageId: $enumDecode(_$AiutaAnalyticPageIdEnumMap, json['pageId']),
+      pageId: $enumDecode(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
       productId: json['productId'] as String,
     );
 
@@ -189,7 +188,7 @@ Map<String, dynamic> _$AiutaAnalyticsHistoryEventToJson(
         AiutaAnalyticsHistoryEvent instance) =>
     <String, dynamic>{
       'event': _$AiutaAnalyticsHistoryEventTypeEnumMap[instance.event]!,
-      'pageId': _$AiutaAnalyticPageIdEnumMap[instance.pageId]!,
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
     };
 

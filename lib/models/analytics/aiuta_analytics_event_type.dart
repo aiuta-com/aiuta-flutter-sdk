@@ -1,5 +1,5 @@
 /// Enum for the different types of events that can be logged in Aiuta.
-enum AiutaAnalyticEventType {
+enum AiutaAnalyticsEventType {
   /// User navigates to a new page.
   pageEvent,
 

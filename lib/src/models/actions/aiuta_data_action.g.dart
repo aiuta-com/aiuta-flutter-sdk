@@ -6,24 +6,23 @@ part of 'aiuta_data_action.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ObtainUserConsentAction _$ObtainUserConsentActionFromJson(
+ObtainUserConsentsIdsAction _$ObtainUserConsentsIdsActionFromJson(
         Map<String, dynamic> json) =>
-    ObtainUserConsentAction(
-      supplementaryConsents: (json['supplementaryConsents'] as List<dynamic>)
-          .map((e) =>
-              AiutaSupplementaryConsent.fromJson(e as Map<String, dynamic>))
+    ObtainUserConsentsIdsAction(
+      consentIds: (json['consentIds'] as List<dynamic>)
+          .map((e) => e as String)
           .toList(),
     )..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type']);
 
-Map<String, dynamic> _$ObtainUserConsentActionToJson(
-        ObtainUserConsentAction instance) =>
+Map<String, dynamic> _$ObtainUserConsentsIdsActionToJson(
+        ObtainUserConsentsIdsAction instance) =>
     <String, dynamic>{
       'type': _$AiutaDataActionTypeEnumMap[instance.type]!,
-      'supplementaryConsents': instance.supplementaryConsents,
+      'consentIds': instance.consentIds,
     };
 
 const _$AiutaDataActionTypeEnumMap = {
-  AiutaDataActionType.obtainUserConsent: 'obtainUserConsent',
+  AiutaDataActionType.obtainUserConsentsIds: 'obtainUserConsentsIds',
   AiutaDataActionType.addUploadedImages: 'addUploadedImages',
   AiutaDataActionType.selectUploadedImage: 'selectUploadedImage',
   AiutaDataActionType.deleteUploadedImages: 'deleteUploadedImages',

@@ -1,5 +1,5 @@
 enum AiutaDataActionType {
-  obtainUserConsent,
+  obtainUserConsentsIds,
   addUploadedImages,
   selectUploadedImage,
   deleteUploadedImages,

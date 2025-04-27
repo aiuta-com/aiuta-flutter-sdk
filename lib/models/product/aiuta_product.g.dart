@@ -7,27 +7,21 @@ part of 'aiuta_product.dart';
 // **************************************************************************
 
 AiutaProduct _$AiutaProductFromJson(Map<String, dynamic> json) => AiutaProduct(
-      skuId: json['skuId'] as String,
-      catalogName: json['catalogName'] as String?,
+      id: json['id'] as String,
       title: json['title'] as String,
+      brand: json['brand'] as String,
       imageUrls:
           (json['imageUrls'] as List<dynamic>).map((e) => e as String).toList(),
-      localizedPrice: json['localizedPrice'] as String?,
-      localizedOldPrice: json['localizedOldPrice'] as String?,
-      brand: json['brand'] as String,
-      additionalShareInfo: json['additionalShareInfo'] as String?,
-      inWishlist: json['inWishlist'] as bool,
+      price: json['price'] == null
+          ? null
+          : AiutaProductPrice.fromJson(json['price'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AiutaProductToJson(AiutaProduct instance) =>
     <String, dynamic>{
-      'skuId': instance.skuId,
-      'catalogName': instance.catalogName,
+      'id': instance.id,
       'title': instance.title,
-      'imageUrls': instance.imageUrls,
-      'localizedPrice': instance.localizedPrice,
-      'localizedOldPrice': instance.localizedOldPrice,
       'brand': instance.brand,
-      'additionalShareInfo': instance.additionalShareInfo,
-      'inWishlist': instance.inWishlist,
+      'imageUrls': instance.imageUrls,
+      'price': instance.price,
     };

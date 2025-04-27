@@ -1,79 +1,99 @@
+import 'package:aiuta_flutter/configuration/features/consent/aiuta_consent_mode.dart';
+import 'package:aiuta_flutter/configuration/features/consent/embedded/aiuta_consent_embedded_strings.dart';
+import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_data.dart';
+import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_data_provider.dart';
+import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_icons.dart';
+import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_strings.dart';
+import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_styles.dart';
 import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import 'aiuta_consent_mode.dart';
-import 'built_in_with_onboarding/aiuta_consent_built_in_with_onboarding_page_strings.dart';
-import 'standalone_page/aiuta_consent_standalone_onboarding_page_data.dart';
-import 'standalone_page/aiuta_consent_standalone_onboarding_page_data_provider.dart';
-import 'standalone_page/aiuta_consent_standalone_onboarding_page_strings.dart';
 
 part 'aiuta_consent_feature.g.dart';
 
 /// Base class for Aiuta consent feature.
-/// This class is used to define the consent feature configuration.
 sealed class AiutaConsentFeature {
-  /// Authentication mode is used to determine the type of authentication.
-  final AiutaConsentMode mode;
+  /// The mode of the consent feature to be embedded into the onboarding with
+  /// [embeddedIntoOnboarding] or displayed as a standalone page
+  /// with [standaloneOnboardingPage] or [standaloneImagePickerPage].
+  AiutaConsentMode mode;
 
-  /// Base constructor for AiutaConsentFeature.
+  /// Base constructor for AiutaConsentFeature with [mode].
   AiutaConsentFeature(this.mode);
 
-  /// Factory method to create AiutaConsentFeature from json.
+  // Internal json staff
   factory AiutaConsentFeature.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as String) {
-      case 'builtInWithOnboardingPage':
-        return AiutaConsentBuiltInWithOnboardingPageFeature.fromJson(json);
+      case 'embeddedIntoOnboarding':
+        return AiutaConsentEmbeddedIntoOnboardingFeature.fromJson(json);
       case 'standaloneOnboardingPage':
         return AiutaConsentStandaloneOnboardingPageFeature.fromJson(json);
+      case 'standaloneImagePickerPage':
+        return AiutaConsentStandaloneImagePickerPageFeature.fromJson(json);
       default:
         throw Exception('Unknown consent feature type');
     }
   }
 
-  /// Method to convert AiutaConsentFeature to json.
   Map<String, dynamic> toJson();
 }
 
-/// Subclass for built-in consent with onboarding page.
+/// Consent information will be embedded into the onboarding pages in the bottom of the screen.
+/// The user is not required to explicitly accept the terms and conditions in order to proceed.
 @JsonSerializable()
-class AiutaConsentBuiltInWithOnboardingPageFeature extends AiutaConsentFeature {
+class AiutaConsentEmbeddedIntoOnboardingFeature extends AiutaConsentFeature {
   /// Strings used in the consent feature.
-  final AiutaConsentBuiltInWithOnboardingPageStrings strings;
+  final AiutaConsentEmbeddedStrings strings;
 
-  AiutaConsentBuiltInWithOnboardingPageFeature({
+  /// Creates an [AiutaConsentEmbeddedIntoOnboardingFeature]
+  /// with the [strings] provided.
+  AiutaConsentEmbeddedIntoOnboardingFeature({
     required this.strings,
-  }) : super(AiutaConsentMode.builtInWithOnboardingPage);
+  }) : super(AiutaConsentMode.embeddedIntoOnboarding);
 
-  /// Factory method to create AiutaConsentBuiltInWithOnboardingPageFeature from json.
-  factory AiutaConsentBuiltInWithOnboardingPageFeature.fromJson(
+  // Internal json staff
+  factory AiutaConsentEmbeddedIntoOnboardingFeature.fromJson(
           Map<String, dynamic> json) =>
-      _$AiutaConsentBuiltInWithOnboardingPageFeatureFromJson(json);
+      _$AiutaConsentEmbeddedIntoOnboardingFeatureFromJson(json);
 
   @override
   Map<String, dynamic> toJson() =>
-      _$AiutaConsentBuiltInWithOnboardingPageFeatureToJson(this);
+      _$AiutaConsentEmbeddedIntoOnboardingFeatureToJson(this);
 }
 
-/// Subclass for standalone consent onboarding page.
+/// Consent information will be displayed in a standalone page after the onboarding
+/// (as the last page of the onboarding if it is enabled, or as a separate page otherwise).
+/// The user needs to accept the terms by setting required checkboxes to continue.
 @JsonSerializable()
 class AiutaConsentStandaloneOnboardingPageFeature extends AiutaConsentFeature {
   /// Strings used in the consent feature.
-  final AiutaConsentStandaloneOnboardingPageStrings strings;
+  final AiutaConsentStandaloneStrings strings;
+
+  /// Icons used in the consent feature.
+  final AiutaConsentStandaloneIcons icons;
+
+  /// Styles used in the consent feature.
+  final AiutaConsentStandaloneStyles styles;
 
   /// Data used in the consent feature.
-  final AiutaConsentStandaloneOnboardingPageData data;
+  /// Contains the list of consents with their properties.
+  final AiutaConsentStandaloneData data;
 
   /// Data provider for the consent feature.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final AiutaConsentStandaloneOnboardingPageDataProvider dataProvider;
+  final AiutaConsentStandaloneDataProvider dataProvider;
 
+  /// Creates an [AiutaConsentStandaloneOnboardingPageFeature] with the
+  /// [strings], [icons], [styles], list of consents in [data],
+  /// and [dataProvider] to control the consent feature.
   AiutaConsentStandaloneOnboardingPageFeature({
     required this.strings,
+    required this.icons,
+    required this.styles,
     required this.data,
     required this.dataProvider,
   }) : super(AiutaConsentMode.standaloneOnboardingPage);
 
-  /// Factory method to create AiutaConsentStandaloneOnboardingPageFeature from json.
+  // Internal json staff
   factory AiutaConsentStandaloneOnboardingPageFeature.fromJson(
           Map<String, dynamic> json) =>
       _$AiutaConsentStandaloneOnboardingPageFeatureFromJson(json);
@@ -81,4 +101,46 @@ class AiutaConsentStandaloneOnboardingPageFeature extends AiutaConsentFeature {
   @override
   Map<String, dynamic> toJson() =>
       _$AiutaConsentStandaloneOnboardingPageFeatureToJson(this);
+}
+
+/// Consent information will be displayed in a bottom sheet
+/// when the user tries to upload a photo in the image picker.
+/// The user needs to accept the terms by setting required checkboxes to continue.
+@JsonSerializable()
+class AiutaConsentStandaloneImagePickerPageFeature extends AiutaConsentFeature {
+  /// Strings used in the consent feature.
+  final AiutaConsentStandaloneStrings strings;
+
+  /// Icons used in the consent feature.
+  final AiutaConsentStandaloneIcons icons;
+
+  /// Styles used in the consent feature.
+  final AiutaConsentStandaloneStyles styles;
+
+  /// Data used in the consent feature.
+  final AiutaConsentStandaloneData data;
+
+  /// Data provider for the consent feature.
+  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
+  final AiutaConsentStandaloneDataProvider dataProvider;
+
+  /// Creates an [AiutaConsentStandaloneImagePickerPageFeature] with the
+  /// [strings], [icons], [styles], list of consents in [data],
+  /// and [dataProvider] to control the consent feature.
+  AiutaConsentStandaloneImagePickerPageFeature({
+    required this.strings,
+    required this.icons,
+    required this.styles,
+    required this.data,
+    required this.dataProvider,
+  }) : super(AiutaConsentMode.standaloneOnboardingPage);
+
+  // Internal json staff
+  factory AiutaConsentStandaloneImagePickerPageFeature.fromJson(
+          Map<String, dynamic> json) =>
+      _$AiutaConsentStandaloneImagePickerPageFeatureFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$AiutaConsentStandaloneImagePickerPageFeatureToJson(this);
 }

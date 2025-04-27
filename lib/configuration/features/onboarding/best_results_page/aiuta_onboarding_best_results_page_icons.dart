@@ -1,5 +1,5 @@
+import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:aiuta_flutter/configuration/ui/theme/icons/aiuta_icon.dart';
 
 part 'aiuta_onboarding_best_results_page_icons.g.dart';
 

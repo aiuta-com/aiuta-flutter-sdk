@@ -24,7 +24,7 @@ const _$AiutaAuthModeEnumMap = {
 
 AiutaJwtAuth _$AiutaJwtAuthFromJson(Map<String, dynamic> json) => AiutaJwtAuth(
       subscriptionId: json['subscriptionId'] as String,
-      getJWT: toNull(json['getJWT']),
+      getJwt: toNull(json['getJwt']),
     )..mode = $enumDecode(_$AiutaAuthModeEnumMap, json['mode']);
 
 Map<String, dynamic> _$AiutaJwtAuthToJson(AiutaJwtAuth instance) {
@@ -39,6 +39,6 @@ Map<String, dynamic> _$AiutaJwtAuthToJson(AiutaJwtAuth instance) {
     }
   }
 
-  writeNotNull('getJWT', toNull(instance.getJWT));
+  writeNotNull('getJwt', toNull(instance.getJwt));
   return val;
 }

@@ -1,5 +1,5 @@
 /// This enum is used to represent the type of onboarding event in the Aiuta SDK.
-enum AiutaAnalyticOnboardingEventType {
+enum AiutaAnalyticsOnboardingEventType {
   /// The user clicked the start button on the welcome splash screen.
   welcomeStartClicked,
 

@@ -1,20 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'aiuta_consent.dart';
+part of 'aiuta_consent_embedded_strings.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaConsent _$AiutaConsentFromJson(Map<String, dynamic> json) => AiutaConsent(
-      id: json['id'] as String,
+AiutaConsentEmbeddedStrings _$AiutaConsentEmbeddedStringsFromJson(
+        Map<String, dynamic> json) =>
+    AiutaConsentEmbeddedStrings(
       consentHtml: json['consentHtml'] as String,
-      isRequired: json['isRequired'] as bool,
     );
 
-Map<String, dynamic> _$AiutaConsentToJson(AiutaConsent instance) =>
+Map<String, dynamic> _$AiutaConsentEmbeddedStringsToJson(
+        AiutaConsentEmbeddedStrings instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'consentHtml': instance.consentHtml,
-      'isRequired': instance.isRequired,
     };

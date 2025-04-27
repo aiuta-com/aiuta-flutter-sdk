@@ -1,12 +1,15 @@
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
-import 'package:aiuta_flutter/models/error/aiuta_error.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_event.dart';
 import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
-import 'package:aiuta_flutter/src/platform/aiutasdk_method_channel.dart';
+import 'package:aiuta_flutter/src/models/actions/aiuta_action.dart';
+import 'package:aiuta_flutter/src/models/actions/aiuta_auth_action.dart';
+import 'package:aiuta_flutter/src/models/actions/aiuta_data_action.dart';
+import 'package:aiuta_flutter/src/models/errors/aiuta_host_error.dart';
+import 'package:aiuta_flutter/src/platform/aiuta_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 abstract class AiutaPlatform extends PlatformInterface {
-  /// Constructs a AiutaPlatform.
   AiutaPlatform() : super(token: _token);
 
   static final Object _token = Object();
@@ -14,7 +17,6 @@ abstract class AiutaPlatform extends PlatformInterface {
   static AiutaPlatform _instance = MethodChannelAiuta();
 
   /// The default instance of [AiutaPlatform] to use.
-  ///
   /// Defaults to [MethodChannelAiuta].
   static AiutaPlatform get instance => _instance;
 
@@ -26,13 +28,15 @@ abstract class AiutaPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<void> testAvailability() {
+  // Configuration
+
+  Future<bool> isAvailable() {
     throw UnimplementedError(
-      'testAvailability() has not been implemented.',
+      'isAvailable() has not been implemented.',
     );
   }
 
-  Future<bool?> isForeground() {
+  Future<bool> isForeground() {
     throw UnimplementedError(
       'isForeground() has not been implemented.',
     );
@@ -45,6 +49,8 @@ abstract class AiutaPlatform extends PlatformInterface {
       'configure() has not been implemented.',
     );
   }
+
+  // Flows
 
   Future<void> startAiutaFlow({
     required AiutaProduct product,
@@ -63,49 +69,57 @@ abstract class AiutaPlatform extends PlatformInterface {
     );
   }
 
-  Future<void> updateActiveAiutaProduct({
-    required AiutaProduct updatedAiutaProduct,
+  // Auth
+
+  Future<void> resolveJwt({required String token}) {
+    throw UnimplementedError(
+      'resolveJwtAuth() has not been implemented.',
+    );
+  }
+
+  // Consent
+
+  Future<void> updateObtainedConsentsIds({
+    required List<String> obtainedConsentsIds,
   }) {
     throw UnimplementedError(
-      'updateActiveAiutaProduct() has not been implemented.',
+      'updateObtainedConsentsIds() has not been implemented.',
     );
   }
 
-  Future<void> resolveJWTAuth({required String newJWT}) {
+  // Observe
+
+  Stream<AiutaAuthAction> observeAiutaAuthActions() {
     throw UnimplementedError(
-      'resolveJWTAuth() has not been implemented.',
+      'observeAiutaAuthActions() has not been implemented.',
     );
   }
 
-  Stream<String> observeAiutaActions() {
+  Stream<AiutaAction> observeAiutaActions() {
     throw UnimplementedError(
       'observeAiutaActions() has not been implemented.',
     );
   }
 
-  Stream<String> observeAiutaAnalytic() {
-    throw UnimplementedError(
-      'observeAiutaAnalytic() has not been implemented.',
-    );
-  }
-
-  Stream<String> observeAiutaJWTAuthActions() {
-    throw UnimplementedError(
-      'observeAiutaJWTAuthActions() has not been implemented.',
-    );
-  }
-
-  Stream<String> observeAiutaDataActions() {
+  Stream<AiutaDataAction> observeAiutaDataActions() {
     throw UnimplementedError(
       'observeAiutaDataActions() has not been implemented.',
     );
   }
 
-  Future<void> updateUserConsent({
-    required bool isUserConsentObtained,
+  Stream<AiutaAnalyticsEvent> observeAiutaAnalytics() {
+    throw UnimplementedError(
+      'observeAiutaAnalytic() has not been implemented.',
+    );
+  }
+
+  // OLD
+
+  Future<void> updateActiveAiutaProduct({
+    required AiutaProduct updatedAiutaProduct,
   }) {
     throw UnimplementedError(
-      'updateUserConsent() has not been implemented.',
+      'updateActiveAiutaProduct() has not been implemented.',
     );
   }
 
@@ -126,7 +140,7 @@ abstract class AiutaPlatform extends PlatformInterface {
   }
 
   Future<void> notifyAboutError({
-    required AiutaError error,
+    required AiutaHostError error,
   }) {
     throw UnimplementedError(
       'notifyAboutError() has not been implemented.',

@@ -23,10 +23,10 @@ class AiutaUserInterfaceConfiguration {
     required this.theme,
   });
 
-  /// Create a new instance of AiutaUserInterfaceConfiguration from a json map.
+  // Internal json staff
   factory AiutaUserInterfaceConfiguration.fromJson(Map<String, dynamic> json) =>
       _$AiutaUserInterfaceConfigurationFromJson(json);
 
-  /// Convert this object to a json map.
-  Map<String, dynamic> toJson() => _$AiutaUserInterfaceConfigurationToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaUserInterfaceConfigurationToJson(this);
 }

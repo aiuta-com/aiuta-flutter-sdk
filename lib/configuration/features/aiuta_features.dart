@@ -15,7 +15,6 @@ class AiutaFeatures {
   final AiutaWelcomeScreenFeature? welcomeScreen;
   final AiutaOnboardingFeature? onboarding;
 
-  /// Can be AiutaConsentBuiltInWithOnboardingPageFeature or AiutaConsentStandaloneOnboardingPageFeature
   final AiutaConsentFeature? consent;
   final AiutaImagePickerFeature imagePicker;
   final AiutaTryOnFeature tryOn;

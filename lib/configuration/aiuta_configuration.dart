@@ -7,14 +7,20 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_configuration.g.dart';
 
-/// The configuration object that is used to configure the Aiuta SDK.
+/// This class is used to configure the Aiuta SDK.
+/// It contains the authentication configuration, user interface configuration,
+/// features configuration, analytics configuration, and debug settings.
 @JsonSerializable()
 class AiutaConfiguration {
   /// Authentication configuration.
   /// This is required to authenticate Aiuta to use digital try-on API with your credentials.
-  /// Supported authentication methods are ApiKey and JWT.
-  /// When using JWT, only sensitive requests (such as starting virtual try-on) are authenticated with JWT.
+  /// Supported authentication methods are [AiutaApiKeyAuth] or [AiutaJwtAuth].
+  ///
+  /// With [AiutaJwtAuth], only sensitive requests (such as starting virtual try-on) are authenticated with JWT.
   /// Other requests are authenticated with your subscription id.
+  ///
+  /// With [AiutaApiKeyAuth], all requests are authenticated with your API key.
+  ///
   /// Please see [Aiuta API documentation](https://developer.aiuta.com/docs/start) for instructions on how to get your credentials.
   final AiutaAuth auth;
 
@@ -35,11 +41,9 @@ class AiutaConfiguration {
     required this.debugSettings,
   });
 
-  // Json staff
-  /// Create a new instance of AiutaConfiguration from a json map.
+  // Internal json staff
   factory AiutaConfiguration.fromJson(Map<String, dynamic> json) =>
       _$AiutaConfigurationFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaConfigurationToJson(this);
 }
