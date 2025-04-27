@@ -9,8 +9,8 @@ part of 'aiuta_onboarding_feature.dart';
 AiutaOnboardingFeature _$AiutaOnboardingFeatureFromJson(
         Map<String, dynamic> json) =>
     AiutaOnboardingFeature(
-      tryOnPage: AiutaOnboardingTryOnPageFeature.fromJson(
-          json['tryOnPage'] as Map<String, dynamic>),
+      howItWorksPage: AiutaOnboardingHowItWorksPageFeature.fromJson(
+          json['howItWorksPage'] as Map<String, dynamic>),
       bestResultsPage: json['bestResultsPage'] == null
           ? null
           : AiutaOnboardingBestResultsPageFeature.fromJson(
@@ -24,7 +24,7 @@ AiutaOnboardingFeature _$AiutaOnboardingFeatureFromJson(
 Map<String, dynamic> _$AiutaOnboardingFeatureToJson(
         AiutaOnboardingFeature instance) =>
     <String, dynamic>{
-      'tryOnPage': instance.tryOnPage,
+      'howItWorksPage': instance.howItWorksPage,
       'bestResultsPage': instance.bestResultsPage,
       'strings': instance.strings,
       'shapes': instance.shapes,
