@@ -2,19 +2,20 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_welcome_screen_images.g.dart';
 
+/// This class represents the images used in the welcome screen of the Aiuta SDK.
 @JsonSerializable()
 class AiutaWelcomeScreenImages {
   /// Background image for the welcome screen.
   final String welcomeBackground;
 
+  /// Creates an [AiutaWelcomeScreenImages] with the given [welcomeBackground].
   AiutaWelcomeScreenImages({
     required this.welcomeBackground,
   });
 
-  /// Create a new instance of AiutaWelcomeScreenImages from a json map.
+  // Internal json staff
   factory AiutaWelcomeScreenImages.fromJson(Map<String, dynamic> json) =>
       _$AiutaWelcomeScreenImagesFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaWelcomeScreenImagesToJson(this);
 }

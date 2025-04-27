@@ -3,6 +3,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_welcome_screen_typography.g.dart';
 
+/// This class represents the typography styles used in the welcome screen
+/// of the Aiuta SDK.
 @JsonSerializable()
 class AiutaWelcomeScreenTypography {
   /// Text style for the welcome title.
@@ -11,15 +13,16 @@ class AiutaWelcomeScreenTypography {
   /// Text style for the welcome description.
   final AiutaTextStyle welcomeDescription;
 
+  /// Creates an [AiutaWelcomeScreenTypography] with the given parameters for
+  /// the [welcomeTitle] and [welcomeDescription] text styles.
   AiutaWelcomeScreenTypography({
     required this.welcomeTitle,
     required this.welcomeDescription,
   });
 
-  /// Create a new instance of AiutaWelcomeScreenTypography from a json map.
+  // Internal json staff
   factory AiutaWelcomeScreenTypography.fromJson(Map<String, dynamic> json) =>
       _$AiutaWelcomeScreenTypographyFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaWelcomeScreenTypographyToJson(this);
 }

@@ -13,11 +13,14 @@ part 'aiuta_features.g.dart';
 /// This class is used to manage the features of the Aiuta SDK.
 @JsonSerializable()
 class AiutaFeatures {
+  /// Represents the optional welcome screen feature, shown when the SDK is opened
+  /// for the first time. It depends on the onboarding completion; if the [onboarding]
+  /// is not provided, the welcome screen will always be shown unless the SDK
+  /// configured without it by yourself.
   final AiutaWelcomeScreenFeature? welcomeScreen;
 
   /// Feature for the onboarding screen (optional).
   /// If not provided, the onboarding will not be shown.
-  ///
   /// The onboarding feature is used to show the user how the virtual try-on works.
   final AiutaOnboardingFeature? onboarding;
 
@@ -40,6 +43,12 @@ class AiutaFeatures {
   final AiutaWishlistFeature? wishlist;
 
   /// Creates an [AiutaFeatures] instance with the given features configurations.
+  ///
+  /// The [welcomeScreen] is the optional and is shown before the onboarding
+  /// unless the onboarding is not completed.
+  ///
+  /// The [onboarding] is the optional, which is used to show the user how the virtual
+  /// try-on works.
   ///
   /// The [consent] describes the consent feature, which can be embedded into
   /// the onboarding pages or displayed as a standalone page.
