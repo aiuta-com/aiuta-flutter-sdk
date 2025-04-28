@@ -35,7 +35,13 @@ class AiutaFeatures {
   /// To display the consent as a standalone page in the bottom sheet over the image picker,
   /// when the user taps on the "Upload a photo" button, use [AiutaConsentStandaloneImagePickerPageFeature].
   final AiutaConsentFeature? consent;
+
+  /// Configuration for the image picker feature (currently main screen).
+  /// This feature allows users to select images from the camera, photo gallery,
+  /// predefined models, and view their upload history.
   final AiutaImagePickerFeature imagePicker;
+
+  /// The main feature for the virtual try-on functionality.
   final AiutaTryOnFeature tryOn;
 
   /// The optional feature adds the ability to share generated images from
@@ -54,6 +60,11 @@ class AiutaFeatures {
   ///
   /// The [onboarding] is the optional, which is used to show the user how the virtual
   /// try-on works.
+  ///
+  /// Required [imagePicker] for the currently main screen, which allows users to select images
+  /// to be used for virtual try-on.
+  ///
+  /// Required [tryOn] is the main feature for the virtual try-on functionality.
   ///
   /// The [consent] describes the consent feature, which can be embedded into
   /// the onboarding pages or displayed as a standalone page.

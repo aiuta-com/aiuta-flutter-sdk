@@ -6,6 +6,8 @@ import 'package:aiuta_flutter/configuration/features/image_picker/uploads_histor
 
 part 'aiuta_image_picker_uploads_history_feature.g.dart';
 
+/// Configuration for the uploads history feature to allow users to select
+/// one of the previously used images, with ability to delete them.
 @JsonSerializable()
 class AiutaImagePickerUploadsHistoryFeature {
   /// Strings used in the uploads history feature.
@@ -18,6 +20,9 @@ class AiutaImagePickerUploadsHistoryFeature {
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaImagePickerUploadsHistoryDataProvider? dataProvider;
 
+  /// Creates an [AiutaImagePickerUploadsHistoryFeature] with [strings] and
+  /// [styles] configuration, and an optional [dataProvider] to manage
+  /// the uploads history by the host application.
   AiutaImagePickerUploadsHistoryFeature({
     required this.strings,
     required this.styles,

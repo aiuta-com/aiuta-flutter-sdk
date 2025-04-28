@@ -8,6 +8,9 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_image_picker_feature.g.dart';
 
+/// Configuration for the image picker feature (currently main screen).
+/// This feature allows users to select images from the camera, photo gallery,
+/// predefined models, and view their upload history.
 @JsonSerializable()
 class AiutaImagePickerFeature {
   /// Camera feature configuration (optional).
@@ -28,6 +31,12 @@ class AiutaImagePickerFeature {
   /// Strings used in the image picker feature.
   final AiutaImagePickerStrings strings;
 
+  /// Creates an [AiutaImagePickerFeature] with the optional [camera] to allow
+  /// users to take new pictures, a required [photoGallery] to select images
+  /// from the device's gallery, an optional [predefinedModels] to select
+  /// predefined models, an optional [uploadsHistory] to select one of the
+  /// previously used images, and required [images] and [strings]
+  /// configuration.
   AiutaImagePickerFeature({
     this.camera,
     required this.photoGallery,
@@ -43,4 +52,3 @@ class AiutaImagePickerFeature {
 
   Map<String, dynamic> toJson() => _$AiutaImagePickerFeatureToJson(this);
 }
-

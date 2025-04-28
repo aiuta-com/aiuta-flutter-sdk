@@ -2,13 +2,24 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_image_picker_uploads_history_styles.g.dart';
 
-enum AiutaImagePickerUploadsHistoryButtonStyle { Primary, Blurred }
+/// Enum representing the style of the "Change Photo" button.
+enum AiutaImagePickerUploadsHistoryButtonStyle {
+  /// Use primary color for the button.
+  Primary,
 
+  /// Use blurred style for the button.
+  Blurred
+}
+
+/// Styles used in the uploads history feature.
 @JsonSerializable()
 class AiutaImagePickerUploadsHistoryStyles {
   /// Style for the "Change Photo" button.
   final AiutaImagePickerUploadsHistoryButtonStyle changePhotoButtonStyle;
 
+  /// Creates an [AiutaImagePickerUploadsHistoryStyles] with the specified
+  /// [changePhotoButtonStyle] to customize the appearance of the "Change Photo"
+  /// button.
   AiutaImagePickerUploadsHistoryStyles({
     required this.changePhotoButtonStyle,
   });

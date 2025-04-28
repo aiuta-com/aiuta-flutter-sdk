@@ -13,6 +13,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_feature.g.dart';
 
+/// The main feature for the virtual try-on functionality.
 @JsonSerializable()
 class AiutaTryOnFeature {
   /// Loading page feature.
