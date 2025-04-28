@@ -1,5 +1,12 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.features
 
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.consent.FlutterAiutaConsentFeature
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.FlutterAiutaOnboardingFeature
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.picker.FlutterAiutaImagePickerFeature
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.share.FlutterAiutaShareFeature
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.FlutterAiutaTryOnFeature
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.welcome.FlutterAiutaWelcomeScreenFeature
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.wishlist.FlutterAiutaWishlistFeature
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
