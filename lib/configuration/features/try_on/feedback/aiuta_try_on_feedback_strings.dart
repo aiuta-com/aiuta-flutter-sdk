@@ -27,11 +27,10 @@ class AiutaTryOnFeedbackStrings {
     required this.feedbackGratitudeText,
   });
 
-  /// Create a new instance of AiutaTryOnFeedbackStrings from a json map.
+  // Internal json staff
   factory AiutaTryOnFeedbackStrings.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnFeedbackStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnFeedbackStringsToJson(this);
 }
 

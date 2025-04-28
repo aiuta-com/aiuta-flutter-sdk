@@ -23,10 +23,9 @@ class AiutaImagePickerCameraStrings {
     required this.cameraPermissionButtonOpenSettings,
   });
 
-  /// Create a new instance of AiutaImagePickerCameraStrings from a json map.
+  // Internal json staff
   factory AiutaImagePickerCameraStrings.fromJson(Map<String, dynamic> json) =>
       _$AiutaImagePickerCameraStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaImagePickerCameraStringsToJson(this);
 }

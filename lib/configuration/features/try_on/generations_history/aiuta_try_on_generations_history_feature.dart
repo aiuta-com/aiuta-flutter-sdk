@@ -1,9 +1,9 @@
 import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'aiuta_try_on_generations_history_data_provider.dart';
-import 'aiuta_try_on_generations_history_icons.dart';
-import 'aiuta_try_on_generations_history_strings.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/generations_history/aiuta_try_on_generations_history_data_provider.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/generations_history/aiuta_try_on_generations_history_icons.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/generations_history/aiuta_try_on_generations_history_strings.dart';
 
 part 'aiuta_try_on_generations_history_feature.g.dart';
 
@@ -25,12 +25,11 @@ class AiutaTryOnGenerationsHistoryFeature {
     this.dataProvider,
   });
 
-  /// Create a new instance of AiutaTryOnGenerationsHistoryFeature from a json map.
+  // Internal json staff
   factory AiutaTryOnGenerationsHistoryFeature.fromJson(
           Map<String, dynamic> json) =>
       _$AiutaTryOnGenerationsHistoryFeatureFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() =>
       _$AiutaTryOnGenerationsHistoryFeatureToJson(this);
 }

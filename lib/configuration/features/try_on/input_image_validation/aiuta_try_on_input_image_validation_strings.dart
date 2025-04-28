@@ -15,12 +15,11 @@ class AiutaTryOnInputImageValidationStrings {
     required this.invalidInputImageChangePhotoButton,
   });
 
-  /// Create a new instance of AiutaTryOnInputImageValidationStrings from a json map.
+  // Internal json staff
   factory AiutaTryOnInputImageValidationStrings.fromJson(
           Map<String, dynamic> json) =>
       _$AiutaTryOnInputImageValidationStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() =>
       _$AiutaTryOnInputImageValidationStringsToJson(this);
 }

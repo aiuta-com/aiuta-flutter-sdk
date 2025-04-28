@@ -1,6 +1,5 @@
+import 'package:aiuta_flutter/configuration/features/try_on/input_image_validation/aiuta_try_on_input_image_validation_strings.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import 'aiuta_try_on_input_image_validation_strings.dart';
 
 part 'aiuta_try_on_input_image_validation_feature.g.dart';
 
@@ -13,12 +12,11 @@ class AiutaTryOnInputImageValidationFeature {
     required this.strings,
   });
 
-  /// Create a new instance of AiutaTryOnInputImageValidationFeature from a json map.
+  // Internal json staff
   factory AiutaTryOnInputImageValidationFeature.fromJson(
           Map<String, dynamic> json) =>
       _$AiutaTryOnInputImageValidationFeatureFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() =>
       _$AiutaTryOnInputImageValidationFeatureToJson(this);
 }

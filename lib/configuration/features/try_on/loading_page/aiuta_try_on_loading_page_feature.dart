@@ -1,8 +1,7 @@
+import 'package:aiuta_flutter/configuration/features/try_on/loading_page/aiuta_try_on_loading_page_icons.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/loading_page/aiuta_try_on_loading_page_strings.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/loading_page/aiuta_try_on_loading_page_styles.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import 'aiuta_try_on_loading_page_icons.dart';
-import 'aiuta_try_on_loading_page_strings.dart';
-import 'aiuta_try_on_loading_page_styles.dart';
 
 part 'aiuta_try_on_loading_page_feature.g.dart';
 
@@ -23,10 +22,9 @@ class AiutaTryOnLoadingPageFeature {
     required this.styles,
   });
 
-  /// Create a new instance of AiutaTryOnLoadingPageFeature from a json map.
+  // Internal json staff
   factory AiutaTryOnLoadingPageFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnLoadingPageFeatureFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnLoadingPageFeatureToJson(this);
 }

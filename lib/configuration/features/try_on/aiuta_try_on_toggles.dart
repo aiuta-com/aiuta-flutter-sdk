@@ -11,10 +11,9 @@ class AiutaTryOnToggles {
     required this.isBackgroundExecutionAllowed,
   });
 
-  /// Create a new instance of AiutaTryOnToggles from a json map.
+  // Internal json staff
   factory AiutaTryOnToggles.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnTogglesFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnTogglesToJson(this);
 }

@@ -19,12 +19,11 @@ class AiutaImagePickerUploadsHistoryStrings {
     required this.uploadsHistoryButtonChangePhoto,
   });
 
-  /// Create a new instance of AiutaImagePickerUploadsHistoryStrings from a json map.
+  // Internal json staff
   factory AiutaImagePickerUploadsHistoryStrings.fromJson(
           Map<String, dynamic> json) =>
       _$AiutaImagePickerUploadsHistoryStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() =>
       _$AiutaImagePickerUploadsHistoryStringsToJson(this);
 }

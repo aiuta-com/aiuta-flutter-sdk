@@ -12,10 +12,9 @@ class AiutaImagePickerCameraIcons {
     required this.camera24,
   });
 
-  /// Create a new instance of AiutaImagePickerCameraIcons from a json map.
+  // Internal json staff
   factory AiutaImagePickerCameraIcons.fromJson(Map<String, dynamic> json) =>
       _$AiutaImagePickerCameraIconsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaImagePickerCameraIconsToJson(this);
 }

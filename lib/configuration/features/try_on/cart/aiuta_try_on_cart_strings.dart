@@ -11,10 +11,9 @@ class AiutaTryOnCartStrings {
     required this.addToCart,
   });
 
-  /// Create a new instance of AiutaTryOnCartStrings from a json map.
+  // Internal json staff
   factory AiutaTryOnCartStrings.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnCartStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnCartStringsToJson(this);
 }

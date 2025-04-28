@@ -12,10 +12,9 @@ class AiutaTryOnIcons {
     required this.tryOn20,
   });
 
-  /// Create a new instance of AiutaTryOnIcons from a json map.
+  // Internal json staff
   factory AiutaTryOnIcons.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnIconsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnIconsToJson(this);
 }

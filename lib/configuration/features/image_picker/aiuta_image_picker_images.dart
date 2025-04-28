@@ -11,10 +11,9 @@ class AiutaImagePickerImages {
     required this.examples,
   });
 
-  /// Create a new instance of AiutaImagePickerImages from a json map.
+  // Internal json staff
   factory AiutaImagePickerImages.fromJson(Map<String, dynamic> json) =>
       _$AiutaImagePickerImagesFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaImagePickerImagesToJson(this);
 }

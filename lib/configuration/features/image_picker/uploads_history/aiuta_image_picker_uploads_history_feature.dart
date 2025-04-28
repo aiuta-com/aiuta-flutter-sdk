@@ -24,12 +24,11 @@ class AiutaImagePickerUploadsHistoryFeature {
     this.dataProvider,
   });
 
-  /// Create a new instance of AiutaImagePickerUploadsHistoryFeature from a json map.
+  // Internal json staff
   factory AiutaImagePickerUploadsHistoryFeature.fromJson(
           Map<String, dynamic> json) =>
       _$AiutaImagePickerUploadsHistoryFeatureFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() =>
       _$AiutaImagePickerUploadsHistoryFeatureToJson(this);
 }

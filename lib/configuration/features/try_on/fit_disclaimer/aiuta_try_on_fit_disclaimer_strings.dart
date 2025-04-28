@@ -19,10 +19,9 @@ class AiutaTryOnFitDisclaimerStrings {
     required this.fitDisclaimerButtonClose,
   });
 
-  /// Create a new instance of AiutaTryOnFitDisclaimerStrings from a json map.
+  // Internal json staff
   factory AiutaTryOnFitDisclaimerStrings.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnFitDisclaimerStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnFitDisclaimerStringsToJson(this);
 }

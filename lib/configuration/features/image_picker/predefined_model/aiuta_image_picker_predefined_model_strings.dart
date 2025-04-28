@@ -23,12 +23,11 @@ class AiutaImagePickerPredefinedModelStrings {
     required this.predefinedModelCategories,
   });
 
-  /// Create a new instance of AiutaImagePickerPredefinedModelStrings from a json map.
+  // Internal json staff
   factory AiutaImagePickerPredefinedModelStrings.fromJson(
           Map<String, dynamic> json) =>
       _$AiutaImagePickerPredefinedModelStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() =>
       _$AiutaImagePickerPredefinedModelStringsToJson(this);
 }

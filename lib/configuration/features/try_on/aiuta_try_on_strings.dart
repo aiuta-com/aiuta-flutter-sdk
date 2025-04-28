@@ -15,10 +15,9 @@ class AiutaTryOnStrings {
     required this.tryOn,
   });
 
-  /// Create a new instance of AiutaTryOnStrings from a json map.
+  // Internal json staff
   factory AiutaTryOnStrings.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnStringsToJson(this);
 }

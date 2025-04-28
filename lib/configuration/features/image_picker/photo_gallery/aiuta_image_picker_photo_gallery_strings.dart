@@ -11,12 +11,11 @@ class AiutaImagePickerPhotoGalleryStrings {
     required this.galleryButtonSelectPhoto,
   });
 
-  /// Create a new instance of AiutaImagePickerPhotoGalleryStrings from a json map.
+  // Internal json staff
   factory AiutaImagePickerPhotoGalleryStrings.fromJson(
           Map<String, dynamic> json) =>
       _$AiutaImagePickerPhotoGalleryStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() =>
       _$AiutaImagePickerPhotoGalleryStringsToJson(this);
 }

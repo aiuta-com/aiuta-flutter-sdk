@@ -1,7 +1,6 @@
+import 'package:aiuta_flutter/configuration/features/try_on/fit_disclaimer/aiuta_try_on_fit_disclaimer_icons.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/fit_disclaimer/aiuta_try_on_fit_disclaimer_strings.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import 'aiuta_try_on_fit_disclaimer_icons.dart';
-import 'aiuta_try_on_fit_disclaimer_strings.dart';
 
 part 'aiuta_try_on_fit_disclaimer_feature.g.dart';
 
@@ -18,10 +17,9 @@ class AiutaTryOnFitDisclaimerFeature {
     required this.strings,
   });
 
-  /// Create a new instance of AiutaTryOnFitDisclaimerFeature from a json map.
+  // Internal json staff
   factory AiutaTryOnFitDisclaimerFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnFitDisclaimerFeatureFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnFitDisclaimerFeatureToJson(this);
 }

@@ -20,11 +20,10 @@ class AiutaTryOnFeedbackIcons {
     required this.gratitude40,
   });
 
-  /// Create a new instance of AiutaTryOnFeedbackIcons from a json map.
+  // Internal json staff
   factory AiutaTryOnFeedbackIcons.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnFeedbackIconsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnFeedbackIconsToJson(this);
 }
 

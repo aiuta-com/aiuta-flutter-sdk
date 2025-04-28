@@ -11,11 +11,10 @@ class AiutaTryOnGenerationsHistoryStrings {
     required this.generationsHistoryPageTitle,
   });
 
-  /// Create a new instance of AiutaTryOnGenerationsHistoryStrings from a json map.
+  // Internal json staff
   factory AiutaTryOnGenerationsHistoryStrings.fromJson(
           Map<String, dynamic> json) =>
       _$AiutaTryOnGenerationsHistoryStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnGenerationsHistoryStringsToJson(this);
 }

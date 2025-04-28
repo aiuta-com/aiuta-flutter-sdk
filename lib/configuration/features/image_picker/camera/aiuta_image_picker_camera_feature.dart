@@ -17,10 +17,9 @@ class AiutaImagePickerCameraFeature {
     required this.strings,
   });
 
-  /// Create a new instance of AiutaImagePickerCameraFeature from a json map.
+  // Internal json staff
   factory AiutaImagePickerCameraFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaImagePickerCameraFeatureFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaImagePickerCameraFeatureToJson(this);
 }

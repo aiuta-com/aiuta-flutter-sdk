@@ -12,10 +12,9 @@ class AiutaTryOnWithOtherPhotoIcons {
     required this.changePhoto24,
   });
 
-  /// Create a new instance of AiutaTryOnWithOtherPhotoIcons from a json map.
+  // Internal json staff
   factory AiutaTryOnWithOtherPhotoIcons.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnWithOtherPhotoIconsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnWithOtherPhotoIconsToJson(this);
 }

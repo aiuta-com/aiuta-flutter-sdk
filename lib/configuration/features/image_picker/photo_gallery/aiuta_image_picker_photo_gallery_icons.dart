@@ -12,12 +12,11 @@ class AiutaImagePickerPhotoGalleryIcons {
     required this.gallery24,
   });
 
-  /// Create a new instance of AiutaImagePickerPhotoGalleryIcons from a json map.
+  // Internal json staff
   factory AiutaImagePickerPhotoGalleryIcons.fromJson(
           Map<String, dynamic> json) =>
       _$AiutaImagePickerPhotoGalleryIconsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() =>
       _$AiutaImagePickerPhotoGalleryIconsToJson(this);
 }

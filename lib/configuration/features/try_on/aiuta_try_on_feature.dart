@@ -1,16 +1,15 @@
+import 'package:aiuta_flutter/configuration/features/try_on/aiuta_try_on_icons.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/aiuta_try_on_strings.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/aiuta_try_on_styles.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/aiuta_try_on_toggles.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_cart_feature.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/feedback/aiuta_try_on_feedback_feature.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/fit_disclaimer/aiuta_try_on_fit_disclaimer_feature.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/generations_history/aiuta_try_on_generations_history_feature.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/input_image_validation/aiuta_try_on_input_image_validation_feature.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/loading_page/aiuta_try_on_loading_page_feature.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/other_photo/aiuta_try_on_with_other_photo_feature.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import 'aiuta_try_on_icons.dart';
-import 'aiuta_try_on_strings.dart';
-import 'aiuta_try_on_styles.dart';
-import 'aiuta_try_on_toggles.dart';
-import 'cart/aiuta_try_on_cart_feature.dart';
-import 'feedback/aiuta_try_on_feedback_feature.dart';
-import 'fit_disclaimer/aiuta_try_on_fit_disclaimer_feature.dart';
-import 'generations_history/aiuta_try_on_generations_history_feature.dart';
-import 'input_image_validation/aiuta_try_on_input_image_validation_feature.dart';
-import 'loading_page/aiuta_try_on_loading_page_feature.dart';
-import 'other_photo/aiuta_try_on_with_other_photo_feature.dart';
 
 part 'aiuta_try_on_feature.g.dart';
 
@@ -63,10 +62,9 @@ class AiutaTryOnFeature {
     required this.styles,
   });
 
-  /// Create a new instance of AiutaTryOnFeature from a json map.
+  // Internal json staff
   factory AiutaTryOnFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnFeatureFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnFeatureToJson(this);
 }

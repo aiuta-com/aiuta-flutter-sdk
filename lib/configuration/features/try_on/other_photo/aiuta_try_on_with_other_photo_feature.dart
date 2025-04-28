@@ -1,6 +1,5 @@
+import 'package:aiuta_flutter/configuration/features/try_on/other_photo/aiuta_try_on_with_other_photo_icons.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import 'aiuta_try_on_with_other_photo_icons.dart';
 
 part 'aiuta_try_on_with_other_photo_feature.g.dart';
 
@@ -13,10 +12,10 @@ class AiutaTryOnWithOtherPhotoFeature {
     required this.icons,
   });
 
-  /// Create a new instance of AiutaTryOnWithOtherPhotoFeature from a json map.
+  // Internal json staff
   factory AiutaTryOnWithOtherPhotoFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnWithOtherPhotoFeatureFromJson(json);
 
-  /// Convert this object to a json map.
-  Map<String, dynamic> toJson() => _$AiutaTryOnWithOtherPhotoFeatureToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaTryOnWithOtherPhotoFeatureToJson(this);
 }

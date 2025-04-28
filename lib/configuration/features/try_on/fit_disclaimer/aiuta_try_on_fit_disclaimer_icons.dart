@@ -12,10 +12,9 @@ class AiutaTryOnFitDisclaimerIcons {
     this.info20,
   });
 
-  /// Create a new instance of AiutaTryOnFitDisclaimerIcons from a json map.
+  // Internal json staff
   factory AiutaTryOnFitDisclaimerIcons.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnFitDisclaimerIconsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnFitDisclaimerIconsToJson(this);
 }

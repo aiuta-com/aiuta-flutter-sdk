@@ -1,8 +1,7 @@
+import 'package:aiuta_flutter/configuration/features/try_on/feedback/aiuta_try_on_feedback_icons.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/feedback/aiuta_try_on_feedback_strings.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/feedback/other/aiuta_try_on_feedback_other_feature.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import 'aiuta_try_on_feedback_icons.dart';
-import 'other/aiuta_try_on_feedback_other_feature.dart';
-import 'aiuta_try_on_feedback_strings.dart';
 
 part 'aiuta_try_on_feedback_feature.g.dart';
 
@@ -23,11 +22,10 @@ class AiutaTryOnFeedbackFeature {
     required this.strings,
   });
 
-  /// Create a new instance of AiutaTryOnFeedbackFeature from a json map.
+  // Internal json staff
   factory AiutaTryOnFeedbackFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnFeedbackFeatureFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnFeedbackFeatureToJson(this);
 }
 

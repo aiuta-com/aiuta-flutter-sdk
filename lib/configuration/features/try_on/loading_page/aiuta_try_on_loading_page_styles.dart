@@ -17,10 +17,9 @@ class AiutaTryOnLoadingPageStyles {
     required this.loadingStatusStyle,
   });
 
-  /// Create a new instance of AiutaTryOnLoadingPageStyles from a json map.
+  // Internal json staff
   factory AiutaTryOnLoadingPageStyles.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnLoadingPageStylesFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnLoadingPageStylesToJson(this);
 }

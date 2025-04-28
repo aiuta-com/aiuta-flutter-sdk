@@ -23,10 +23,9 @@ class AiutaTryOnFeedbackOtherStrings {
     required this.otherFeedbackOptionOther,
   });
 
-  /// Create a new instance of AiutaTryOnFeedbackOtherStrings from a json map.
+  // Internal json staff
   factory AiutaTryOnFeedbackOtherStrings.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnFeedbackOtherStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnFeedbackOtherStringsToJson(this);
 }

@@ -12,10 +12,9 @@ class AiutaTryOnLoadingPageIcons {
     required this.loading14,
   });
 
-  /// Create a new instance of AiutaTryOnLoadingPageIcons from a json map.
+  // Internal json staff
   factory AiutaTryOnLoadingPageIcons.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnLoadingPageIconsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnLoadingPageIconsToJson(this);
 }

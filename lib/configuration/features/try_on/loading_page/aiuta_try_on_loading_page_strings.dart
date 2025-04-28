@@ -19,10 +19,9 @@ class AiutaTryOnLoadingPageStrings {
     required this.tryOnLoadingStatusGeneratingOutfit,
   });
 
-  /// Create a new instance of AiutaTryOnLoadingPageStrings from a json map.
+  // Internal json staff
   factory AiutaTryOnLoadingPageStrings.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnLoadingPageStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnLoadingPageStringsToJson(this);
 }

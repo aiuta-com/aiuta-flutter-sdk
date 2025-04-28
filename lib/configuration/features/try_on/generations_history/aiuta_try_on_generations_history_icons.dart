@@ -12,10 +12,9 @@ class AiutaTryOnGenerationsHistoryIcons {
     required this.history24,
   });
 
-  /// Create a new instance of AiutaTryOnGenerationsHistoryIcons from a json map.
+  // Internal json staff
   factory AiutaTryOnGenerationsHistoryIcons.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnGenerationsHistoryIconsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaTryOnGenerationsHistoryIconsToJson(this);
 }
