@@ -5,6 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonClassDiscriminator
 
+@Deprecated("Migrate to flutter models")
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable
 @JsonClassDiscriminator("mode")
@@ -16,6 +17,7 @@ sealed interface PlatformAiutaLanguage {
 }
 
 
+@Deprecated("Migrate to flutter models")
 @Serializable
 @SerialName(PlatformAiutaLanguage.TYPE_STANDARD)
 class PlatformStandardLanguage(
@@ -32,6 +34,7 @@ class PlatformStandardLanguage(
 ) : PlatformAiutaLanguage
 
 
+@Deprecated("Migrate to flutter models")
 @Serializable
 @SerialName(PlatformAiutaLanguage.TYPE_CUSTOM)
 class PlatformCustomLanguage(

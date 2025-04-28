@@ -3,6 +3,7 @@ package com.aiuta.flutter.fashionsdk.domain.models.configuration.toggles
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Deprecated("Migrate to flutter models")
 @Serializable
 class PlatformAiutaToggles(
     @SerialName("isHistoryAvailable")

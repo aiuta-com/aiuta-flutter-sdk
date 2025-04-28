@@ -1,6 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration
 
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.PlatformAiutaAuthentication
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.FlutterAiutaAuthentication
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.dataprovider.PlatformAiutaDataProvider
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.language.PlatformAiutaLanguage
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
@@ -9,6 +9,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.toggles.Platform
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Deprecated("Migrate to flutter models")
 @Serializable
 data class PlatformAiutaConfiguration(
     // Mode
@@ -17,7 +18,7 @@ data class PlatformAiutaConfiguration(
 
     // Authentication
     @SerialName("authentication")
-    val authentication: PlatformAiutaAuthentication,
+    val authentication: FlutterAiutaAuthentication,
 
     // Toggles
     @SerialName("toggles")

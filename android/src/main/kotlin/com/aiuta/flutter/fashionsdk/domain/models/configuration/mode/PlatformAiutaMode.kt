@@ -3,6 +3,7 @@ package com.aiuta.flutter.fashionsdk.domain.models.configuration.mode
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Deprecated("Migrate to flutter models")
 @Serializable
 enum class PlatformAiutaMode {
     @SerialName("fullScreen")

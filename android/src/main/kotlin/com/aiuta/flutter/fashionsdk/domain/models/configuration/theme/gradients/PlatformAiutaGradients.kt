@@ -4,6 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 
+@Deprecated("Migrate to flutter models")
 @Serializable
 class PlatformAiutaGradients(
     @SerialName("loadingAnimation")

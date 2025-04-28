@@ -6,8 +6,8 @@ import com.aiuta.fashionsdk.authentication.JWTAuthenticationStrategy
 import com.aiuta.flutter.fashionsdk.domain.listeners.auth.AiutaJWTAuthenticationListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.auth.requestJWT
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.PlatformApiKeyAuthentication
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.PlatformJWTAuthentication
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.FlutterApiKeyAuthentication
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.FlutterJWTAuthentication
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
@@ -28,13 +28,13 @@ object AiutaHolder {
 
         // Set auth
         aiuta = when (platformAuth) {
-            is PlatformApiKeyAuthentication -> {
+            is FlutterApiKeyAuthentication -> {
                 aiutaBuilder
                     .setAuthenticationStrategy(ApiKeyAuthenticationStrategy(platformAuth.apiKey))
                     .setSubscriptionId(platformAuth.subscriptionId)
             }
 
-            is PlatformJWTAuthentication -> {
+            is FlutterJWTAuthentication -> {
                 aiutaBuilder
                     .setAuthenticationStrategy(JWTAuthenticationStrategy(
                         getJWT = { params ->
