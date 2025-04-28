@@ -20,4 +20,10 @@ enum AiutaAnalyticsPickerEventType {
 
   /// The user deleted an uploaded image.
   uploadedPhotoDeleted,
+
+  /// The user opened the predefined models gallery.
+  predefinedModelsOpened,
+
+  /// The user selected a predefined model.
+  predefinedModelSelected
 }

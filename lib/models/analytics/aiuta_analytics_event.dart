@@ -5,6 +5,7 @@ import 'package:aiuta_flutter/models/analytics/aiuta_analytics_feedback_event_ty
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_history_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_picker_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_results_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_event_error_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_event_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -76,12 +77,10 @@ class AiutaAnalyticsPageEvent extends AiutaAnalyticsEvent {
           productId: productId,
         );
 
-  // Json staff
-  /// Creates a page view event from a JSON object.
+  // Internal json staff
   factory AiutaAnalyticsPageEvent.fromJson(Map<String, dynamic> json) =>
       _$AiutaAnalyticsPageEventFromJson(json);
 
-  /// Converts the page view event to a JSON object.
   @override
   Map<String, dynamic> toJson() => _$AiutaAnalyticsPageEventToJson(this);
 }
@@ -112,12 +111,10 @@ class AiutaAnalyticsOnboardingEvent extends AiutaAnalyticsEvent {
           productId: productId,
         );
 
-  // Json staff
-  /// Creates an onboarding event from a JSON object.
+  // Internal json staff
   factory AiutaAnalyticsOnboardingEvent.fromJson(Map<String, dynamic> json) =>
       _$AiutaAnalyticsOnboardingEventFromJson(json);
 
-  /// Converts the onboarding event to a JSON object.
   @override
   Map<String, dynamic> toJson() => _$AiutaAnalyticsOnboardingEventToJson(this);
 }
@@ -147,12 +144,10 @@ class AiutaAnalyticsPickerEvent extends AiutaAnalyticsEvent {
           productId: productId,
         );
 
-  // Json staff
-  /// Creates a picker event from a JSON object.
+  // Internal json staff
   factory AiutaAnalyticsPickerEvent.fromJson(Map<String, dynamic> json) =>
       _$AiutaAnalyticsPickerEventFromJson(json);
 
-  /// Converts the picker event to a JSON object.
   @override
   Map<String, dynamic> toJson() => _$AiutaAnalyticsPickerEventToJson(this);
 }
@@ -177,7 +172,7 @@ class AiutaAnalyticsExitEvent extends AiutaAnalyticsEvent {
           productId: productId,
         );
 
-  // Json staff
+  // Internal json staff
   factory AiutaAnalyticsExitEvent.fromJson(Map<String, dynamic> json) =>
       _$AiutaAnalyticsExitEventFromJson(json);
 
@@ -197,6 +192,9 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
   /// Id of the product that the user interacts with.
   final String productId;
 
+  /// Type of the error if the try-on fails.
+  final AiutaAnalyticsTryOnEventErrorType? errorType;
+
   /// Additional message in case of try on progress
   final String? errorMessage;
 
@@ -205,6 +203,7 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
     required this.event,
     required this.pageId,
     required this.productId,
+    this.errorType,
     this.errorMessage,
   }) : super(
           type: AiutaAnalyticsEventType.pickerEvent,
@@ -212,12 +211,10 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
           productId: productId,
         );
 
-  // Json staff
-  /// Creates a try-on event from a JSON object.
+  // Internal json staff
   factory AiutaAnalyticsTryOnEvent.fromJson(Map<String, dynamic> json) =>
       _$AiutaAnalyticsTryOnEventFromJson(json);
 
-  /// Converts the try-on event to a JSON object.
   @override
   Map<String, dynamic> toJson() => _$AiutaAnalyticsTryOnEventToJson(this);
 }
@@ -246,12 +243,10 @@ class AiutaAnalyticsResultsEvent extends AiutaAnalyticsEvent {
           productId: productId,
         );
 
-  // Json staff
-  /// Creates a results event from a JSON object.
+  // Internal json staff
   factory AiutaAnalyticsResultsEvent.fromJson(Map<String, dynamic> json) =>
       _$AiutaAnalyticsResultsEventFromJson(json);
 
-  /// Converts the results event to a JSON object.
   @override
   Map<String, dynamic> toJson() => _$AiutaAnalyticsResultsEventToJson(this);
 }
@@ -289,12 +284,10 @@ class AiutaAnalyticsFeedbackEvent extends AiutaAnalyticsEvent {
           productId: productId,
         );
 
-  // Json staff
-  /// Creates a feedback event from a JSON object.
+  // Internal json staff
   factory AiutaAnalyticsFeedbackEvent.fromJson(Map<String, dynamic> json) =>
       _$AiutaAnalyticsFeedbackEventFromJson(json);
 
-  /// Converts the feedback event to a JSON object.
   @override
   Map<String, dynamic> toJson() => _$AiutaAnalyticsFeedbackEventToJson(this);
 }

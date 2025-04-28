@@ -7,7 +7,7 @@ enum AiutaSwipeToDismissPolicy {
   /// Closes the SDK at any time in any page by pulling down only on the header.
   allowHeaderSwipeOnly,
 
-  /// On some pages that are safe to close (such as onboarding, photo picker) `allowAlways` policy applies.
-  /// On other pages that wait for generation or showing results - `allowHeaderSwipeOnly` policy applies.
+  /// On some pages that are safe to close (such as onboarding, photo picker) [allowAlways] policy applies.
+  /// On other pages that wait for generation or showing results - [allowHeaderSwipeOnly] policy applies.
   protectTheNecessaryPages
 }

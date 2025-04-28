@@ -24,15 +24,26 @@ class AiutaConfiguration {
   /// Please see [Aiuta API documentation](https://developer.aiuta.com/docs/start) for instructions on how to get your credentials.
   final AiutaAuth auth;
 
+  /// Configuration of the user interface presentation style, swipe-to-dismiss
+  /// policy, and UI components themes for the Aiuta SDK.
   final AiutaUserInterfaceConfiguration userInterface;
 
+  /// Configuration of the features of the SDK and the interaction with the app.
   final AiutaFeatures features;
 
+  /// Configuration of the analytics handler to receive events from the SDK.
   final AiutaAnalytics? analytics;
 
+  /// Configuration of the debug settings of the SDK.
+  /// It contains the logging settings and validation policies for various parameters.
   final AiutaDebugSettings debugSettings;
 
-  /// Create a new instance of AiutaConfiguration.
+  /// Creates an [AiutaConfiguration] with [auth] to authenticate Aiuta to use
+  /// digital try-on API with your credentials, [userInterface] to configure
+  /// the user interface behavior, themes, and colors, [features] to configure
+  /// the features of the SDK and the interaction with thw app, [analytics] to
+  /// receive events from the SDK and send them to your analytics provider, and
+  /// [debugSettings] to configure the logging and validation of the parameters.
   AiutaConfiguration({
     required this.auth,
     required this.userInterface,

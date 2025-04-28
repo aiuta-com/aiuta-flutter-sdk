@@ -5,9 +5,11 @@ import 'theme/aiuta_theme.dart';
 
 part 'aiuta_user_interface.g.dart';
 
+/// This class is used to configure the user interface of the Aiuta SDK.
+/// It contains the presentation style, swipe-to-dismiss policy, and theme configuration.
 @JsonSerializable()
 class AiutaUserInterfaceConfiguration {
-  /// Defines the presentation style of the SDK.
+  /// Defines how the SDK will be presented.
   final AiutaPresentationStyle presentationStyle;
 
   /// Defines the swipe-to-dismiss policy.
@@ -16,7 +18,10 @@ class AiutaUserInterfaceConfiguration {
   /// Defines the theme configuration.
   final AiutaTheme theme;
 
-  /// Constructor for AiutaUserInterfaceConfiguration.
+  /// Creates an [AiutaUserInterfaceConfiguration] with [presentationStyle] to
+  /// configure the presentation style of the SDK, [swipeToDismiss] to
+  /// configure the swipe-to-dismiss policy, and [theme] to configure the
+  /// theme of the UI components.
   AiutaUserInterfaceConfiguration({
     required this.presentationStyle,
     required this.swipeToDismiss,
