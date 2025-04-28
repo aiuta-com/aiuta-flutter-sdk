@@ -2,16 +2,29 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_loading_page_styles.g.dart';
 
-enum AiutaTryOnLoadingPageStyle { Primary, Blurred }
+/// Enum representing the style of the loading page status view.
+enum AiutaTryOnLoadingPageStyle {
+  /// Loading status style with a primary color.
+  Primary,
 
+  /// Loading status style with a blur effect.
+  Blurred
+}
+
+/// Styles for the loading page feature.
 @JsonSerializable()
 class AiutaTryOnLoadingPageStyles {
-  /// Background gradient for the loading status (nullable).
+  /// Background gradient for the loading status (optional).
+  /// If not provided, a default gradient will be used with the `brand` color
+  /// with an opacity from 100% to 0%.
   final List<String>? loadingStatusBackgroundGradient;
 
   /// Style for the loading status.
   final AiutaTryOnLoadingPageStyle loadingStatusStyle;
 
+  /// Creates an [AiutaTryOnLoadingPageStyles] with the optional
+  /// [loadingStatusBackgroundGradient] and required
+  /// [loadingStatusStyle] to configure the loading page styles.
   AiutaTryOnLoadingPageStyles({
     this.loadingStatusBackgroundGradient,
     required this.loadingStatusStyle,

@@ -3,11 +3,14 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_feedback_other_feature.g.dart';
 
+/// Other feedback feature to allow the user to provide
+/// custom feedback on the try-on result.
 @JsonSerializable()
 class AiutaTryOnFeedbackOtherFeature {
   /// Strings used in the other feedback feature.
   final AiutaTryOnFeedbackOtherStrings strings;
 
+  /// Creates an [AiutaTryOnFeedbackOtherFeature] with the [strings].
   AiutaTryOnFeedbackOtherFeature({
     required this.strings,
   });

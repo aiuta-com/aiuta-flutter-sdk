@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_feedback_other_strings.g.dart';
 
+/// Strings used in the other feedback feature.
 @JsonSerializable()
 class AiutaTryOnFeedbackOtherStrings {
   /// Title for the other feedback section.
@@ -16,6 +17,11 @@ class AiutaTryOnFeedbackOtherStrings {
   /// Text for the "Other" feedback option.
   final String otherFeedbackOptionOther;
 
+  /// Creates an [AiutaTryOnFeedbackOtherStrings] with the [otherFeedbackTitle],
+  /// [otherFeedbackButtonSend], [otherFeedbackButtonCancel] strings for the
+  /// components of the other feedback feature, and [otherFeedbackOptionOther]
+  /// to be added to the [AiutaTryOnFeedbackFeature.feedbackOptions] as an
+  /// additional option to enter custom feedback.
   AiutaTryOnFeedbackOtherStrings({
     required this.otherFeedbackTitle,
     required this.otherFeedbackButtonSend,

@@ -4,6 +4,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_fit_disclaimer_feature.g.dart';
 
+/// The Fit Disclaimer feature (optional) to indicate that the result
+/// of the try-on may differ from real life.
 @JsonSerializable()
 class AiutaTryOnFitDisclaimerFeature {
   /// Icons used in the Fit Disclaimer feature.
@@ -12,6 +14,8 @@ class AiutaTryOnFitDisclaimerFeature {
   /// Strings used in the Fit Disclaimer feature.
   final AiutaTryOnFitDisclaimerStrings strings;
 
+  /// Creates an [AiutaTryOnFitDisclaimerFeature] with the required [strings]
+  /// and optional [icons] to configure the feature.
   AiutaTryOnFitDisclaimerFeature({
     this.icons,
     required this.strings,

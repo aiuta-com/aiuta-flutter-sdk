@@ -3,11 +3,14 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_fit_disclaimer_icons.g.dart';
 
+/// The icons used in the Fit Disclaimer feature.
 @JsonSerializable()
 class AiutaTryOnFitDisclaimerIcons {
-  /// Icon for the Fit Disclaimer (nullable).
+  /// Icon for the Fit Disclaimer (optional).
   final AiutaIcon? info20;
 
+  /// Creates an [AiutaTryOnFitDisclaimerIcons] with the optional [info20]
+  /// for the Fit Disclaimer.
   AiutaTryOnFitDisclaimerIcons({
     this.info20,
   });

@@ -3,11 +3,14 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_loading_page_icons.g.dart';
 
+/// Icons used in the loading page feature.
 @JsonSerializable()
 class AiutaTryOnLoadingPageIcons {
   /// Icon for the loading status.
   final AiutaIcon loading14;
 
+  /// Creates an [AiutaTryOnLoadingPageIcons] with the [loading14] icon, that
+  /// will spin to indicate the loading activity.
   AiutaTryOnLoadingPageIcons({
     required this.loading14,
   });

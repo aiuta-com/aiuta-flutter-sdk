@@ -5,9 +5,11 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_feedback_feature.g.dart';
 
+/// Feedback feature for the virtual try-on functionality.
 @JsonSerializable()
 class AiutaTryOnFeedbackFeature {
-  /// Other feedback feature (nullable).
+  /// Other feedback feature (optional) to allow the user to provide
+  /// custom feedback on the try-on result.
   final AiutaTryOnFeedbackOtherFeature? otherFeedback;
 
   /// Icons used in the feedback feature.
@@ -16,6 +18,8 @@ class AiutaTryOnFeedbackFeature {
   /// Strings used in the feedback feature.
   final AiutaTryOnFeedbackStrings strings;
 
+  /// Creates an [AiutaTryOnFeedbackFeature] with the [icons], [strings] and
+  /// optional [otherFeedback] to configure the feedback feature.
   AiutaTryOnFeedbackFeature({
     this.otherFeedback,
     required this.icons,
@@ -28,4 +32,3 @@ class AiutaTryOnFeedbackFeature {
 
   Map<String, dynamic> toJson() => _$AiutaTryOnFeedbackFeatureToJson(this);
 }
-

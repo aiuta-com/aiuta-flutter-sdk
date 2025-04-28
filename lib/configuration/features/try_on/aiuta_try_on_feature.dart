@@ -16,25 +16,33 @@ part 'aiuta_try_on_feature.g.dart';
 /// The main feature for the virtual try-on functionality.
 @JsonSerializable()
 class AiutaTryOnFeature {
-  /// Loading page feature.
+  /// Loading page feature with animated loading screen to
+  /// indicate that the try-on is being generated.
   final AiutaTryOnLoadingPageFeature loadingPage;
 
-  /// Input image validation feature.
+  /// Input image validation feature to filter out invalid images
+  /// that are not suitable for the try-on process.
   final AiutaTryOnInputImageValidationFeature inputImageValidation;
 
-  /// Cart feature.
+  /// Cart feature to handle the user's intention to add the product
+  /// used for the try-on to the host app's cart.
   final AiutaTryOnCartFeature cart;
 
-  /// Fit disclaimer feature (nullable).
+  /// Fit disclaimer feature (optional) to indicate that the result
+  /// of the try-on may differ from real life.
   final AiutaTryOnFitDisclaimerFeature? fitDisclaimer;
 
-  /// Feedback feature (nullable).
+  /// Feedback feature (optional) to allow the user to provide a
+  /// feedback on the try-on result.
   final AiutaTryOnFeedbackFeature? feedback;
 
-  /// Generations history feature (nullable).
+  /// Generations history feature (optional) to keep track of the
+  /// previous generations with the ability to delete them.
   final AiutaTryOnGenerationsHistoryFeature? generationsHistory;
 
-  /// Try-On with other photo feature (nullable).
+  /// Try-On with other photo feature (optional) to allow the user
+  /// to use a different photo for the try-on with the same product
+  /// after seeing the result.
   final AiutaTryOnWithOtherPhotoFeature? otherPhoto;
 
   /// Toggles for the Try-On feature.
@@ -49,6 +57,19 @@ class AiutaTryOnFeature {
   /// Styles for the Try-On feature.
   final AiutaTryOnStyles styles;
 
+  /// Creates an [AiutaTryOnFeature] with the required [loadingPage] to configure
+  /// the the state when the user is waiting for the try-on to be generated,
+  /// [inputImageValidation] to check if the input image is valid, and [cart] to
+  /// handle thw user intentions to add the product used for the try-on to the cart.
+  ///
+  /// Optional features include [fitDisclaimer] for indicate that the result of the
+  /// try-on may differ from the real life, [feedback] to allow the user to provide
+  /// feedback on the try-on result, [generationsHistory] to keep track of the
+  /// previous generations, and [otherPhoto] to allow the user to use a different
+  /// photo for the try-on with the same product after the seeing the result.
+  ///
+  /// The [toggles], [icons], [strings], and [styles] parameters are required to
+  /// configure the feature's appearance and behavior.
   AiutaTryOnFeature({
     required this.loadingPage,
     required this.inputImageValidation,

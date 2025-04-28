@@ -5,6 +5,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_cart_feature.g.dart';
 
+/// Cart feature to handle the user's intention to add the product
+/// used for the try-on to the host app's cart.
 @JsonSerializable()
 class AiutaTryOnCartFeature {
   /// Strings used in the cart feature.
@@ -14,6 +16,8 @@ class AiutaTryOnCartFeature {
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaTryOnCartHandler handler;
 
+  /// Creates an [AiutaTryOnCartFeature] with the required [strings] and
+  /// [handler] to add the product used for the try-on to the host app's cart.
   AiutaTryOnCartFeature({
     required this.strings,
     required this.handler,

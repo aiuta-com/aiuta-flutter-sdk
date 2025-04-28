@@ -5,6 +5,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_loading_page_feature.g.dart';
 
+/// The loading page feature with animated loading screen to
+/// indicate that the try-on is being generated.
 @JsonSerializable()
 class AiutaTryOnLoadingPageFeature {
   /// Icons used in the loading page feature.
@@ -16,6 +18,8 @@ class AiutaTryOnLoadingPageFeature {
   /// Styles used in the loading page feature.
   final AiutaTryOnLoadingPageStyles styles;
 
+  /// Creates an [AiutaTryOnLoadingPageFeature] with the required [icons],
+  /// [strings], and [styles] to configure the loading page feature.
   AiutaTryOnLoadingPageFeature({
     required this.icons,
     required this.strings,

@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_loading_page_strings.g.dart';
 
+/// The strings used in the loading page feature.
 @JsonSerializable()
 class AiutaTryOnLoadingPageStrings {
   /// Status message for uploading an image.
@@ -13,6 +14,7 @@ class AiutaTryOnLoadingPageStrings {
   /// Status message for generating an outfit.
   final String tryOnLoadingStatusGeneratingOutfit;
 
+  /// Creates an [AiutaTryOnLoadingPageStrings] with the required status messages.
   AiutaTryOnLoadingPageStrings({
     required this.tryOnLoadingStatusUploadingImage,
     required this.tryOnLoadingStatusScanningBody,
