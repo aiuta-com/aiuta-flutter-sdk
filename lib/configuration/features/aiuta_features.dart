@@ -37,6 +37,9 @@ class AiutaFeatures {
   final AiutaConsentFeature? consent;
   final AiutaImagePickerFeature imagePicker;
   final AiutaTryOnFeature tryOn;
+
+  /// The optional feature adds the ability to share generated images from
+  /// the SDK using the native share dialog.
   final AiutaShareFeature? share;
 
   /// The optional feature to interact with the host application's wishlist.
@@ -54,6 +57,8 @@ class AiutaFeatures {
   ///
   /// The [consent] describes the consent feature, which can be embedded into
   /// the onboarding pages or displayed as a standalone page.
+  ///
+  /// The [share] is the optional feature that adds the ability to share generated images.
   ///
   /// The [wishlist] is the optional feature to interact with the host application's wishlist.
   AiutaFeatures({
