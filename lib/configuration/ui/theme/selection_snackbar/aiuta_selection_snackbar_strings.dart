@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_selection_snackbar_strings.g.dart';
 
+/// Strings for the selection snackbar.
 @JsonSerializable()
 class AiutaSelectionSnackbarStrings {
   /// "Select" string.
@@ -16,6 +17,8 @@ class AiutaSelectionSnackbarStrings {
   /// "Unselect All" string.
   final String unselectAll;
 
+  /// Creates an [AiutaSelectionSnackbarStrings] with the given [select],
+  /// [cancel], [selectAll], and [unselectAll] strings.
   AiutaSelectionSnackbarStrings({
     required this.select,
     required this.cancel,
@@ -23,10 +26,9 @@ class AiutaSelectionSnackbarStrings {
     required this.unselectAll,
   });
 
-  /// Create a new instance of AiutaSelectionSnackbarStrings from a json map.
+  // Internal json staff
   factory AiutaSelectionSnackbarStrings.fromJson(Map<String, dynamic> json) =>
       _$AiutaSelectionSnackbarStringsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaSelectionSnackbarStringsToJson(this);
 }

@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_page_bar_icons.g.dart';
 
+/// This class represents the icons used in the Aiuta page bar.
 @JsonSerializable()
 class AiutaPageBarIcons {
   /// Back icon with size 24.
@@ -11,15 +12,16 @@ class AiutaPageBarIcons {
   /// Close icon with size 24.
   final AiutaIcon close24;
 
+  /// Creates an [AiutaPageBarIcons] with the specified icons
+  /// for the navigation between pages.
   AiutaPageBarIcons({
     required this.back24,
     required this.close24,
   });
 
-  /// Create a new instance of AiutaPageBarIcons from a json map.
+  // Internal json staff
   factory AiutaPageBarIcons.fromJson(Map<String, dynamic> json) =>
       _$AiutaPageBarIconsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaPageBarIconsToJson(this);
 }

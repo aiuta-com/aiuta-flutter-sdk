@@ -1,10 +1,13 @@
+import 'package:aiuta_flutter/configuration/ui/theme/selection_snackbar/aiuta_selection_snackbar_colors.dart';
+import 'package:aiuta_flutter/configuration/ui/theme/selection_snackbar/aiuta_selection_snackbar_icons.dart';
+import 'package:aiuta_flutter/configuration/ui/theme/selection_snackbar/aiuta_selection_snackbar_strings.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'aiuta_selection_snackbar_strings.dart';
-import 'aiuta_selection_snackbar_icons.dart';
-import 'aiuta_selection_snackbar_colors.dart';
 
 part 'aiuta_selection_snackbar_theme.g.dart';
 
+/// Configuration for the selection snackbar that is embeds inside the
+/// pages with the lists of some items (like the generations history),
+/// allows to select multiple items and perform actions on them.
 @JsonSerializable()
 class AiutaSelectionSnackbarTheme {
   /// String configurations for the selection snackbar.
@@ -16,16 +19,17 @@ class AiutaSelectionSnackbarTheme {
   /// Color configurations for the selection snackbar.
   final AiutaSelectionSnackbarColors colors;
 
+  /// Creates an [AiutaSelectionSnackbarTheme] with the given [strings],
+  /// [icons], and [colors].
   AiutaSelectionSnackbarTheme({
     required this.strings,
     required this.icons,
     required this.colors,
   });
 
-  /// Create a new instance of AiutaSelectionSnackbarTheme from a json map.
+  // Internal json staff
   factory AiutaSelectionSnackbarTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaSelectionSnackbarThemeFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaSelectionSnackbarThemeToJson(this);
 }

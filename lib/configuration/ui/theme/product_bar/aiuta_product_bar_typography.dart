@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_product_bar_typography.g.dart';
 
+/// Configuration for the product bar typography that shows the product info.
 @JsonSerializable()
 class AiutaProductBarTypography {
   /// Product text style.
@@ -11,19 +12,16 @@ class AiutaProductBarTypography {
   /// Brand text style.
   final AiutaTextStyle brand;
 
-  /// Price text style.
-  final AiutaTextStyle price;
-
+  /// Creates an [AiutaProductBarTypography] with required [product] title and
+  /// [brand] name text styles.
   AiutaProductBarTypography({
     required this.product,
     required this.brand,
-    required this.price,
   });
 
-  /// Create a new instance of AiutaProductBarTypography from a json map.
+  // Internal json staff
   factory AiutaProductBarTypography.fromJson(Map<String, dynamic> json) =>
       _$AiutaProductBarTypographyFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaProductBarTypographyToJson(this);
 }

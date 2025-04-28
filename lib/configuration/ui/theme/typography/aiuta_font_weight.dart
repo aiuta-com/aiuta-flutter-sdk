@@ -1,3 +1,4 @@
+/// Weight of the font to pass to the Aiuta Font configuration.
 enum AiutaFontWeight {
   // w100
   thin,

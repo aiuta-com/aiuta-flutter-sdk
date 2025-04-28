@@ -3,19 +3,21 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_product_bar_prices_typography.g.dart';
 
+/// Typography styles for the product bar prices.
 @JsonSerializable()
 class AiutaProductBarPricesTypography {
   /// Price text style.
   final AiutaTextStyle price;
 
+  /// Creates an [AiutaProductBarPricesTypography] with [price] text style.
   AiutaProductBarPricesTypography({
     required this.price,
   });
 
-  /// Create a new instance of AiutaProductBarPricesTypography from a json map.
+  // Internal json staff
   factory AiutaProductBarPricesTypography.fromJson(Map<String, dynamic> json) =>
       _$AiutaProductBarPricesTypographyFromJson(json);
 
-  /// Convert this object to a json map.
-  Map<String, dynamic> toJson() => _$AiutaProductBarPricesTypographyToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaProductBarPricesTypographyToJson(this);
 }

@@ -1,8 +1,9 @@
+import 'package:aiuta_flutter/configuration/ui/theme/colors/aiuta_color_scheme.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'aiuta_color_scheme.dart';
 
 part 'aiuta_color_theme.g.dart';
 
+/// Represents a color theme for the Aiuta SDK.
 @JsonSerializable()
 class AiutaColorTheme {
   /// Color scheme for the theme.
@@ -39,19 +40,17 @@ class AiutaColorTheme {
   /// Color for the blur outlines and checkmark borders.
   final String outline;
 
-  /// Constructor for AiutaColorTheme.
-  ///
-  /// [scheme] - Color scheme for the theme. Provided colors should match the scheme.
-  /// [brand] - Main accent color of the app.
-  /// [primary] - Color for the main text.
-  /// [secondary] - Color for secondary text.
-  /// [onDark] - Preferably light color in any scheme to be used on dark, brand, and neutral backgrounds.
-  /// [onLight] - Preferably dark color in any scheme to be used on light backgrounds.
-  /// [background] - Main background color of the SDK.
-  /// [screen] - Zero elevation background color.
-  /// [neutral] - Neutral background color.
-  /// [border] - Color for the borders of the components.
-  /// [outline] - Color for the blur outlines and checkmark borders.
+  /// Create an [AiutaColorTheme] with [scheme] that should match the provided colors:
+  /// [brand] - Main accent color of the app,
+  /// [primary] - Color for the main text,
+  /// [secondary] - Color for secondary text,
+  /// [onDark] - Preferably light color in any scheme to be used on dark, brand, and neutral backgrounds,
+  /// [onLight] - Preferably dark color in any scheme to be used on light backgrounds,
+  /// [background] - Main background color of the SDK,
+  /// [screen] - Zero elevation background color,
+  /// [neutral] - Neutral background color,
+  /// [border] - Color for the borders of the components,
+  /// [outline] - Color for the blur outlines and checkmark borders,
   AiutaColorTheme({
     required this.scheme,
     required this.brand,
@@ -66,10 +65,9 @@ class AiutaColorTheme {
     required this.outline,
   });
 
-  /// Create a new instance of AiutaColorTheme from a json map.
+  // Internal json staff
   factory AiutaColorTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaColorThemeFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaColorThemeToJson(this);
 }

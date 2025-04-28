@@ -3,19 +3,20 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_page_bar_typography.g.dart';
 
+/// Configuration for the page bar typography.
 @JsonSerializable()
 class AiutaPageBarTypography {
   /// Page title text style.
   final AiutaTextStyle pageTitle;
 
+  /// Creates an [AiutaPageBarTypography] with [pageTitle] text style.
   AiutaPageBarTypography({
     required this.pageTitle,
   });
 
-  /// Create a new instance of AiutaPageBarTypography from a json map.
+  // Internal json staff
   factory AiutaPageBarTypography.fromJson(Map<String, dynamic> json) =>
       _$AiutaPageBarTypographyFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaPageBarTypographyToJson(this);
 }

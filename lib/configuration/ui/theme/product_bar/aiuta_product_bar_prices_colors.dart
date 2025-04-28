@@ -1,21 +1,22 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/painting.dart';
 
 part 'aiuta_product_bar_prices_colors.g.dart';
 
+/// Color configurations for the product bar to show the product prices.
 @JsonSerializable()
 class AiutaProductBarPricesColors {
   /// Color for discounted prices.
   final String discountedPrice;
 
+  /// Creates an [AiutaProductBarPricesColors] with required [discountedPrice]
+  /// for the color of discounted prices.
   AiutaProductBarPricesColors({
     required this.discountedPrice,
   });
 
-  /// Create a new instance of AiutaProductBarPricesColors from a json map.
+  // Internal json staff
   factory AiutaProductBarPricesColors.fromJson(Map<String, dynamic> json) =>
       _$AiutaProductBarPricesColorsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaProductBarPricesColorsToJson(this);
 }

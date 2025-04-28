@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_label_typography.g.dart';
 
+/// This contains the typography styles for labels.
 @JsonSerializable()
 class AiutaLabelTypography {
   /// Large title text style.
@@ -17,6 +18,7 @@ class AiutaLabelTypography {
   /// Subtle text style.
   final AiutaTextStyle subtle;
 
+  /// Creates an [AiutaLabelTypography] with the given text styles.
   AiutaLabelTypography({
     required this.titleL,
     required this.titleM,
@@ -24,10 +26,9 @@ class AiutaLabelTypography {
     required this.subtle,
   });
 
-  /// Create a new instance of AiutaTypography from a json map.
+  // Internal json staff
   factory AiutaLabelTypography.fromJson(Map<String, dynamic> json) =>
       _$AiutaLabelTypographyFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaLabelTypographyToJson(this);
 }

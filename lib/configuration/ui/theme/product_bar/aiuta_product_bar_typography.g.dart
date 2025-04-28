@@ -11,7 +11,6 @@ AiutaProductBarTypography _$AiutaProductBarTypographyFromJson(
     AiutaProductBarTypography(
       product: AiutaTextStyle.fromJson(json['product'] as Map<String, dynamic>),
       brand: AiutaTextStyle.fromJson(json['brand'] as Map<String, dynamic>),
-      price: AiutaTextStyle.fromJson(json['price'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AiutaProductBarTypographyToJson(
@@ -19,5 +18,4 @@ Map<String, dynamic> _$AiutaProductBarTypographyToJson(
     <String, dynamic>{
       'product': instance.product,
       'brand': instance.brand,
-      'price': instance.price,
     };

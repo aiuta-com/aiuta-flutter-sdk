@@ -67,7 +67,7 @@ class AiutaTheme {
   /// Note: In case of failure to load the subscription details info from the
   /// Aiuta backend, the SDK will *NOT* display the "Powered By Aiuta" [powerBar]
   /// by default until the subscription details info is loaded successfully and
-  /// the agreement with Aiuta allows to display it.
+  /// the agreement with Aiuta explicitly allows to display it.
   AiutaTheme({
     required this.color,
     required this.fonts,

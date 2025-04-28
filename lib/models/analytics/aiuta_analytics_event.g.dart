@@ -82,6 +82,10 @@ const _$AiutaAnalyticsPickerEventTypeEnumMap = {
   AiutaAnalyticsPickerEventType.uploadsHistoryOpened: 'uploadsHistoryOpened',
   AiutaAnalyticsPickerEventType.uploadedPhotoSelected: 'uploadedPhotoSelected',
   AiutaAnalyticsPickerEventType.uploadedPhotoDeleted: 'uploadedPhotoDeleted',
+  AiutaAnalyticsPickerEventType.predefinedModelsOpened:
+      'predefinedModelsOpened',
+  AiutaAnalyticsPickerEventType.predefinedModelSelected:
+      'predefinedModelSelected',
 };
 
 AiutaAnalyticsExitEvent _$AiutaAnalyticsExitEventFromJson(
@@ -104,6 +108,8 @@ AiutaAnalyticsTryOnEvent _$AiutaAnalyticsTryOnEventFromJson(
       event: $enumDecode(_$AiutaAnalyticsTryOnEventTypeEnumMap, json['event']),
       pageId: $enumDecode(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
       productId: json['productId'] as String,
+      errorType: $enumDecodeNullable(
+          _$AiutaAnalyticsTryOnEventErrorTypeEnumMap, json['errorType']),
       errorMessage: json['errorMessage'] as String?,
     );
 
@@ -113,6 +119,8 @@ Map<String, dynamic> _$AiutaAnalyticsTryOnEventToJson(
       'event': _$AiutaAnalyticsTryOnEventTypeEnumMap[instance.event]!,
       'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
+      'errorType':
+          _$AiutaAnalyticsTryOnEventErrorTypeEnumMap[instance.errorType],
       'errorMessage': instance.errorMessage,
     };
 
@@ -122,6 +130,24 @@ const _$AiutaAnalyticsTryOnEventTypeEnumMap = {
   AiutaAnalyticsTryOnEventType.tryOnFinished: 'tryOnFinished',
   AiutaAnalyticsTryOnEventType.tryOnAborted: 'tryOnAborted',
   AiutaAnalyticsTryOnEventType.tryOnError: 'tryOnError',
+};
+
+const _$AiutaAnalyticsTryOnEventErrorTypeEnumMap = {
+  AiutaAnalyticsTryOnEventErrorType.preparePhotoFailed: 'preparePhotoFailed',
+  AiutaAnalyticsTryOnEventErrorType.uploadPhotoFailed: 'uploadPhotoFailed',
+  AiutaAnalyticsTryOnEventErrorType.authorizationFailed: 'authorizationFailed',
+  AiutaAnalyticsTryOnEventErrorType.requestOperationFailed:
+      'requestOperationFailed',
+  AiutaAnalyticsTryOnEventErrorType.startOperationFailed:
+      'startOperationFailed',
+  AiutaAnalyticsTryOnEventErrorType.operationFailed: 'operationFailed',
+  AiutaAnalyticsTryOnEventErrorType.operationAborted: 'operationAborted',
+  AiutaAnalyticsTryOnEventErrorType.operationTimeout: 'operationTimeout',
+  AiutaAnalyticsTryOnEventErrorType.operationEmptyResults:
+      'operationEmptyResults',
+  AiutaAnalyticsTryOnEventErrorType.downloadResultFailed:
+      'downloadResultFailed',
+  AiutaAnalyticsTryOnEventErrorType.internalSdkError: 'internalSdkError',
 };
 
 AiutaAnalyticsResultsEvent _$AiutaAnalyticsResultsEventFromJson(
