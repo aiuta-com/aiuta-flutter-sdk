@@ -38,6 +38,10 @@ class AiutaFeatures {
   final AiutaImagePickerFeature imagePicker;
   final AiutaTryOnFeature tryOn;
   final AiutaShareFeature? share;
+
+  /// The optional feature to interact with the host application's wishlist.
+  /// If not provided, there will be no `like` button in the product card
+  /// and the generation results.
   final AiutaWishlistFeature? wishlist;
 
   /// Creates an [AiutaFeatures] instance with the given features configurations.
@@ -50,6 +54,8 @@ class AiutaFeatures {
   ///
   /// The [consent] describes the consent feature, which can be embedded into
   /// the onboarding pages or displayed as a standalone page.
+  ///
+  /// The [wishlist] is the optional feature to interact with the host application's wishlist.
   AiutaFeatures({
     this.welcomeScreen,
     this.onboarding,

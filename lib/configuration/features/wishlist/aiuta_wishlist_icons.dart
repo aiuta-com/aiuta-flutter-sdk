@@ -3,23 +3,25 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_wishlist_icons.g.dart';
 
+/// Icons used in the wishlist feature.
 @JsonSerializable()
 class AiutaWishlistIcons {
-  /// Icon for the wishlist.
+  /// Icon for the add to wishlist.
   final AiutaIcon wishlist24;
 
   /// Icon for the filled wishlist.
   final AiutaIcon wishlistFill24;
 
+  /// Creates an [AiutaWishlistIcons] with the [wishlist24]
+  /// and [wishlistFill24] icons.
   AiutaWishlistIcons({
     required this.wishlist24,
     required this.wishlistFill24,
   });
 
-  /// Create a new instance of AiutaWishlistIcons from a json map.
+  // Internal json staff
   factory AiutaWishlistIcons.fromJson(Map<String, dynamic> json) =>
       _$AiutaWishlistIconsFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaWishlistIconsToJson(this);
 }
