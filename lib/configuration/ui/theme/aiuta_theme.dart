@@ -4,6 +4,7 @@ import 'package:aiuta_flutter/configuration/ui/theme/colors/aiuta_color_theme.da
 import 'package:aiuta_flutter/configuration/ui/theme/image/aiuta_image_theme.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/label/aiuta_label_theme.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/page_bar/aiuta_page_bar_theme.dart';
+import 'package:aiuta_flutter/configuration/ui/theme/power_bar/aiuta_power_bar_theme.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/product_bar/aiuta_product_bar_theme.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/selection_snackbar/aiuta_selection_snackbar_theme.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/typography/aiuta_font.dart';
@@ -33,6 +34,8 @@ class AiutaTheme {
 
   final AiutaProductBarTheme productBar;
 
+  final AiutaPowerBarTheme powerBar;
+
   AiutaTheme({
     required this.color,
     required this.fonts,
@@ -43,12 +46,12 @@ class AiutaTheme {
     required this.bottomSheet,
     required this.selectionSnackbar,
     required this.productBar,
+    required this.powerBar,
   });
 
-  /// Create a new instance of AiutaTheme from a json map.
+  // Internal json staff
   factory AiutaTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaThemeFromJson(json);
 
-  /// Convert this object to a json map.
   Map<String, dynamic> toJson() => _$AiutaThemeToJson(this);
 }

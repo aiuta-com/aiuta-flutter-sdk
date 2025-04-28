@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'aiuta_powered_by_strings.dart';
+part of 'aiuta_power_bar_strings.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaPoweredByStrings _$AiutaPoweredByStringsFromJson(
+AiutaPowerBarStrings _$AiutaPowerBarStringsFromJson(
         Map<String, dynamic> json) =>
-    AiutaPoweredByStrings(
+    AiutaPowerBarStrings(
       poweredByAiuta: json['poweredByAiuta'] as String,
     );
 
-Map<String, dynamic> _$AiutaPoweredByStringsToJson(
-        AiutaPoweredByStrings instance) =>
+Map<String, dynamic> _$AiutaPowerBarStringsToJson(
+        AiutaPowerBarStrings instance) =>
     <String, dynamic>{
       'poweredByAiuta': instance.poweredByAiuta,
     };

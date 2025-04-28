@@ -23,8 +23,6 @@ AiutaFeatures _$AiutaFeaturesFromJson(Map<String, dynamic> json) =>
       imagePicker: AiutaImagePickerFeature.fromJson(
           json['imagePicker'] as Map<String, dynamic>),
       tryOn: AiutaTryOnFeature.fromJson(json['tryOn'] as Map<String, dynamic>),
-      poweredBy: AiutaPoweredByFeature.fromJson(
-          json['poweredBy'] as Map<String, dynamic>),
       share: json['share'] == null
           ? null
           : AiutaShareFeature.fromJson(json['share'] as Map<String, dynamic>),
@@ -41,7 +39,6 @@ Map<String, dynamic> _$AiutaFeaturesToJson(AiutaFeatures instance) =>
       'consent': instance.consent,
       'imagePicker': instance.imagePicker,
       'tryOn': instance.tryOn,
-      'poweredBy': instance.poweredBy,
       'share': instance.share,
       'wishlist': instance.wishlist,
     };
