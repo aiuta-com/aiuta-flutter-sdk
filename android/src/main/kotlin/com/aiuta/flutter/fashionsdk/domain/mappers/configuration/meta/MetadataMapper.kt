@@ -5,12 +5,14 @@ import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.meta.HostM
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaConfiguration.toHostMetadata(): HostMetadata {
     return HostMetadata(
         mode = mode.toAiutaMode()
     )
 }
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaMode.toAiutaMode(): AiutaMode {
     return when(this) {
         PlatformAiutaMode.FULL_SCREEN -> AiutaMode.FULL_SCREEN

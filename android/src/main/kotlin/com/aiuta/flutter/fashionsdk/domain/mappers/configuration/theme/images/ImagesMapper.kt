@@ -7,6 +7,7 @@ import com.aiuta.fashionsdk.compose.tokens.images.onboarding.AiutaOnboardingImag
 import com.aiuta.flutter.fashionsdk.domain.assets.AssetsResolver
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.images.PlatformAiutaImages
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaImages.toAiutaImages(
     assetManager: AssetManager,
     defaultImages: AiutaImages,

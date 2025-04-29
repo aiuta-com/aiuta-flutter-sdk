@@ -8,6 +8,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAiutaAction
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+@Deprecated("Migrate to Flutter")
 fun AiutaActionsListener.addToCartClick(skuItem: SKUItem) {
     val platformProduct = skuItem.toPlatformAiutaProduct()
     val action = PlatformAddToCartAction(
@@ -17,6 +18,7 @@ fun AiutaActionsListener.addToCartClick(skuItem: SKUItem) {
     sendEvent(Json.encodeToString<PlatformAiutaAction>(action))
 }
 
+@Deprecated("Migrate to Flutter")
 fun AiutaActionsListener.addToWishListClick(skuItem: SKUItem) {
     val platformProduct = skuItem.toPlatformAiutaProduct()
     val action = PlatformAddToWishListAction(

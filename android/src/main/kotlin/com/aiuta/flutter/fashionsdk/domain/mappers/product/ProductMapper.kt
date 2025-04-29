@@ -3,6 +3,7 @@ package com.aiuta.flutter.fashionsdk.domain.mappers.product
 import com.aiuta.fashionsdk.tryon.compose.domain.models.SKUItem
 import com.aiuta.flutter.fashionsdk.domain.models.product.PlatformAiutaProduct
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaProduct.toSKUItem(): SKUItem {
     return SKUItem(
         skuId = this.skuId,
@@ -17,6 +18,7 @@ fun PlatformAiutaProduct.toSKUItem(): SKUItem {
     )
 }
 
+@Deprecated("Migrate to Flutter")
 fun SKUItem.toPlatformAiutaProduct(): PlatformAiutaProduct {
     return PlatformAiutaProduct(
         skuId = this.skuId,

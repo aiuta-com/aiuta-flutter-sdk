@@ -1,4 +1,4 @@
-package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.colors
+package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.color
 
 import androidx.compose.ui.graphics.Color
 

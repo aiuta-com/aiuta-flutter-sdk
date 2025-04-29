@@ -1,5 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.productbar
 
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.productbar.icon.FlutterAiutaProductBarThemeIcons
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.productbar.prices.FlutterAiutaProductBarPrices
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.productbar.typography.FlutterAiutaProductBarTypography
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.productbar.toggles.FlutterAiutaProductBarToggles
@@ -15,5 +16,8 @@ data class FlutterAiutaProductBarTheme(
     val typography: FlutterAiutaProductBarTypography,
 
     @SerialName("toggles")
-    val toggles: FlutterAiutaProductBarToggles
+    val toggles: FlutterAiutaProductBarToggles,
+
+    @SerialName("icons")
+    val icons: FlutterAiutaProductBarThemeIcons,
 )

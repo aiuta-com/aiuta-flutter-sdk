@@ -6,6 +6,7 @@ import com.aiuta.fashionsdk.compose.tokens.images.AiutaImage
 import com.aiuta.flutter.fashionsdk.domain.assets.AssetsResolver
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.watermark.PlatformAiutaWatermark
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaWatermark.toAiutaImage(assetManager: AssetManager): AiutaImage {
     return AiutaDrawableImage(
         resource = AssetsResolver.resolveDrawable(

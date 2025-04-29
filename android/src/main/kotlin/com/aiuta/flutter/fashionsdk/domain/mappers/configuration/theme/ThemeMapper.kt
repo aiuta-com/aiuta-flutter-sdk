@@ -22,6 +22,7 @@ import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.typograph
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.watermark.toAiutaImage
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
 
+@Deprecated("Migrate to Flutter")
 @Composable
 fun rememberAiutaThemeFromPlatform(
     configuration: PlatformAiutaConfiguration,
@@ -35,6 +36,7 @@ fun rememberAiutaThemeFromPlatform(
     ) { theme }
 }
 
+@Deprecated("Migrate to Flutter")
 @Composable
 fun PlatformAiutaConfiguration.toAiutaTheme(assetManager: AssetManager): AiutaTheme {
     val platformTheme = this.theme

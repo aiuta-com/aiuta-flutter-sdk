@@ -12,6 +12,7 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.selectUploaded
 import com.aiuta.flutter.fashionsdk.domain.listeners.error.AiutaErrorListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.dataprovider.PlatformAiutaDataProvider
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaDataProvider.toAiutaDataProvider(): AiutaDataProvider {
     // Update with current
     AiutaDataProviderHandler.updateIsUserConsentObtained(isUserConsentObtained)

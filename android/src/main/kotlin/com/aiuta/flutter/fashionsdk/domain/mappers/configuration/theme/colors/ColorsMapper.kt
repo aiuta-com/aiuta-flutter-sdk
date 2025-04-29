@@ -1,8 +1,10 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.colors
 
 import com.aiuta.fashionsdk.compose.tokens.color.AiutaColors
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.color.toColor
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.colors.PlatformAiutaColors
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaColors.toAiutaColors(): AiutaColors {
     return AiutaColors(
         primary = primary.toColor(),

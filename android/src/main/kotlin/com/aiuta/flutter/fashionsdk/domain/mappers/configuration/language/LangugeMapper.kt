@@ -10,6 +10,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.language.Platfor
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.language.PlatformDefaultAiutaLanguages
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.language.PlatformStandardLanguage
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaLanguage.toAiutaLanguage(): AiutaTryOnLanguage {
     return when (val language = this) {
         is PlatformStandardLanguage -> language.solveLanguage()
@@ -17,6 +18,7 @@ fun PlatformAiutaLanguage.toAiutaLanguage(): AiutaTryOnLanguage {
     }
 }
 
+@Deprecated("Migrate to Flutter")
 private fun PlatformStandardLanguage.solveLanguage(): AiutaTryOnLanguage {
     return when (language) {
         PlatformDefaultAiutaLanguages.ENGLISH -> EnglishLanguage(
@@ -42,6 +44,7 @@ private fun PlatformStandardLanguage.solveLanguage(): AiutaTryOnLanguage {
     }
 }
 
+@Deprecated("Migrate to Flutter")
 private fun PlatformCustomLanguage.solveLanguage(): AiutaTryOnLanguage {
     return CustomLanguage(
         appBarHistory = appBarHistory,

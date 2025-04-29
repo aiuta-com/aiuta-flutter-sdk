@@ -6,6 +6,7 @@ import com.aiuta.fashionsdk.compose.tokens.typography.AiutaTypography
 import com.aiuta.flutter.fashionsdk.domain.assets.AssetsResolver
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.typography.PlatformAiutaTypography
 
+@Deprecated("Migrate to Flutter")
 @Composable
 fun PlatformAiutaTypography.toAiutaTypography(assetManager: AssetManager): AiutaTypography {
     val fontFamily = if (fonts.isNotEmpty()) {

@@ -5,6 +5,7 @@ import com.aiuta.fashionsdk.compose.tokens.icon.AiutaDrawableIcons
 import com.aiuta.fashionsdk.compose.tokens.icon.AiutaIcons
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.icons.PlatformAiutaIcons
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaIcons.toAiutaIcons(assetManager: AssetManager): AiutaIcons {
     return AiutaDrawableIcons(
         recent100 = null,

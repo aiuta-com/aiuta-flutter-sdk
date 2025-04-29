@@ -12,6 +12,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.typography
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.typography.PlatformAiutaTextStyle
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.typography.PlatformAiutaFontWeight
 
+@Deprecated("Migrate to Flutter")
 @Composable
 fun PlatformAiutaTextStyle.toTextStyle(
     fontFamily: FontFamily?,
@@ -25,6 +26,7 @@ fun PlatformAiutaTextStyle.toTextStyle(
     )
 }
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaFontWeight.toFontWeight(): FontWeight {
     return when(this) {
         PlatformAiutaFontWeight.THIN -> FontWeight.Thin
@@ -39,6 +41,7 @@ fun PlatformAiutaFontWeight.toFontWeight(): FontWeight {
     }
 }
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaFont.toFont(
     resourceKey: String,
     assetManager: AssetManager,

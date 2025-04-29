@@ -5,6 +5,7 @@ import com.aiuta.fashionsdk.compose.tokens.shape.AiutaShapes
 import com.aiuta.fashionsdk.compose.tokens.shape.aiutaShapes
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.shapes.PlatformAiutaShapes
 
+@Deprecated("Migrate to Flutter")
 fun PlatformAiutaShapes.toAiutaShapes(): AiutaShapes {
     return aiutaShapes(
         mainImageRadiusDp = mainImage.dp,

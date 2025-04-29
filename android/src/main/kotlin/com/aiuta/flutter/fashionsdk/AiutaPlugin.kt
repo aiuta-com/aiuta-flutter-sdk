@@ -266,7 +266,10 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         )
 
         // Init Aiuta Configuration
-        AiutaNativeConfigurationHolder.setNativeConfiguration()
+        // TODO Move to UI?
+         AiutaNativeConfigurationHolder.setNativeConfiguration(
+             assetManager = activity.assets,
+         )
     }
 
     private inline fun MethodCall.aiutaScope(
