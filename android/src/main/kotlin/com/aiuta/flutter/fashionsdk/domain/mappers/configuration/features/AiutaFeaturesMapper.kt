@@ -9,6 +9,8 @@ import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.onboar
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.consent.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.picker.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.tryon.toNative
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.share.toNative
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.wishlist.toNative
 
 fun FlutterAiutaFeatures.toNative(
     assetManager: AssetManager,
@@ -31,7 +33,11 @@ fun FlutterAiutaFeatures.toNative(
         tryOn = tryOn.toNative(
             assetManager = assetManager,
         ),
-        share = share?.toNative(),
-        wishlist = wishlist?.toNative()
+        share = share?.toNative(
+            assetManager = assetManager,
+        ),
+        wishlist = wishlist?.toNative(
+            assetManager = assetManager,
+        )
     )
 }
