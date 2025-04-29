@@ -9,15 +9,15 @@ part 'aiuta_try_on_fit_disclaimer_feature.g.dart';
 @JsonSerializable()
 class AiutaTryOnFitDisclaimerFeature {
   /// Icons used in the Fit Disclaimer feature.
-  final AiutaTryOnFitDisclaimerIcons? icons;
+  final AiutaTryOnFitDisclaimerIcons icons;
 
   /// Strings used in the Fit Disclaimer feature.
   final AiutaTryOnFitDisclaimerStrings strings;
 
   /// Creates an [AiutaTryOnFitDisclaimerFeature] with the required [strings]
-  /// and optional [icons] to configure the feature.
+  /// and [icons] to configure the feature.
   AiutaTryOnFitDisclaimerFeature({
-    this.icons,
+    required this.icons,
     required this.strings,
   });
 
