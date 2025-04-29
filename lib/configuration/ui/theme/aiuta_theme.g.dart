@@ -20,6 +20,8 @@ AiutaTheme _$AiutaThemeFromJson(Map<String, dynamic> json) => AiutaTheme(
           json['bottomSheet'] as Map<String, dynamic>),
       selectionSnackbar: AiutaSelectionSnackbarTheme.fromJson(
           json['selectionSnackbar'] as Map<String, dynamic>),
+      errorSnackbar: AiutaErrorSnackbarTheme.fromJson(
+          json['errorSnackbar'] as Map<String, dynamic>),
       productBar: AiutaProductBarTheme.fromJson(
           json['productBar'] as Map<String, dynamic>),
       powerBar:
@@ -36,6 +38,7 @@ Map<String, dynamic> _$AiutaThemeToJson(AiutaTheme instance) =>
       'pageBar': instance.pageBar,
       'bottomSheet': instance.bottomSheet,
       'selectionSnackbar': instance.selectionSnackbar,
+      'errorSnackbar': instance.errorSnackbar,
       'productBar': instance.productBar,
       'powerBar': instance.powerBar,
     };

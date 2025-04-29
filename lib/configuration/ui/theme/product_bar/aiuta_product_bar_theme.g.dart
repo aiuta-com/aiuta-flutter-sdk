@@ -15,6 +15,8 @@ AiutaProductBarTheme _$AiutaProductBarThemeFromJson(
               json['prices'] as Map<String, dynamic>),
       typography: AiutaProductBarTypography.fromJson(
           json['typography'] as Map<String, dynamic>),
+      icons:
+          AiutaProductBarIcons.fromJson(json['icons'] as Map<String, dynamic>),
       toggles: AiutaProductBarToggles.fromJson(
           json['toggles'] as Map<String, dynamic>),
     );
@@ -24,5 +26,6 @@ Map<String, dynamic> _$AiutaProductBarThemeToJson(
     <String, dynamic>{
       'prices': instance.prices,
       'typography': instance.typography,
+      'icons': instance.icons,
       'toggles': instance.toggles,
     };

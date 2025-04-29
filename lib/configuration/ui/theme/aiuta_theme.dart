@@ -8,6 +8,7 @@ import 'package:aiuta_flutter/configuration/ui/theme/power_bar/aiuta_power_bar_t
 import 'package:aiuta_flutter/configuration/ui/theme/product_bar/aiuta_product_bar_theme.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/selection_snackbar/aiuta_selection_snackbar_theme.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/typography/aiuta_font.dart';
+import 'package:aiuta_flutter/configuration/ui/theme/error_snackbar/aiuta_error_snackbar_theme.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_theme.g.dart';
@@ -44,6 +45,9 @@ class AiutaTheme {
   /// allows to select multiple items and perform actions on them.
   final AiutaSelectionSnackbarTheme selectionSnackbar;
 
+  /// Configuration for the error snackbar that displays error messages.
+  final AiutaErrorSnackbarTheme errorSnackbar;
+
   /// Configuration for the product bars that is showing the product info:
   /// images, title, brand name and optionally prices.
   final AiutaProductBarTheme productBar;
@@ -56,7 +60,8 @@ class AiutaTheme {
   /// Creates an [AiutaTheme] with [color] theme, [fonts] available for the SDK
   /// to use in the UI, [label] for showing the text view, [image] views,
   /// [button], [pageBar], [bottomSheet] styles, [selectionSnackbar]
-  /// to configure the lists selections, [productBar],
+  /// to configure the lists selections, [errorSnackbar] to display errors,
+  /// [productBar] for everything related to the product info,
   /// and [powerBar] to configure the "Powered By Aiuta" label.
   ///
   /// Note: In accordance with your agreement with Aiuta [powerBar] may be hidden
@@ -77,6 +82,7 @@ class AiutaTheme {
     required this.pageBar,
     required this.bottomSheet,
     required this.selectionSnackbar,
+    required this.errorSnackbar,
     required this.productBar,
     required this.powerBar,
   });
