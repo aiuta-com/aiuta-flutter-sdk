@@ -23,6 +23,6 @@ Map<String, dynamic> _$AiutaImagePickerUploadsHistoryStylesToJson(
     };
 
 const _$AiutaImagePickerUploadsHistoryButtonStyleEnumMap = {
-  AiutaImagePickerUploadsHistoryButtonStyle.Primary: 'Primary',
-  AiutaImagePickerUploadsHistoryButtonStyle.Blurred: 'Blurred',
+  AiutaImagePickerUploadsHistoryButtonStyle.primary: 'primary',
+  AiutaImagePickerUploadsHistoryButtonStyle.blurred: 'blurred',
 };

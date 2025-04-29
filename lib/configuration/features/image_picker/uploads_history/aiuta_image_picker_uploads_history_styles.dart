@@ -4,11 +4,12 @@ part 'aiuta_image_picker_uploads_history_styles.g.dart';
 
 /// Enum representing the style of the "Change Photo" button.
 enum AiutaImagePickerUploadsHistoryButtonStyle {
-  /// Use primary color for the button.
-  Primary,
+  /// Button style with a primary color background
+  /// and onDark color text.
+  primary,
 
-  /// Use blurred style for the button.
-  Blurred
+  /// Use style with a blur effect and a primary color text.
+  blurred
 }
 
 /// Styles used in the uploads history feature.

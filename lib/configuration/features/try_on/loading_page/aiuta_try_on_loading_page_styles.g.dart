@@ -27,6 +27,7 @@ Map<String, dynamic> _$AiutaTryOnLoadingPageStylesToJson(
     };
 
 const _$AiutaTryOnLoadingPageStyleEnumMap = {
-  AiutaTryOnLoadingPageStyle.Primary: 'Primary',
-  AiutaTryOnLoadingPageStyle.Blurred: 'Blurred',
+  AiutaTryOnLoadingPageStyle.primary: 'primary',
+  AiutaTryOnLoadingPageStyle.blurred: 'blurred',
+  AiutaTryOnLoadingPageStyle.blurredWithOutline: 'blurredWithOutline',
 };

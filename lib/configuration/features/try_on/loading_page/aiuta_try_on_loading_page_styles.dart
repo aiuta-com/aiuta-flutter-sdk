@@ -4,11 +4,16 @@ part 'aiuta_try_on_loading_page_styles.g.dart';
 
 /// Enum representing the style of the loading page status view.
 enum AiutaTryOnLoadingPageStyle {
-  /// Loading status style with a primary color.
-  Primary,
+  /// Loading status style with a primary color background
+  /// and onDark color text.
+  primary,
 
-  /// Loading status style with a blur effect.
-  Blurred
+  /// Loading status style with a blur effect and a primary color text.
+  blurred,
+
+  /// Loading status style with a blur effect and a primary color text and
+  /// an outline (border) around the component.
+  blurredWithOutline,
 }
 
 /// Styles for the loading page feature.
