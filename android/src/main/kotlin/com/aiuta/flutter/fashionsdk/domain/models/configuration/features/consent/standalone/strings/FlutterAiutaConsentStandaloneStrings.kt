@@ -19,7 +19,4 @@ data class FlutterAiutaConsentStandaloneStrings(
 
     @SerialName("consentButtonAccept")
     val consentButtonAccept: String,
-
-    @SerialName("consentButtonReject")
-    val consentButtonReject: String? = null
 )

@@ -5,6 +5,7 @@ import com.aiuta.fashionsdk.configuration.AiutaConfiguration
 import com.aiuta.fashionsdk.configuration.aiutaConfiguration
 import com.aiuta.flutter.fashionsdk.domain.assets.AssetsResolver
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.debug.toNative
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.toNative
 
 object AiutaNativeConfigurationHolder {
@@ -29,9 +30,11 @@ object AiutaNativeConfigurationHolder {
 
         aiutaConfiguration = aiutaConfiguration {
             aiuta = AiutaHolder.getAiuta()
-            // TODO Add mappers
             debugSettings = flutterConfiguration.debugSettings.toNative()
-            features = flutterConfiguration.features
+            features = flutterConfiguration.features.toNative(
+                assetManager = assetManager,
+                fontFamily = fontFamily,
+            )
             userInterface = flutterConfiguration.userInterface.toNative(
                 assetManager = assetManager,
                 fontFamily = fontFamily,
