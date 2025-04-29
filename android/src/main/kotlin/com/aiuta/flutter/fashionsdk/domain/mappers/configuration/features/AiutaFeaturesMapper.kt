@@ -6,6 +6,9 @@ import com.aiuta.fashionsdk.configuration.features.AiutaFeatures
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.FlutterAiutaFeatures
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.welcome.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.onboarding.toNative
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.consent.toNative
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.picker.toNative
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.tryon.toNative
 
 fun FlutterAiutaFeatures.toNative(
     assetManager: AssetManager,
@@ -19,9 +22,15 @@ fun FlutterAiutaFeatures.toNative(
         onboarding = onboarding?.toNative(
             assetManager = assetManager,
         ),
-        consent = consent?.toNative(),
-        imagePicker = imagePicker.toNative(),
-        tryOn = tryOn.toNative(),
+        consent = consent?.toNative(
+            assetManager = assetManager,
+        ),
+        imagePicker = imagePicker.toNative(
+            assetManager = assetManager,
+        ),
+        tryOn = tryOn.toNative(
+            assetManager = assetManager,
+        ),
         share = share?.toNative(),
         wishlist = wishlist?.toNative()
     )

@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class FlutterAiutaTryOnFitDisclaimerFeature(
     @SerialName("icons")
-    val icons: FlutterAiutaTryOnFitDisclaimerIcons? = null,
+    val icons: FlutterAiutaTryOnFitDisclaimerIcons,
 
     @SerialName("strings")
     val strings: FlutterAiutaTryOnFitDisclaimerStrings
