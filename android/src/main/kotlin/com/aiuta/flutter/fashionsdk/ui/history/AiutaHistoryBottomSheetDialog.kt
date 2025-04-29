@@ -12,7 +12,6 @@ import androidx.compose.ui.unit.dp
 import com.aiuta.fashionsdk.tryon.compose.ui.HistoryFlow
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
 import com.aiuta.flutter.fashionsdk.ui.base.BaseAiutaBottomSheetDialog
 
 class AiutaHistoryBottomSheetDialog(
@@ -23,10 +22,6 @@ class AiutaHistoryBottomSheetDialog(
 
     init {
         setContent {
-            val aiutaTheme = rememberAiutaThemeFromPlatform(
-                configuration = AiutaFlutterConfigurationHolder.getFlutterConfiguration(),
-                assetManager = context.assets
-            )
             val configuration = remember {
                 AiutaFlutterConfigurationHolder.getTryOnConfiguration()
             }

@@ -12,7 +12,6 @@ import androidx.compose.ui.unit.dp
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
 import com.aiuta.flutter.fashionsdk.ui.base.BaseAiutaBottomSheetDialog
 
@@ -25,10 +24,6 @@ class AiutaBottomSheetDialog(
     init {
         setContent {
             val skuItem = remember { AiutaFlutterConfigurationHolder.getProduct().toSKUItem() }
-            val aiutaTheme = rememberAiutaThemeFromPlatform(
-                configuration = AiutaFlutterConfigurationHolder.getFlutterConfiguration(),
-                assetManager = context.assets
-            )
             val configuration = remember {
                 AiutaFlutterConfigurationHolder.getTryOnConfiguration()
             }

@@ -7,6 +7,7 @@ import com.aiuta.flutter.fashionsdk.utils.json
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+@Deprecated("Migrate to flutter")
 object AiutaDataProviderHandler {
 
     private val _isUserConsentObtainedFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
