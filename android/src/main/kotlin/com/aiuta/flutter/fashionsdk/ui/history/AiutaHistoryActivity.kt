@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.aiuta.fashionsdk.tryon.compose.ui.HistoryFlow
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
 import com.aiuta.flutter.fashionsdk.ui.base.BaseAiutaActivity
 
 class AiutaHistoryActivity : BaseAiutaActivity() {
@@ -18,14 +18,12 @@ class AiutaHistoryActivity : BaseAiutaActivity() {
 
         setBaseContent {
             val configuration = remember {
-                AiutaFlutterConfigurationHolder.getTryOnConfiguration()
+                AiutaNativeConfigurationHolder.getNativeConfiguration()
             }
 
             HistoryFlow(
                 modifier = Modifier.fillMaxSize(),
-                aiutaTryOnListeners = aiutaTryOnListeners,
-                aiutaTryOnConfiguration = configuration,
-                aiutaTheme = theme,
+                aiutaConfiguration = configuration,
             )
         }
     }

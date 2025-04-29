@@ -42,7 +42,7 @@ object AiutaNativeConfigurationHolder {
         }
     }
 
-    fun getConfiguration(): AiutaConfiguration {
+    fun getNativeConfiguration(): AiutaConfiguration {
         return checkNotNull(aiutaConfiguration) {
             "AiutaFlutterConfigurationHolder: configuration is not init. Please call setNativeConfiguration()"
         }

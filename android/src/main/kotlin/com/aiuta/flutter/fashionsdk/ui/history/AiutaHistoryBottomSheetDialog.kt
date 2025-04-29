@@ -10,7 +10,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.unit.dp
 import com.aiuta.fashionsdk.tryon.compose.ui.HistoryFlow
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.ui.base.BaseAiutaBottomSheetDialog
 
@@ -23,7 +23,7 @@ class AiutaHistoryBottomSheetDialog(
     init {
         setContent {
             val configuration = remember {
-                AiutaFlutterConfigurationHolder.getTryOnConfiguration()
+                AiutaNativeConfigurationHolder.getNativeConfiguration()
             }
 
             HistoryFlow(
@@ -31,9 +31,7 @@ class AiutaHistoryBottomSheetDialog(
                     .fillMaxSize()
                     .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
                     .nestedScroll(rememberNestedScrollInteropConnection()),
-                aiutaTryOnListeners = aiutaTryOnListeners,
-                aiutaTryOnConfiguration = configuration,
-                aiutaTheme = aiutaTheme,
+                aiutaConfiguration = configuration,
             )
         }
     }

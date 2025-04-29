@@ -1,5 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.aiuta
 
+import com.aiuta.fashionsdk.configuration.features.models.product.ProductItem
+import com.aiuta.flutter.fashionsdk.domain.mappers.product.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.FlutterAiutaConfiguration
 import com.aiuta.flutter.fashionsdk.domain.models.product.FlutterAiutaProduct
 import com.aiuta.flutter.fashionsdk.utils.json
@@ -19,10 +21,10 @@ object AiutaFlutterConfigurationHolder {
         product = setItem(rawInput)
     }
 
-    fun getProduct(): FlutterAiutaProduct {
+    fun getNativeProduct(): ProductItem {
         return checkNotNull(product) {
             "AiutaFlutterConfigurationHolder: product is not init. Please call setProduct()"
-        }
+        }.toNative()
     }
 
     // Configuration

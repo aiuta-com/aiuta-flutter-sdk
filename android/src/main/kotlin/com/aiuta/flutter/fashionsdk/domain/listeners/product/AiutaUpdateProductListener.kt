@@ -5,6 +5,7 @@ import com.aiuta.flutter.fashionsdk.utils.json
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+@Deprecated("Migrate to flutter")
 object AiutaUpdateProductListener {
 
     private val _updatedActiveSKUItem: MutableStateFlow<PlatformAiutaProduct?> = MutableStateFlow(null)

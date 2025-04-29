@@ -7,21 +7,6 @@ import com.aiuta.flutter.fashionsdk.domain.models.product.FlutterAiutaProductPri
 import com.aiuta.flutter.fashionsdk.domain.models.product.PlatformAiutaProduct
 
 @Deprecated("Migrate to Flutter")
-fun PlatformAiutaProduct.toSKUItem(): SKUItem {
-    return SKUItem(
-        skuId = this.skuId,
-        catalogName = this.catalogName,
-        description = this.title,
-        imageUrls = this.imageUrls,
-        localizedPrice = this.localizedPrice.orEmpty(),
-        localizedOldPrice = this.localizedOldPrice,
-        store = this.brand,
-        additionalShareInfo = this.additionalShareInfo,
-        inWishlist = this.inWishlist
-    )
-}
-
-@Deprecated("Migrate to Flutter")
 fun SKUItem.toPlatformAiutaProduct(): PlatformAiutaProduct {
     return PlatformAiutaProduct(
         skuId = this.skuId,
