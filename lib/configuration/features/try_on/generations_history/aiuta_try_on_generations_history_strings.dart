@@ -19,5 +19,6 @@ class AiutaTryOnGenerationsHistoryStrings {
           Map<String, dynamic> json) =>
       _$AiutaTryOnGenerationsHistoryStringsFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AiutaTryOnGenerationsHistoryStringsToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaTryOnGenerationsHistoryStringsToJson(this);
 }

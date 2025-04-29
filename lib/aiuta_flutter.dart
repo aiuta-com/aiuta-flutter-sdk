@@ -4,11 +4,12 @@ import 'dart:convert';
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_auth.dart';
 import 'package:aiuta_flutter/configuration/features/consent/aiuta_consent_feature.dart';
-import 'package:aiuta_flutter/models/exceptions/invalid_auth_exception.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_auth_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_data_action.dart';
+import 'package:aiuta_flutter/src/models/errors/aiuta_data_action_error.dart';
+import 'package:aiuta_flutter/src/models/success/aiuta_data_action_success.dart';
 import 'package:aiuta_flutter/src/platform/aiuta_platform_interface.dart';
 
 part 'src/platform/aiuta_flutter_internal.dart';

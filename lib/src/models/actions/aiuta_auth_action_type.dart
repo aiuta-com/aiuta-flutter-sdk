@@ -1,1 +1,3 @@
-enum AiutaAuthActionType { requestJWT }
+enum AiutaAuthActionType {
+  requestJwt,
+}

@@ -7,7 +7,8 @@ import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_auth_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_data_action.dart';
-import 'package:aiuta_flutter/src/models/errors/aiuta_host_error.dart';
+import 'package:aiuta_flutter/src/models/errors/aiuta_data_action_error.dart';
+import 'package:aiuta_flutter/src/models/success/aiuta_data_action_success.dart';
 import 'package:aiuta_flutter/src/platform/aiuta_platform_interface.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -98,7 +99,19 @@ class MethodChannelAiuta extends AiutaPlatform {
     );
   }
 
-  // Consent
+  // Update listenable values from data providers
+
+  @override
+  updateIsOnboardingCompleted({
+    required bool isOnboardingCompleted,
+  }) {
+    return methodChannel.invokeMethod(
+      'updateIsOnboardingCompleted',
+      {
+        "isOnboardingCompleted": isOnboardingCompleted,
+      },
+    );
+  }
 
   @override
   Future<void> updateObtainedConsentsIds(
@@ -111,7 +124,43 @@ class MethodChannelAiuta extends AiutaPlatform {
     );
   }
 
-  // Observe
+  @override
+  Future<void> updateUploadedImages({
+    required List<AiutaHistoryImage> uploadedImages,
+  }) {
+    return methodChannel.invokeMethod(
+      'updateUploadedImages',
+      {
+        "uploadedImages": jsonEncode(uploadedImages),
+      },
+    );
+  }
+
+  @override
+  Future<void> updateGeneratedImages({
+    required List<AiutaHistoryImage> generatedImages,
+  }) {
+    return methodChannel.invokeMethod(
+      'updateGeneratedImages',
+      {
+        "generatedImages": jsonEncode(generatedImages),
+      },
+    );
+  }
+
+  @override
+  Future<void> updateWishlistProductsIds({
+    required List<String> wishlistProductsIds,
+  }) {
+    return methodChannel.invokeMethod(
+      'updateWishlistProductsIds',
+      {
+        "wishlistProductsIds": wishlistProductsIds,
+      },
+    );
+  }
+
+  // Observe data providers callbacks
 
   @override
   Stream<AiutaAuthAction> observeAiutaAuthActions() {
@@ -145,50 +194,25 @@ class MethodChannelAiuta extends AiutaPlatform {
     });
   }
 
-  // OLD
+  // Report data action completion
 
-  @override
-  Future<void> updateActiveAiutaProduct({
-    required AiutaProduct updatedAiutaProduct,
+  Future<void> notifyDataActionSucceeded({
+    required AiutaDataActionSuccess success,
   }) {
     return methodChannel.invokeMethod(
-      'updateActiveAiutaProduct',
+      'notifyDataActionSucceeded',
       {
-        "product": jsonEncode(updatedAiutaProduct),
+        "success": jsonEncode(success),
       },
     );
   }
 
   @override
-  Future<void> updateUploadedImages({
-    required List<AiutaHistoryImage> uploadedImages,
+  Future<void> notifyDataActionErrorThrown({
+    required AiutaDataActionError error,
   }) {
     return methodChannel.invokeMethod(
-      'updateUploadedImages',
-      {
-        "uploadedImages": jsonEncode(uploadedImages),
-      },
-    );
-  }
-
-  @override
-  Future<void> updateGeneratedImages({
-    required List<AiutaHistoryImage> generatedImages,
-  }) {
-    return methodChannel.invokeMethod(
-      'updateGeneratedImages',
-      {
-        "generatedImages": jsonEncode(generatedImages),
-      },
-    );
-  }
-
-  @override
-  Future<void> notifyAboutError({
-    required AiutaHostError error,
-  }) {
-    return methodChannel.invokeMethod(
-      'notifyAboutError',
+      'notifyDataActionErrorThrown',
       {
         "error": jsonEncode(error),
       },

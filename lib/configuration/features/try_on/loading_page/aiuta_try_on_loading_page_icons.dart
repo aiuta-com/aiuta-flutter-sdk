@@ -7,10 +7,11 @@ part 'aiuta_try_on_loading_page_icons.g.dart';
 @JsonSerializable()
 class AiutaTryOnLoadingPageIcons {
   /// Icon for the loading status.
-  final AiutaIcon loading14;
+  final AiutaIcon? loading14;
 
-  /// Creates an [AiutaTryOnLoadingPageIcons] with the [loading14] icon, that
-  /// will spin to indicate the loading activity.
+  /// Creates an [AiutaTryOnLoadingPageIcons] with the optional [loading14] icon,
+  /// that will spin to indicate the loading activity. If not provided,
+  /// the system activity indicator will be used.
   AiutaTryOnLoadingPageIcons({
     required this.loading14,
   });

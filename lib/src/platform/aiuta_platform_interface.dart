@@ -5,7 +5,8 @@ import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_auth_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_data_action.dart';
-import 'package:aiuta_flutter/src/models/errors/aiuta_host_error.dart';
+import 'package:aiuta_flutter/src/models/errors/aiuta_data_action_error.dart';
+import 'package:aiuta_flutter/src/models/success/aiuta_data_action_success.dart';
 import 'package:aiuta_flutter/src/platform/aiuta_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
@@ -77,7 +78,15 @@ abstract class AiutaPlatform extends PlatformInterface {
     );
   }
 
-  // Consent
+  // Update listenable values from data providers
+
+  Future<void> updateIsOnboardingCompleted({
+    required bool isOnboardingCompleted,
+  }) {
+    throw UnimplementedError(
+      'updateIsOnboardingCompleted() has not been implemented.',
+    );
+  }
 
   Future<void> updateObtainedConsentsIds({
     required List<String> obtainedConsentsIds,
@@ -87,7 +96,31 @@ abstract class AiutaPlatform extends PlatformInterface {
     );
   }
 
-  // Observe
+  Future<void> updateUploadedImages({
+    required List<AiutaHistoryImage> uploadedImages,
+  }) {
+    throw UnimplementedError(
+      'updateActiveUploadedImages() has not been implemented.',
+    );
+  }
+
+  Future<void> updateGeneratedImages({
+    required List<AiutaHistoryImage> generatedImages,
+  }) {
+    throw UnimplementedError(
+      'updateGeneratedImages() has not been implemented.',
+    );
+  }
+
+  Future<void> updateWishlistProductsIds({
+    required List<String> wishlistProductsIds,
+  }) {
+    throw UnimplementedError(
+      'updateWishlistProductsIds() has not been implemented.',
+    );
+  }
+
+  // Observe data providers callbacks
 
   Stream<AiutaAuthAction> observeAiutaAuthActions() {
     throw UnimplementedError(
@@ -113,37 +146,21 @@ abstract class AiutaPlatform extends PlatformInterface {
     );
   }
 
-  // OLD
+  // Report data action completion
 
-  Future<void> updateActiveAiutaProduct({
-    required AiutaProduct updatedAiutaProduct,
+  Future<void> notifyDataActionSucceeded({
+    required AiutaDataActionSuccess success,
   }) {
     throw UnimplementedError(
-      'updateActiveAiutaProduct() has not been implemented.',
+      'notifyDataActionSucceeded() has not been implemented.',
     );
   }
 
-  Future<void> updateUploadedImages({
-    required List<AiutaHistoryImage> uploadedImages,
+  Future<void> notifyDataActionErrorThrown({
+    required AiutaDataActionError error,
   }) {
     throw UnimplementedError(
-      'updateActiveUploadedImages() has not been implemented.',
-    );
-  }
-
-  Future<void> updateGeneratedImages({
-    required List<AiutaHistoryImage> generatedImages,
-  }) {
-    throw UnimplementedError(
-      'updateGeneratedImages() has not been implemented.',
-    );
-  }
-
-  Future<void> notifyAboutError({
-    required AiutaHostError error,
-  }) {
-    throw UnimplementedError(
-      'notifyAboutError() has not been implemented.',
+      'notifyDataActionErrorThrown() has not been implemented.',
     );
   }
 }

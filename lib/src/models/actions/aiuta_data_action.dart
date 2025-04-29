@@ -6,11 +6,14 @@ part 'aiuta_data_action.g.dart';
 
 sealed class AiutaDataAction {
   AiutaDataActionType type;
+  String? id;
 
   AiutaDataAction(this.type);
 
   factory AiutaDataAction.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as String) {
+      case 'completeOnboarding':
+        return CompleteOnboardingAction.fromJson(json);
       case 'obtainUserConsentsIds':
         return ObtainUserConsentsIdsAction.fromJson(json);
       case 'addUploadedImages':
@@ -29,6 +32,19 @@ sealed class AiutaDataAction {
   }
 
   Map<String, dynamic> toJson();
+}
+
+// Onboarding
+
+@JsonSerializable()
+class CompleteOnboardingAction extends AiutaDataAction {
+  CompleteOnboardingAction() : super(AiutaDataActionType.completeOnboarding);
+
+  factory CompleteOnboardingAction.fromJson(Map<String, dynamic> json) =>
+      _$CompleteOnboardingActionFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CompleteOnboardingActionToJson(this);
 }
 
 // Consents
@@ -58,7 +74,6 @@ class AddUploadedImagesAction extends AiutaDataAction {
     required this.uploadedImages,
   }) : super(AiutaDataActionType.addUploadedImages);
 
-  // Json staff
   factory AddUploadedImagesAction.fromJson(Map<String, dynamic> json) =>
       _$AddUploadedImagesActionFromJson(json);
 
@@ -74,7 +89,6 @@ class SelectUploadedImageAction extends AiutaDataAction {
     required this.uploadedImage,
   }) : super(AiutaDataActionType.selectUploadedImage);
 
-  // Json staff
   factory SelectUploadedImageAction.fromJson(Map<String, dynamic> json) =>
       _$SelectUploadedImageActionFromJson(json);
 
@@ -90,7 +104,6 @@ class DeleteUploadedImagesAction extends AiutaDataAction {
     required this.uploadedImages,
   }) : super(AiutaDataActionType.deleteUploadedImages);
 
-  // Json staff
   factory DeleteUploadedImagesAction.fromJson(Map<String, dynamic> json) =>
       _$DeleteUploadedImagesActionFromJson(json);
 
@@ -102,15 +115,14 @@ class DeleteUploadedImagesAction extends AiutaDataAction {
 
 @JsonSerializable()
 class AddGeneratedImagesAction extends AiutaDataAction {
-  final String productId;
+  final List<String> productsIds;
   final List<AiutaHistoryImage> generatedImages;
 
   AddGeneratedImagesAction({
-    required this.productId,
+    required this.productsIds,
     required this.generatedImages,
   }) : super(AiutaDataActionType.addGeneratedImages);
 
-  // Json staff
   factory AddGeneratedImagesAction.fromJson(Map<String, dynamic> json) =>
       _$AddGeneratedImagesActionFromJson(json);
 
@@ -126,7 +138,6 @@ class DeleteGeneratedImagesAction extends AiutaDataAction {
     required this.generatedImages,
   }) : super(AiutaDataActionType.deleteGeneratedImages);
 
-  // Json staff
   factory DeleteGeneratedImagesAction.fromJson(Map<String, dynamic> json) =>
       _$DeleteGeneratedImagesActionFromJson(json);
 

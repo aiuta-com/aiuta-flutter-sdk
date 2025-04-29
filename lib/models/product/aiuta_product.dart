@@ -33,7 +33,7 @@ class AiutaProduct {
     required this.title,
     required this.brand,
     required this.imageUrls,
-    this.price,
+    this.price = null,
   });
 
   // Internal json staff

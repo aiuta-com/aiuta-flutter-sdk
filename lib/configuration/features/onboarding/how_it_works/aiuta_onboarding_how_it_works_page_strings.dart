@@ -22,7 +22,8 @@ class AiutaOnboardingHowItWorksPageStrings {
   });
 
   // Internal json staff
-  factory AiutaOnboardingHowItWorksPageStrings.fromJson(Map<String, dynamic> json) =>
+  factory AiutaOnboardingHowItWorksPageStrings.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaOnboardingHowItWorksPageStringsFromJson(json);
 
   Map<String, dynamic> toJson() =>

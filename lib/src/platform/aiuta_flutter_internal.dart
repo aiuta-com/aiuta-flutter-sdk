@@ -11,13 +11,85 @@ void _configure(AiutaConfiguration configuration) {
   _listenDataProviderChanges(configuration);
 }
 
-// Observe
+// Update listenable values from data providers
+
+void _listenDataProviderChanges(AiutaConfiguration configuration) {
+  // Onboarding
+  final onboardingDataProvider =
+      configuration.features.onboarding?.dataProvider;
+  if (onboardingDataProvider != null) {
+    final onboardingListener = () {
+      _platform.updateIsOnboardingCompleted(
+          isOnboardingCompleted:
+              onboardingDataProvider.isOnboardingCompleted.value);
+    };
+    onboardingListener();
+    onboardingDataProvider.isOnboardingCompleted
+        .addListener(onboardingListener);
+  }
+
+  // Consent
+  final consentFeature = configuration.features.consent;
+  switch (consentFeature) {
+    case AiutaConsentStandaloneOnboardingPageFeature():
+      final consentListener = () {
+        _platform.updateObtainedConsentsIds(
+            obtainedConsentsIds:
+                consentFeature.dataProvider.obtainedConsentsIds.value);
+      };
+      consentListener();
+      consentFeature.dataProvider.obtainedConsentsIds
+          .addListener(consentListener);
+      break;
+    case AiutaConsentStandaloneImagePickerPageFeature():
+      final consentListener = () {
+        _platform.updateObtainedConsentsIds(
+            obtainedConsentsIds:
+                consentFeature.dataProvider.obtainedConsentsIds.value);
+      };
+      consentListener();
+      consentFeature.dataProvider.obtainedConsentsIds
+          .addListener(consentListener);
+      break;
+    default:
+      break;
+  }
+
+  // Uploads history
+  final uploadsHistoryDataProvider =
+      configuration.features.imagePicker.uploadsHistory?.dataProvider;
+  if (uploadsHistoryDataProvider != null) {
+    final uploadedImagesListener = () {
+      _platform.updateUploadedImages(
+          uploadedImages: uploadsHistoryDataProvider.uploadedImages.value);
+    };
+    uploadedImagesListener();
+    uploadsHistoryDataProvider.uploadedImages
+        .addListener(uploadedImagesListener);
+  }
+
+  // Generations history
+  final generationsHistoryDataProvider =
+      configuration.features.tryOn.generationsHistory?.dataProvider;
+  if (generationsHistoryDataProvider != null) {
+    final generatedImagesListener = () {
+      _platform.updateGeneratedImages(
+          generatedImages:
+              generationsHistoryDataProvider.generatedImages.value);
+    };
+    generatedImagesListener();
+    generationsHistoryDataProvider.generatedImages
+        .addListener(generatedImagesListener);
+  }
+}
+
+// Observe data providers callbacks
 
 void _observeAiutaAuthActions(AiutaConfiguration configuration) {
   _platform.observeAiutaAuthActions().listen(
     (authAction) async {
       switch (authAction) {
-        case RequestJWTAction():
+        case RequestJwtAction():
           var auth = configuration.auth;
           switch (auth) {
             case AiutaJwtAuth():
@@ -35,7 +107,7 @@ void _observeAiutaAuthActions(AiutaConfiguration configuration) {
               }
               break;
             case AiutaApiKeyAuth():
-              throw InvalidAuthException(
+              throw Exception(
                 "Native tried to get JWT, while flutter get different type of auth",
               );
           }
@@ -50,14 +122,11 @@ void _observeAiutaActions(AiutaConfiguration configuration) {
     (action) async {
       switch (action) {
         case AddToWishlistAction():
-          // var updatedProduct =
-          //     await configuration.listeners.addToWishlistClick(action.product);
-          // AiutaPlatform.instance.updateActiveAiutaProduct(
-          //   updatedAiutaProduct: updatedProduct,
-          // );
+          configuration.features.wishlist?.dataProvider
+              .setProductInWishlist(action.productId, action.isInWishlist);
           break;
         case AddToCartAction():
-          // configuration.listeners.addToCartClick(action.product);
+          configuration.features.tryOn.cart.handler.addToCart(action.productId);
           break;
       }
     },
@@ -68,97 +137,135 @@ void _observeAiutaDataActions(AiutaConfiguration configuration) {
   _platform.observeAiutaDataActions().listen(
     (action) async {
       switch (action) {
+        // Onboarding
+        case CompleteOnboardingAction():
+          final dataProvider = configuration.features.onboarding?.dataProvider;
+          if (dataProvider == null) {
+            return;
+          }
+          _handleDataActionCompletion(
+            action: action,
+            impl: () async => dataProvider.completeOnboarding(),
+          );
+          break;
+        // Consent
         case ObtainUserConsentsIdsAction():
-          var consentFeature = configuration.features.consent;
+          final consentFeature = configuration.features.consent;
           switch (consentFeature) {
             case AiutaConsentStandaloneOnboardingPageFeature():
-              consentFeature.dataProvider.obtainConsentsIds(action.consentIds);
+              _handleDataActionCompletion(
+                action: action,
+                impl: () async => consentFeature.dataProvider
+                    .obtainConsentsIds(action.consentIds),
+              );
               break;
             case AiutaConsentStandaloneImagePickerPageFeature():
-              consentFeature.dataProvider.obtainConsentsIds(action.consentIds);
+              _handleDataActionCompletion(
+                action: action,
+                impl: () async => consentFeature.dataProvider
+                    .obtainConsentsIds(action.consentIds),
+              );
               break;
             default:
               break;
           }
-        default:
           break;
-        // case AddUploadedImagesAction():
-        //   listeners.addUploadedImages(action.uploadedImages);
-        //   break;
-        // case SelectUploadedImageAction():
-        //   listeners.selectUploadedImage(action.uploadedImage);
-        //   break;
-        // case DeleteUploadedImagesAction():
-        //   _errorHandler(
-        //     errorType: AiutaErrorType.failedDeleteUploadedImages,
-        //     action: () =>
-        //         listeners.deleteUploadedImages(action.uploadedImages),
-        //   );
-        //   break;
-        // case AddGeneratedImagesAction():
-        //   listeners.addGeneratedImages(
-        //       action.productId, action.generatedImages);
-        //   break;
-        // case DeleteGeneratedImagesAction():
-        //   _errorHandler(
-        //     errorType: AiutaErrorType.failedDeleteGeneratedImages,
-        //     action: () =>
-        //         listeners.deleteGeneratedImages(action.generatedImages),
-        //   );
-        //   break;
+        // Uploads history
+        case AddUploadedImagesAction():
+          final dataProvider =
+              configuration.features.imagePicker.uploadsHistory?.dataProvider;
+          if (dataProvider == null) {
+            return;
+          }
+          _handleDataActionCompletion(
+            action: action,
+            impl: () async =>
+                dataProvider.addUploadedImages(action.uploadedImages),
+          );
+          break;
+        case SelectUploadedImageAction():
+          final dataProvider =
+              configuration.features.imagePicker.uploadsHistory?.dataProvider;
+          if (dataProvider == null) {
+            return;
+          }
+          _handleDataActionCompletion(
+            action: action,
+            impl: () async =>
+                dataProvider.selectUploadedImage(action.uploadedImage),
+          );
+          break;
+        case DeleteUploadedImagesAction():
+          final dataProvider =
+              configuration.features.imagePicker.uploadsHistory?.dataProvider;
+          if (dataProvider == null) {
+            return;
+          }
+          _handleDataActionCompletion(
+            action: action,
+            impl: () async =>
+                dataProvider.deleteUploadedImages(action.uploadedImages),
+          );
+          break;
+        // Generations history
+        case AddGeneratedImagesAction():
+          final dataProvider =
+              configuration.features.tryOn.generationsHistory?.dataProvider;
+          if (dataProvider == null) {
+            return;
+          }
+          _handleDataActionCompletion(
+            action: action,
+            impl: () async => dataProvider.addGeneratedImages(
+              action.generatedImages,
+              action.productsIds,
+            ),
+          );
+          break;
+        case DeleteGeneratedImagesAction():
+          final dataProvider =
+              configuration.features.tryOn.generationsHistory?.dataProvider;
+          if (dataProvider == null) {
+            return;
+          }
+          _handleDataActionCompletion(
+            action: action,
+            impl: () async => dataProvider.deleteGeneratedImages(
+              action.generatedImages,
+            ),
+          );
+          break;
       }
     },
   );
 }
 
 void _observeAiutaAnalytics(AiutaConfiguration configuration) {
-// if (configuration.onAnalyticsEvent == null) {
-//   return;
-// }
-//
-// AiutaPlatform.instance.observeAiutaAnalytic().map((event) {
-//   var rawEvent = jsonDecode(event) as Map<String, dynamic>;
-//   return AiutaAnalyticEvent.fromJson(rawEvent);
-// }).listen((event) async {
-//   configuration.onAnalyticsEvent!(event);
-// });
+  _platform.observeAiutaAnalytics().listen((event) async {
+    configuration.analytics?.handler.onAnalyticsEvent(event);
+  });
 }
 
-// OLD
+// Handle data action completion
 
-void _listenDataProviderChanges(AiutaConfiguration configuration) {
-// var dataProvider = configuration.dataProvider;
-// if (dataProvider == null) {
-//   return;
-// }
-//
-// dataProvider.isUserConsentObtained.addListener(() {
-//   AiutaPlatform.instance.updateUserConsent(
-//       isUserConsentObtained: dataProvider.isUserConsentObtained.value);
-// });
-//
-// dataProvider.uploadedImages.addListener(() {
-//   AiutaPlatform.instance.updateUploadedImages(
-//       uploadedImages: dataProvider.uploadedImages.value);
-// });
-//
-// dataProvider.generatedImages.addListener(() {
-//   AiutaPlatform.instance.updateGeneratedImages(
-//       generatedImages: dataProvider.generatedImages.value);
-// });
+Future<void> _handleDataActionCompletion({
+  required AiutaDataAction action,
+  required Future<void> Function() impl,
+}) async {
+  try {
+    await impl();
+    _platform.notifyDataActionSucceeded(
+      success: AiutaDataActionSuccess(
+        actionId: action.id,
+        actionType: action.type,
+      ),
+    );
+  } catch (e) {
+    _platform.notifyDataActionErrorThrown(
+      error: AiutaDataActionError(
+        actionId: action.id,
+        actionType: action.type,
+      ),
+    );
+  }
 }
-
-// Utils
-// Future<void> _errorHandler<T>({
-//   required AiutaHostErrorType errorType,
-//   required Future<T> Function() action,
-// }) async {
-//   try {
-//     await action();
-//   } catch (e) {
-// // Notify native
-//     AiutaPlatform.instance.notifyAboutError(
-//       error: AiutaHostError(errorType: errorType),
-//     );
-//   }
-// }

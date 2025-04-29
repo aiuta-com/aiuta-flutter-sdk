@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 
 /// The data provider for the generations history feature in the virtual try-on.
 class AiutaTryOnGenerationsHistoryDataProvider {
-  /// Stream of generated images.
+  /// ValueListenable list of the generated images history.
   final ValueListenable<List<AiutaHistoryImage>> generatedImages;
 
   /// Callback to add generated images.

@@ -16,10 +16,12 @@ class AiutaOnboardingHowItWorksPageImages {
   });
 
   // Internal json staff
-  factory AiutaOnboardingHowItWorksPageImages.fromJson(Map<String, dynamic> json) =>
+  factory AiutaOnboardingHowItWorksPageImages.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaOnboardingHowItWorksPageImagesFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AiutaOnboardingHowItWorksPageImagesToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaOnboardingHowItWorksPageImagesToJson(this);
 }
 
 /// This class contains the photo and preview of a Try-On example
