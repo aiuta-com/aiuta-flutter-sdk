@@ -8,12 +8,11 @@ import androidx.activity.result.contract.ActivityResultContracts.RequestMultiple
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
-import com.aiuta.fashionsdk.Aiuta
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder.CONFIGURATION_KEY
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder.PRODUCT_KEY
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.CONFIGURATION_KEY
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaTryOnConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.auth.AiutaJWTAuthenticationListener
@@ -23,8 +22,8 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.error.AiutaErrorListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.state.AiutaSDKStateListener
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.FlutterAiutaConfiguration
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.meta.FlutterAiutaPresentationStyle
 import com.aiuta.flutter.fashionsdk.ui.history.AiutaHistoryActivity
 import com.aiuta.flutter.fashionsdk.ui.history.AiutaHistoryBottomSheetDialog
 import com.aiuta.flutter.fashionsdk.ui.main.AiutaActivity
@@ -92,7 +91,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             "startAiutaFlow" -> {
                 activity?.let { localActivity ->
                     call.aiutaScope { configuration ->
-                        if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
+                        if (configuration.userInterface.presentationStyle == FlutterAiutaPresentationStyle.FULL_SCREEN) {
                             localActivity.startActivity(
                                 Intent(
                                     localActivity,
@@ -115,7 +114,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             "startHistoryFlow" -> {
                 activity?.let { localActivity ->
                     call.aiutaScope { configuration ->
-                        if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
+                        if (configuration.userInterface.presentationStyle == FlutterAiutaPresentationStyle.FULL_SCREEN) {
                             localActivity.startActivity(
                                 Intent(
                                     localActivity,
@@ -256,28 +255,28 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
     private fun MethodCall.initAiutaScope(
         activity: Activity,
     ) {
-        // Init platform configuration
-        AiutaConfigurationHolder.setPlatformConfiguration(argument<String>(CONFIGURATION_KEY))
+        // Init flutter configuration
+        AiutaFlutterConfigurationHolder.setFlutterConfiguration(argument<String>(CONFIGURATION_KEY))
 
         // Init Aiuta
-        val platformAiutaConfiguration = AiutaConfigurationHolder.getPlatformConfiguration()
+        val flutterAiutaConfiguration = AiutaFlutterConfigurationHolder.getFlutterConfiguration()
         AiutaHolder.setAiuta(
-            aiutaBuilder = Aiuta.Builder().setApplication(activity.application),
-            platformAiutaConfiguration = platformAiutaConfiguration,
+            context = activity,
+            flutterAiutaConfiguration = flutterAiutaConfiguration,
         )
 
-        // Init Aiuta Try On Configuration
-        AiutaTryOnConfigurationHolder.setTryOnConfiguration()
+        // Init Aiuta Configuration
+        AiutaNativeConfigurationHolder.setNativeConfiguration()
     }
 
     private inline fun MethodCall.aiutaScope(
-        block: (configuration: PlatformAiutaConfiguration) -> Unit,
+        block: (configuration: FlutterAiutaConfiguration) -> Unit,
     ) {
-        // Init configuration
-        AiutaConfigurationHolder.setProduct(argument<String>(PRODUCT_KEY))
+        // Init product
+        AiutaFlutterConfigurationHolder.setProduct(argument<String>(PRODUCT_KEY))
 
         // Extract platform configuration
-        val configuration = AiutaConfigurationHolder.getPlatformConfiguration()
+        val configuration = AiutaFlutterConfigurationHolder.getFlutterConfiguration()
 
         // Execute block
         block(configuration)

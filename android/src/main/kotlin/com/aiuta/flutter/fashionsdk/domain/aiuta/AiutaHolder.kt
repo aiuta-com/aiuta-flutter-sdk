@@ -1,11 +1,14 @@
 package com.aiuta.flutter.fashionsdk.domain.aiuta
 
+import android.content.Context
 import com.aiuta.fashionsdk.Aiuta
+import com.aiuta.fashionsdk.aiuta
 import com.aiuta.fashionsdk.authentication.ApiKeyAuthenticationStrategy
 import com.aiuta.fashionsdk.authentication.JWTAuthenticationStrategy
+import com.aiuta.fashionsdk.logger.DebugAiutaLogger
 import com.aiuta.flutter.fashionsdk.domain.listeners.auth.AiutaJWTAuthenticationListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.auth.requestJWT
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.FlutterAiutaConfiguration
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.FlutterApiKeyAuthentication
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.FlutterJWTAuthentication
 import kotlinx.coroutines.flow.Flow
@@ -21,35 +24,30 @@ object AiutaHolder {
     private val jwtFlow: Flow<String> = _jwtFlow.filterNotNull()
 
     fun setAiuta(
-        aiutaBuilder: Aiuta.Builder,
-        platformAiutaConfiguration: PlatformAiutaConfiguration
+        context: Context,
+        flutterAiutaConfiguration: FlutterAiutaConfiguration
     ) {
-        val platformAuth = platformAiutaConfiguration.authentication
+        val flutterAuth = flutterAiutaConfiguration.auth
 
-        // Set auth
-        aiuta = when (platformAuth) {
-            is FlutterApiKeyAuthentication -> {
-                aiutaBuilder
-                    .setAuthenticationStrategy(ApiKeyAuthenticationStrategy(platformAuth.apiKey))
-                    .setSubscriptionId(platformAuth.subscriptionId)
-            }
+        aiuta = aiuta {
+            platformContext = context
+            authenticationStrategy = when (flutterAuth) {
+                is FlutterApiKeyAuthentication -> ApiKeyAuthenticationStrategy(flutterAuth.apiKey)
+                is FlutterJWTAuthentication -> JWTAuthenticationStrategy(
+                    getJWT = { params ->
+                        AiutaJWTAuthenticationListener.requestJWT(params)
 
-            is FlutterJWTAuthentication -> {
-                aiutaBuilder
-                    .setAuthenticationStrategy(JWTAuthenticationStrategy(
-                        getJWT = { params ->
-                            AiutaJWTAuthenticationListener.requestJWT(params)
-
-                            // Await
-                            jwtFlow.first().also {
-                                // Clean flow
-                                _jwtFlow.value = null
-                            }
+                        // Await
+                        jwtFlow.first().also {
+                            // Clean flow
+                            _jwtFlow.value = null
                         }
-                    ))
-                    .setSubscriptionId(platformAuth.subscriptionId)
+                    },
+                    subscriptionId = flutterAuth.subscriptionId
+                )
             }
-        }.build()
+            logger = DebugAiutaLogger().takeIf { flutterAiutaConfiguration.debugSettings.isLoggingEnabled }
+        }
     }
 
     fun getAiuta(): Aiuta {

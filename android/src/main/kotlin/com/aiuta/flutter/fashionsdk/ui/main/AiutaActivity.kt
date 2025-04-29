@@ -1,14 +1,12 @@
 package com.aiuta.flutter.fashionsdk.ui.main
 
 import android.os.Bundle
-import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaTryOnConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
 import com.aiuta.flutter.fashionsdk.ui.base.BaseAiutaActivity
@@ -20,13 +18,13 @@ class AiutaActivity : BaseAiutaActivity() {
         super.onCreate(savedInstanceState)
 
         setBaseContent {
-            val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
+            val skuItem = remember { AiutaFlutterConfigurationHolder.getProduct().toSKUItem() }
             val theme = rememberAiutaThemeFromPlatform(
-                configuration = AiutaConfigurationHolder.getPlatformConfiguration(),
+                configuration = AiutaFlutterConfigurationHolder.getFlutterConfiguration(),
                 assetManager = assets
             )
             val configuration = remember {
-                AiutaTryOnConfigurationHolder.getTryOnConfiguration()
+                AiutaFlutterConfigurationHolder.getTryOnConfiguration()
             }
 
             AiutaTryOnFlow(

@@ -10,8 +10,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.unit.dp
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaTryOnConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
@@ -25,13 +24,13 @@ class AiutaBottomSheetDialog(
 
     init {
         setContent {
-            val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
+            val skuItem = remember { AiutaFlutterConfigurationHolder.getProduct().toSKUItem() }
             val aiutaTheme = rememberAiutaThemeFromPlatform(
-                configuration = AiutaConfigurationHolder.getPlatformConfiguration(),
+                configuration = AiutaFlutterConfigurationHolder.getFlutterConfiguration(),
                 assetManager = context.assets
             )
             val configuration = remember {
-                AiutaTryOnConfigurationHolder.getTryOnConfiguration()
+                AiutaFlutterConfigurationHolder.getTryOnConfiguration()
             }
 
             AiutaTryOnFlow(

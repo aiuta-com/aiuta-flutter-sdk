@@ -1,8 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.consent
 
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.FlutterAiutaAuthentication
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonClassDiscriminator
 

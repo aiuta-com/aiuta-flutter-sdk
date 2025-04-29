@@ -3,6 +3,7 @@ package com.aiuta.flutter.fashionsdk.domain.models.product
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Deprecated("Move to Flutter")
 @Serializable
 class PlatformAiutaProduct(
     @SerialName("skuId")
