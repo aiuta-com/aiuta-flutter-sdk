@@ -28,8 +28,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
 import com.aiuta.fashionsdk.analytic.analytic
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
-import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListener
-import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.sendAnalytic
+import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticHandler
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -170,7 +169,7 @@ abstract class BaseAiutaBottomSheetDialog(
 
     private fun observeAnalytic() {
         aiutaAnalytic.analyticFlow
-            .onEach { event -> AiutaAnalyticListener.sendAnalytic(event) }
+            .onEach { event -> AiutaAnalyticHandler.sendAnalytic(event) }
             .launchIn(lifecycleScope)
     }
 }

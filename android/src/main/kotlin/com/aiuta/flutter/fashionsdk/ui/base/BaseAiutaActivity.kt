@@ -7,8 +7,7 @@ import androidx.compose.runtime.CompositionContext
 import androidx.lifecycle.lifecycleScope
 import com.aiuta.fashionsdk.analytic.analytic
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
-import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListener
-import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.sendAnalytic
+import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticHandler
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -34,7 +33,7 @@ abstract class BaseAiutaActivity : ComponentActivity() {
 
     private fun observeAnalytic() {
         aiutaAnalytic.analyticFlow
-            .onEach { event -> AiutaAnalyticListener.sendAnalytic(event) }
+            .onEach { event -> AiutaAnalyticHandler.sendAnalytic(event) }
             .launchIn(lifecycleScope)
     }
 }

@@ -13,13 +13,10 @@ import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
-import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
-import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListener
-import com.aiuta.flutter.fashionsdk.domain.listeners.auth.AiutaJWTAuthenticationListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderHandler
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.error.AiutaErrorListener
-import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.flutterHandlers
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.state.AiutaSDKStateListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.FlutterAiutaConfiguration
@@ -41,10 +38,9 @@ import io.flutter.plugin.common.MethodChannel.Result
 class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOwner {
 
     private lateinit var mainChannel: MethodChannel
-    private lateinit var analyticChannel: EventChannel
-    private lateinit var actionChannel: EventChannel
-    private lateinit var authChannel: EventChannel
+    @Deprecated("Use eventChannelMap")
     private lateinit var dataProviderChannel: EventChannel
+    private val eventChannelMap: MutableMap<String, EventChannel> = mutableMapOf()
     private var activity: Activity? = null
 
     private val lifecycleRegistry = LifecycleRegistry(this)
@@ -56,26 +52,17 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         mainChannel = MethodChannel(flutterPluginBinding.binaryMessenger, KEY_MAIN_CHANNEL)
         mainChannel.setMethodCallHandler(this)
 
-        // Init action handler
-        analyticChannel = EventChannel(
-            flutterPluginBinding.binaryMessenger,
-            AiutaAnalyticListener.keyChannel
-        )
-        analyticChannel.setStreamHandler(AiutaAnalyticListener)
 
-        // Init action handler
-        actionChannel = EventChannel(
-            flutterPluginBinding.binaryMessenger,
-            AiutaActionsListener.keyChannel
-        )
-        actionChannel.setStreamHandler(AiutaActionsListener)
+        // Init all handlers
+        flutterHandlers.forEach { handler ->
+            eventChannelMap[handler.handlerKeyChannel] = EventChannel(
+                flutterPluginBinding.binaryMessenger,
+                handler.handlerKeyChannel
+            ).also { channel ->
+                channel.setStreamHandler(handler)
+            }
+        }
 
-        // Init auth handler
-        authChannel = EventChannel(
-            flutterPluginBinding.binaryMessenger,
-            AiutaJWTAuthenticationListener.keyChannel
-        )
-        authChannel.setStreamHandler(AiutaJWTAuthenticationListener)
 
         // Init data provider handler
         dataProviderChannel = EventChannel(
@@ -134,17 +121,6 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                 }
             }
 
-            // Actions handling
-            "updateActiveAiutaProduct" -> {
-                val rawProduct = call.argument<String>(PRODUCT_KEY)
-                rawProduct?.let {
-                    AiutaUpdateProductListener.updateActiveSKUItem(
-                        rawProduct = rawProduct
-                    )
-                }
-                result.success(null)
-            }
-
             // Data providing handling
             "updateUserConsent" -> {
                 val isUserConsentObtained = call.argument<Boolean>(
@@ -179,7 +155,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             // Auth action handling
             "resolveJWTAuth" -> {
                 val jwt = call.argument<String>("jwt")
-                jwt?.let { AiutaHolder.resolveJWT(jwt) }
+                // jwt?.let { AiutaHolder.resolveJWT(jwt) }
                 result.success(null)
             }
 
@@ -205,9 +181,12 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         mainChannel.setMethodCallHandler(null)
-        analyticChannel.setStreamHandler(null)
-        actionChannel.setStreamHandler(null)
-        authChannel.setStreamHandler(null)
+        for ((key, value) in eventChannelMap) {
+            value.setStreamHandler(null)
+            eventChannelMap.remove(key)
+        }
+
+        // TODO Delete
         dataProviderChannel.setStreamHandler(null)
     }
 
@@ -266,7 +245,6 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         )
 
         // Init Aiuta Configuration
-        // TODO Move to UI?
          AiutaNativeConfigurationHolder.setNativeConfiguration(
              assetManager = activity.assets,
          )

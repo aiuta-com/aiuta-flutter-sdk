@@ -2,6 +2,7 @@ package com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider
 
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseListener
 
+@Deprecated("Migrate to Flutter")
 object AiutaDataProviderListener : BaseListener() {
     override val keyChannel: String = "aiutaDataActionsHandler"
 

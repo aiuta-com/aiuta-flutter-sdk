@@ -6,10 +6,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
-@Deprecated("Migrate to BaseHandler?")
-abstract class BaseListener : EventChannel.StreamHandler {
+abstract class BaseHandler : EventChannel.StreamHandler {
 
-    abstract val keyChannel: String
+    abstract val handlerKeyChannel: String
 
     private var eventSink: EventChannel.EventSink? = null
     private val mainScope = CoroutineScope(Dispatchers.Main.immediate + SupervisorJob())
