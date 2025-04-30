@@ -3,6 +3,7 @@ import 'package:aiuta_flutter/configuration/features/image_picker/aiuta_image_pi
 import 'package:aiuta_flutter/configuration/features/image_picker/aiuta_image_picker_strings.dart';
 import 'package:aiutasdk_example/defaults/features/picker/camera/aiuta_image_picker_camera_feature_default.dart';
 import 'package:aiutasdk_example/defaults/features/picker/gallery/aiuta_image_picker_photo_gallery_feature_default.dart';
+import 'package:aiutasdk_example/defaults/features/picker/history/aiuta_image_picker_uploads_history_feature_default.dart';
 import 'package:aiutasdk_example/defaults/features/picker/models/aiuta_image_picker_predefined_model_feature_default.dart';
 
 final class ImagePickerFeatureBuilder {
@@ -10,7 +11,9 @@ final class ImagePickerFeatureBuilder {
         camera: ImagePickerCameraFeatureBuilder().build(),
         photoGallery: ImagePickerPhotoGalleryFeatureBuilder().build(),
         predefinedModels: ImagePickerPredefinedModelFeatureBuilder().build(),
-        uploadsHistory: null,
+        uploadsHistory: ImagePickerUploadsHistoryFeatureBuilder(
+                isPredefinedModelAvailable: true)
+            .build(),
         images: AiutaImagePickerImages(
           examples: [
             "res/images/selector_empty_small_image_1.png",
