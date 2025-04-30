@@ -3,12 +3,13 @@ import 'package:aiuta_flutter/configuration/features/image_picker/aiuta_image_pi
 import 'package:aiuta_flutter/configuration/features/image_picker/aiuta_image_picker_strings.dart';
 import 'package:aiutasdk_example/defaults/features/picker/camera/aiuta_image_picker_camera_feature_default.dart';
 import 'package:aiutasdk_example/defaults/features/picker/gallery/aiuta_image_picker_photo_gallery_feature_default.dart';
+import 'package:aiutasdk_example/defaults/features/picker/models/aiuta_image_picker_predefined_model_feature_default.dart';
 
 final class ImagePickerFeatureBuilder {
   AiutaImagePickerFeature build() => AiutaImagePickerFeature(
         camera: ImagePickerCameraFeatureBuilder().build(),
         photoGallery: ImagePickerPhotoGalleryFeatureBuilder().build(),
-        predefinedModels: null,
+        predefinedModels: ImagePickerPredefinedModelFeatureBuilder().build(),
         uploadsHistory: null,
         images: AiutaImagePickerImages(
           examples: [
