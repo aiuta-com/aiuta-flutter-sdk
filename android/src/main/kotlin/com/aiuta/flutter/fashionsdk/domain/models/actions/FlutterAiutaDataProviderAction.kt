@@ -25,6 +25,7 @@ sealed class FlutterAiutaDataProviderAction {
         const val ADD_GENERATED_IMAGE_ACTION = "addGeneratedImages"
         const val DELETE_GENERATED_IMAGE_ACTION = "deleteGeneratedImages"
         const val GET_SHARE_TEXT_ACTION = "getShareText"
+        const val COMPLETE_ONBOARDING_ACTION = "completeOnboarding"
     }
 
     // Same as const, but as enum
@@ -44,6 +45,8 @@ sealed class FlutterAiutaDataProviderAction {
         DELETE_GENERATED_IMAGE_ACTION,
         @SerialName(FlutterAiutaDataProviderAction.GET_SHARE_TEXT_ACTION)
         GET_SHARE_TEXT_ACTION,
+        @SerialName(FlutterAiutaDataProviderAction.COMPLETE_ONBOARDING_ACTION)
+        COMPLETE_ONBOARDING_ACTION,
     }
 }
 
@@ -111,4 +114,11 @@ class FlutterGetShareTextAction(
     override val id: String = generateDataActionId(),
     @SerialName("productIds")
     val productIds: List<String>
+) : FlutterAiutaDataProviderAction()
+
+@Serializable
+@SerialName(FlutterAiutaDataProviderAction.COMPLETE_ONBOARDING_ACTION)
+class FlutterCompleteOnboardingAction(
+    @SerialName("id")
+    override val id: String = generateDataActionId(),
 ) : FlutterAiutaDataProviderAction()
