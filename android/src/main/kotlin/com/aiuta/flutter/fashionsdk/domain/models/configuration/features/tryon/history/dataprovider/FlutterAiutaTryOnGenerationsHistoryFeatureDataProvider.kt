@@ -2,8 +2,8 @@ package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.
 
 import com.aiuta.fashionsdk.configuration.features.models.images.AiutaHistoryImage
 import com.aiuta.fashionsdk.configuration.features.tryon.history.dataprovider.AiutaTryOnGenerationsHistoryFeatureDataProvider
-import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.data.FlutterDataActionKey
+import com.aiuta.flutter.fashionsdk.domain.listeners.operation.OperationHandledDataProvider
 import com.aiuta.flutter.fashionsdk.domain.mappers.images.toFlutter
 import com.aiuta.flutter.fashionsdk.domain.mappers.images.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAddGeneratedImageAction
@@ -18,36 +18,48 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.json.Json
 
 object FlutterAiutaTryOnGenerationsHistoryFeatureDataProvider :
-    BaseDataProvider(),
+    OperationHandledDataProvider(),
     AiutaTryOnGenerationsHistoryFeatureDataProvider {
 
     override val handlerKeyChannel: String = "aiutaDataActionsHandler"
     override val dataActionKeys: List<GenerationsHistoryDataActionKey> by lazy {
-        listOf()
+        listOf(UpdateGeneratedImages())
     }
 
-    private val _generatedImages: MutableStateFlow<List<AiutaHistoryImage>> = MutableStateFlow(emptyList())
+    private val _generatedImages: MutableStateFlow<List<AiutaHistoryImage>> =
+        MutableStateFlow(emptyList())
     override val generatedImages: StateFlow<List<AiutaHistoryImage>> = _generatedImages
 
     override suspend fun addGeneratedImages(
         productIds: List<String>,
         images: List<AiutaHistoryImage>
     ) {
-        val action = FlutterAddGeneratedImageAction(
-            productsIds = productIds,
-            generatedImages = images.map { it.toFlutter() }
-        )
-        sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
+        return callbackWithOperationHandling {
+            val action = FlutterAddGeneratedImageAction(
+                productsIds = productIds,
+                generatedImages = images.map { it.toFlutter() }
+            )
+            sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
+
+            action.id
+        }
     }
 
     override suspend fun deleteGeneratedImages(images: List<AiutaHistoryImage>) {
-        val action = FlutterDeleteGeneratedImageAction(
-            generatedImages = images.map { it.toFlutter() }
-        )
-        sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
+        return callbackWithOperationHandling {
+            val action = FlutterDeleteGeneratedImageAction(
+                generatedImages = images.map { it.toFlutter() }
+            )
+            sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
+
+            action.id
+        }
     }
 
-    override fun handleDataActionKey(call: MethodCall, dataActionKey: FlutterDataActionKey) {
+    override fun handleDataActionKeyAfterOperationHandling(
+        call: MethodCall,
+        dataActionKey: FlutterDataActionKey
+    ) {
         if (dataActionKey !is GenerationsHistoryDataActionKey) return
 
         when (dataActionKey) {

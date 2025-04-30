@@ -13,7 +13,7 @@ import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
-import com.aiuta.flutter.fashionsdk.domain.listeners.error.AiutaErrorListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.base.handleDataActionKey
 import com.aiuta.flutter.fashionsdk.domain.listeners.flutterDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.flutterHandlers
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
@@ -114,15 +114,6 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             // Configuration handling
             "configure" -> {
                 activity?.let { localActivity -> call.initAiutaScope(localActivity) }
-                result.success(null)
-            }
-
-            // Error handling
-            "notifyAboutError" -> {
-                val rawError = call.argument<String>(
-                    AiutaErrorListener.ERROR_TYPE_ARGUMENT
-                )
-                rawError?.let { AiutaErrorListener.notifyAboutError(it) }
                 result.success(null)
             }
 

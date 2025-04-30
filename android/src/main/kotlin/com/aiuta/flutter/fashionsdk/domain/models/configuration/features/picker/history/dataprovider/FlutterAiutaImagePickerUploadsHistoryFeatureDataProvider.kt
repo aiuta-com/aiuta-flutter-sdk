@@ -2,8 +2,8 @@ package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.picker
 
 import com.aiuta.fashionsdk.configuration.features.models.images.AiutaHistoryImage
 import com.aiuta.fashionsdk.configuration.features.picker.history.dataprovider.AiutaImagePickerUploadsHistoryFeatureDataProvider
-import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.data.FlutterDataActionKey
+import com.aiuta.flutter.fashionsdk.domain.listeners.operation.OperationHandledDataProvider
 import com.aiuta.flutter.fashionsdk.domain.mappers.images.toFlutter
 import com.aiuta.flutter.fashionsdk.domain.mappers.images.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAddUploadedImageAction
@@ -20,40 +20,55 @@ import kotlinx.serialization.json.Json
 import kotlin.collections.map
 
 object FlutterAiutaImagePickerUploadsHistoryFeatureDataProvider :
-    BaseDataProvider(),
+    OperationHandledDataProvider(),
     AiutaImagePickerUploadsHistoryFeatureDataProvider {
 
     override val handlerKeyChannel: String = "aiutaDataActionsHandler"
     override val dataActionKeys: List<UploadsHistoryDataActionKey> by lazy {
-        listOf()
+        listOf(UpdateUploadedImages())
     }
 
     private val _uploadedImages: MutableStateFlow<List<AiutaHistoryImage>> =
         MutableStateFlow(emptyList())
     override val uploadedImages: StateFlow<List<AiutaHistoryImage>> = _uploadedImages
 
-    override fun addUploadedImages(images: List<AiutaHistoryImage>) {
-        val action = FlutterAddUploadedImageAction(
-            uploadedImages = images.map { it.toFlutter() }
-        )
-        sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
+    override suspend fun addUploadedImages(images: List<AiutaHistoryImage>) {
+        return callbackWithOperationHandling {
+            val action = FlutterAddUploadedImageAction(
+                uploadedImages = images.map { it.toFlutter() }
+            )
+            sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
+
+            action.id
+        }
     }
 
-    override fun selectUploadedImage(image: AiutaHistoryImage) {
-        val action = FlutterSelectUploadedImageAction(
-            uploadedImage = image.toFlutter()
-        )
-        sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
+    override suspend fun selectUploadedImage(image: AiutaHistoryImage) {
+        return callbackWithOperationHandling {
+            val action = FlutterSelectUploadedImageAction(
+                uploadedImage = image.toFlutter()
+            )
+            sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
+
+            action.id
+        }
     }
 
-    override fun deleteUploadedImages(images: List<AiutaHistoryImage>) {
-        val action = FlutterDeleteUploadedImageAction(
-            uploadedImages = images.map { it.toFlutter() }
-        )
-        sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
+    override suspend fun deleteUploadedImages(images: List<AiutaHistoryImage>) {
+        return callbackWithOperationHandling {
+            val action = FlutterDeleteUploadedImageAction(
+                uploadedImages = images.map { it.toFlutter() }
+            )
+            sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
+
+            action.id
+        }
     }
 
-    override fun handleDataActionKey(call: MethodCall, dataActionKey: FlutterDataActionKey) {
+    override fun handleDataActionKeyAfterOperationHandling(
+        call: MethodCall,
+        dataActionKey: FlutterDataActionKey
+    ) {
         if (dataActionKey !is UploadsHistoryDataActionKey) return
 
         when (dataActionKey) {

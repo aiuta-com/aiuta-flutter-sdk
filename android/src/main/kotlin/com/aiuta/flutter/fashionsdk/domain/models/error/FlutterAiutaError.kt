@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Deprecated("Migrate to flutter")
 @Serializable
-class PlatformAiutaError(
+class FlutterAiutaError(
     @SerialName("errorType")
     val errorType: PlatformAiutaErrorType
 )

@@ -8,26 +8,24 @@ abstract class BaseDataProvider : BaseHandler() {
     abstract val dataActionKeys: List<FlutterDataActionKey>
     private val actualDataActionKeys by lazy { dataActionKeys.map { it.key }.toSet() }
 
-    fun canHandleDataActionKey(key: String): Boolean {
+    open fun canHandleDataActionKey(key: String): Boolean {
         return key in actualDataActionKeys
-    }
-
-    fun rawKeyToFlutter(key: String): FlutterDataActionKey {
-        return dataActionKeys.first { it.key == key }
-    }
-
-    fun handleDataActionKey(
-        call: MethodCall,
-        rawDataActionKey: String
-    ) {
-        handleDataActionKey(
-            call = call,
-            dataActionKey = rawKeyToFlutter(rawDataActionKey)
-        )
     }
 
     abstract fun handleDataActionKey(
         call: MethodCall,
         dataActionKey: FlutterDataActionKey
+    )
+}
+
+fun BaseDataProvider.handleDataActionKey(
+    call: MethodCall,
+    rawDataActionKey: String
+) {
+    val dataActionKey = dataActionKeys.first { it.key == rawDataActionKey }
+
+    handleDataActionKey(
+        call = call,
+        dataActionKey = dataActionKey,
     )
 }
