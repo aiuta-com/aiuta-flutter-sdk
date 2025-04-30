@@ -24,6 +24,7 @@ sealed interface FlutterAiutaDataProviderAction {
         const val DELETE_UPLOADED_IMAGE_ACTION = "deleteUploadedImages"
         const val ADD_GENERATED_IMAGE_ACTION = "addGeneratedImages"
         const val DELETE_GENERATED_IMAGE_ACTION = "deleteGeneratedImages"
+        const val GET_SHARE_TEXT_ACTION = "getShareText"
     }
 
     // Same as const, but as enum
@@ -40,7 +41,9 @@ sealed interface FlutterAiutaDataProviderAction {
         @SerialName(FlutterAiutaDataProviderAction.ADD_GENERATED_IMAGE_ACTION)
         ADD_GENERATED_IMAGE_ACTION,
         @SerialName(FlutterAiutaDataProviderAction.DELETE_GENERATED_IMAGE_ACTION)
-        DELETE_GENERATED_IMAGE_ACTION
+        DELETE_GENERATED_IMAGE_ACTION,
+        @SerialName(FlutterAiutaDataProviderAction.GET_SHARE_TEXT_ACTION)
+        GET_SHARE_TEXT_ACTION,
     }
 }
 
@@ -99,4 +102,13 @@ class FlutterDeleteGeneratedImageAction(
     override val id: String = generateDataActionId(),
     @SerialName("generatedImages")
     val generatedImages: List<FlutterAiutaHistoryImage>
+) : FlutterAiutaDataProviderAction
+
+@Serializable
+@SerialName(FlutterAiutaDataProviderAction.GET_SHARE_TEXT_ACTION)
+class FlutterGetShareTextAction(
+    @SerialName("id")
+    override val id: String = generateDataActionId(),
+    @SerialName("productIds")
+    val productIds: List<String>
 ) : FlutterAiutaDataProviderAction

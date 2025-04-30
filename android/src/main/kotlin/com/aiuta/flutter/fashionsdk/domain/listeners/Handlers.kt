@@ -6,6 +6,7 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseHandler
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.consent.standalone.dataprovider.FlutterAiutaConsentStandaloneFeatureDataProvider
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.picker.history.dataprovider.FlutterAiutaImagePickerUploadsHistoryFeatureDataProvider
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.share.dataprovider.FlutterAiutaShareFeatureDataProvider
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.cart.handler.FlutterAiutaTryOnCartFeatureHandler
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.history.dataprovider.FlutterAiutaTryOnGenerationsHistoryFeatureDataProvider
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.wishlist.dataprovider.FlutterAiutaWishlistFeatureDataProvider
@@ -19,6 +20,7 @@ val flutterHandlers = listOf<BaseHandler>(
     FlutterAiutaConsentStandaloneFeatureDataProvider,
     FlutterAiutaImagePickerUploadsHistoryFeatureDataProvider,
     FlutterAiutaTryOnGenerationsHistoryFeatureDataProvider,
+    FlutterAiutaShareFeatureDataProvider,
 )
 
 val flutterDataProvider: List<BaseDataProvider> = flutterHandlers

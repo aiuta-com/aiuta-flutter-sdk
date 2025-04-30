@@ -6,14 +6,14 @@ import kotlinx.serialization.Serializable
 
 
 sealed interface FlutterAiutaDataActionResult {
-    val actionId: String?
+    val actionId: String
     val actionType: FlutterAiutaDataProviderAction.ActionType
 }
 
 @Serializable
 class FlutterAiutaDataActionError(
     @SerialName("actionId")
-    override val actionId: String? = null,
+    override val actionId: String,
     @SerialName("actionType")
     override val actionType: FlutterAiutaDataProviderAction.ActionType,
 ) : FlutterAiutaDataActionResult
@@ -21,7 +21,7 @@ class FlutterAiutaDataActionError(
 @Serializable
 class FlutterAiutaDataActionSuccess(
     @SerialName("actionId")
-    override val actionId: String? = null,
+    override val actionId: String,
     @SerialName("actionType")
     override val actionType: FlutterAiutaDataProviderAction.ActionType,
 ): FlutterAiutaDataActionResult

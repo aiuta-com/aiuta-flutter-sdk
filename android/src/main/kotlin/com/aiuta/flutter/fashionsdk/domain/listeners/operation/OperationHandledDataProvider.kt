@@ -1,18 +1,13 @@
 package com.aiuta.flutter.fashionsdk.domain.listeners.operation
 
-import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.data.FlutterDataActionKey
 import com.aiuta.flutter.fashionsdk.domain.models.result.FlutterAiutaDataActionError
 import com.aiuta.flutter.fashionsdk.domain.models.result.FlutterAiutaDataActionSuccess
 import com.aiuta.flutter.fashionsdk.utils.json
 import io.flutter.plugin.common.MethodCall
-import kotlin.coroutines.Continuation
 import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
 
-abstract class OperationHandledDataProvider : BaseDataProvider() {
-
-    private val operationMap: MutableMap<String, Continuation<Unit>> = mutableMapOf()
+abstract class OperationHandledDataProvider : CallbackDataProvider<Unit>() {
 
     private val dataActionKeysWithOperations by lazy {
         dataActionKeys + listOf(
@@ -57,7 +52,7 @@ abstract class OperationHandledDataProvider : BaseDataProvider() {
 
     private fun handleOperationSucceeded(operation: FlutterAiutaDataActionSuccess) {
         operationMap[operation.actionId]?.resumeWith(Result.success(Unit)).also {
-            operationMap.remove(operation.actionId)
+            removeOperation(operation.actionId)
         }
     }
 
@@ -65,14 +60,7 @@ abstract class OperationHandledDataProvider : BaseDataProvider() {
         operationMap[operation.actionId]?.resumeWithException(
             IllegalStateException("Operation failed: id -  ${operation.actionId}, type - ${operation.actionType}")
         ).also {
-            operationMap.remove(operation.actionId)
-        }
-    }
-
-    suspend fun callbackWithOperationHandling(block: () -> String) {
-        return suspendCoroutine { continuation ->
-            val operationId = block()
-            operationMap[operationId] = continuation
+            removeOperation(operation.actionId)
         }
     }
 
