@@ -17,5 +17,6 @@ fun FlutterAiutaTryOnLoadingPageStyle.toNative(): AiutaButtonsStyle {
     return when (this) {
         FlutterAiutaTryOnLoadingPageStyle.PRIMARY -> AiutaButtonsStyle.PRIMARY
         FlutterAiutaTryOnLoadingPageStyle.BLURRED -> AiutaButtonsStyle.BLURRED
+        FlutterAiutaTryOnLoadingPageStyle.BLURRED_WITH_OUTLINE -> TODO("Add support")
     }
 }

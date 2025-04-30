@@ -24,8 +24,8 @@ if (flutterVersionName == null) {
 
 android {
     namespace = "com.aiuta.fashionsdk_example"
-    compileSdk = 34
-    ndkVersion = "25.1.8937393"
+    compileSdk = 35
+    ndkVersion = "26.1.10909125"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -39,7 +39,7 @@ android {
     defaultConfig {
         applicationId = "com.aiuta.fashionsdk_example"
         minSdk = 23
-        targetSdk = 34
+        targetSdk = 35
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }
