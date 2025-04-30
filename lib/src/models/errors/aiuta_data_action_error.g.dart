@@ -9,7 +9,7 @@ part of 'aiuta_data_action_error.dart';
 AiutaDataActionError _$AiutaDataActionErrorFromJson(
         Map<String, dynamic> json) =>
     AiutaDataActionError(
-      actionId: json['actionId'] as String?,
+      actionId: json['actionId'] as String,
       actionType: $enumDecode(_$AiutaDataActionTypeEnumMap, json['actionType']),
     );
 

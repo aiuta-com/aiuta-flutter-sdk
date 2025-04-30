@@ -9,7 +9,7 @@ part of 'aiuta_data_action_success.dart';
 AiutaDataActionSuccess _$AiutaDataActionSuccessFromJson(
         Map<String, dynamic> json) =>
     AiutaDataActionSuccess(
-      actionId: json['actionId'] as String?,
+      actionId: json['actionId'] as String,
       actionType: $enumDecode(_$AiutaDataActionTypeEnumMap, json['actionType']),
     );
 

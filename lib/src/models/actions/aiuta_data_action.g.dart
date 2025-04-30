@@ -10,7 +10,7 @@ CompleteOnboardingAction _$CompleteOnboardingActionFromJson(
         Map<String, dynamic> json) =>
     CompleteOnboardingAction()
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
-      ..id = json['id'] as String?;
+      ..id = json['id'] as String;
 
 Map<String, dynamic> _$CompleteOnboardingActionToJson(
         CompleteOnboardingAction instance) =>
@@ -38,7 +38,7 @@ ObtainUserConsentsIdsAction _$ObtainUserConsentsIdsActionFromJson(
           .toList(),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
-      ..id = json['id'] as String?;
+      ..id = json['id'] as String;
 
 Map<String, dynamic> _$ObtainUserConsentsIdsActionToJson(
         ObtainUserConsentsIdsAction instance) =>
@@ -56,7 +56,7 @@ AddUploadedImagesAction _$AddUploadedImagesActionFromJson(
           .toList(),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
-      ..id = json['id'] as String?;
+      ..id = json['id'] as String;
 
 Map<String, dynamic> _$AddUploadedImagesActionToJson(
         AddUploadedImagesAction instance) =>
@@ -73,7 +73,7 @@ SelectUploadedImageAction _$SelectUploadedImageActionFromJson(
           json['uploadedImage'] as Map<String, dynamic>),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
-      ..id = json['id'] as String?;
+      ..id = json['id'] as String;
 
 Map<String, dynamic> _$SelectUploadedImageActionToJson(
         SelectUploadedImageAction instance) =>
@@ -91,7 +91,7 @@ DeleteUploadedImagesAction _$DeleteUploadedImagesActionFromJson(
           .toList(),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
-      ..id = json['id'] as String?;
+      ..id = json['id'] as String;
 
 Map<String, dynamic> _$DeleteUploadedImagesActionToJson(
         DeleteUploadedImagesAction instance) =>
@@ -112,7 +112,7 @@ AddGeneratedImagesAction _$AddGeneratedImagesActionFromJson(
           .toList(),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
-      ..id = json['id'] as String?;
+      ..id = json['id'] as String;
 
 Map<String, dynamic> _$AddGeneratedImagesActionToJson(
         AddGeneratedImagesAction instance) =>
@@ -131,7 +131,7 @@ DeleteGeneratedImagesAction _$DeleteGeneratedImagesActionFromJson(
           .toList(),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
-      ..id = json['id'] as String?;
+      ..id = json['id'] as String;
 
 Map<String, dynamic> _$DeleteGeneratedImagesActionToJson(
         DeleteGeneratedImagesAction instance) =>
@@ -148,7 +148,7 @@ GetShareTextAction _$GetShareTextActionFromJson(Map<String, dynamic> json) =>
           .toList(),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
-      ..id = json['id'] as String?;
+      ..id = json['id'] as String;
 
 Map<String, dynamic> _$GetShareTextActionToJson(GetShareTextAction instance) =>
     <String, dynamic>{

@@ -5,11 +5,11 @@ part 'aiuta_data_action_error.g.dart';
 
 @JsonSerializable()
 class AiutaDataActionError {
-  String? actionId;
+  String actionId;
   final AiutaDataActionType actionType;
 
   AiutaDataActionError({
-    this.actionId,
+    required this.actionId,
     required this.actionType,
   });
 

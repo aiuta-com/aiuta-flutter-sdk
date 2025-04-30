@@ -6,7 +6,7 @@ part 'aiuta_data_action.g.dart';
 
 sealed class AiutaDataAction {
   AiutaDataActionType type;
-  String? id;
+  String id = "";
 
   AiutaDataAction(this.type);
 
