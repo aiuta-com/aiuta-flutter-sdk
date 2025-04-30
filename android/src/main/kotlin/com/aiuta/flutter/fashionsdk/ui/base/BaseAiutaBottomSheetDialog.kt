@@ -30,6 +30,7 @@ import com.aiuta.fashionsdk.analytic.analytic
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticHandler
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.ui.AiutaUIHandler
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.flow.filterNotNull
@@ -131,6 +132,7 @@ abstract class BaseAiutaBottomSheetDialog(
         // Start observing
         observeActivityResult()
         observeAnalytic()
+        observeUIHandler()
     }
 
     protected fun setContent(content: @Composable () -> Unit) {
@@ -163,6 +165,16 @@ abstract class BaseAiutaBottomSheetDialog(
                     data = incoming.data
                 )
                 activityResultListener.clean()
+            }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun observeUIHandler() {
+        AiutaUIHandler.shouldCloseSDKFlow
+            .onEach { shouldCloseSDK ->
+                if (shouldCloseSDK) {
+                    dismiss()
+                }
             }
             .launchIn(lifecycleScope)
     }

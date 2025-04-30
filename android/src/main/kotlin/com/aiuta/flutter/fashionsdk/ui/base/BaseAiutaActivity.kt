@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.aiuta.fashionsdk.analytic.analytic
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticHandler
+import com.aiuta.flutter.fashionsdk.domain.listeners.ui.AiutaUIHandler
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -19,6 +20,7 @@ abstract class BaseAiutaActivity : ComponentActivity() {
     init {
         // Start observing
         observeAnalytic()
+        observeUIHandler()
     }
 
     fun setBaseContent(
@@ -29,6 +31,16 @@ abstract class BaseAiutaActivity : ComponentActivity() {
             BaseStateListener()
             content()
         }
+    }
+
+    private fun observeUIHandler() {
+        AiutaUIHandler.shouldCloseSDKFlow
+            .onEach { shouldCloseSDK ->
+                if (shouldCloseSDK) {
+                    finish()
+                }
+            }
+            .launchIn(lifecycleScope)
     }
 
     private fun observeAnalytic() {
