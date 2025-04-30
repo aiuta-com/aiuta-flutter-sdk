@@ -13,9 +13,8 @@ import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
-import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderHandler
-import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.error.AiutaErrorListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.flutterDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.flutterHandlers
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.state.AiutaSDKStateListener
@@ -38,8 +37,7 @@ import io.flutter.plugin.common.MethodChannel.Result
 class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOwner {
 
     private lateinit var mainChannel: MethodChannel
-    @Deprecated("Use eventChannelMap")
-    private lateinit var dataProviderChannel: EventChannel
+
     private val eventChannelMap: MutableMap<String, EventChannel> = mutableMapOf()
     private var activity: Activity? = null
 
@@ -62,18 +60,10 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                 channel.setStreamHandler(handler)
             }
         }
-
-
-        // Init data provider handler
-        dataProviderChannel = EventChannel(
-            flutterPluginBinding.binaryMessenger,
-            AiutaDataProviderListener.keyChannel
-        )
-        dataProviderChannel.setStreamHandler(AiutaDataProviderListener)
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {
-        when (call.method) {
+        when (val method = call.method) {
             // Main flow
             "startAiutaFlow" -> {
                 activity?.let { localActivity ->
@@ -121,41 +111,9 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                 }
             }
 
-            // Data providing handling
-            "updateUserConsent" -> {
-                val isUserConsentObtained = call.argument<Boolean>(
-                    AiutaDataProviderListener.IS_USER_CONSENT_OBTAINED_KEY
-                )
-                isUserConsentObtained?.let { AiutaDataProviderHandler.updateIsUserConsentObtained(it) }
-                result.success(null)
-            }
-
-            "updateUploadedImages" -> {
-                val rawUploadedImages = call.argument<String>(
-                    AiutaDataProviderListener.UPLOADED_IMAGES_KEY
-                )
-                rawUploadedImages?.let { AiutaDataProviderHandler.updateUploadedImages(it) }
-                result.success(null)
-            }
-
-            "updateGeneratedImages" -> {
-                val rawGeneratedImages = call.argument<String>(
-                    AiutaDataProviderListener.GENERATED_IMAGES_KEY
-                )
-                rawGeneratedImages?.let { AiutaDataProviderHandler.updateGeneratedImages(it) }
-                result.success(null)
-            }
-
             // Configuration handling
             "configure" -> {
                 activity?.let { localActivity -> call.initAiutaScope(localActivity) }
-                result.success(null)
-            }
-
-            // Auth action handling
-            "resolveJWTAuth" -> {
-                val jwt = call.argument<String>("jwt")
-                // jwt?.let { AiutaHolder.resolveJWT(jwt) }
                 result.success(null)
             }
 
@@ -174,6 +132,17 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             }
 
             else -> {
+                for (dataProvider in flutterDataProvider) {
+                    if (dataProvider.canHandleDataActionKey(method)) {
+                        dataProvider.handleDataActionKey(
+                            call = call,
+                            rawDataActionKey = method,
+                        )
+
+                        return result.success(null)
+                    }
+                }
+
                 result.notImplemented()
             }
         }
@@ -185,9 +154,6 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             value.setStreamHandler(null)
             eventChannelMap.remove(key)
         }
-
-        // TODO Delete
-        dataProviderChannel.setStreamHandler(null)
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
@@ -245,9 +211,9 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         )
 
         // Init Aiuta Configuration
-         AiutaNativeConfigurationHolder.setNativeConfiguration(
-             assetManager = activity.assets,
-         )
+        AiutaNativeConfigurationHolder.setNativeConfiguration(
+            assetManager = activity.assets,
+        )
     }
 
     private inline fun MethodCall.aiutaScope(

@@ -3,9 +3,10 @@ package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.wishli
 import com.aiuta.fashionsdk.configuration.features.wishlist.dataprovider.AiutaWishlistFeatureDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.data.FlutterDataActionKey
-import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAddToWishListAction
-import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAiutaAction
+import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAddToWishListAction
+import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAiutaAction
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.wishlist.dataprovider.WishlistDataActionKey.UpdateWishlist
+import com.aiuta.flutter.fashionsdk.utils.json
 import io.flutter.plugin.common.MethodCall
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,23 +25,24 @@ object FlutterAiutaWishlistFeatureDataProvider :
     override val wishlistProductsIds: StateFlow<List<String>> = _wishlistProductsIds
 
     override fun setProductInWishlist(productId: String, inWishlist: Boolean) {
-        val action = PlatformAddToWishListAction(
+        val action = FlutterAddToWishListAction(
             productId = productId,
             isInWishlist = inWishlist,
         )
 
-        sendEvent(Json.encodeToString<PlatformAiutaAction>(action))
+        sendEvent(Json.encodeToString<FlutterAiutaAction>(action))
     }
 
 
-    override fun MethodCall.handleDataOfData(dataActionKey: FlutterDataActionKey) {
+    override fun handleDataActionKey(call: MethodCall, dataActionKey: FlutterDataActionKey) {
         if (dataActionKey !is WishlistDataActionKey) return
 
         when (dataActionKey) {
             is UpdateWishlist -> {
-                val rawIds = argument<List<String>>(dataActionKey.PARAMS_WISHLIST_IDS)
-                rawIds?.let {
-                    _wishlistProductsIds.value = rawIds
+                val rawProductIds = call.argument<String>(dataActionKey.PARAMS_WISHLIST_IDS)
+                rawProductIds?.let {
+                    val productIds = json.decodeFromString<List<String>>(rawProductIds)
+                    _wishlistProductsIds.value = productIds
                 }
             }
         }

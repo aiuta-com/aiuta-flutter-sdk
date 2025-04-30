@@ -5,6 +5,7 @@ import com.aiuta.fashionsdk.configuration.features.tryon.history.AiutaTryOnGener
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.tryon.history.icons.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.tryon.history.strings.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.history.FlutterAiutaTryOnGenerationsHistoryFeature
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.history.dataprovider.FlutterAiutaTryOnGenerationsHistoryFeatureDataProvider
 
 fun FlutterAiutaTryOnGenerationsHistoryFeature.toNative(
     assetManager: AssetManager
@@ -12,6 +13,6 @@ fun FlutterAiutaTryOnGenerationsHistoryFeature.toNative(
     return AiutaTryOnGenerationsHistoryFeature(
         icons = icons.toNative(assetManager),
         strings = strings.toNative(),
-        dataProvider = TODO("Implement data provider")
+        dataProvider = FlutterAiutaTryOnGenerationsHistoryFeatureDataProvider,
     )
 }

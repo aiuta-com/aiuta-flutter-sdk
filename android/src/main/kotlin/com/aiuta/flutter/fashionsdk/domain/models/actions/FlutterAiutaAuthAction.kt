@@ -8,15 +8,15 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable
 @JsonClassDiscriminator("type")
-sealed interface PlatformAiutaAuthAction {
+sealed interface FlutterAiutaAuthAction {
     companion object {
         const val ACTION_REQUEST_JWT = "requestJwt"
     }
 }
 
 @Serializable
-@SerialName(PlatformAiutaAuthAction.ACTION_REQUEST_JWT)
-class PlatformRequestJWTAction(
+@SerialName(FlutterAiutaAuthAction.ACTION_REQUEST_JWT)
+class FlutterRequestJWTAction(
     @SerialName("params")
     val params: String? = null
-): PlatformAiutaAuthAction
+): FlutterAiutaAuthAction

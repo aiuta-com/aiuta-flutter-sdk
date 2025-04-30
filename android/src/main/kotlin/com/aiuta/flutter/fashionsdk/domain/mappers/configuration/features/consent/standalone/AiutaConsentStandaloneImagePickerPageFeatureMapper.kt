@@ -7,6 +7,7 @@ import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.consen
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.consent.standalone.data.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.consent.standalone.styles.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.consent.FlutterAiutaConsentStandaloneImagePickerPageFeature
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.consent.standalone.dataprovider.FlutterAiutaConsentStandaloneFeatureDataProvider
 
 fun FlutterAiutaConsentStandaloneImagePickerPageFeature.toNativeStandaloneImagePicker(
     assetManager: AssetManager
@@ -16,6 +17,6 @@ fun FlutterAiutaConsentStandaloneImagePickerPageFeature.toNativeStandaloneImageP
         icons = icons.toNative(assetManager),
         styles = styles.toNative(),
         data = data.toNative(),
-        dataProvider = TODO("Implement data provider")
+        dataProvider = FlutterAiutaConsentStandaloneFeatureDataProvider
     )
 }

@@ -3,8 +3,8 @@ package com.aiuta.flutter.fashionsdk.domain.listeners.auth
 import com.aiuta.flutter.fashionsdk.domain.listeners.auth.JWTDataActionKey.ResolveJWT
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.data.FlutterDataActionKey
-import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAiutaAuthAction
-import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformRequestJWTAction
+import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAiutaAuthAction
+import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterRequestJWTAction
 import io.flutter.plugin.common.MethodCall
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,8 +24,8 @@ object AiutaJWTAuthenticationDataProvider: BaseDataProvider() {
 
 
     suspend fun requestJWT(params: String?): String {
-        val action = PlatformRequestJWTAction(params = params)
-        sendEvent(Json.encodeToString<PlatformAiutaAuthAction>(action))
+        val action = FlutterRequestJWTAction(params = params)
+        sendEvent(Json.encodeToString<FlutterAiutaAuthAction>(action))
 
         // Await
         return jwtFlow.first().also {
@@ -34,12 +34,12 @@ object AiutaJWTAuthenticationDataProvider: BaseDataProvider() {
         }
     }
 
-    override fun MethodCall.handleDataOfData(dataActionKey: FlutterDataActionKey) {
+    override fun handleDataActionKey(call: MethodCall, dataActionKey: FlutterDataActionKey) {
         if (dataActionKey !is JWTDataActionKey) return
 
         when (dataActionKey) {
             is ResolveJWT -> {
-                val rawJWT = argument<String>(dataActionKey.PARAMS_JWT)
+                val rawJWT = call.argument<String>(dataActionKey.PARAMS_JWT)
                 rawJWT?.let { _jwtFlow.value = it }
             }
         }
