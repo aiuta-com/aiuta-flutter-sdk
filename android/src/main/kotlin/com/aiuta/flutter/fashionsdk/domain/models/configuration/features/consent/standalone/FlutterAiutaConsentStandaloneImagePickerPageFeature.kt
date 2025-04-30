@@ -22,4 +22,4 @@ data class FlutterAiutaConsentStandaloneImagePickerPageFeature(
 
     @SerialName("data")
     val data: FlutterAiutaConsentStandaloneData
-): FlutterAiutaConsentFeature
+): FlutterAiutaConsentFeature()

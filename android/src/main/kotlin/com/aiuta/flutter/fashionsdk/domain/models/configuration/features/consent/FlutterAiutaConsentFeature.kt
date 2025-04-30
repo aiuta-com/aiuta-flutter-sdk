@@ -6,8 +6,8 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable
-@JsonClassDiscriminator("type")
-sealed interface FlutterAiutaConsentFeature {
+@JsonClassDiscriminator("mode")
+sealed class FlutterAiutaConsentFeature {
 
     companion object {
         const val TYPE_EMBEDDED_INTO_ONBOARDING = "embeddedIntoOnboarding"

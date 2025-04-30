@@ -14,8 +14,8 @@ fun generateDataActionId() = "data-action-${Uuid.random()}"
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable
 @JsonClassDiscriminator("type")
-sealed interface FlutterAiutaDataProviderAction {
-    val id: String
+sealed class FlutterAiutaDataProviderAction {
+    abstract val id: String
 
     companion object {
         const val OBTAIN_USER_CONSENT_ACTION = "obtainUserConsentsIds"
@@ -54,7 +54,7 @@ class FlutterObtainUserConsentAction(
     override val id: String = generateDataActionId(),
     @SerialName("consentIds")
     val consentIds: List<String>,
-) : FlutterAiutaDataProviderAction
+) : FlutterAiutaDataProviderAction()
 
 @Serializable
 @SerialName(FlutterAiutaDataProviderAction.ADD_UPLOADED_IMAGE_ACTION)
@@ -63,7 +63,7 @@ class FlutterAddUploadedImageAction(
     override val id: String = generateDataActionId(),
     @SerialName("uploadedImages")
     val uploadedImages: List<FlutterAiutaHistoryImage>
-) : FlutterAiutaDataProviderAction
+) : FlutterAiutaDataProviderAction()
 
 @Serializable
 @SerialName(FlutterAiutaDataProviderAction.SELECT_UPLOADED_IMAGE_ACTION)
@@ -72,7 +72,7 @@ class FlutterSelectUploadedImageAction(
     override val id: String = generateDataActionId(),
     @SerialName("uploadedImage")
     val uploadedImage: FlutterAiutaHistoryImage
-) : FlutterAiutaDataProviderAction
+) : FlutterAiutaDataProviderAction()
 
 @Serializable
 @SerialName(FlutterAiutaDataProviderAction.DELETE_UPLOADED_IMAGE_ACTION)
@@ -81,7 +81,7 @@ class FlutterDeleteUploadedImageAction(
     override val id: String = generateDataActionId(),
     @SerialName("uploadedImages")
     val uploadedImages: List<FlutterAiutaHistoryImage>
-) : FlutterAiutaDataProviderAction
+) : FlutterAiutaDataProviderAction()
 
 
 @Serializable
@@ -93,7 +93,7 @@ class FlutterAddGeneratedImageAction(
     val productsIds: List<String>,
     @SerialName("generatedImages")
     val generatedImages: List<FlutterAiutaHistoryImage>
-) : FlutterAiutaDataProviderAction
+) : FlutterAiutaDataProviderAction()
 
 @Serializable
 @SerialName(FlutterAiutaDataProviderAction.DELETE_GENERATED_IMAGE_ACTION)
@@ -102,7 +102,7 @@ class FlutterDeleteGeneratedImageAction(
     override val id: String = generateDataActionId(),
     @SerialName("generatedImages")
     val generatedImages: List<FlutterAiutaHistoryImage>
-) : FlutterAiutaDataProviderAction
+) : FlutterAiutaDataProviderAction()
 
 @Serializable
 @SerialName(FlutterAiutaDataProviderAction.GET_SHARE_TEXT_ACTION)
@@ -111,4 +111,4 @@ class FlutterGetShareTextAction(
     override val id: String = generateDataActionId(),
     @SerialName("productIds")
     val productIds: List<String>
-) : FlutterAiutaDataProviderAction
+) : FlutterAiutaDataProviderAction()

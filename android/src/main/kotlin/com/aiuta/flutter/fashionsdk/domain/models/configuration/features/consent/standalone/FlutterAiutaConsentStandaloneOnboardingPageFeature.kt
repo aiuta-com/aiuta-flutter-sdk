@@ -21,4 +21,4 @@ data class FlutterAiutaConsentStandaloneOnboardingPageFeature(
 
     @SerialName("data")
     val data: FlutterAiutaConsentStandaloneData
-): FlutterAiutaConsentFeature
+): FlutterAiutaConsentFeature()
