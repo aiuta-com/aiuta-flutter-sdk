@@ -28,4 +28,5 @@ const _$AiutaDataActionTypeEnumMap = {
   AiutaDataActionType.deleteUploadedImages: 'deleteUploadedImages',
   AiutaDataActionType.addGeneratedImages: 'addGeneratedImages',
   AiutaDataActionType.deleteGeneratedImages: 'deleteGeneratedImages',
+  AiutaDataActionType.getShareText: 'getShareText',
 };

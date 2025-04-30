@@ -78,6 +78,17 @@ abstract class AiutaPlatform extends PlatformInterface {
     );
   }
 
+  // Share
+
+  Future<void> resolveShareText({
+    required List<String> productIds,
+    required String text,
+  }) {
+    throw UnimplementedError(
+      'resolveShareText() has not been implemented.',
+    );
+  }
+
   // Update listenable values from data providers
 
   Future<void> updateIsOnboardingCompleted({

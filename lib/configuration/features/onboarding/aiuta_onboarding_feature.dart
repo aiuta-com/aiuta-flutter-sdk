@@ -17,7 +17,7 @@ class AiutaOnboardingFeature {
   final AiutaOnboardingHowItWorksPageFeature howItWorksPage;
 
   /// Configuration for the Best Results page (optional).
-  /// This page is shown after the Try-On page and provides
+  /// This page is shown after the [howItWorksPage] page and provides
   /// examples of the photos to achieve the best results.
   ///
   /// It is recommended to not include this page in the onboarding

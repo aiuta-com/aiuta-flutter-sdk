@@ -26,6 +26,8 @@ sealed class AiutaDataAction {
         return AddGeneratedImagesAction.fromJson(json);
       case 'deleteGeneratedImages':
         return DeleteGeneratedImagesAction.fromJson(json);
+      case 'getShareText':
+        return GetShareTextAction.fromJson(json);
       default:
         throw Exception('Unknown action type');
     }
@@ -143,4 +145,21 @@ class DeleteGeneratedImagesAction extends AiutaDataAction {
 
   @override
   Map<String, dynamic> toJson() => _$DeleteGeneratedImagesActionToJson(this);
+}
+
+// Share text
+
+@JsonSerializable()
+class GetShareTextAction extends AiutaDataAction {
+  final List<String> productIds;
+
+  GetShareTextAction({
+    required this.productIds,
+  }) : super(AiutaDataActionType.getShareText);
+
+  factory GetShareTextAction.fromJson(Map<String, dynamic> json) =>
+      _$GetShareTextActionFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$GetShareTextActionToJson(this);
 }

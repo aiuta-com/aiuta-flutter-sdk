@@ -99,6 +99,22 @@ class MethodChannelAiuta extends AiutaPlatform {
     );
   }
 
+  // Share
+
+  @override
+  Future<void> resolveShareText({
+    required List<String> productIds,
+    required String text,
+  }) {
+    return methodChannel.invokeMethod(
+      'resolveShareText',
+      {
+        "productIds": jsonEncode(productIds),
+        "text": text,
+      },
+    );
+  }
+
   // Update listenable values from data providers
 
   @override
@@ -119,7 +135,7 @@ class MethodChannelAiuta extends AiutaPlatform {
     return methodChannel.invokeMethod(
       'updateObtainedConsentsIds',
       {
-        "obtainedConsentsIds": obtainedConsentsIds,
+        "obtainedConsentsIds": jsonEncode(obtainedConsentsIds),
       },
     );
   }
@@ -155,7 +171,7 @@ class MethodChannelAiuta extends AiutaPlatform {
     return methodChannel.invokeMethod(
       'updateWishlistProductsIds',
       {
-        "wishlistProductsIds": wishlistProductsIds,
+        "wishlistProductsIds": jsonEncode(wishlistProductsIds),
       },
     );
   }

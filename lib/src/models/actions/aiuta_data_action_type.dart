@@ -6,4 +6,5 @@ enum AiutaDataActionType {
   deleteUploadedImages,
   addGeneratedImages,
   deleteGeneratedImages,
+  getShareText,
 }

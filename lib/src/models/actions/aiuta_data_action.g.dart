@@ -27,6 +27,7 @@ const _$AiutaDataActionTypeEnumMap = {
   AiutaDataActionType.deleteUploadedImages: 'deleteUploadedImages',
   AiutaDataActionType.addGeneratedImages: 'addGeneratedImages',
   AiutaDataActionType.deleteGeneratedImages: 'deleteGeneratedImages',
+  AiutaDataActionType.getShareText: 'getShareText',
 };
 
 ObtainUserConsentsIdsAction _$ObtainUserConsentsIdsActionFromJson(
@@ -138,4 +139,20 @@ Map<String, dynamic> _$DeleteGeneratedImagesActionToJson(
       'type': _$AiutaDataActionTypeEnumMap[instance.type]!,
       'id': instance.id,
       'generatedImages': instance.generatedImages,
+    };
+
+GetShareTextAction _$GetShareTextActionFromJson(Map<String, dynamic> json) =>
+    GetShareTextAction(
+      productIds: (json['productIds'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+    )
+      ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
+      ..id = json['id'] as String?;
+
+Map<String, dynamic> _$GetShareTextActionToJson(GetShareTextAction instance) =>
+    <String, dynamic>{
+      'type': _$AiutaDataActionTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      'productIds': instance.productIds,
     };
