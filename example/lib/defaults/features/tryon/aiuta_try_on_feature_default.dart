@@ -5,6 +5,7 @@ import 'package:aiuta_flutter/configuration/features/try_on/aiuta_try_on_styles.
 import 'package:aiuta_flutter/configuration/features/try_on/aiuta_try_on_toggles.dart';
 import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 import 'package:aiutasdk_example/defaults/features/tryon/cart/aiuta_try_on_cart_feature_default.dart';
+import 'package:aiutasdk_example/defaults/features/tryon/disclaimer/aiuta_try_on_fit_disclaimer_feature_default.dart';
 import 'package:aiutasdk_example/defaults/features/tryon/loading/aiuta_try_on_loading_page_feature_default.dart';
 import 'package:aiutasdk_example/defaults/features/tryon/validation/aiuta_try_on_input_image_validation_feature_default.dart';
 
@@ -13,6 +14,7 @@ final class TryOnFeatureBuilder {
         loadingPage: TryOnLoadingPageFeatureBuilder().build(),
         inputImageValidation: TryOnInputImageValidationFeatureBuilder().build(),
         cart: TryOnCartFeatureBuilder().build(),
+        fitDisclaimer: TryOnFitDisclaimerFeatureBuilder().build(),
         toggles: AiutaTryOnToggles(
           isBackgroundExecutionAllowed: false,
         ),
