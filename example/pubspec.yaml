@@ -70,7 +70,6 @@ flutter:
     - res/images/onboarding_good_image_1.png
     - res/images/selector_empty_small_image_1.png
 
-  
   fonts:
     - family: Roboto
       fonts:
