@@ -58,6 +58,7 @@ flutter:
     - res/icons/ic_check_20.png
     - res/icons/ic_onboarding_best_results_bad_24.png
     - res/icons/ic_arrow_16.png
+    - res/images/logo.png
     - res/images/onboarding_item_1.png
     - res/images/onboarding_item_2.png
     - res/images/onboarding_item_3.png
