@@ -11,4 +11,7 @@ data class FlutterAiutaHistoryImage(
 
     @SerialName("url")
     val url: String,
+
+    @SerialName("type")
+    val type: FlutterAiutaHistoryImageType,
 )

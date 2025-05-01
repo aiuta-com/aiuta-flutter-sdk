@@ -9,4 +9,4 @@ import kotlinx.serialization.Serializable
 data class FlutterAiutaConsentEmbeddedIntoOnboardingFeature(
     @SerialName("strings")
     val strings: FlutterAiutaConsentEmbeddedStrings
-): FlutterAiutaConsentFeature
+): FlutterAiutaConsentFeature()

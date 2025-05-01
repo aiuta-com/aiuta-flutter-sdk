@@ -2,10 +2,10 @@ package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.wishl
 
 import android.content.res.AssetManager
 import com.aiuta.fashionsdk.configuration.features.wishlist.AiutaWishlistFeature
+import com.aiuta.flutter.fashionsdk.domain.listeners.actions.FlutterActionHandler
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.wishlist.icons.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.wishlist.strings.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.wishlist.FlutterAiutaWishlistFeature
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.wishlist.dataprovider.FlutterAiutaWishlistFeatureDataProvider
 
 fun FlutterAiutaWishlistFeature.toNative(
     assetManager: AssetManager
@@ -13,6 +13,6 @@ fun FlutterAiutaWishlistFeature.toNative(
     return AiutaWishlistFeature(
         icons = icons.toNative(assetManager),
         strings = strings.toNative(),
-        dataProvider = FlutterAiutaWishlistFeatureDataProvider
+        dataProvider = FlutterActionHandler,
     )
 }

@@ -5,9 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 enum class FlutterAiutaImagePickerUploadsHistoryButtonStyle {
-    @SerialName("Primary")
+    @SerialName("primary")
     PRIMARY,
 
-    @SerialName("Blurred")
+    @SerialName("blurred")
     BLURRED
 }

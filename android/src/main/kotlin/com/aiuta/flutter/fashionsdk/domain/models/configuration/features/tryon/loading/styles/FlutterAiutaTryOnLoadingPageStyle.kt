@@ -5,9 +5,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 enum class FlutterAiutaTryOnLoadingPageStyle {
-    @SerialName("Primary")
+    @SerialName("primary")
     PRIMARY,
 
-    @SerialName("Blurred")
-    BLURRED
+    @SerialName("blurred")
+    BLURRED,
+
+    @SerialName("blurredWithOutline")
+    BLURRED_WITH_OUTLINE,
 }

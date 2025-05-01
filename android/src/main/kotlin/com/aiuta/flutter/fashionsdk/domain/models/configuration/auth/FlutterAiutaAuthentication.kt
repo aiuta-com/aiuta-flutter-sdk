@@ -8,7 +8,7 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable
 @JsonClassDiscriminator("mode")
-sealed interface FlutterAiutaAuthentication {
+sealed class FlutterAiutaAuthentication {
 
     companion object {
         const val TYPE_JWT = "jwt"
@@ -21,11 +21,11 @@ sealed interface FlutterAiutaAuthentication {
 class FlutterApiKeyAuthentication(
     @SerialName("apiKey")
     val apiKey: String
-) : FlutterAiutaAuthentication
+) : FlutterAiutaAuthentication()
 
 @Serializable
 @SerialName(FlutterAiutaAuthentication.TYPE_JWT)
 class FlutterJWTAuthentication(
     @SerialName("subscriptionId")
     val subscriptionId: String,
-) : FlutterAiutaAuthentication
+) : FlutterAiutaAuthentication()

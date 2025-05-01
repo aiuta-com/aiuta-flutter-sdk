@@ -9,18 +9,12 @@ import kotlin.coroutines.resumeWithException
 
 abstract class OperationHandledDataProvider : CallbackDataProvider<Unit>() {
 
-    private val dataActionKeysWithOperations by lazy {
-        dataActionKeys + listOf(
+    abstract val nonOperationDataActionKey: List<FlutterDataActionKey>
+    override val dataActionKeys: List<FlutterDataActionKey> by lazy {
+        nonOperationDataActionKey + listOf(
             OperationHandledDataActionKey.OperationSucceeded(),
             OperationHandledDataActionKey.OperationFailed(),
         )
-    }
-    private val actualDataActionKeysWithOperations by lazy {
-        dataActionKeysWithOperations.map { it.key }.toSet()
-    }
-
-    override fun canHandleDataActionKey(key: String): Boolean {
-        return key in actualDataActionKeysWithOperations
     }
 
     override fun handleDataActionKey(call: MethodCall, dataActionKey: FlutterDataActionKey) {

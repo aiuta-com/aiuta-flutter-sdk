@@ -22,7 +22,7 @@ sealed class AiutaConsentFeature {
 
   // Internal json staff
   factory AiutaConsentFeature.fromJson(Map<String, dynamic> json) {
-    switch (json['type'] as String) {
+    switch (json['mode'] as String) {
       case 'embeddedIntoOnboarding':
         return AiutaConsentEmbeddedIntoOnboardingFeature.fromJson(json);
       case 'standaloneOnboardingPage':
@@ -138,7 +138,7 @@ class AiutaConsentStandaloneImagePickerPageFeature extends AiutaConsentFeature {
     required this.styles,
     required this.data,
     required this.dataProvider,
-  }) : super(AiutaConsentMode.standaloneOnboardingPage);
+  }) : super(AiutaConsentMode.standaloneImagePickerPage);
 
   // Internal json staff
   factory AiutaConsentStandaloneImagePickerPageFeature.fromJson(
