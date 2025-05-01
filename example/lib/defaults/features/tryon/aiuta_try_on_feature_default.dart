@@ -9,6 +9,7 @@ import 'package:aiutasdk_example/defaults/features/tryon/disclaimer/aiuta_try_on
 import 'package:aiutasdk_example/defaults/features/tryon/feedback/aiuta_try_on_feedback_feature_default.dart';
 import 'package:aiutasdk_example/defaults/features/tryon/history/aiuta_try_on_generations_history_feature_default.dart';
 import 'package:aiutasdk_example/defaults/features/tryon/loading/aiuta_try_on_loading_page_feature_default.dart';
+import 'package:aiutasdk_example/defaults/features/tryon/other/aiuta_try_on_with_other_photo_feature_default.dart';
 import 'package:aiutasdk_example/defaults/features/tryon/validation/aiuta_try_on_input_image_validation_feature_default.dart';
 
 final class TryOnFeatureBuilder {
@@ -19,6 +20,7 @@ final class TryOnFeatureBuilder {
         fitDisclaimer: TryOnFitDisclaimerFeatureBuilder().build(),
         feedback: TryOnFeedbackFeatureBuilder().build(),
         generationsHistory: TryOnGenerationsHistoryFeatureBuilder().build(),
+        otherPhoto: TryOnWithOtherPhotoFeatureBuilder().build(),
         toggles: AiutaTryOnToggles(
           isBackgroundExecutionAllowed: false,
         ),
