@@ -32,24 +32,28 @@ void _listenDataProviderChanges(AiutaConfiguration configuration) {
   final consentFeature = configuration.features.consent;
   switch (consentFeature) {
     case AiutaConsentStandaloneOnboardingPageFeature():
-      final consentListener = () {
-        _platform.updateObtainedConsentsIds(
-            obtainedConsentsIds:
-                consentFeature.dataProvider.obtainedConsentsIds.value);
-      };
-      consentListener();
-      consentFeature.dataProvider.obtainedConsentsIds
-          .addListener(consentListener);
+      final consentDataProvider = consentFeature.dataProvider;
+      if (consentDataProvider is AiutaConsentStandaloneDataProviderCustom) {
+        final consentListener = () {
+          _platform.updateObtainedConsentsIds(
+            obtainedConsentsIds: consentDataProvider.obtainedConsentsIds.value,
+          );
+        };
+        consentListener();
+        consentDataProvider.obtainedConsentsIds.addListener(consentListener);
+      }
       break;
     case AiutaConsentStandaloneImagePickerPageFeature():
-      final consentListener = () {
-        _platform.updateObtainedConsentsIds(
-            obtainedConsentsIds:
-                consentFeature.dataProvider.obtainedConsentsIds.value);
-      };
-      consentListener();
-      consentFeature.dataProvider.obtainedConsentsIds
-          .addListener(consentListener);
+      final consentDataProvider = consentFeature.dataProvider;
+      if (consentDataProvider is AiutaConsentStandaloneDataProviderCustom) {
+        final consentListener = () {
+          _platform.updateObtainedConsentsIds(
+            obtainedConsentsIds: consentDataProvider.obtainedConsentsIds.value,
+          );
+        };
+        consentListener();
+        consentDataProvider.obtainedConsentsIds.addListener(consentListener);
+      }
       break;
     default:
       break;
@@ -153,18 +157,26 @@ void _observeAiutaDataActions(AiutaConfiguration configuration) {
           final consentFeature = configuration.features.consent;
           switch (consentFeature) {
             case AiutaConsentStandaloneOnboardingPageFeature():
-              _handleDataActionCompletion(
-                action: action,
-                impl: () async => consentFeature.dataProvider
-                    .obtainConsentsIds(action.consentIds),
-              );
+              final consentDataProvider = consentFeature.dataProvider;
+              if (consentDataProvider
+                  is AiutaConsentStandaloneDataProviderCustom) {
+                _handleDataActionCompletion(
+                  action: action,
+                  impl: () async =>
+                      consentDataProvider.obtainConsentsIds(action.consentIds),
+                );
+              }
               break;
             case AiutaConsentStandaloneImagePickerPageFeature():
-              _handleDataActionCompletion(
-                action: action,
-                impl: () async => consentFeature.dataProvider
-                    .obtainConsentsIds(action.consentIds),
-              );
+              final consentDataProvider = consentFeature.dataProvider;
+              if (consentDataProvider
+                  is AiutaConsentStandaloneDataProviderCustom) {
+                _handleDataActionCompletion(
+                  action: action,
+                  impl: () async =>
+                      consentDataProvider.obtainConsentsIds(action.consentIds),
+                );
+              }
               break;
             default:
               break;

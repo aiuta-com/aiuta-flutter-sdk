@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_auth.dart';
 import 'package:aiuta_flutter/configuration/features/consent/aiuta_consent_feature.dart';
+import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_data_provider.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_auth_action.dart';
