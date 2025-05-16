@@ -17,7 +17,7 @@ final class TryOnGenerationsHistoryFeatureBuilder {
       strings: AiutaTryOnGenerationsHistoryStrings(
         generationsHistoryPageTitle: "History",
       ),
-      dataProvider: AiutaTryOnGenerationsHistoryDataProvider(
+      dataProvider: AiutaTryOnGenerationsHistoryDataProviderCustom(
         generatedImages: generatedImagesNotifier,
         addGeneratedImages: (newImages, _) async {
           var generated =
