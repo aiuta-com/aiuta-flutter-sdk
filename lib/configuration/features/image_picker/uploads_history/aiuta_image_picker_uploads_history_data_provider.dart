@@ -30,9 +30,15 @@ sealed class AiutaImagePickerUploadsHistoryDataProvider {
   Map<String, dynamic> toJson();
 }
 
+/// A built-in implementation of the `AiutaImagePickerUploadsHistoryDataProvider`.
+///
+/// This class represents the default, built-in data provider for the uploads
+/// history feature. It does not require any custom implementation and uses
+/// predefined behavior.
 @JsonSerializable()
 class AiutaImagePickerUploadsHistoryDataProviderBuiltIn
     extends AiutaImagePickerUploadsHistoryDataProvider {
+  /// Creates an instance of the built-in uploads history data provider.
   AiutaImagePickerUploadsHistoryDataProviderBuiltIn()
       : super(AiutaDataProviderType.builtIn);
 

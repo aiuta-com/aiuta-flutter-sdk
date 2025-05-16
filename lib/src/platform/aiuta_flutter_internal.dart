@@ -85,7 +85,8 @@ void _listenUploadsHistoryChanges(AiutaConfiguration configuration) {
 void _listenGenerationsHistoryChanges(AiutaConfiguration configuration) {
   final generationsHistoryDataProvider =
       configuration.features.tryOn.generationsHistory?.dataProvider;
-  if (generationsHistoryDataProvider != null) {
+  if (generationsHistoryDataProvider
+      is AiutaTryOnGenerationsHistoryDataProviderCustom) {
     final generatedImagesListener = () {
       _platform.updateGeneratedImages(
           generatedImages:
@@ -236,29 +237,29 @@ void _observeAiutaDataActions(AiutaConfiguration configuration) {
         case AddGeneratedImagesAction():
           final dataProvider =
               configuration.features.tryOn.generationsHistory?.dataProvider;
-          if (dataProvider == null) {
-            return;
+
+          if (dataProvider is AiutaTryOnGenerationsHistoryDataProviderCustom) {
+            _handleDataActionCompletion(
+              action: action,
+              impl: () async => dataProvider.addGeneratedImages(
+                action.generatedImages,
+                action.productsIds,
+              ),
+            );
           }
-          _handleDataActionCompletion(
-            action: action,
-            impl: () async => dataProvider.addGeneratedImages(
-              action.generatedImages,
-              action.productsIds,
-            ),
-          );
           break;
         case DeleteGeneratedImagesAction():
           final dataProvider =
               configuration.features.tryOn.generationsHistory?.dataProvider;
-          if (dataProvider == null) {
-            return;
+
+          if (dataProvider is AiutaTryOnGenerationsHistoryDataProviderCustom) {
+            _handleDataActionCompletion(
+              action: action,
+              impl: () async => dataProvider.deleteGeneratedImages(
+                action.generatedImages,
+              ),
+            );
           }
-          _handleDataActionCompletion(
-            action: action,
-            impl: () async => dataProvider.deleteGeneratedImages(
-              action.generatedImages,
-            ),
-          );
           break;
         case GetShareTextAction():
           final dataProvider = configuration.features.share?.dataProvider;

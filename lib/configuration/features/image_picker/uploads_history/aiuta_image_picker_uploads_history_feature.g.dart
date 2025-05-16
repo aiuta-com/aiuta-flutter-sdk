@@ -14,22 +14,14 @@ AiutaImagePickerUploadsHistoryFeature
               json['strings'] as Map<String, dynamic>),
           styles: AiutaImagePickerUploadsHistoryStyles.fromJson(
               json['styles'] as Map<String, dynamic>),
-          dataProvider: toNull(json['dataProvider']),
+          dataProvider: AiutaImagePickerUploadsHistoryDataProvider.fromJson(
+              json['dataProvider'] as Map<String, dynamic>),
         );
 
 Map<String, dynamic> _$AiutaImagePickerUploadsHistoryFeatureToJson(
-    AiutaImagePickerUploadsHistoryFeature instance) {
-  final val = <String, dynamic>{
-    'strings': instance.strings,
-    'styles': instance.styles,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('dataProvider', toNull(instance.dataProvider));
-  return val;
-}
+        AiutaImagePickerUploadsHistoryFeature instance) =>
+    <String, dynamic>{
+      'strings': instance.strings,
+      'styles': instance.styles,
+      'dataProvider': instance.dataProvider,
+    };

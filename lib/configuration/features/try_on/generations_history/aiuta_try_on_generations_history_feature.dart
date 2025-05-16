@@ -16,9 +16,8 @@ class AiutaTryOnGenerationsHistoryFeature {
   /// Strings used in the generations history feature.
   final AiutaTryOnGenerationsHistoryStrings strings;
 
-  /// Data provider for the generations history feature (nullable).
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final AiutaTryOnGenerationsHistoryDataProvider? dataProvider;
+  /// Data provider for the generations history feature.
+  final AiutaTryOnGenerationsHistoryDataProvider dataProvider;
 
   /// Creates an [AiutaTryOnGenerationsHistoryFeature] with the [icons] and
   /// [strings] to configure the generations history feature, and
@@ -26,7 +25,7 @@ class AiutaTryOnGenerationsHistoryFeature {
   AiutaTryOnGenerationsHistoryFeature({
     required this.icons,
     required this.strings,
-    this.dataProvider,
+    required this.dataProvider,
   });
 
   // Internal json staff
