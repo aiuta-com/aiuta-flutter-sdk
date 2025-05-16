@@ -15,22 +15,16 @@ AiutaShareFeature _$AiutaShareFeatureFromJson(Map<String, dynamic> json) =>
       icons: AiutaShareIcons.fromJson(json['icons'] as Map<String, dynamic>),
       strings:
           AiutaShareStrings.fromJson(json['strings'] as Map<String, dynamic>),
-      dataProvider: toNull(json['dataProvider']),
+      dataProvider: json['dataProvider'] == null
+          ? null
+          : AiutaShareDataProvider.fromJson(
+              json['dataProvider'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$AiutaShareFeatureToJson(AiutaShareFeature instance) {
-  final val = <String, dynamic>{
-    'watermark': instance.watermark,
-    'icons': instance.icons,
-    'strings': instance.strings,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('dataProvider', toNull(instance.dataProvider));
-  return val;
-}
+Map<String, dynamic> _$AiutaShareFeatureToJson(AiutaShareFeature instance) =>
+    <String, dynamic>{
+      'watermark': instance.watermark,
+      'icons': instance.icons,
+      'strings': instance.strings,
+      'dataProvider': instance.dataProvider,
+    };

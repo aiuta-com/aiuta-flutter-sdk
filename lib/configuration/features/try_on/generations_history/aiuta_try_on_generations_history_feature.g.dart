@@ -13,22 +13,14 @@ AiutaTryOnGenerationsHistoryFeature
               json['icons'] as Map<String, dynamic>),
           strings: AiutaTryOnGenerationsHistoryStrings.fromJson(
               json['strings'] as Map<String, dynamic>),
-          dataProvider: toNull(json['dataProvider']),
+          dataProvider: AiutaTryOnGenerationsHistoryDataProvider.fromJson(
+              json['dataProvider'] as Map<String, dynamic>),
         );
 
 Map<String, dynamic> _$AiutaTryOnGenerationsHistoryFeatureToJson(
-    AiutaTryOnGenerationsHistoryFeature instance) {
-  final val = <String, dynamic>{
-    'icons': instance.icons,
-    'strings': instance.strings,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('dataProvider', toNull(instance.dataProvider));
-  return val;
-}
+        AiutaTryOnGenerationsHistoryFeature instance) =>
+    <String, dynamic>{
+      'icons': instance.icons,
+      'strings': instance.strings,
+      'dataProvider': instance.dataProvider,
+    };

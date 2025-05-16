@@ -263,18 +263,18 @@ void _observeAiutaDataActions(AiutaConfiguration configuration) {
           break;
         case GetShareTextAction():
           final dataProvider = configuration.features.share?.dataProvider;
-          if (dataProvider == null) {
-            return;
+          if (dataProvider is AiutaShareDataProviderCustom) {
+            _handleDataActionCompletion(
+                action: action,
+                impl: () async {
+                  final text =
+                      await dataProvider.getShareText(action.productIds);
+                  _platform.resolveShareText(
+                    productIds: action.productIds,
+                    text: text,
+                  );
+                });
           }
-          _handleDataActionCompletion(
-              action: action,
-              impl: () async {
-                final text = await dataProvider.getShareText(action.productIds);
-                _platform.resolveShareText(
-                  productIds: action.productIds,
-                  text: text,
-                );
-              });
           break;
       }
     },

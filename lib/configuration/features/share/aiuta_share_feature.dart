@@ -24,7 +24,6 @@ class AiutaShareFeature {
 
   /// The optional data provider for the share feature to provide
   /// additional text to be shared along with the generated images.
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaShareDataProvider? dataProvider;
 
   /// Creates an [AiutaShareFeature] with optional [watermark] to be added to
