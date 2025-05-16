@@ -11,13 +11,19 @@ void _configure(AiutaConfiguration configuration) {
   _listenDataProviderChanges(configuration);
 }
 
-// Update listenable values from data providers
+// Listeners
 
 void _listenDataProviderChanges(AiutaConfiguration configuration) {
-  // Onboarding
+  _listenOnboardingChanges(configuration);
+  _listenConsentChanges(configuration);
+  _listenUploadsHistoryChanges(configuration);
+  _listenGenerationsHistoryChanges(configuration);
+}
+
+void _listenOnboardingChanges(AiutaConfiguration configuration) {
   final onboardingDataProvider =
       configuration.features.onboarding?.dataProvider;
-  if (onboardingDataProvider != null) {
+  if (onboardingDataProvider is AiutaOnboardingDataProviderCustom) {
     final onboardingListener = () {
       _platform.updateIsOnboardingCompleted(
           isOnboardingCompleted:
@@ -27,8 +33,9 @@ void _listenDataProviderChanges(AiutaConfiguration configuration) {
     onboardingDataProvider.isOnboardingCompleted
         .addListener(onboardingListener);
   }
+}
 
-  // Consent
+void _listenConsentChanges(AiutaConfiguration configuration) {
   final consentFeature = configuration.features.consent;
   switch (consentFeature) {
     case AiutaConsentStandaloneOnboardingPageFeature():
@@ -58,8 +65,9 @@ void _listenDataProviderChanges(AiutaConfiguration configuration) {
     default:
       break;
   }
+}
 
-  // Uploads history
+void _listenUploadsHistoryChanges(AiutaConfiguration configuration) {
   final uploadsHistoryDataProvider =
       configuration.features.imagePicker.uploadsHistory?.dataProvider;
   if (uploadsHistoryDataProvider != null) {
@@ -71,8 +79,9 @@ void _listenDataProviderChanges(AiutaConfiguration configuration) {
     uploadsHistoryDataProvider.uploadedImages
         .addListener(uploadedImagesListener);
   }
+}
 
-  // Generations history
+void _listenGenerationsHistoryChanges(AiutaConfiguration configuration) {
   final generationsHistoryDataProvider =
       configuration.features.tryOn.generationsHistory?.dataProvider;
   if (generationsHistoryDataProvider != null) {
@@ -143,14 +152,14 @@ void _observeAiutaDataActions(AiutaConfiguration configuration) {
       switch (action) {
         // Onboarding
         case CompleteOnboardingAction():
-          final dataProvider = configuration.features.onboarding?.dataProvider;
-          if (dataProvider == null) {
-            return;
+          final onboardingDataProvider =
+              configuration.features.onboarding?.dataProvider;
+          if (onboardingDataProvider is AiutaOnboardingDataProviderCustom) {
+            _handleDataActionCompletion(
+              action: action,
+              impl: () async => onboardingDataProvider.completeOnboarding(),
+            );
           }
-          _handleDataActionCompletion(
-            action: action,
-            impl: () async => dataProvider.completeOnboarding(),
-          );
           break;
         // Consent
         case ObtainUserConsentsIdsAction():

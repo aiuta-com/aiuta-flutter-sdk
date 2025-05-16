@@ -71,7 +71,7 @@ class AiutaConsentStandaloneDataProviderCustom
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final void Function(List<String>) obtainConsentsIds;
 
-  /// Creates an [AiutaConsentStandaloneDataProvider] with the listenable
+  /// Creates an [AiutaConsentStandaloneDataProviderCustom] with the listenable
   /// [obtainedConsentsIds] list with already obtained consents identifiers and
   /// [obtainConsentsIds] callback to be called when the user has given consents.
   AiutaConsentStandaloneDataProviderCustom({

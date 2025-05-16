@@ -33,7 +33,6 @@ class AiutaOnboardingFeature {
 
   /// Data provider for the onboarding feature.
   /// Used to control whether the onboarding should be shown or not.
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaOnboardingDataProvider dataProvider;
 
   /// Creates an [AiutaOnboardingFeature] with the given parameters for the
