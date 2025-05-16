@@ -28,8 +28,14 @@ sealed class AiutaOnboardingDataProvider {
   Map<String, dynamic> toJson();
 }
 
+/// A built-in implementation of the [AiutaOnboardingDataProvider].
+///
+/// This class represents the default onboarding data provider that is
+/// built into the Aiuta SDK. It does not require any custom behavior
+/// or additional configuration.
 @JsonSerializable()
 class AiutaOnboardingDataProviderBuiltIn extends AiutaOnboardingDataProvider {
+  /// Creates an instance of [AiutaOnboardingDataProviderBuiltIn].
   AiutaOnboardingDataProviderBuiltIn() : super(AiutaDataProviderType.builtIn);
 
   // Internal json staff
@@ -42,6 +48,11 @@ class AiutaOnboardingDataProviderBuiltIn extends AiutaOnboardingDataProvider {
       _$AiutaOnboardingDataProviderBuiltInToJson(this);
 }
 
+/// A custom implementation of the [AiutaOnboardingDataProvider].
+///
+/// This class allows for custom behavior during the onboarding process.
+/// It provides a [ValueListenable] to track whether onboarding is completed
+/// and a callback to handle the completion of onboarding.
 @JsonSerializable()
 class AiutaOnboardingDataProviderCustom extends AiutaOnboardingDataProvider {
   /// A [ValueListenable] bool that indicates whether the onboarding process

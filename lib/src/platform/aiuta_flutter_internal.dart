@@ -70,7 +70,8 @@ void _listenConsentChanges(AiutaConfiguration configuration) {
 void _listenUploadsHistoryChanges(AiutaConfiguration configuration) {
   final uploadsHistoryDataProvider =
       configuration.features.imagePicker.uploadsHistory?.dataProvider;
-  if (uploadsHistoryDataProvider != null) {
+  if (uploadsHistoryDataProvider
+      is AiutaImagePickerUploadsHistoryDataProviderCustom) {
     final uploadedImagesListener = () {
       _platform.updateUploadedImages(
           uploadedImages: uploadsHistoryDataProvider.uploadedImages.value);
@@ -152,12 +153,12 @@ void _observeAiutaDataActions(AiutaConfiguration configuration) {
       switch (action) {
         // Onboarding
         case CompleteOnboardingAction():
-          final onboardingDataProvider =
-              configuration.features.onboarding?.dataProvider;
-          if (onboardingDataProvider is AiutaOnboardingDataProviderCustom) {
+          final dataProvider = configuration.features.onboarding?.dataProvider;
+
+          if (dataProvider is AiutaOnboardingDataProviderCustom) {
             _handleDataActionCompletion(
               action: action,
-              impl: () async => onboardingDataProvider.completeOnboarding(),
+              impl: () async => dataProvider.completeOnboarding(),
             );
           }
           break;
@@ -166,24 +167,24 @@ void _observeAiutaDataActions(AiutaConfiguration configuration) {
           final consentFeature = configuration.features.consent;
           switch (consentFeature) {
             case AiutaConsentStandaloneOnboardingPageFeature():
-              final consentDataProvider = consentFeature.dataProvider;
-              if (consentDataProvider
-                  is AiutaConsentStandaloneDataProviderCustom) {
+              final dataProvider = consentFeature.dataProvider;
+
+              if (dataProvider is AiutaConsentStandaloneDataProviderCustom) {
                 _handleDataActionCompletion(
                   action: action,
                   impl: () async =>
-                      consentDataProvider.obtainConsentsIds(action.consentIds),
+                      dataProvider.obtainConsentsIds(action.consentIds),
                 );
               }
               break;
             case AiutaConsentStandaloneImagePickerPageFeature():
-              final consentDataProvider = consentFeature.dataProvider;
-              if (consentDataProvider
-                  is AiutaConsentStandaloneDataProviderCustom) {
+              final dataProvider = consentFeature.dataProvider;
+
+              if (dataProvider is AiutaConsentStandaloneDataProviderCustom) {
                 _handleDataActionCompletion(
                   action: action,
                   impl: () async =>
-                      consentDataProvider.obtainConsentsIds(action.consentIds),
+                      dataProvider.obtainConsentsIds(action.consentIds),
                 );
               }
               break;
@@ -195,38 +196,41 @@ void _observeAiutaDataActions(AiutaConfiguration configuration) {
         case AddUploadedImagesAction():
           final dataProvider =
               configuration.features.imagePicker.uploadsHistory?.dataProvider;
-          if (dataProvider == null) {
-            return;
+
+          if (dataProvider
+              is AiutaImagePickerUploadsHistoryDataProviderCustom) {
+            _handleDataActionCompletion(
+              action: action,
+              impl: () async =>
+                  dataProvider.addUploadedImages(action.uploadedImages),
+            );
           }
-          _handleDataActionCompletion(
-            action: action,
-            impl: () async =>
-                dataProvider.addUploadedImages(action.uploadedImages),
-          );
           break;
         case SelectUploadedImageAction():
           final dataProvider =
               configuration.features.imagePicker.uploadsHistory?.dataProvider;
-          if (dataProvider == null) {
-            return;
+
+          if (dataProvider
+              is AiutaImagePickerUploadsHistoryDataProviderCustom) {
+            _handleDataActionCompletion(
+              action: action,
+              impl: () async =>
+                  dataProvider.selectUploadedImage(action.uploadedImage),
+            );
           }
-          _handleDataActionCompletion(
-            action: action,
-            impl: () async =>
-                dataProvider.selectUploadedImage(action.uploadedImage),
-          );
           break;
         case DeleteUploadedImagesAction():
           final dataProvider =
               configuration.features.imagePicker.uploadsHistory?.dataProvider;
-          if (dataProvider == null) {
-            return;
+
+          if (dataProvider
+              is AiutaImagePickerUploadsHistoryDataProviderCustom) {
+            _handleDataActionCompletion(
+              action: action,
+              impl: () async =>
+                  dataProvider.deleteUploadedImages(action.uploadedImages),
+            );
           }
-          _handleDataActionCompletion(
-            action: action,
-            impl: () async =>
-                dataProvider.deleteUploadedImages(action.uploadedImages),
-          );
           break;
         // Generations history
         case AddGeneratedImagesAction():

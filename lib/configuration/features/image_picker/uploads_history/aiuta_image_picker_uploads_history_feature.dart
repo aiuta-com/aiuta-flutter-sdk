@@ -16,9 +16,8 @@ class AiutaImagePickerUploadsHistoryFeature {
   /// Styles used in the uploads history feature.
   final AiutaImagePickerUploadsHistoryStyles styles;
 
-  /// Data provider for the uploads history feature (nullable).
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final AiutaImagePickerUploadsHistoryDataProvider? dataProvider;
+  /// Data provider for the uploads history feature.
+  final AiutaImagePickerUploadsHistoryDataProvider dataProvider;
 
   /// Creates an [AiutaImagePickerUploadsHistoryFeature] with [strings] and
   /// [styles] configuration, and an optional [dataProvider] to manage
@@ -26,7 +25,7 @@ class AiutaImagePickerUploadsHistoryFeature {
   AiutaImagePickerUploadsHistoryFeature({
     required this.strings,
     required this.styles,
-    this.dataProvider,
+    required this.dataProvider,
   });
 
   // Internal json staff
