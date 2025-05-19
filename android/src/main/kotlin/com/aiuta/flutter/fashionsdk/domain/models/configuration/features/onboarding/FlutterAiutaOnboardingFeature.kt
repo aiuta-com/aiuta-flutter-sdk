@@ -1,5 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding
 
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterAiutaBaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.bestresult.FlutterAiutaOnboardingBestResultsPageFeature
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.howworks.FlutterAiutaOnboardingHowItWorksPageFeature
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.shapes.FlutterAiutaOnboardingShapes
@@ -19,5 +20,8 @@ data class FlutterAiutaOnboardingFeature(
     val strings: FlutterAiutaOnboardingStrings,
 
     @SerialName("shapes")
-    val shapes: FlutterAiutaOnboardingShapes
+    val shapes: FlutterAiutaOnboardingShapes,
+
+    @SerialName("dataProvider")
+    val dataProvider: FlutterAiutaBaseDataProvider,
 )

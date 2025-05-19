@@ -39,28 +39,20 @@ AiutaConsentStandaloneOnboardingPageFeature
               json['styles'] as Map<String, dynamic>),
           data: AiutaConsentStandaloneData.fromJson(
               json['data'] as Map<String, dynamic>),
-          dataProvider: toNull(json['dataProvider']),
+          dataProvider: AiutaConsentStandaloneDataProvider.fromJson(
+              json['dataProvider'] as Map<String, dynamic>),
         )..mode = $enumDecode(_$AiutaConsentModeEnumMap, json['mode']);
 
 Map<String, dynamic> _$AiutaConsentStandaloneOnboardingPageFeatureToJson(
-    AiutaConsentStandaloneOnboardingPageFeature instance) {
-  final val = <String, dynamic>{
-    'mode': _$AiutaConsentModeEnumMap[instance.mode]!,
-    'strings': instance.strings,
-    'icons': instance.icons,
-    'styles': instance.styles,
-    'data': instance.data,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('dataProvider', toNull(instance.dataProvider));
-  return val;
-}
+        AiutaConsentStandaloneOnboardingPageFeature instance) =>
+    <String, dynamic>{
+      'mode': _$AiutaConsentModeEnumMap[instance.mode]!,
+      'strings': instance.strings,
+      'icons': instance.icons,
+      'styles': instance.styles,
+      'data': instance.data,
+      'dataProvider': instance.dataProvider,
+    };
 
 AiutaConsentStandaloneImagePickerPageFeature
     _$AiutaConsentStandaloneImagePickerPageFeatureFromJson(
@@ -74,25 +66,17 @@ AiutaConsentStandaloneImagePickerPageFeature
               json['styles'] as Map<String, dynamic>),
           data: AiutaConsentStandaloneData.fromJson(
               json['data'] as Map<String, dynamic>),
-          dataProvider: toNull(json['dataProvider']),
+          dataProvider: AiutaConsentStandaloneDataProvider.fromJson(
+              json['dataProvider'] as Map<String, dynamic>),
         )..mode = $enumDecode(_$AiutaConsentModeEnumMap, json['mode']);
 
 Map<String, dynamic> _$AiutaConsentStandaloneImagePickerPageFeatureToJson(
-    AiutaConsentStandaloneImagePickerPageFeature instance) {
-  final val = <String, dynamic>{
-    'mode': _$AiutaConsentModeEnumMap[instance.mode]!,
-    'strings': instance.strings,
-    'icons': instance.icons,
-    'styles': instance.styles,
-    'data': instance.data,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('dataProvider', toNull(instance.dataProvider));
-  return val;
-}
+        AiutaConsentStandaloneImagePickerPageFeature instance) =>
+    <String, dynamic>{
+      'mode': _$AiutaConsentModeEnumMap[instance.mode]!,
+      'strings': instance.strings,
+      'icons': instance.icons,
+      'styles': instance.styles,
+      'data': instance.data,
+      'dataProvider': instance.dataProvider,
+    };

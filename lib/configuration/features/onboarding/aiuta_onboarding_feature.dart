@@ -3,7 +3,6 @@ import 'package:aiuta_flutter/configuration/features/onboarding/aiuta_onboarding
 import 'package:aiuta_flutter/configuration/features/onboarding/aiuta_onboarding_strings.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/best_results_page/aiuta_onboarding_best_results_page_feature.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/how_it_works/aiuta_onboarding_how_it_works_page_feature.dart';
-import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_onboarding_feature.g.dart';
@@ -33,7 +32,6 @@ class AiutaOnboardingFeature {
 
   /// Data provider for the onboarding feature.
   /// Used to control whether the onboarding should be shown or not.
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaOnboardingDataProvider dataProvider;
 
   /// Creates an [AiutaOnboardingFeature] with the given parameters for the

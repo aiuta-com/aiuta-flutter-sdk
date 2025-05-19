@@ -1,5 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.history
 
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterAiutaBaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.history.icons.FlutterAiutaTryOnGenerationsHistoryIcons
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.history.strings.FlutterAiutaTryOnGenerationsHistoryStrings
 import kotlinx.serialization.SerialName
@@ -11,5 +12,8 @@ data class FlutterAiutaTryOnGenerationsHistoryFeature(
     val icons: FlutterAiutaTryOnGenerationsHistoryIcons,
 
     @SerialName("strings")
-    val strings: FlutterAiutaTryOnGenerationsHistoryStrings
+    val strings: FlutterAiutaTryOnGenerationsHistoryStrings,
+
+    @SerialName("dataProvider")
+    val dataProvider: FlutterAiutaBaseDataProvider,
 )

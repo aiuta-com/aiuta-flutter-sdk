@@ -25,7 +25,7 @@ final class ImagePickerUploadsHistoryFeatureBuilder {
         changePhotoButtonStyle:
             AiutaImagePickerUploadsHistoryButtonStyle.blurred,
       ),
-      dataProvider: AiutaImagePickerUploadsHistoryDataProvider(
+      dataProvider: AiutaImagePickerUploadsHistoryDataProviderCustom(
         uploadedImages: uploadedImagesNotifier,
         addUploadedImages: (newImages) async {
           uploadedImagesNotifier.value = [

@@ -22,7 +22,7 @@ final class OnboardingFeatureBuilder {
         onboardingImageL: 16,
         onboardingImageS: 16,
       ),
-      dataProvider: AiutaOnboardingDataProvider(
+      dataProvider: AiutaOnboardingDataProviderCustom(
         isOnboardingCompleted: onboardingCompletedNotifier,
         completeOnboarding: () {
           onboardingCompletedNotifier.value = true;

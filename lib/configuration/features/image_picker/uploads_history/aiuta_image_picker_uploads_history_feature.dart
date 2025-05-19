@@ -1,4 +1,3 @@
-import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/uploads_history/aiuta_image_picker_uploads_history_strings.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/uploads_history/aiuta_image_picker_uploads_history_styles.dart';
@@ -16,9 +15,8 @@ class AiutaImagePickerUploadsHistoryFeature {
   /// Styles used in the uploads history feature.
   final AiutaImagePickerUploadsHistoryStyles styles;
 
-  /// Data provider for the uploads history feature (nullable).
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final AiutaImagePickerUploadsHistoryDataProvider? dataProvider;
+  /// Data provider for the uploads history feature.
+  final AiutaImagePickerUploadsHistoryDataProvider dataProvider;
 
   /// Creates an [AiutaImagePickerUploadsHistoryFeature] with [strings] and
   /// [styles] configuration, and an optional [dataProvider] to manage
@@ -26,7 +24,7 @@ class AiutaImagePickerUploadsHistoryFeature {
   AiutaImagePickerUploadsHistoryFeature({
     required this.strings,
     required this.styles,
-    this.dataProvider,
+    required this.dataProvider,
   });
 
   // Internal json staff

@@ -19,7 +19,7 @@ final class ShareFeatureBuilder {
         strings: AiutaShareStrings(
           shareButton: "Share",
         ),
-        dataProvider: AiutaShareDataProvider(
+        dataProvider: AiutaShareDataProviderCustom(
           getShareText: (productIds) async {
             return "Check out these products: ${productIds.join(', ')}";
           },

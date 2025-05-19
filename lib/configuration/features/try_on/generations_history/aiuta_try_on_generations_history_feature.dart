@@ -1,4 +1,3 @@
-import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/generations_history/aiuta_try_on_generations_history_data_provider.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/generations_history/aiuta_try_on_generations_history_icons.dart';
@@ -16,9 +15,8 @@ class AiutaTryOnGenerationsHistoryFeature {
   /// Strings used in the generations history feature.
   final AiutaTryOnGenerationsHistoryStrings strings;
 
-  /// Data provider for the generations history feature (nullable).
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final AiutaTryOnGenerationsHistoryDataProvider? dataProvider;
+  /// Data provider for the generations history feature.
+  final AiutaTryOnGenerationsHistoryDataProvider dataProvider;
 
   /// Creates an [AiutaTryOnGenerationsHistoryFeature] with the [icons] and
   /// [strings] to configure the generations history feature, and
@@ -26,7 +24,7 @@ class AiutaTryOnGenerationsHistoryFeature {
   AiutaTryOnGenerationsHistoryFeature({
     required this.icons,
     required this.strings,
-    this.dataProvider,
+    required this.dataProvider,
   });
 
   // Internal json staff

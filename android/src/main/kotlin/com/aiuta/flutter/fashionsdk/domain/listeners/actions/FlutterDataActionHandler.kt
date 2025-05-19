@@ -1,11 +1,11 @@
 package com.aiuta.flutter.fashionsdk.domain.listeners.actions
 
-import com.aiuta.fashionsdk.configuration.features.consent.standalone.dataprovider.AiutaConsentStandaloneFeatureDataProvider
+import com.aiuta.fashionsdk.configuration.features.consent.standalone.dataprovider.AiutaConsentStandaloneFeatureDataProviderCustom
 import com.aiuta.fashionsdk.configuration.features.models.images.AiutaHistoryImage
-import com.aiuta.fashionsdk.configuration.features.onboarding.dataprovider.AiutaOnboardingFeatureDataProvider
-import com.aiuta.fashionsdk.configuration.features.picker.history.dataprovider.AiutaImagePickerUploadsHistoryFeatureDataProvider
-import com.aiuta.fashionsdk.configuration.features.share.dataprovider.AiutaShareFeatureDataProvider
-import com.aiuta.fashionsdk.configuration.features.tryon.history.dataprovider.AiutaTryOnGenerationsHistoryFeatureDataProvider
+import com.aiuta.fashionsdk.configuration.features.onboarding.dataprovider.AiutaOnboardingFeatureDataProviderCustom
+import com.aiuta.fashionsdk.configuration.features.picker.history.dataprovider.AiutaImagePickerUploadsHistoryFeatureDataProviderCustom
+import com.aiuta.fashionsdk.configuration.features.share.dataprovider.AiutaShareFeatureDataProviderCustom
+import com.aiuta.fashionsdk.configuration.features.tryon.history.dataprovider.AiutaTryOnGenerationsHistoryFeatureDataProviderCustom
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.data.FlutterDataActionKey
 import com.aiuta.flutter.fashionsdk.domain.listeners.operation.OperationHandledDataProvider
 import com.aiuta.flutter.fashionsdk.domain.mappers.images.toFlutter
@@ -37,11 +37,11 @@ private fun generateKey(productIds: List<String>) = productIds.joinToString("-")
 
 object FlutterDataActionHandler :
     OperationHandledDataProvider(),
-    AiutaTryOnGenerationsHistoryFeatureDataProvider,
-    AiutaImagePickerUploadsHistoryFeatureDataProvider,
-    AiutaConsentStandaloneFeatureDataProvider,
-    AiutaShareFeatureDataProvider,
-    AiutaOnboardingFeatureDataProvider {
+    AiutaTryOnGenerationsHistoryFeatureDataProviderCustom,
+    AiutaImagePickerUploadsHistoryFeatureDataProviderCustom,
+    AiutaConsentStandaloneFeatureDataProviderCustom,
+    AiutaShareFeatureDataProviderCustom,
+    AiutaOnboardingFeatureDataProviderCustom {
 
 
     override val handlerKeyChannel: String = "aiutaDataActionsHandler"
@@ -132,7 +132,7 @@ object FlutterDataActionHandler :
         }
     }
 
-    override fun obtainConsent(consentIds: List<String>) {
+    override suspend fun obtainConsent(consentIds: List<String>) {
         val action = FlutterObtainUserConsentAction(consentIds = consentIds)
         sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
     }
@@ -151,7 +151,7 @@ object FlutterDataActionHandler :
     }
 
 
-    override fun completeOnboarding() {
+    override suspend fun completeOnboarding() {
         val action = FlutterCompleteOnboardingAction()
         sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
     }

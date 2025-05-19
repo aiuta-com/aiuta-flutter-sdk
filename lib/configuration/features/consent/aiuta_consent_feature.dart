@@ -5,7 +5,6 @@ import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_co
 import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_icons.dart';
 import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_strings.dart';
 import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_styles.dart';
-import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_consent_feature.g.dart';
@@ -81,7 +80,6 @@ class AiutaConsentStandaloneOnboardingPageFeature extends AiutaConsentFeature {
   /// Data provider for the consent feature.
   /// Used to control the obtaining of the consent and provide the list
   /// of consents that already have been accepted by the user.
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaConsentStandaloneDataProvider dataProvider;
 
   /// Creates an [AiutaConsentStandaloneOnboardingPageFeature] with the
@@ -126,7 +124,6 @@ class AiutaConsentStandaloneImagePickerPageFeature extends AiutaConsentFeature {
   /// Data provider for the consent feature.
   /// Used to control the obtaining of the consent and provide the list
   /// of consents that already have been accepted by the user.
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaConsentStandaloneDataProvider dataProvider;
 
   /// Creates an [AiutaConsentStandaloneImagePickerPageFeature] with the

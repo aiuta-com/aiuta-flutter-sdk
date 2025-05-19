@@ -2,7 +2,6 @@ import 'package:aiuta_flutter/configuration/features/share/aiuta_share_data_prov
 import 'package:aiuta_flutter/configuration/features/share/aiuta_share_icons.dart';
 import 'package:aiuta_flutter/configuration/features/share/aiuta_share_strings.dart';
 import 'package:aiuta_flutter/configuration/features/share/watermark/aiuta_share_watermark_feature.dart';
-import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_share_feature.g.dart';
@@ -24,7 +23,6 @@ class AiutaShareFeature {
 
   /// The optional data provider for the share feature to provide
   /// additional text to be shared along with the generated images.
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaShareDataProvider? dataProvider;
 
   /// Creates an [AiutaShareFeature] with optional [watermark] to be added to

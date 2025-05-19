@@ -1,5 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.picker.history
 
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterAiutaBaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.picker.history.strings.FlutterAiutaImagePickerUploadsHistoryStrings
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.picker.history.styles.FlutterAiutaImagePickerUploadsHistoryStyles
 import kotlinx.serialization.SerialName
@@ -11,5 +12,8 @@ data class FlutterAiutaImagePickerUploadsHistoryFeature(
     val strings: FlutterAiutaImagePickerUploadsHistoryStrings,
 
     @SerialName("styles")
-    val styles: FlutterAiutaImagePickerUploadsHistoryStyles
+    val styles: FlutterAiutaImagePickerUploadsHistoryStyles,
+
+    @SerialName("dataProvider")
+    val dataProvider: FlutterAiutaBaseDataProvider,
 )
