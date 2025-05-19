@@ -8,11 +8,10 @@ sealed class AiutaAuthAction {
 
   AiutaAuthAction(this.type);
 
-  // Json staff
   factory AiutaAuthAction.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as String) {
-      case 'requestJWT':
-        return RequestJWTAction.fromJson(json);
+      case 'requestJwt':
+        return RequestJwtAction.fromJson(json);
       default:
         throw Exception('Unknown auth action type');
     }
@@ -22,17 +21,16 @@ sealed class AiutaAuthAction {
 }
 
 @JsonSerializable()
-class RequestJWTAction extends AiutaAuthAction {
+class RequestJwtAction extends AiutaAuthAction {
   final String params;
 
-  RequestJWTAction({
+  RequestJwtAction({
     required this.params,
-  }) : super(AiutaAuthActionType.requestJWT);
+  }) : super(AiutaAuthActionType.requestJwt);
 
-  // Json staff
-  factory RequestJWTAction.fromJson(Map<String, dynamic> json) =>
-      _$RequestJWTActionFromJson(json);
+  factory RequestJwtAction.fromJson(Map<String, dynamic> json) =>
+      _$RequestJwtActionFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$RequestJWTActionToJson(this);
+  Map<String, dynamic> toJson() => _$RequestJwtActionToJson(this);
 }

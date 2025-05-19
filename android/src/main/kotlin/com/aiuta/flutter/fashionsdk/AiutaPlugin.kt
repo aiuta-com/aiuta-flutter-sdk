@@ -8,23 +8,18 @@ import androidx.activity.result.contract.ActivityResultContracts.RequestMultiple
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
-import com.aiuta.fashionsdk.Aiuta
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder.CONFIGURATION_KEY
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder.PRODUCT_KEY
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.CONFIGURATION_KEY
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaTryOnConfigurationHolder
-import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
-import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListener
-import com.aiuta.flutter.fashionsdk.domain.listeners.auth.AiutaJWTAuthenticationListener
-import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderHandler
-import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderListener
-import com.aiuta.flutter.fashionsdk.domain.listeners.error.AiutaErrorListener
-import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.listeners.base.handleDataActionKey
+import com.aiuta.flutter.fashionsdk.domain.listeners.flutterDataProvider
+import com.aiuta.flutter.fashionsdk.domain.listeners.flutterHandlers
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.state.AiutaSDKStateListener
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.FlutterAiutaConfiguration
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.meta.FlutterAiutaPresentationStyle
 import com.aiuta.flutter.fashionsdk.ui.history.AiutaHistoryActivity
 import com.aiuta.flutter.fashionsdk.ui.history.AiutaHistoryBottomSheetDialog
 import com.aiuta.flutter.fashionsdk.ui.main.AiutaActivity
@@ -42,10 +37,8 @@ import io.flutter.plugin.common.MethodChannel.Result
 class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOwner {
 
     private lateinit var mainChannel: MethodChannel
-    private lateinit var analyticChannel: EventChannel
-    private lateinit var actionChannel: EventChannel
-    private lateinit var authChannel: EventChannel
-    private lateinit var dataProviderChannel: EventChannel
+
+    private val eventChannelMap: MutableMap<String, EventChannel> = mutableMapOf()
     private var activity: Activity? = null
 
     private val lifecycleRegistry = LifecycleRegistry(this)
@@ -57,42 +50,25 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         mainChannel = MethodChannel(flutterPluginBinding.binaryMessenger, KEY_MAIN_CHANNEL)
         mainChannel.setMethodCallHandler(this)
 
-        // Init action handler
-        analyticChannel = EventChannel(
-            flutterPluginBinding.binaryMessenger,
-            AiutaAnalyticListener.keyChannel
-        )
-        analyticChannel.setStreamHandler(AiutaAnalyticListener)
 
-        // Init action handler
-        actionChannel = EventChannel(
-            flutterPluginBinding.binaryMessenger,
-            AiutaActionsListener.keyChannel
-        )
-        actionChannel.setStreamHandler(AiutaActionsListener)
-
-        // Init auth handler
-        authChannel = EventChannel(
-            flutterPluginBinding.binaryMessenger,
-            AiutaJWTAuthenticationListener.keyChannel
-        )
-        authChannel.setStreamHandler(AiutaJWTAuthenticationListener)
-
-        // Init data provider handler
-        dataProviderChannel = EventChannel(
-            flutterPluginBinding.binaryMessenger,
-            AiutaDataProviderListener.keyChannel
-        )
-        dataProviderChannel.setStreamHandler(AiutaDataProviderListener)
+        // Init all handlers
+        flutterHandlers.forEach { handler ->
+            eventChannelMap[handler.handlerKeyChannel] = EventChannel(
+                flutterPluginBinding.binaryMessenger,
+                handler.handlerKeyChannel
+            ).also { channel ->
+                channel.setStreamHandler(handler)
+            }
+        }
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {
-        when (call.method) {
+        when (val method = call.method) {
             // Main flow
             "startAiutaFlow" -> {
                 activity?.let { localActivity ->
                     call.aiutaScope { configuration ->
-                        if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
+                        if (configuration.userInterface.presentationStyle == FlutterAiutaPresentationStyle.FULL_SCREEN) {
                             localActivity.startActivity(
                                 Intent(
                                     localActivity,
@@ -115,7 +91,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             "startHistoryFlow" -> {
                 activity?.let { localActivity ->
                     call.aiutaScope { configuration ->
-                        if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
+                        if (configuration.userInterface.presentationStyle == FlutterAiutaPresentationStyle.FULL_SCREEN) {
                             localActivity.startActivity(
                                 Intent(
                                     localActivity,
@@ -135,61 +111,9 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                 }
             }
 
-            // Actions handling
-            "updateActiveAiutaProduct" -> {
-                val rawProduct = call.argument<String>(PRODUCT_KEY)
-                rawProduct?.let {
-                    AiutaUpdateProductListener.updateActiveSKUItem(
-                        rawProduct = rawProduct
-                    )
-                }
-                result.success(null)
-            }
-
-            // Data providing handling
-            "updateUserConsent" -> {
-                val isUserConsentObtained = call.argument<Boolean>(
-                    AiutaDataProviderListener.IS_USER_CONSENT_OBTAINED_KEY
-                )
-                isUserConsentObtained?.let { AiutaDataProviderHandler.updateIsUserConsentObtained(it) }
-                result.success(null)
-            }
-
-            "updateUploadedImages" -> {
-                val rawUploadedImages = call.argument<String>(
-                    AiutaDataProviderListener.UPLOADED_IMAGES_KEY
-                )
-                rawUploadedImages?.let { AiutaDataProviderHandler.updateUploadedImages(it) }
-                result.success(null)
-            }
-
-            "updateGeneratedImages" -> {
-                val rawGeneratedImages = call.argument<String>(
-                    AiutaDataProviderListener.GENERATED_IMAGES_KEY
-                )
-                rawGeneratedImages?.let { AiutaDataProviderHandler.updateGeneratedImages(it) }
-                result.success(null)
-            }
-
             // Configuration handling
             "configure" -> {
                 activity?.let { localActivity -> call.initAiutaScope(localActivity) }
-                result.success(null)
-            }
-
-            // Auth action handling
-            "resolveJWTAuth" -> {
-                val jwt = call.argument<String>("jwt")
-                jwt?.let { AiutaHolder.resolveJWT(jwt) }
-                result.success(null)
-            }
-
-            // Error handling
-            "notifyAboutError" -> {
-                val rawError = call.argument<String>(
-                    AiutaErrorListener.ERROR_TYPE_ARGUMENT
-                )
-                rawError?.let { AiutaErrorListener.notifyAboutError(it) }
                 result.success(null)
             }
 
@@ -199,6 +123,17 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             }
 
             else -> {
+                for (dataProvider in flutterDataProvider) {
+                    if (dataProvider.canHandleDataActionKey(method)) {
+                        dataProvider.handleDataActionKey(
+                            call = call,
+                            rawDataActionKey = method,
+                        )
+
+                        return result.success(null)
+                    }
+                }
+
                 result.notImplemented()
             }
         }
@@ -206,10 +141,10 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         mainChannel.setMethodCallHandler(null)
-        analyticChannel.setStreamHandler(null)
-        actionChannel.setStreamHandler(null)
-        authChannel.setStreamHandler(null)
-        dataProviderChannel.setStreamHandler(null)
+        for ((key, value) in eventChannelMap) {
+            value.setStreamHandler(null)
+            eventChannelMap.remove(key)
+        }
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
@@ -256,28 +191,30 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
     private fun MethodCall.initAiutaScope(
         activity: Activity,
     ) {
-        // Init platform configuration
-        AiutaConfigurationHolder.setPlatformConfiguration(argument<String>(CONFIGURATION_KEY))
+        // Init flutter configuration
+        AiutaFlutterConfigurationHolder.setFlutterConfiguration(argument<String>(CONFIGURATION_KEY))
 
         // Init Aiuta
-        val platformAiutaConfiguration = AiutaConfigurationHolder.getPlatformConfiguration()
+        val flutterAiutaConfiguration = AiutaFlutterConfigurationHolder.getFlutterConfiguration()
         AiutaHolder.setAiuta(
-            aiutaBuilder = Aiuta.Builder().setApplication(activity.application),
-            platformAiutaConfiguration = platformAiutaConfiguration,
+            context = activity,
+            flutterAiutaConfiguration = flutterAiutaConfiguration,
         )
 
-        // Init Aiuta Try On Configuration
-        AiutaTryOnConfigurationHolder.setTryOnConfiguration()
+        // Init Aiuta Configuration
+        AiutaNativeConfigurationHolder.setNativeConfiguration(
+            assetManager = activity.assets,
+        )
     }
 
     private inline fun MethodCall.aiutaScope(
-        block: (configuration: PlatformAiutaConfiguration) -> Unit,
+        block: (configuration: FlutterAiutaConfiguration) -> Unit,
     ) {
-        // Init configuration
-        AiutaConfigurationHolder.setProduct(argument<String>(PRODUCT_KEY))
+        // Init product
+        AiutaFlutterConfigurationHolder.setProduct(argument<String>(PRODUCT_KEY))
 
         // Extract platform configuration
-        val configuration = AiutaConfigurationHolder.getPlatformConfiguration()
+        val configuration = AiutaFlutterConfigurationHolder.getFlutterConfiguration()
 
         // Execute block
         block(configuration)

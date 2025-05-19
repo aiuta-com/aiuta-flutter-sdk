@@ -10,10 +10,8 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.unit.dp
 import com.aiuta.fashionsdk.tryon.compose.ui.HistoryFlow
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaTryOnConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
 import com.aiuta.flutter.fashionsdk.ui.base.BaseAiutaBottomSheetDialog
 
 class AiutaHistoryBottomSheetDialog(
@@ -24,12 +22,8 @@ class AiutaHistoryBottomSheetDialog(
 
     init {
         setContent {
-            val aiutaTheme = rememberAiutaThemeFromPlatform(
-                configuration = AiutaConfigurationHolder.getPlatformConfiguration(),
-                assetManager = context.assets
-            )
             val configuration = remember {
-                AiutaTryOnConfigurationHolder.getTryOnConfiguration()
+                AiutaNativeConfigurationHolder.getNativeConfiguration()
             }
 
             HistoryFlow(
@@ -37,9 +31,7 @@ class AiutaHistoryBottomSheetDialog(
                     .fillMaxSize()
                     .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
                     .nestedScroll(rememberNestedScrollInteropConnection()),
-                aiutaTryOnListeners = aiutaTryOnListeners,
-                aiutaTryOnConfiguration = configuration,
-                aiutaTheme = aiutaTheme,
+                aiutaConfiguration = configuration,
             )
         }
     }

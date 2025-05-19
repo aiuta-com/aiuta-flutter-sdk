@@ -6,17 +6,17 @@ part of 'aiuta_auth_action.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-RequestJWTAction _$RequestJWTActionFromJson(Map<String, dynamic> json) =>
-    RequestJWTAction(
+RequestJwtAction _$RequestJwtActionFromJson(Map<String, dynamic> json) =>
+    RequestJwtAction(
       params: json['params'] as String,
     )..type = $enumDecode(_$AiutaAuthActionTypeEnumMap, json['type']);
 
-Map<String, dynamic> _$RequestJWTActionToJson(RequestJWTAction instance) =>
+Map<String, dynamic> _$RequestJwtActionToJson(RequestJwtAction instance) =>
     <String, dynamic>{
       'type': _$AiutaAuthActionTypeEnumMap[instance.type]!,
       'params': instance.params,
     };
 
 const _$AiutaAuthActionTypeEnumMap = {
-  AiutaAuthActionType.requestJWT: 'requestJWT',
+  AiutaAuthActionType.requestJwt: 'requestJwt',
 };

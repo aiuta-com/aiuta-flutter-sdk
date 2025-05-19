@@ -10,11 +10,9 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.unit.dp
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaTryOnConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
-import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
 import com.aiuta.flutter.fashionsdk.ui.base.BaseAiutaBottomSheetDialog
 
 class AiutaBottomSheetDialog(
@@ -25,13 +23,9 @@ class AiutaBottomSheetDialog(
 
     init {
         setContent {
-            val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
-            val aiutaTheme = rememberAiutaThemeFromPlatform(
-                configuration = AiutaConfigurationHolder.getPlatformConfiguration(),
-                assetManager = context.assets
-            )
+            val product = remember { AiutaFlutterConfigurationHolder.getNativeProduct() }
             val configuration = remember {
-                AiutaTryOnConfigurationHolder.getTryOnConfiguration()
+                AiutaNativeConfigurationHolder.getNativeConfiguration()
             }
 
             AiutaTryOnFlow(
@@ -39,10 +33,8 @@ class AiutaBottomSheetDialog(
                     .fillMaxSize()
                     .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
                     .nestedScroll(rememberNestedScrollInteropConnection()),
-                aiutaTryOnListeners = aiutaTryOnListeners,
-                aiutaTryOnConfiguration = configuration,
-                aiutaTheme = aiutaTheme,
-                skuForGeneration = skuItem,
+                aiutaConfiguration = configuration,
+                productForGeneration = product,
             )
         }
     }
