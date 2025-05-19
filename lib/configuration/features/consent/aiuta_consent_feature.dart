@@ -5,7 +5,6 @@ import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_co
 import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_icons.dart';
 import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_strings.dart';
 import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_styles.dart';
-import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_consent_feature.g.dart';
