@@ -4,7 +4,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FlutterAiutaPowerBarColors(
-    @SerialName("aiuta")
-    val aiuta: FlutterAiutaPowerBarColorsScheme
-)
+enum class FlutterAiutaPowerBarColorsScheme {
+    @SerialName("standard")
+    STANDARD,
+
+    @SerialName("primary")
+    PRIMARY,
+}

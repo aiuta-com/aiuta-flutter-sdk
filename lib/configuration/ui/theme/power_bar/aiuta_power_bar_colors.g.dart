@@ -8,11 +8,16 @@ part of 'aiuta_power_bar_colors.dart';
 
 AiutaPowerBarColors _$AiutaPowerBarColorsFromJson(Map<String, dynamic> json) =>
     AiutaPowerBarColors(
-      aiuta: json['aiuta'] as String,
+      aiuta: $enumDecode(_$AiutaPowerBarColorsSchemeEnumMap, json['aiuta']),
     );
 
 Map<String, dynamic> _$AiutaPowerBarColorsToJson(
         AiutaPowerBarColors instance) =>
     <String, dynamic>{
-      'aiuta': instance.aiuta,
+      'aiuta': _$AiutaPowerBarColorsSchemeEnumMap[instance.aiuta]!,
     };
+
+const _$AiutaPowerBarColorsSchemeEnumMap = {
+  AiutaPowerBarColorsScheme.standard: 'standard',
+  AiutaPowerBarColorsScheme.primary: 'primary',
+};
