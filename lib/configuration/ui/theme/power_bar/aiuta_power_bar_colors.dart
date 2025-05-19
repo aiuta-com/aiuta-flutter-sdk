@@ -1,3 +1,4 @@
+import 'package:aiuta_flutter/configuration/ui/theme/power_bar/aiuta_power_bar_colors_scheme.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_power_bar_colors.g.dart';
@@ -6,7 +7,7 @@ part 'aiuta_power_bar_colors.g.dart';
 @JsonSerializable()
 class AiutaPowerBarColors {
   /// Color for the Aiuta branding.
-  final String aiuta;
+  final AiutaPowerBarColorsScheme aiuta;
 
   /// Creates an [AiutaPowerBarColors] with the given [aiuta] color.
   AiutaPowerBarColors({
