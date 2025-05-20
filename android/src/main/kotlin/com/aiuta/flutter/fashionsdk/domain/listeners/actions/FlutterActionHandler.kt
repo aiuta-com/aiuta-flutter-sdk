@@ -16,10 +16,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.json.Json
 
-object FlutterActionHandler:
+object FlutterActionHandler :
     BaseDataProvider(),
     AiutaTryOnCartFeatureHandler,
-    AiutaWishlistFeatureDataProvider{
+    AiutaWishlistFeatureDataProvider {
 
     override val handlerKeyChannel: String = "aiutaActionsHandler"
     override val dataActionKeys: List<WishlistDataActionKey> by lazy {
