@@ -21,8 +21,6 @@ Map<String, dynamic> _$AiutaHistoryImageToJson(AiutaHistoryImage instance) =>
     };
 
 const _$AiutaHistoryImageTypeEnumMap = {
-  AiutaHistoryImageType.uploaded: 'uploaded',
-  AiutaHistoryImageType.generated: 'generated',
-  AiutaHistoryImageType.inputModel: 'inputModel',
-  AiutaHistoryImageType.outputModel: 'outputModel',
+  AiutaHistoryImageType.user: 'user',
+  AiutaHistoryImageType.aiuta: 'aiuta',
 };

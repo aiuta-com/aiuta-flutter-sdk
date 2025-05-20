@@ -6,15 +6,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 enum class FlutterAiutaHistoryImageType {
 
-    @SerialName("uploaded")
-    UPLOADED,
+    @SerialName("user")
+    USER,
 
-    @SerialName("generated")
-    GENERATED,
-
-    @SerialName("inputModel")
-    INPUT_MODEL,
-
-    @SerialName("outputModel")
-    OUTPUT_MODEL
+    @SerialName("aiuta")
+    AIUTA,
 }
