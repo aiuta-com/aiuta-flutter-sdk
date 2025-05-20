@@ -7,6 +7,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.bottoms
 fun FlutterAiutaBottomSheetGrabber.toNative(): AiutaBottomSheetThemeGrabber {
     return object : AiutaBottomSheetThemeGrabber {
         override val width = this@toNative.width.dp
+        override val height = this@toNative.height.dp
         override val topPadding = this@toNative.topPadding.dp
     }
 }

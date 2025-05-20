@@ -30,6 +30,7 @@ final class BottomSheetThemeBuilder {
         ),
         grabber: AiutaBottomSheetGrabber(
           width: 36,
+          height: 3,
           topPadding: 8,
         ),
         toggles: AiutaBottomSheetToggles(
