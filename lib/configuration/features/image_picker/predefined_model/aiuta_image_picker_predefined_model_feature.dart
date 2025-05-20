@@ -1,3 +1,4 @@
+import 'package:aiuta_flutter/configuration/features/image_picker/predefined_model/aiuta_image_picker_predefined_model_data.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/predefined_model/aiuta_image_picker_predefined_model_icons.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/predefined_model/aiuta_image_picker_predefined_model_strings.dart';
@@ -9,6 +10,8 @@ part 'aiuta_image_picker_predefined_model_feature.g.dart';
 /// real users' photos.
 @JsonSerializable()
 class AiutaImagePickerPredefinedModelFeature {
+  final AiutaImagePickerPredefinedModelData? data;
+
   /// Icons used in the predefined model feature.
   final AiutaImagePickerPredefinedModelIcons icons;
 
@@ -18,6 +21,7 @@ class AiutaImagePickerPredefinedModelFeature {
   /// Creates an [AiutaImagePickerPredefinedModelFeature] with the [icons] and
   /// [strings] configuration.
   AiutaImagePickerPredefinedModelFeature({
+    this.data,
     required this.icons,
     required this.strings,
   });

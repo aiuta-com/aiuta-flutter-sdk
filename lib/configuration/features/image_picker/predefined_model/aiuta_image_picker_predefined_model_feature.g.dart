@@ -10,6 +10,10 @@ AiutaImagePickerPredefinedModelFeature
     _$AiutaImagePickerPredefinedModelFeatureFromJson(
             Map<String, dynamic> json) =>
         AiutaImagePickerPredefinedModelFeature(
+          data: json['data'] == null
+              ? null
+              : AiutaImagePickerPredefinedModelData.fromJson(
+                  json['data'] as Map<String, dynamic>),
           icons: AiutaImagePickerPredefinedModelIcons.fromJson(
               json['icons'] as Map<String, dynamic>),
           strings: AiutaImagePickerPredefinedModelStrings.fromJson(
@@ -19,6 +23,7 @@ AiutaImagePickerPredefinedModelFeature
 Map<String, dynamic> _$AiutaImagePickerPredefinedModelFeatureToJson(
         AiutaImagePickerPredefinedModelFeature instance) =>
     <String, dynamic>{
+      'data': instance.data,
       'icons': instance.icons,
       'strings': instance.strings,
     };
