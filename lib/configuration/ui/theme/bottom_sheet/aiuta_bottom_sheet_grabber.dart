@@ -8,12 +8,16 @@ class AiutaBottomSheetGrabber {
   /// Grabber width.
   final double width;
 
+  /// Grabber width.
+  final double height;
+
   /// Top padding for the grabber.
   final double topPadding;
 
   /// Creates an [AiutaBottomSheetGrabber] with the [width] and [topPadding].
   AiutaBottomSheetGrabber({
     required this.width,
+    required this.height,
     required this.topPadding,
   });
 
