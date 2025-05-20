@@ -19,7 +19,6 @@ class AiutaWishlistFeature {
 
   /// Data provider for the wishlist feature to sync the wishlist
   /// between the SDK and the host application.
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaWishlistDataProvider dataProvider;
 
   /// Creates an [AiutaWishlistFeature] with the given [icons], [strings],

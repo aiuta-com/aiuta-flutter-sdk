@@ -1,5 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.wishlist
 
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterAiutaBaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.wishlist.icons.FlutterAiutaWishlistIcons
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.wishlist.strings.FlutterAiutaWishlistStrings
 import kotlinx.serialization.SerialName
@@ -11,5 +12,8 @@ data class FlutterAiutaWishlistFeature(
     val icons: FlutterAiutaWishlistIcons,
 
     @SerialName("strings")
-    val strings: FlutterAiutaWishlistStrings
+    val strings: FlutterAiutaWishlistStrings,
+
+    @SerialName("dataProvider")
+    val dataProvider: FlutterAiutaBaseDataProvider,
 )

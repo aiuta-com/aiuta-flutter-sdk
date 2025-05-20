@@ -9,6 +9,7 @@ import 'package:aiuta_flutter/configuration/features/image_picker/uploads_histor
 import 'package:aiuta_flutter/configuration/features/onboarding/aiuta_onboarding_data_provider.dart';
 import 'package:aiuta_flutter/configuration/features/share/aiuta_share_data_provider.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/generations_history/aiuta_try_on_generations_history_data_provider.dart';
+import 'package:aiuta_flutter/configuration/features/wishlist/aiuta_wishlist_data_provider.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_auth_action.dart';
