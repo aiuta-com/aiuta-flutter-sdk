@@ -165,13 +165,13 @@ class MethodChannelAiuta extends AiutaPlatform {
   }
 
   @override
-  Future<void> updateWishlistProductsIds({
-    required List<String> wishlistProductsIds,
+  Future<void> updateWishlistProductIds({
+    required List<String> wishlistProductIds,
   }) {
     return methodChannel.invokeMethod(
-      'updateWishlistProductsIds',
+      'updateWishlistProductIds',
       {
-        "wishlistProductsIds": jsonEncode(wishlistProductsIds),
+        "wishlistProductsId": jsonEncode(wishlistProductIds),
       },
     );
   }

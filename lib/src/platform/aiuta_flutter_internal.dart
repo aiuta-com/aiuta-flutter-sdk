@@ -243,7 +243,7 @@ void _observeAiutaDataActions(AiutaConfiguration configuration) {
               action: action,
               impl: () async => dataProvider.addGeneratedImages(
                 action.generatedImages,
-                action.productsIds,
+                action.productIds,
               ),
             );
           }

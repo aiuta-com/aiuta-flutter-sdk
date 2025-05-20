@@ -26,8 +26,8 @@ object FlutterActionHandler:
         listOf(UpdateWishlist())
     }
 
-    private val _wishlistProductsIds: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
-    override val wishlistProductsIds: StateFlow<List<String>> = _wishlistProductsIds
+    private val _wishlistProductIds: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
+    override val wishlistProductIds: StateFlow<List<String>> = _wishlistProductIds
 
     override fun addToCart(productId: String) {
         val action = FlutterAddToCartAction(
@@ -54,7 +54,7 @@ object FlutterActionHandler:
                 val rawProductIds = call.argument<String>(dataActionKey.PARAMS_WISHLIST_IDS)
                 rawProductIds?.let {
                     val productIds = json.decodeFromString<List<String>>(rawProductIds)
-                    _wishlistProductsIds.value = productIds
+                    _wishlistProductIds.value = productIds
                 }
             }
         }

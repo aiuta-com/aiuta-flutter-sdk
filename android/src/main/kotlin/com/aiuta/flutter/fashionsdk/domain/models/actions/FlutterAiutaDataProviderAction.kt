@@ -92,8 +92,8 @@ class FlutterDeleteUploadedImageAction(
 class FlutterAddGeneratedImageAction(
     @SerialName("id")
     override val id: String = generateDataActionId(),
-    @SerialName("productsIds")
-    val productsIds: List<String>,
+    @SerialName("productIds")
+    val productIds: List<String>,
     @SerialName("generatedImages")
     val generatedImages: List<FlutterAiutaHistoryImage>
 ) : FlutterAiutaDataProviderAction()

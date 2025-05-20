@@ -112,7 +112,7 @@ object FlutterDataActionHandler :
     ) {
         return callbackWithOperationHandling {
             val action = FlutterAddGeneratedImageAction(
-                productsIds = productIds,
+                productIds = productIds,
                 generatedImages = images.map { it.toFlutter() }
             )
             sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
