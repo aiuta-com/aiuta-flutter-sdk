@@ -18,6 +18,7 @@ void _listenDataProviderChanges(AiutaConfiguration configuration) {
   _listenConsentChanges(configuration);
   _listenUploadsHistoryChanges(configuration);
   _listenGenerationsHistoryChanges(configuration);
+  _listenWishlistChanges(configuration);
 }
 
 void _listenOnboardingChanges(AiutaConfiguration configuration) {
@@ -98,6 +99,21 @@ void _listenGenerationsHistoryChanges(AiutaConfiguration configuration) {
   }
 }
 
+void _listenWishlistChanges(AiutaConfiguration configuration) {
+  final wishlistDataProvider = configuration.features.wishlist?.dataProvider;
+
+  if (wishlistDataProvider is AiutaWishlistDataProviderCustom) {
+    final wishlistListener = () {
+      _platform.updateWishlistProductIds(
+        wishlistProductIds: wishlistDataProvider.wishlistProductIds.value,
+      );
+    };
+
+    wishlistListener();
+    wishlistDataProvider.wishlistProductIds.addListener(wishlistListener);
+  }
+}
+
 // Observe data providers callbacks
 
 void _observeAiutaAuthActions(AiutaConfiguration configuration) {
@@ -137,8 +153,14 @@ void _observeAiutaActions(AiutaConfiguration configuration) {
     (action) async {
       switch (action) {
         case AddToWishlistAction():
-          configuration.features.wishlist?.dataProvider
-              .setProductInWishlist(action.productId, action.isInWishlist);
+          final dataProvider = configuration.features.wishlist?.dataProvider;
+
+          if (dataProvider is AiutaWishlistDataProviderCustom) {
+            dataProvider.setProductInWishlist(
+              action.productId,
+              action.isInWishlist,
+            );
+          }
           break;
         case AddToCartAction():
           configuration.features.tryOn.cart.handler.addToCart(action.productId);
@@ -243,7 +265,7 @@ void _observeAiutaDataActions(AiutaConfiguration configuration) {
               action: action,
               impl: () async => dataProvider.addGeneratedImages(
                 action.generatedImages,
-                action.productsIds,
+                action.productIds,
               ),
             );
           }

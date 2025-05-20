@@ -117,11 +117,11 @@ class DeleteUploadedImagesAction extends AiutaDataAction {
 
 @JsonSerializable()
 class AddGeneratedImagesAction extends AiutaDataAction {
-  final List<String> productsIds;
+  final List<String> productIds;
   final List<AiutaHistoryImage> generatedImages;
 
   AddGeneratedImagesAction({
-    required this.productsIds,
+    required this.productIds,
     required this.generatedImages,
   }) : super(AiutaDataActionType.addGeneratedImages);
 

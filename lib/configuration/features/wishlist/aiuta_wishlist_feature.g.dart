@@ -12,22 +12,14 @@ AiutaWishlistFeature _$AiutaWishlistFeatureFromJson(
       icons: AiutaWishlistIcons.fromJson(json['icons'] as Map<String, dynamic>),
       strings: AiutaWishlistStrings.fromJson(
           json['strings'] as Map<String, dynamic>),
-      dataProvider: toNull(json['dataProvider']),
+      dataProvider: AiutaWishlistDataProvider.fromJson(
+          json['dataProvider'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AiutaWishlistFeatureToJson(
-    AiutaWishlistFeature instance) {
-  final val = <String, dynamic>{
-    'icons': instance.icons,
-    'strings': instance.strings,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('dataProvider', toNull(instance.dataProvider));
-  return val;
-}
+        AiutaWishlistFeature instance) =>
+    <String, dynamic>{
+      'icons': instance.icons,
+      'strings': instance.strings,
+      'dataProvider': instance.dataProvider,
+    };

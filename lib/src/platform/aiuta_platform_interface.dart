@@ -123,11 +123,11 @@ abstract class AiutaPlatform extends PlatformInterface {
     );
   }
 
-  Future<void> updateWishlistProductsIds({
-    required List<String> wishlistProductsIds,
+  Future<void> updateWishlistProductIds({
+    required List<String> wishlistProductIds,
   }) {
     throw UnimplementedError(
-      'updateWishlistProductsIds() has not been implemented.',
+      'updateWishlistProductIds() has not been implemented.',
     );
   }
 

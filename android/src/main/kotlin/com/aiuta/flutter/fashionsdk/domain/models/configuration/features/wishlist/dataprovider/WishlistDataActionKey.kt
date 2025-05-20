@@ -4,7 +4,7 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.base.data.FlutterDataAction
 
 sealed interface WishlistDataActionKey : FlutterDataActionKey {
     class UpdateWishlist: WishlistDataActionKey {
-        override val key: String = "updateWishlistProductsIds"
-        val PARAMS_WISHLIST_IDS = "wishlistProductsIds"
+        override val key: String = "updateWishlistProductIds"
+        val PARAMS_WISHLIST_IDS = "wishlistProductIds"
     }
 }

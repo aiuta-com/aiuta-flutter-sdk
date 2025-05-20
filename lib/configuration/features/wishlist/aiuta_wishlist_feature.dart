@@ -1,7 +1,6 @@
 import 'package:aiuta_flutter/configuration/features/wishlist/aiuta_wishlist_data_provider.dart';
 import 'package:aiuta_flutter/configuration/features/wishlist/aiuta_wishlist_icons.dart';
 import 'package:aiuta_flutter/configuration/features/wishlist/aiuta_wishlist_strings.dart';
-import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_wishlist_feature.g.dart';
@@ -19,7 +18,6 @@ class AiutaWishlistFeature {
 
   /// Data provider for the wishlist feature to sync the wishlist
   /// between the SDK and the host application.
-  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaWishlistDataProvider dataProvider;
 
   /// Creates an [AiutaWishlistFeature] with the given [icons], [strings],
