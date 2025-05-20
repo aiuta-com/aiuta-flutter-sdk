@@ -24,19 +24,15 @@ fun AiutaHistoryImage.toFlutter(): FlutterAiutaHistoryImage {
 // Types
 fun FlutterAiutaHistoryImageType.toNative(): AiutaHistoryImageType {
     return when (this) {
-        FlutterAiutaHistoryImageType.UPLOADED -> AiutaHistoryImageType.UPLOADED
-        FlutterAiutaHistoryImageType.GENERATED -> AiutaHistoryImageType.GENERATED
-        FlutterAiutaHistoryImageType.INPUT_MODEL -> AiutaHistoryImageType.INPUT_MODEL
-        FlutterAiutaHistoryImageType.OUTPUT_MODEL -> AiutaHistoryImageType.OUTPUT_MODEL
+        FlutterAiutaHistoryImageType.USER -> AiutaHistoryImageType.USER
+        FlutterAiutaHistoryImageType.AIUTA -> AiutaHistoryImageType.AIUTA
     }
 }
 
 
 fun AiutaHistoryImageType.toFlutter(): FlutterAiutaHistoryImageType {
     return when (this) {
-        AiutaHistoryImageType.UPLOADED -> FlutterAiutaHistoryImageType.UPLOADED
-        AiutaHistoryImageType.GENERATED -> FlutterAiutaHistoryImageType.GENERATED
-        AiutaHistoryImageType.INPUT_MODEL -> FlutterAiutaHistoryImageType.INPUT_MODEL
-        AiutaHistoryImageType.OUTPUT_MODEL -> FlutterAiutaHistoryImageType.OUTPUT_MODEL
+        AiutaHistoryImageType.USER -> FlutterAiutaHistoryImageType.USER
+        AiutaHistoryImageType.AIUTA -> FlutterAiutaHistoryImageType.AIUTA
     }
 }
