@@ -171,7 +171,7 @@ class MethodChannelAiuta extends AiutaPlatform {
     return methodChannel.invokeMethod(
       'updateWishlistProductIds',
       {
-        "wishlistProductsId": jsonEncode(wishlistProductIds),
+        "wishlistProductIds": jsonEncode(wishlistProductIds),
       },
     );
   }
