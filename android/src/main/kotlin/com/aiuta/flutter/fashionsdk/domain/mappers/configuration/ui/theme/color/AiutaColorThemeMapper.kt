@@ -2,10 +2,12 @@ package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.color
 
 import androidx.compose.ui.graphics.Color
 import com.aiuta.fashionsdk.configuration.ui.theme.color.AiutaColorTheme
+import com.aiuta.fashionsdk.configuration.ui.theme.color.AiutaColorThemeScheme
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.color.FlutterAiutaColorTheme
 
 fun FlutterAiutaColorTheme.toNative(): AiutaColorTheme {
     return object : AiutaColorTheme {
+        override val scheme: AiutaColorThemeScheme = this@toNative.scheme.toNative()
         override val brand = this@toNative.brand.toColor()
         override val primary = this@toNative.primary.toColor()
         override val secondary = this@toNative.secondary.toColor()
