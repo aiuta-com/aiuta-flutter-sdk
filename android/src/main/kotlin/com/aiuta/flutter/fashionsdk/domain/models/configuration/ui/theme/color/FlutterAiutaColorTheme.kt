@@ -5,6 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class FlutterAiutaColorTheme(
+    @SerialName("scheme")
+    val scheme: FlutterAiutaColorScheme,
+
     @SerialName("brand")
     val brand: String,
 
