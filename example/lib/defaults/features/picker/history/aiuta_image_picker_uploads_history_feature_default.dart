@@ -2,7 +2,7 @@ import 'package:aiuta_flutter/configuration/features/image_picker/uploads_histor
 import 'package:aiuta_flutter/configuration/features/image_picker/uploads_history/aiuta_image_picker_uploads_history_feature.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/uploads_history/aiuta_image_picker_uploads_history_strings.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/uploads_history/aiuta_image_picker_uploads_history_styles.dart';
-import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
+import 'package:aiuta_flutter/models/images/aiuta_input_image.dart';
 import 'package:flutter/cupertino.dart';
 
 final class ImagePickerUploadsHistoryFeatureBuilder {
@@ -12,7 +12,7 @@ final class ImagePickerUploadsHistoryFeatureBuilder {
       {required this.isPredefinedModelAvailable});
 
   AiutaImagePickerUploadsHistoryFeature build() {
-    final uploadedImagesNotifier = ValueNotifier<List<AiutaHistoryImage>>([]);
+    final uploadedImagesNotifier = ValueNotifier<List<AiutaInputImage>>([]);
 
     return AiutaImagePickerUploadsHistoryFeature(
       strings: AiutaImagePickerUploadsHistoryStrings(
@@ -37,7 +37,7 @@ final class ImagePickerUploadsHistoryFeatureBuilder {
           // Just for check - add delay
           await Future.delayed(const Duration(seconds: 2));
           var uploaded =
-              List<AiutaHistoryImage>.from(uploadedImagesNotifier.value);
+              List<AiutaInputImage>.from(uploadedImagesNotifier.value);
           images.forEach((image) {
             uploaded.removeWhere((test) {
               return test.id == image.id;
@@ -47,7 +47,7 @@ final class ImagePickerUploadsHistoryFeatureBuilder {
         },
         selectUploadedImage: (image) async {
           var uploaded =
-              List<AiutaHistoryImage>.from(uploadedImagesNotifier.value);
+              List<AiutaInputImage>.from(uploadedImagesNotifier.value);
           uploaded.removeWhere((test) {
             return test.id == image.id;
           });

@@ -1,5 +1,5 @@
 import 'package:aiuta_flutter/configuration/features/base/aiuta_data_provider_type.dart';
-import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
+import 'package:aiuta_flutter/models/images/aiuta_generated_image.dart';
 import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -59,16 +59,16 @@ class AiutaTryOnGenerationsHistoryDataProviderCustom
     extends AiutaTryOnGenerationsHistoryDataProvider {
   /// ValueListenable list of the generated images history.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final ValueListenable<List<AiutaHistoryImage>> generatedImages;
+  final ValueListenable<List<AiutaGeneratedImage>> generatedImages;
 
   /// Callback to add generated images.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final Future<void> Function(List<AiutaHistoryImage>, List<String>)
+  final Future<void> Function(List<AiutaGeneratedImage>, List<String>)
       addGeneratedImages;
 
   /// Callback to delete generated images.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final Future<void> Function(List<AiutaHistoryImage>) deleteGeneratedImages;
+  final Future<void> Function(List<AiutaGeneratedImage>) deleteGeneratedImages;
 
   /// Creates an [AiutaTryOnGenerationsHistoryDataProvider] with the
   /// [generatedImages] list of users' generated images history,

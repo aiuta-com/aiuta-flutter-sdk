@@ -1,5 +1,6 @@
+import 'package:aiuta_flutter/models/images/aiuta_generated_image.dart';
+import 'package:aiuta_flutter/models/images/aiuta_input_image.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_data_action_type.dart';
-import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_data_action.g.dart';
@@ -70,7 +71,7 @@ class ObtainUserConsentsIdsAction extends AiutaDataAction {
 
 @JsonSerializable()
 class AddUploadedImagesAction extends AiutaDataAction {
-  final List<AiutaHistoryImage> uploadedImages;
+  final List<AiutaInputImage> uploadedImages;
 
   AddUploadedImagesAction({
     required this.uploadedImages,
@@ -85,7 +86,7 @@ class AddUploadedImagesAction extends AiutaDataAction {
 
 @JsonSerializable()
 class SelectUploadedImageAction extends AiutaDataAction {
-  final AiutaHistoryImage uploadedImage;
+  final AiutaInputImage uploadedImage;
 
   SelectUploadedImageAction({
     required this.uploadedImage,
@@ -100,7 +101,7 @@ class SelectUploadedImageAction extends AiutaDataAction {
 
 @JsonSerializable()
 class DeleteUploadedImagesAction extends AiutaDataAction {
-  final List<AiutaHistoryImage> uploadedImages;
+  final List<AiutaInputImage> uploadedImages;
 
   DeleteUploadedImagesAction({
     required this.uploadedImages,
@@ -118,7 +119,7 @@ class DeleteUploadedImagesAction extends AiutaDataAction {
 @JsonSerializable()
 class AddGeneratedImagesAction extends AiutaDataAction {
   final List<String> productIds;
-  final List<AiutaHistoryImage> generatedImages;
+  final List<AiutaGeneratedImage> generatedImages;
 
   AddGeneratedImagesAction({
     required this.productIds,
@@ -134,7 +135,7 @@ class AddGeneratedImagesAction extends AiutaDataAction {
 
 @JsonSerializable()
 class DeleteGeneratedImagesAction extends AiutaDataAction {
-  final List<AiutaHistoryImage> generatedImages;
+  final List<AiutaGeneratedImage> generatedImages;
 
   DeleteGeneratedImagesAction({
     required this.generatedImages,

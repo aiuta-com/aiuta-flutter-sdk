@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_event.dart';
-import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
+import 'package:aiuta_flutter/models/images/aiuta_generated_image.dart';
+import 'package:aiuta_flutter/models/images/aiuta_input_image.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_auth_action.dart';
@@ -142,7 +143,7 @@ class MethodChannelAiuta extends AiutaPlatform {
 
   @override
   Future<void> updateUploadedImages({
-    required List<AiutaHistoryImage> uploadedImages,
+    required List<AiutaInputImage> uploadedImages,
   }) {
     return methodChannel.invokeMethod(
       'updateUploadedImages',
@@ -154,7 +155,7 @@ class MethodChannelAiuta extends AiutaPlatform {
 
   @override
   Future<void> updateGeneratedImages({
-    required List<AiutaHistoryImage> generatedImages,
+    required List<AiutaGeneratedImage> generatedImages,
   }) {
     return methodChannel.invokeMethod(
       'updateGeneratedImages',

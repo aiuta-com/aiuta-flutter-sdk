@@ -1,11 +1,11 @@
-import 'package:aiuta_flutter/models/images/aiuta_history_image_type.dart';
+import 'package:aiuta_flutter/models/images/aiuta_owner_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'aiuta_history_image.g.dart';
+part 'aiuta_input_image.g.dart';
 
 /// General image model of any history flows
 @JsonSerializable()
-class AiutaHistoryImage {
+class AiutaInputImage {
   /// ID of the uploaded image.
   final String id;
 
@@ -13,20 +13,20 @@ class AiutaHistoryImage {
   final String url;
 
   /// Type of the image.
-  final AiutaHistoryImageType type;
+  final AiutaOwnerType type;
 
-  /// Creates an [AiutaHistoryImage] with the given unique [id] and [url] path,
+  /// Creates an [AiutaInputImage] with the given unique [id] and [url] path,
   /// [type] of the image defines the way how the image should be stored and
   /// removed from the users' history.
-  AiutaHistoryImage({
+  AiutaInputImage({
     required this.id,
     required this.url,
     required this.type,
   });
 
   // Internal json staff
-  factory AiutaHistoryImage.fromJson(Map<String, dynamic> json) =>
-      _$AiutaHistoryImageFromJson(json);
+  factory AiutaInputImage.fromJson(Map<String, dynamic> json) =>
+      _$AiutaInputImageFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AiutaHistoryImageToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaInputImageToJson(this);
 }
