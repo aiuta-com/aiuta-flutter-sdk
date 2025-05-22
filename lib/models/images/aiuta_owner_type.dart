@@ -1,5 +1,5 @@
 /// Enum representing the type of image in the Aiuta history.
-enum AiutaHistoryImageType {
+enum AiutaOwnerType {
   /// Image uploaded by the user (taken from the camera or gallery).
   /// This image belongs to the user.
   /// When the user removes the image from the history,

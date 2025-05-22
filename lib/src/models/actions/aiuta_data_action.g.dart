@@ -52,7 +52,7 @@ AddUploadedImagesAction _$AddUploadedImagesActionFromJson(
         Map<String, dynamic> json) =>
     AddUploadedImagesAction(
       uploadedImages: (json['uploadedImages'] as List<dynamic>)
-          .map((e) => AiutaHistoryImage.fromJson(e as Map<String, dynamic>))
+          .map((e) => AiutaInputImage.fromJson(e as Map<String, dynamic>))
           .toList(),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
@@ -69,7 +69,7 @@ Map<String, dynamic> _$AddUploadedImagesActionToJson(
 SelectUploadedImageAction _$SelectUploadedImageActionFromJson(
         Map<String, dynamic> json) =>
     SelectUploadedImageAction(
-      uploadedImage: AiutaHistoryImage.fromJson(
+      uploadedImage: AiutaInputImage.fromJson(
           json['uploadedImage'] as Map<String, dynamic>),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
@@ -87,7 +87,7 @@ DeleteUploadedImagesAction _$DeleteUploadedImagesActionFromJson(
         Map<String, dynamic> json) =>
     DeleteUploadedImagesAction(
       uploadedImages: (json['uploadedImages'] as List<dynamic>)
-          .map((e) => AiutaHistoryImage.fromJson(e as Map<String, dynamic>))
+          .map((e) => AiutaInputImage.fromJson(e as Map<String, dynamic>))
           .toList(),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
@@ -108,7 +108,7 @@ AddGeneratedImagesAction _$AddGeneratedImagesActionFromJson(
           .map((e) => e as String)
           .toList(),
       generatedImages: (json['generatedImages'] as List<dynamic>)
-          .map((e) => AiutaHistoryImage.fromJson(e as Map<String, dynamic>))
+          .map((e) => AiutaGeneratedImage.fromJson(e as Map<String, dynamic>))
           .toList(),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
@@ -127,7 +127,7 @@ DeleteGeneratedImagesAction _$DeleteGeneratedImagesActionFromJson(
         Map<String, dynamic> json) =>
     DeleteGeneratedImagesAction(
       generatedImages: (json['generatedImages'] as List<dynamic>)
-          .map((e) => AiutaHistoryImage.fromJson(e as Map<String, dynamic>))
+          .map((e) => AiutaGeneratedImage.fromJson(e as Map<String, dynamic>))
           .toList(),
     )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])

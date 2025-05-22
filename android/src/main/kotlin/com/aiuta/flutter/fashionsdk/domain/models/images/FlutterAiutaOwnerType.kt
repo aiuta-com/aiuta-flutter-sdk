@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class FlutterAiutaHistoryImageType {
+enum class FlutterAiutaOwnerType {
 
     @SerialName("user")
     USER,

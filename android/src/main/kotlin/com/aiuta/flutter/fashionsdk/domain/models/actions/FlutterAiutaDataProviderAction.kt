@@ -1,6 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.models.actions
 
-import com.aiuta.flutter.fashionsdk.domain.models.images.FlutterAiutaHistoryImage
+import com.aiuta.flutter.fashionsdk.domain.models.images.FlutterAiutaGeneratedImage
+import com.aiuta.flutter.fashionsdk.domain.models.images.FlutterAiutaInputImage
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -65,7 +66,7 @@ class FlutterAddUploadedImageAction(
     @SerialName("id")
     override val id: String = generateDataActionId(),
     @SerialName("uploadedImages")
-    val uploadedImages: List<FlutterAiutaHistoryImage>
+    val uploadedImages: List<FlutterAiutaInputImage>
 ) : FlutterAiutaDataProviderAction()
 
 @Serializable
@@ -74,7 +75,7 @@ class FlutterSelectUploadedImageAction(
     @SerialName("id")
     override val id: String = generateDataActionId(),
     @SerialName("uploadedImage")
-    val uploadedImage: FlutterAiutaHistoryImage
+    val uploadedImage: FlutterAiutaInputImage
 ) : FlutterAiutaDataProviderAction()
 
 @Serializable
@@ -83,7 +84,7 @@ class FlutterDeleteUploadedImageAction(
     @SerialName("id")
     override val id: String = generateDataActionId(),
     @SerialName("uploadedImages")
-    val uploadedImages: List<FlutterAiutaHistoryImage>
+    val uploadedImages: List<FlutterAiutaInputImage>
 ) : FlutterAiutaDataProviderAction()
 
 
@@ -95,7 +96,7 @@ class FlutterAddGeneratedImageAction(
     @SerialName("productIds")
     val productIds: List<String>,
     @SerialName("generatedImages")
-    val generatedImages: List<FlutterAiutaHistoryImage>
+    val generatedImages: List<FlutterAiutaGeneratedImage>
 ) : FlutterAiutaDataProviderAction()
 
 @Serializable
@@ -104,7 +105,7 @@ class FlutterDeleteGeneratedImageAction(
     @SerialName("id")
     override val id: String = generateDataActionId(),
     @SerialName("generatedImages")
-    val generatedImages: List<FlutterAiutaHistoryImage>
+    val generatedImages: List<FlutterAiutaGeneratedImage>
 ) : FlutterAiutaDataProviderAction()
 
 @Serializable

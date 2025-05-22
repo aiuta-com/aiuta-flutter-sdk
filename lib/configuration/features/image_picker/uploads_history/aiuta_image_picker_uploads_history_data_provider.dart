@@ -1,5 +1,5 @@
 import 'package:aiuta_flutter/configuration/features/base/aiuta_data_provider_type.dart';
-import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
+import 'package:aiuta_flutter/models/images/aiuta_input_image.dart';
 import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -57,23 +57,23 @@ class AiutaImagePickerUploadsHistoryDataProviderCustom
     extends AiutaImagePickerUploadsHistoryDataProvider {
   /// Uploaded images history list.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final ValueListenable<List<AiutaHistoryImage>> uploadedImages;
+  final ValueListenable<List<AiutaInputImage>> uploadedImages;
 
   /// Callback to add uploaded images.
   /// The newly added images should be added to the beginning of the
   /// [uploadedImages] list.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final Future<void> Function(List<AiutaHistoryImage>) addUploadedImages;
+  final Future<void> Function(List<AiutaInputImage>) addUploadedImages;
 
   /// Callback to delete uploaded images.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final Future<void> Function(List<AiutaHistoryImage>) deleteUploadedImages;
+  final Future<void> Function(List<AiutaInputImage>) deleteUploadedImages;
 
   /// Callback to select an uploaded image for reuse.
   /// When user selects an image from the history it should be moved to
   /// the beginning of the [uploadedImages] list.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final Future<void> Function(AiutaHistoryImage) selectUploadedImage;
+  final Future<void> Function(AiutaInputImage) selectUploadedImage;
 
   /// Creates an [AiutaImagePickerUploadsHistoryDataProviderCustom] with the
   /// required [uploadedImages] list that will be displayed in exact order

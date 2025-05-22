@@ -3,12 +3,13 @@ import 'package:aiuta_flutter/configuration/features/try_on/generations_history/
 import 'package:aiuta_flutter/configuration/features/try_on/generations_history/aiuta_try_on_generations_history_icons.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/generations_history/aiuta_try_on_generations_history_strings.dart';
 import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
-import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
+import 'package:aiuta_flutter/models/images/aiuta_generated_image.dart';
 import 'package:flutter/material.dart';
 
 final class TryOnGenerationsHistoryFeatureBuilder {
   AiutaTryOnGenerationsHistoryFeature build() {
-    final generatedImagesNotifier = ValueNotifier<List<AiutaHistoryImage>>([]);
+    final generatedImagesNotifier =
+        ValueNotifier<List<AiutaGeneratedImage>>([]);
 
     return AiutaTryOnGenerationsHistoryFeature(
       icons: AiutaTryOnGenerationsHistoryIcons(
@@ -21,7 +22,7 @@ final class TryOnGenerationsHistoryFeatureBuilder {
         generatedImages: generatedImagesNotifier,
         addGeneratedImages: (newImages, _) async {
           var generated =
-              List<AiutaHistoryImage>.from(generatedImagesNotifier.value);
+              List<AiutaGeneratedImage>.from(generatedImagesNotifier.value);
           generated.insertAll(0, newImages);
           generatedImagesNotifier.value = generated;
         },
@@ -29,7 +30,7 @@ final class TryOnGenerationsHistoryFeatureBuilder {
           // Just for check - add deley
           await Future.delayed(const Duration(seconds: 2));
           var generated =
-              List<AiutaHistoryImage>.from(generatedImagesNotifier.value);
+              List<AiutaGeneratedImage>.from(generatedImagesNotifier.value);
           images.forEach((image) {
             generated.removeWhere((test) {
               return test.id == image.id;
