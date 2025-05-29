@@ -6,14 +6,22 @@ part of 'aiuta_error_snackbar_icons.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaErrorSnackbarIcons _$AiutaErrorSnackbarIconsFromJson(
+AiutaErrorSnackbarIconsBuiltIn _$AiutaErrorSnackbarIconsBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaErrorSnackbarIcons(
+    AiutaErrorSnackbarIconsBuiltIn();
+
+Map<String, dynamic> _$AiutaErrorSnackbarIconsBuiltInToJson(
+        AiutaErrorSnackbarIconsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaErrorSnackbarIconsCustom _$AiutaErrorSnackbarIconsCustomFromJson(
+        Map<String, dynamic> json) =>
+    AiutaErrorSnackbarIconsCustom(
       error36: AiutaIcon.fromJson(json['error36'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$AiutaErrorSnackbarIconsToJson(
-        AiutaErrorSnackbarIcons instance) =>
+Map<String, dynamic> _$AiutaErrorSnackbarIconsCustomToJson(
+        AiutaErrorSnackbarIconsCustom instance) =>
     <String, dynamic>{
       'error36': instance.error36,
     };

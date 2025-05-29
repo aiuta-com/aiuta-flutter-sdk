@@ -24,7 +24,7 @@ final class TryOnFeatureBuilder {
         toggles: AiutaTryOnToggles(
           isBackgroundExecutionAllowed: false,
         ),
-        icons: AiutaTryOnIcons(
+        icons: AiutaTryOnIconsCustom(
           tryOn20: AiutaIcon(path: "res/icons/ic_tryon_20.png"),
         ),
         strings: AiutaTryOnStringsCustom(

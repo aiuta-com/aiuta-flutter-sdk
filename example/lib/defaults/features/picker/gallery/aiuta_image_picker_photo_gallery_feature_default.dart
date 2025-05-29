@@ -6,7 +6,7 @@ import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 final class ImagePickerPhotoGalleryFeatureBuilder {
   AiutaImagePickerPhotoGalleryFeature build() =>
       AiutaImagePickerPhotoGalleryFeature(
-        icons: AiutaImagePickerPhotoGalleryIcons(
+        icons: AiutaImagePickerPhotoGalleryIconsCustom(
           gallery24: AiutaIcon(path: "res/icons/ic_gallery_24.png"),
         ),
         strings: AiutaImagePickerPhotoGalleryStringsCustom(

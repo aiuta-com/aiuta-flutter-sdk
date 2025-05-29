@@ -18,7 +18,7 @@ final class OnboardingBestResultsPageFeatureBuilder {
             "res/images/onboarding_bad_image_2.png",
           ],
         ),
-        icons: AiutaOnboardingBestResultsPageIcons(
+        icons: AiutaOnboardingBestResultsPageIconsCustom(
           onboardingBestResultsGood24: AiutaIcon(
               path: "res/icons/ic_onboarding_best_results_good_24.png"),
           onboardingBestResultsBad24: AiutaIcon(

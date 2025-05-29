@@ -12,7 +12,7 @@ final class TryOnGenerationsHistoryFeatureBuilder {
         ValueNotifier<List<AiutaGeneratedImage>>([]);
 
     return AiutaTryOnGenerationsHistoryFeature(
-      icons: AiutaTryOnGenerationsHistoryIcons(
+      icons: AiutaTryOnGenerationsHistoryIconsCustom(
         history24: AiutaIcon(path: "res/icons/ic_history_24.png"),
       ),
       strings: AiutaTryOnGenerationsHistoryStringsCustom(

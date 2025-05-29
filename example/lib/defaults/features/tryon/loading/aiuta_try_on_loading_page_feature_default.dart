@@ -5,9 +5,7 @@ import 'package:aiuta_flutter/configuration/features/try_on/loading_page/aiuta_t
 
 final class TryOnLoadingPageFeatureBuilder {
   AiutaTryOnLoadingPageFeature build() => AiutaTryOnLoadingPageFeature(
-        icons: AiutaTryOnLoadingPageIcons(
-          loading14: null,
-        ),
+        icons: AiutaTryOnLoadingPageIconsBuiltIn(),
         strings: AiutaTryOnLoadingPageStringsCustom(
           tryOnLoadingStatusUploadingImage: "Uploading image",
           tryOnLoadingStatusScanningBody: "Scanning your body",

@@ -6,7 +6,7 @@ import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 final class ImagePickerPredefinedModelFeatureBuilder {
   AiutaImagePickerPredefinedModelFeature build() =>
       AiutaImagePickerPredefinedModelFeature(
-        icons: AiutaImagePickerPredefinedModelIcons(
+        icons: AiutaImagePickerPredefinedModelIconsCustom(
           selectModels24: AiutaIcon(path: "res/icons/ic_select_model_24.png"),
         ),
         strings: AiutaImagePickerPredefinedModelStringsCustom(

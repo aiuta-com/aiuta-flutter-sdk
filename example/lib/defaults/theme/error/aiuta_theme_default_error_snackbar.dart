@@ -10,7 +10,7 @@ final class ErrorSnackbarThemeBuilder {
           defaultErrorMessage: "Something went wrong. Please try again later",
           tryAgainButton: "Try again",
         ),
-        icons: AiutaErrorSnackbarIcons(
+        icons: AiutaErrorSnackbarIconsCustom(
           error36: AiutaIcon(path: "res/icons/ic_error_36.png"),
         ),
         colors: AiutaErrorSnackbarColors(

@@ -4,7 +4,7 @@ import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 
 final class TryOnWithOtherPhotoFeatureBuilder {
   AiutaTryOnWithOtherPhotoFeature build() => AiutaTryOnWithOtherPhotoFeature(
-        icons: AiutaTryOnWithOtherPhotoIcons(
+        icons: AiutaTryOnWithOtherPhotoIconsCustom(
           changePhoto24: AiutaIcon(path: "res/icons/ic_repicking_24.png"),
         ),
       );

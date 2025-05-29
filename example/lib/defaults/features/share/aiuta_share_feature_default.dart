@@ -13,7 +13,7 @@ final class ShareFeatureBuilder {
             watermark: "res/images/logo.png",
           ),
         ),
-        icons: AiutaShareIcons(
+        icons: AiutaShareIconsCustom(
           share24: AiutaIcon(path: "res/icons/ic_share_24.png"),
         ),
         strings: AiutaShareStringsCustom(

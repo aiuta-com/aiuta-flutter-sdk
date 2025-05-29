@@ -12,7 +12,7 @@ final class SelectionSnackbarThemeBuilder {
           selectAll: "Select All",
           unselectAll: "Unselect all",
         ),
-        icons: AiutaSelectionSnackbarIcons(
+        icons: AiutaSelectionSnackbarIconsCustom(
           trash24: AiutaIcon(path: "res/icons/ic_trash_24.png"),
           check20: AiutaIcon(path: "res/icons/ic_check_20.png"),
         ),

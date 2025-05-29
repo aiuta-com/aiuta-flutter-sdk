@@ -25,7 +25,7 @@ final class ProductBarThemeBuilder {
             letterSpacing: 0.04,
           ),
         ),
-        icons: AiutaProductBarIcons(
+        icons: AiutaProductBarIconsCustom(
           arrow16: AiutaIcon(path: "res/icons/ic_arrow_16.png"),
         ),
         toggles: AiutaProductBarToggles(

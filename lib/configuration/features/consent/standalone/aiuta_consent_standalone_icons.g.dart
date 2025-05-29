@@ -6,16 +6,23 @@ part of 'aiuta_consent_standalone_icons.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaConsentStandaloneIcons _$AiutaConsentStandaloneIconsFromJson(
+AiutaConsentStandaloneIconsBuiltIn _$AiutaConsentStandaloneIconsBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaConsentStandaloneIcons(
-      consentTitle24: json['consentTitle24'] == null
-          ? null
-          : AiutaIcon.fromJson(json['consentTitle24'] as Map<String, dynamic>),
+    AiutaConsentStandaloneIconsBuiltIn();
+
+Map<String, dynamic> _$AiutaConsentStandaloneIconsBuiltInToJson(
+        AiutaConsentStandaloneIconsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaConsentStandaloneIconsCustom _$AiutaConsentStandaloneIconsCustomFromJson(
+        Map<String, dynamic> json) =>
+    AiutaConsentStandaloneIconsCustom(
+      consentTitle24:
+          AiutaIcon.fromJson(json['consentTitle24'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$AiutaConsentStandaloneIconsToJson(
-        AiutaConsentStandaloneIcons instance) =>
+Map<String, dynamic> _$AiutaConsentStandaloneIconsCustomToJson(
+        AiutaConsentStandaloneIconsCustom instance) =>
     <String, dynamic>{
       'consentTitle24': instance.consentTitle24,
     };

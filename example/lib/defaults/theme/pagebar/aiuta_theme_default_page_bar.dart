@@ -17,7 +17,7 @@ final class PageBarThemeBuilder {
             lineHeight: 18,
           ),
         ),
-        icons: AiutaPageBarIcons(
+        icons: AiutaPageBarIconsCustom(
           back24: AiutaIcon(path: "res/icons/ic_back_24.png"),
           close24: AiutaIcon(path: "res/icons/ic_close_24.png"),
         ),

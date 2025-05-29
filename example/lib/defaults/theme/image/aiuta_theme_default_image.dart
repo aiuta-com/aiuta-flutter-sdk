@@ -9,7 +9,7 @@ final class ImageThemeBuilder {
           imageL: 24,
           imageS: 16,
         ),
-        icons: AiutaImageIcons(
+        icons: AiutaImageIconsCustom(
           imageError36: AiutaIcon(path: "res/icons/ic_image_error_36.png"),
         ),
       );

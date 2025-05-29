@@ -6,7 +6,7 @@ import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 final class TryOnFeedbackFeatureBuilder {
   AiutaTryOnFeedbackFeature build() => AiutaTryOnFeedbackFeature(
         otherFeedback: null,
-        icons: AiutaTryOnFeedbackIcons(
+        icons: AiutaTryOnFeedbackIconsCustom(
           like36: AiutaIcon(path: "res/icons/ic_like_36.png"),
           dislike36: AiutaIcon(path: "res/icons/ic_dislike_36.png"),
           gratitude40: AiutaIcon(path: "res/icons/ic_gratitude_40.png"),

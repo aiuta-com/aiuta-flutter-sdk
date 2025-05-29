@@ -6,13 +6,23 @@ part of 'aiuta_image_icons.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaImageIcons _$AiutaImageIconsFromJson(Map<String, dynamic> json) =>
-    AiutaImageIcons(
+AiutaImageIconsBuiltIn _$AiutaImageIconsBuiltInFromJson(
+        Map<String, dynamic> json) =>
+    AiutaImageIconsBuiltIn();
+
+Map<String, dynamic> _$AiutaImageIconsBuiltInToJson(
+        AiutaImageIconsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaImageIconsCustom _$AiutaImageIconsCustomFromJson(
+        Map<String, dynamic> json) =>
+    AiutaImageIconsCustom(
       imageError36:
           AiutaIcon.fromJson(json['imageError36'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$AiutaImageIconsToJson(AiutaImageIcons instance) =>
+Map<String, dynamic> _$AiutaImageIconsCustomToJson(
+        AiutaImageIconsCustom instance) =>
     <String, dynamic>{
       'imageError36': instance.imageError36,
     };

@@ -4,9 +4,7 @@ import 'package:aiuta_flutter/configuration/features/try_on/fit_disclaimer/aiuta
 
 final class TryOnFitDisclaimerFeatureBuilder {
   AiutaTryOnFitDisclaimerFeature build() => AiutaTryOnFitDisclaimerFeature(
-        icons: AiutaTryOnFitDisclaimerIcons(
-          info20: null,
-        ),
+        icons: AiutaTryOnFitDisclaimerIconsBuiltIn(),
         strings: AiutaTryOnFitDisclaimerStringsCustom(
           fitDisclaimerTitle: "Results may vary from real-life fit",
           fitDisclaimerDescription:

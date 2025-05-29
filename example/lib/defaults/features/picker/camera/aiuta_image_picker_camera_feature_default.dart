@@ -5,7 +5,7 @@ import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 
 final class ImagePickerCameraFeatureBuilder {
   AiutaImagePickerCameraFeature build() => AiutaImagePickerCameraFeature(
-        icons: AiutaImagePickerCameraIcons(
+        icons: AiutaImagePickerCameraIconsCustom(
           camera24: AiutaIcon(path: "res/icons/ic_camera_24.png"),
         ),
         strings: AiutaImagePickerCameraStringsCustom(
