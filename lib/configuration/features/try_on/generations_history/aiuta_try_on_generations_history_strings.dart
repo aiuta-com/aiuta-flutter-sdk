@@ -12,7 +12,8 @@ sealed class AiutaTryOnGenerationsHistoryStrings {
   AiutaTryOnGenerationsHistoryStrings(this.type);
 
   // Internal json staff
-  factory AiutaTryOnGenerationsHistoryStrings.fromJson(Map<String, dynamic> json) {
+  factory AiutaTryOnGenerationsHistoryStrings.fromJson(
+      Map<String, dynamic> json) {
     switch (json['type'] as String) {
       case 'builtIn':
         return AiutaTryOnGenerationsHistoryStringsBuiltIn.fromJson(json);
@@ -30,12 +31,15 @@ sealed class AiutaTryOnGenerationsHistoryStrings {
 ///
 /// This class represents the default, built-in strings for the generations history feature.
 @JsonSerializable()
-class AiutaTryOnGenerationsHistoryStringsBuiltIn extends AiutaTryOnGenerationsHistoryStrings {
+class AiutaTryOnGenerationsHistoryStringsBuiltIn
+    extends AiutaTryOnGenerationsHistoryStrings {
   /// Creates an instance of the built-in try-on generations history strings.
-  AiutaTryOnGenerationsHistoryStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaTryOnGenerationsHistoryStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaTryOnGenerationsHistoryStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnGenerationsHistoryStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnGenerationsHistoryStringsBuiltInFromJson(json);
 
   @override
@@ -47,7 +51,8 @@ class AiutaTryOnGenerationsHistoryStringsBuiltIn extends AiutaTryOnGenerationsHi
 ///
 /// This class allows for custom strings to be provided for the generations history feature.
 @JsonSerializable()
-class AiutaTryOnGenerationsHistoryStringsCustom extends AiutaTryOnGenerationsHistoryStrings {
+class AiutaTryOnGenerationsHistoryStringsCustom
+    extends AiutaTryOnGenerationsHistoryStrings {
   /// Title for the generations history page.
   final String generationsHistoryPageTitle;
 
@@ -58,7 +63,8 @@ class AiutaTryOnGenerationsHistoryStringsCustom extends AiutaTryOnGenerationsHis
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaTryOnGenerationsHistoryStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnGenerationsHistoryStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnGenerationsHistoryStringsCustomFromJson(json);
 
   @override

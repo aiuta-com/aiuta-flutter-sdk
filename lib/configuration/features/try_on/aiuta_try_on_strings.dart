@@ -39,8 +39,7 @@ class AiutaTryOnStringsBuiltIn extends AiutaTryOnStrings {
       _$AiutaTryOnStringsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaTryOnStringsBuiltInToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaTryOnStringsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaTryOnStrings`.
@@ -66,6 +65,5 @@ class AiutaTryOnStringsCustom extends AiutaTryOnStrings {
       _$AiutaTryOnStringsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaTryOnStringsCustomToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaTryOnStringsCustomToJson(this);
 }

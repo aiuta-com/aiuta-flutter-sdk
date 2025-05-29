@@ -38,7 +38,8 @@ class AiutaConsentEmbeddedStringsBuiltIn extends AiutaConsentEmbeddedStrings {
   AiutaConsentEmbeddedStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaConsentEmbeddedStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaConsentEmbeddedStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaConsentEmbeddedStringsBuiltInFromJson(json);
 
   @override
@@ -62,7 +63,8 @@ class AiutaConsentEmbeddedStringsCustom extends AiutaConsentEmbeddedStrings {
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaConsentEmbeddedStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaConsentEmbeddedStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaConsentEmbeddedStringsCustomFromJson(json);
 
   @override

@@ -30,12 +30,15 @@ sealed class AiutaTryOnFitDisclaimerStrings {
 ///
 /// This class represents the default, built-in strings for the Fit Disclaimer feature.
 @JsonSerializable()
-class AiutaTryOnFitDisclaimerStringsBuiltIn extends AiutaTryOnFitDisclaimerStrings {
+class AiutaTryOnFitDisclaimerStringsBuiltIn
+    extends AiutaTryOnFitDisclaimerStrings {
   /// Creates an instance of the built-in try-on fit disclaimer strings.
-  AiutaTryOnFitDisclaimerStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaTryOnFitDisclaimerStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaTryOnFitDisclaimerStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnFitDisclaimerStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnFitDisclaimerStringsBuiltInFromJson(json);
 
   @override
@@ -47,7 +50,8 @@ class AiutaTryOnFitDisclaimerStringsBuiltIn extends AiutaTryOnFitDisclaimerStrin
 ///
 /// This class allows for custom strings to be provided for the Fit Disclaimer feature.
 @JsonSerializable()
-class AiutaTryOnFitDisclaimerStringsCustom extends AiutaTryOnFitDisclaimerStrings {
+class AiutaTryOnFitDisclaimerStringsCustom
+    extends AiutaTryOnFitDisclaimerStrings {
   /// Title for the Fit Disclaimer.
   final String fitDisclaimerTitle;
 
@@ -68,7 +72,8 @@ class AiutaTryOnFitDisclaimerStringsCustom extends AiutaTryOnFitDisclaimerString
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaTryOnFitDisclaimerStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnFitDisclaimerStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnFitDisclaimerStringsCustomFromJson(json);
 
   @override

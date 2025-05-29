@@ -35,7 +35,8 @@ class AiutaWelcomeScreenStringsBuiltIn extends AiutaWelcomeScreenStrings {
   AiutaWelcomeScreenStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaWelcomeScreenStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaWelcomeScreenStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaWelcomeScreenStringsBuiltInFromJson(json);
 
   @override

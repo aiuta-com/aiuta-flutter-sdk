@@ -9,7 +9,7 @@ import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 final class ShareFeatureBuilder {
   AiutaShareFeature build() => AiutaShareFeature(
         watermark: AiutaShareWatermarkFeature(
-          images: AiutaShareWatermarkImages(
+          images: AiutaShareWatermarkImagesCustom(
             watermark: "res/images/logo.png",
           ),
         ),

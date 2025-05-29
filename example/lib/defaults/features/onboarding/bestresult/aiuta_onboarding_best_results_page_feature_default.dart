@@ -8,7 +8,7 @@ import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 final class OnboardingBestResultsPageFeatureBuilder {
   AiutaOnboardingBestResultsPageFeature build() =>
       AiutaOnboardingBestResultsPageFeature(
-        images: AiutaOnboardingBestResultsPageImages(
+        images: AiutaOnboardingBestResultsPageImagesCustom(
           onboardingBestResultsGood: [
             "res/images/onboarding_good_image_1.png",
             "res/images/onboarding_good_image_2.png",

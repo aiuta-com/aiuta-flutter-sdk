@@ -30,12 +30,15 @@ sealed class AiutaSelectionSnackbarStrings {
 ///
 /// This class represents the default, built-in strings for the selection snackbar feature.
 @JsonSerializable()
-class AiutaSelectionSnackbarStringsBuiltIn extends AiutaSelectionSnackbarStrings {
+class AiutaSelectionSnackbarStringsBuiltIn
+    extends AiutaSelectionSnackbarStrings {
   /// Creates an instance of the built-in selection snackbar strings.
-  AiutaSelectionSnackbarStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaSelectionSnackbarStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaSelectionSnackbarStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaSelectionSnackbarStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaSelectionSnackbarStringsBuiltInFromJson(json);
 
   @override
@@ -47,7 +50,8 @@ class AiutaSelectionSnackbarStringsBuiltIn extends AiutaSelectionSnackbarStrings
 ///
 /// This class allows for custom strings to be provided for the selection snackbar feature.
 @JsonSerializable()
-class AiutaSelectionSnackbarStringsCustom extends AiutaSelectionSnackbarStrings {
+class AiutaSelectionSnackbarStringsCustom
+    extends AiutaSelectionSnackbarStrings {
   /// "Select" string.
   final String select;
 
@@ -70,7 +74,8 @@ class AiutaSelectionSnackbarStringsCustom extends AiutaSelectionSnackbarStrings 
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaSelectionSnackbarStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaSelectionSnackbarStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaSelectionSnackbarStringsCustomFromJson(json);
 
   @override

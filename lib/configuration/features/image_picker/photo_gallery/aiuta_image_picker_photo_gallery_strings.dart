@@ -12,7 +12,8 @@ sealed class AiutaImagePickerPhotoGalleryStrings {
   AiutaImagePickerPhotoGalleryStrings(this.type);
 
   // Internal json staff
-  factory AiutaImagePickerPhotoGalleryStrings.fromJson(Map<String, dynamic> json) {
+  factory AiutaImagePickerPhotoGalleryStrings.fromJson(
+      Map<String, dynamic> json) {
     switch (json['type'] as String) {
       case 'builtIn':
         return AiutaImagePickerPhotoGalleryStringsBuiltIn.fromJson(json);
@@ -32,12 +33,15 @@ sealed class AiutaImagePickerPhotoGalleryStrings {
 /// feature of the image picker. It does not require any custom implementation
 /// and uses predefined behavior.
 @JsonSerializable()
-class AiutaImagePickerPhotoGalleryStringsBuiltIn extends AiutaImagePickerPhotoGalleryStrings {
+class AiutaImagePickerPhotoGalleryStringsBuiltIn
+    extends AiutaImagePickerPhotoGalleryStrings {
   /// Creates an instance of the built-in image picker photo gallery strings.
-  AiutaImagePickerPhotoGalleryStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaImagePickerPhotoGalleryStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaImagePickerPhotoGalleryStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaImagePickerPhotoGalleryStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaImagePickerPhotoGalleryStringsBuiltInFromJson(json);
 
   @override
@@ -50,7 +54,8 @@ class AiutaImagePickerPhotoGalleryStringsBuiltIn extends AiutaImagePickerPhotoGa
 /// This class allows for custom strings to be provided for the photo gallery
 /// feature of the image picker, including custom button texts.
 @JsonSerializable()
-class AiutaImagePickerPhotoGalleryStringsCustom extends AiutaImagePickerPhotoGalleryStrings {
+class AiutaImagePickerPhotoGalleryStringsCustom
+    extends AiutaImagePickerPhotoGalleryStrings {
   /// Text for the button to select a photo.
   final String galleryButtonSelectPhoto;
 
@@ -62,7 +67,8 @@ class AiutaImagePickerPhotoGalleryStringsCustom extends AiutaImagePickerPhotoGal
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaImagePickerPhotoGalleryStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaImagePickerPhotoGalleryStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaImagePickerPhotoGalleryStringsCustomFromJson(json);
 
   @override

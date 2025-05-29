@@ -35,7 +35,8 @@ class AiutaTryOnLoadingPageStringsBuiltIn extends AiutaTryOnLoadingPageStrings {
   AiutaTryOnLoadingPageStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaTryOnLoadingPageStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnLoadingPageStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnLoadingPageStringsBuiltInFromJson(json);
 
   @override
@@ -65,7 +66,8 @@ class AiutaTryOnLoadingPageStringsCustom extends AiutaTryOnLoadingPageStrings {
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaTryOnLoadingPageStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnLoadingPageStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnLoadingPageStringsCustomFromJson(json);
 
   @override

@@ -35,7 +35,8 @@ class AiutaErrorSnackbarStringsBuiltIn extends AiutaErrorSnackbarStrings {
   AiutaErrorSnackbarStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaErrorSnackbarStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaErrorSnackbarStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaErrorSnackbarStringsBuiltInFromJson(json);
 
   @override

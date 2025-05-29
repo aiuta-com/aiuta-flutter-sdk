@@ -6,15 +6,23 @@ part of 'aiuta_image_picker_images.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaImagePickerImages _$AiutaImagePickerImagesFromJson(
+AiutaImagePickerImagesBuiltIn _$AiutaImagePickerImagesBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaImagePickerImages(
+    AiutaImagePickerImagesBuiltIn();
+
+Map<String, dynamic> _$AiutaImagePickerImagesBuiltInToJson(
+        AiutaImagePickerImagesBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaImagePickerImagesCustom _$AiutaImagePickerImagesCustomFromJson(
+        Map<String, dynamic> json) =>
+    AiutaImagePickerImagesCustom(
       examples:
           (json['examples'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$AiutaImagePickerImagesToJson(
-        AiutaImagePickerImages instance) =>
+Map<String, dynamic> _$AiutaImagePickerImagesCustomToJson(
+        AiutaImagePickerImagesCustom instance) =>
     <String, dynamic>{
       'examples': instance.examples,
     };

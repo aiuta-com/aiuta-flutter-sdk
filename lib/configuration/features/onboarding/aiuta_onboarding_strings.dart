@@ -39,8 +39,7 @@ class AiutaOnboardingStringsBuiltIn extends AiutaOnboardingStrings {
       _$AiutaOnboardingStringsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaOnboardingStringsBuiltInToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaOnboardingStringsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaOnboardingStrings`.
@@ -65,6 +64,5 @@ class AiutaOnboardingStringsCustom extends AiutaOnboardingStrings {
       _$AiutaOnboardingStringsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaOnboardingStringsCustomToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaOnboardingStringsCustomToJson(this);
 }

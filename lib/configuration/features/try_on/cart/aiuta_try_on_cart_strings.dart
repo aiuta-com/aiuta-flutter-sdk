@@ -39,8 +39,7 @@ class AiutaTryOnCartStringsBuiltIn extends AiutaTryOnCartStrings {
       _$AiutaTryOnCartStringsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaTryOnCartStringsBuiltInToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaTryOnCartStringsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaTryOnCartStrings`.
@@ -62,6 +61,5 @@ class AiutaTryOnCartStringsCustom extends AiutaTryOnCartStrings {
       _$AiutaTryOnCartStringsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaTryOnCartStringsCustomToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaTryOnCartStringsCustomToJson(this);
 }

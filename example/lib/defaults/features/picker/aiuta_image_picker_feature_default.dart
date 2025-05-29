@@ -14,7 +14,7 @@ final class ImagePickerFeatureBuilder {
         uploadsHistory: ImagePickerUploadsHistoryFeatureBuilder(
                 isPredefinedModelAvailable: true)
             .build(),
-        images: AiutaImagePickerImages(
+        images: AiutaImagePickerImagesCustom(
           examples: [
             "res/images/selector_empty_small_image_1.png",
             "res/images/onboarding_good_image_1.png",

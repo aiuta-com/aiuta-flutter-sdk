@@ -35,7 +35,8 @@ class AiutaTryOnFeedbackStringsBuiltIn extends AiutaTryOnFeedbackStrings {
   AiutaTryOnFeedbackStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaTryOnFeedbackStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnFeedbackStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnFeedbackStringsBuiltInFromJson(json);
 
   @override

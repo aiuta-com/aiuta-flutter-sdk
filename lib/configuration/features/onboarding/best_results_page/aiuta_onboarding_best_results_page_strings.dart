@@ -12,7 +12,8 @@ sealed class AiutaOnboardingBestResultsPageStrings {
   AiutaOnboardingBestResultsPageStrings(this.type);
 
   // Internal json staff
-  factory AiutaOnboardingBestResultsPageStrings.fromJson(Map<String, dynamic> json) {
+  factory AiutaOnboardingBestResultsPageStrings.fromJson(
+      Map<String, dynamic> json) {
     switch (json['type'] as String) {
       case 'builtIn':
         return AiutaOnboardingBestResultsPageStringsBuiltIn.fromJson(json);
@@ -30,12 +31,15 @@ sealed class AiutaOnboardingBestResultsPageStrings {
 ///
 /// This class represents the default, built-in strings for the Best Results page.
 @JsonSerializable()
-class AiutaOnboardingBestResultsPageStringsBuiltIn extends AiutaOnboardingBestResultsPageStrings {
+class AiutaOnboardingBestResultsPageStringsBuiltIn
+    extends AiutaOnboardingBestResultsPageStrings {
   /// Creates an instance of the built-in onboarding best results page strings.
-  AiutaOnboardingBestResultsPageStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaOnboardingBestResultsPageStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaOnboardingBestResultsPageStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaOnboardingBestResultsPageStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaOnboardingBestResultsPageStringsBuiltInFromJson(json);
 
   @override
@@ -47,7 +51,8 @@ class AiutaOnboardingBestResultsPageStringsBuiltIn extends AiutaOnboardingBestRe
 ///
 /// This class allows for custom strings to be provided for the Best Results page.
 @JsonSerializable()
-class AiutaOnboardingBestResultsPageStringsCustom extends AiutaOnboardingBestResultsPageStrings {
+class AiutaOnboardingBestResultsPageStringsCustom
+    extends AiutaOnboardingBestResultsPageStrings {
   /// Title for the Best Results page (nullable).
   final String? onboardingBestResultsPageTitle;
 
@@ -65,7 +70,8 @@ class AiutaOnboardingBestResultsPageStringsCustom extends AiutaOnboardingBestRes
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaOnboardingBestResultsPageStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaOnboardingBestResultsPageStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaOnboardingBestResultsPageStringsCustomFromJson(json);
 
   @override

@@ -5,7 +5,7 @@ import 'package:aiuta_flutter/configuration/features/onboarding/how_it_works/aiu
 final class OnboardingHowItWorksPageFeatureBuilder {
   AiutaOnboardingHowItWorksPageFeature build() =>
       AiutaOnboardingHowItWorksPageFeature(
-        images: AiutaOnboardingHowItWorksPageImages(
+        images: AiutaOnboardingHowItWorksPageImagesCustom(
           onboardingHowItWorksItems: [
             OnboardingHowItWorksItem(
               itemPhoto: "res/images/onboarding_main_1.png",

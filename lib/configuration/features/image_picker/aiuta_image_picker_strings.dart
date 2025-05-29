@@ -41,8 +41,7 @@ class AiutaImagePickerStringsBuiltIn extends AiutaImagePickerStrings {
       _$AiutaImagePickerStringsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaImagePickerStringsBuiltInToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaImagePickerStringsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaImagePickerStrings`.
@@ -73,6 +72,5 @@ class AiutaImagePickerStringsCustom extends AiutaImagePickerStrings {
       _$AiutaImagePickerStringsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaImagePickerStringsCustomToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaImagePickerStringsCustomToJson(this);
 }

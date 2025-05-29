@@ -39,8 +39,7 @@ class AiutaPowerBarStringsBuiltIn extends AiutaPowerBarStrings {
       _$AiutaPowerBarStringsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaPowerBarStringsBuiltInToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaPowerBarStringsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaPowerBarStrings`.
@@ -61,6 +60,5 @@ class AiutaPowerBarStringsCustom extends AiutaPowerBarStrings {
       _$AiutaPowerBarStringsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaPowerBarStringsCustomToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaPowerBarStringsCustomToJson(this);
 }

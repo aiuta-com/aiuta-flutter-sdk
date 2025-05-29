@@ -12,7 +12,8 @@ sealed class AiutaOnboardingHowItWorksPageStrings {
   AiutaOnboardingHowItWorksPageStrings(this.type);
 
   // Internal json staff
-  factory AiutaOnboardingHowItWorksPageStrings.fromJson(Map<String, dynamic> json) {
+  factory AiutaOnboardingHowItWorksPageStrings.fromJson(
+      Map<String, dynamic> json) {
     switch (json['type'] as String) {
       case 'builtIn':
         return AiutaOnboardingHowItWorksPageStringsBuiltIn.fromJson(json);
@@ -30,12 +31,15 @@ sealed class AiutaOnboardingHowItWorksPageStrings {
 ///
 /// This class represents the default, built-in strings for the How It Works page.
 @JsonSerializable()
-class AiutaOnboardingHowItWorksPageStringsBuiltIn extends AiutaOnboardingHowItWorksPageStrings {
+class AiutaOnboardingHowItWorksPageStringsBuiltIn
+    extends AiutaOnboardingHowItWorksPageStrings {
   /// Creates an instance of the built-in onboarding how it works page strings.
-  AiutaOnboardingHowItWorksPageStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaOnboardingHowItWorksPageStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaOnboardingHowItWorksPageStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaOnboardingHowItWorksPageStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaOnboardingHowItWorksPageStringsBuiltInFromJson(json);
 
   @override
@@ -47,7 +51,8 @@ class AiutaOnboardingHowItWorksPageStringsBuiltIn extends AiutaOnboardingHowItWo
 ///
 /// This class allows for custom strings to be provided for the How It Works page.
 @JsonSerializable()
-class AiutaOnboardingHowItWorksPageStringsCustom extends AiutaOnboardingHowItWorksPageStrings {
+class AiutaOnboardingHowItWorksPageStringsCustom
+    extends AiutaOnboardingHowItWorksPageStrings {
   /// Title for the How It Works page (nullable).
   final String? onboardingHowItWorksPageTitle;
 
@@ -65,7 +70,8 @@ class AiutaOnboardingHowItWorksPageStringsCustom extends AiutaOnboardingHowItWor
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaOnboardingHowItWorksPageStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaOnboardingHowItWorksPageStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaOnboardingHowItWorksPageStringsCustomFromJson(json);
 
   @override

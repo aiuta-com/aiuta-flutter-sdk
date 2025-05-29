@@ -32,12 +32,15 @@ sealed class AiutaImagePickerCameraStrings {
 /// of the image picker. It does not require any custom implementation and uses
 /// predefined behavior.
 @JsonSerializable()
-class AiutaImagePickerCameraStringsBuiltIn extends AiutaImagePickerCameraStrings {
+class AiutaImagePickerCameraStringsBuiltIn
+    extends AiutaImagePickerCameraStrings {
   /// Creates an instance of the built-in image picker camera strings.
-  AiutaImagePickerCameraStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaImagePickerCameraStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaImagePickerCameraStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaImagePickerCameraStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaImagePickerCameraStringsBuiltInFromJson(json);
 
   @override
@@ -50,7 +53,8 @@ class AiutaImagePickerCameraStringsBuiltIn extends AiutaImagePickerCameraStrings
 /// This class allows for custom strings to be provided for the camera feature
 /// of the image picker, including custom button texts and permission messages.
 @JsonSerializable()
-class AiutaImagePickerCameraStringsCustom extends AiutaImagePickerCameraStrings {
+class AiutaImagePickerCameraStringsCustom
+    extends AiutaImagePickerCameraStrings {
   /// Text for the button to take a photo.
   final String cameraButtonTakePhoto;
 
@@ -76,7 +80,8 @@ class AiutaImagePickerCameraStringsCustom extends AiutaImagePickerCameraStrings 
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaImagePickerCameraStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaImagePickerCameraStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaImagePickerCameraStringsCustomFromJson(json);
 
   @override

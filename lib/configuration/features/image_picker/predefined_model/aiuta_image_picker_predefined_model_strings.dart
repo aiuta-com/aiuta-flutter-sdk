@@ -12,7 +12,8 @@ sealed class AiutaImagePickerPredefinedModelStrings {
   AiutaImagePickerPredefinedModelStrings(this.type);
 
   // Internal json staff
-  factory AiutaImagePickerPredefinedModelStrings.fromJson(Map<String, dynamic> json) {
+  factory AiutaImagePickerPredefinedModelStrings.fromJson(
+      Map<String, dynamic> json) {
     switch (json['type'] as String) {
       case 'builtIn':
         return AiutaImagePickerPredefinedModelStringsBuiltIn.fromJson(json);
@@ -32,12 +33,15 @@ sealed class AiutaImagePickerPredefinedModelStrings {
 /// feature. It does not require any custom implementation and uses
 /// predefined behavior.
 @JsonSerializable()
-class AiutaImagePickerPredefinedModelStringsBuiltIn extends AiutaImagePickerPredefinedModelStrings {
+class AiutaImagePickerPredefinedModelStringsBuiltIn
+    extends AiutaImagePickerPredefinedModelStrings {
   /// Creates an instance of the built-in image picker predefined model strings.
-  AiutaImagePickerPredefinedModelStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaImagePickerPredefinedModelStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaImagePickerPredefinedModelStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaImagePickerPredefinedModelStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaImagePickerPredefinedModelStringsBuiltInFromJson(json);
 
   @override
@@ -50,7 +54,8 @@ class AiutaImagePickerPredefinedModelStringsBuiltIn extends AiutaImagePickerPred
 /// This class allows for custom strings to be provided for the predefined model
 /// feature, including custom titles, descriptions, and category names.
 @JsonSerializable()
-class AiutaImagePickerPredefinedModelStringsCustom extends AiutaImagePickerPredefinedModelStrings {
+class AiutaImagePickerPredefinedModelStringsCustom
+    extends AiutaImagePickerPredefinedModelStrings {
   /// Title for the predefined model page.
   final String predefinedModelPageTitle;
 
@@ -87,7 +92,8 @@ class AiutaImagePickerPredefinedModelStringsCustom extends AiutaImagePickerPrede
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaImagePickerPredefinedModelStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaImagePickerPredefinedModelStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaImagePickerPredefinedModelStringsCustomFromJson(json);
 
   @override

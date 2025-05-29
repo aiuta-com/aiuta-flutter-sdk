@@ -12,7 +12,8 @@ sealed class AiutaTryOnInputImageValidationStrings {
   AiutaTryOnInputImageValidationStrings(this.type);
 
   // Internal json staff
-  factory AiutaTryOnInputImageValidationStrings.fromJson(Map<String, dynamic> json) {
+  factory AiutaTryOnInputImageValidationStrings.fromJson(
+      Map<String, dynamic> json) {
     switch (json['type'] as String) {
       case 'builtIn':
         return AiutaTryOnInputImageValidationStringsBuiltIn.fromJson(json);
@@ -30,12 +31,15 @@ sealed class AiutaTryOnInputImageValidationStrings {
 ///
 /// This class represents the default, built-in strings for the input image validation feature.
 @JsonSerializable()
-class AiutaTryOnInputImageValidationStringsBuiltIn extends AiutaTryOnInputImageValidationStrings {
+class AiutaTryOnInputImageValidationStringsBuiltIn
+    extends AiutaTryOnInputImageValidationStrings {
   /// Creates an instance of the built-in try-on input image validation strings.
-  AiutaTryOnInputImageValidationStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaTryOnInputImageValidationStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaTryOnInputImageValidationStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnInputImageValidationStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnInputImageValidationStringsBuiltInFromJson(json);
 
   @override
@@ -47,7 +51,8 @@ class AiutaTryOnInputImageValidationStringsBuiltIn extends AiutaTryOnInputImageV
 ///
 /// This class allows for custom strings to be provided for the input image validation feature.
 @JsonSerializable()
-class AiutaTryOnInputImageValidationStringsCustom extends AiutaTryOnInputImageValidationStrings {
+class AiutaTryOnInputImageValidationStringsCustom
+    extends AiutaTryOnInputImageValidationStrings {
   /// Description for invalid input images.
   final String invalidInputImageDescription;
 
@@ -62,7 +67,8 @@ class AiutaTryOnInputImageValidationStringsCustom extends AiutaTryOnInputImageVa
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaTryOnInputImageValidationStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnInputImageValidationStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnInputImageValidationStringsCustomFromJson(json);
 
   @override

@@ -12,7 +12,8 @@ sealed class AiutaImagePickerUploadsHistoryStrings {
   AiutaImagePickerUploadsHistoryStrings(this.type);
 
   // Internal json staff
-  factory AiutaImagePickerUploadsHistoryStrings.fromJson(Map<String, dynamic> json) {
+  factory AiutaImagePickerUploadsHistoryStrings.fromJson(
+      Map<String, dynamic> json) {
     switch (json['type'] as String) {
       case 'builtIn':
         return AiutaImagePickerUploadsHistoryStringsBuiltIn.fromJson(json);
@@ -31,12 +32,15 @@ sealed class AiutaImagePickerUploadsHistoryStrings {
 /// This class represents the default, built-in strings for the uploads history
 /// feature. It does not require any custom implementation and uses predefined behavior.
 @JsonSerializable()
-class AiutaImagePickerUploadsHistoryStringsBuiltIn extends AiutaImagePickerUploadsHistoryStrings {
+class AiutaImagePickerUploadsHistoryStringsBuiltIn
+    extends AiutaImagePickerUploadsHistoryStrings {
   /// Creates an instance of the built-in uploads history strings.
-  AiutaImagePickerUploadsHistoryStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaImagePickerUploadsHistoryStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaImagePickerUploadsHistoryStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaImagePickerUploadsHistoryStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaImagePickerUploadsHistoryStringsBuiltInFromJson(json);
 
   @override
@@ -49,7 +53,8 @@ class AiutaImagePickerUploadsHistoryStringsBuiltIn extends AiutaImagePickerUploa
 /// This class allows for custom strings to be provided for the uploads history
 /// feature, including custom button texts and titles.
 @JsonSerializable()
-class AiutaImagePickerUploadsHistoryStringsCustom extends AiutaImagePickerUploadsHistoryStrings {
+class AiutaImagePickerUploadsHistoryStringsCustom
+    extends AiutaImagePickerUploadsHistoryStrings {
   /// Text for the button to upload a new photo.
   final String uploadsHistoryButtonNewPhoto;
 
@@ -73,7 +78,8 @@ class AiutaImagePickerUploadsHistoryStringsCustom extends AiutaImagePickerUpload
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaImagePickerUploadsHistoryStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaImagePickerUploadsHistoryStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaImagePickerUploadsHistoryStringsCustomFromJson(json);
 
   @override

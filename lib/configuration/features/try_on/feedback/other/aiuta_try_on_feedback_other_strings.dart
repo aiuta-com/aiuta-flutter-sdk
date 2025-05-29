@@ -30,12 +30,15 @@ sealed class AiutaTryOnFeedbackOtherStrings {
 ///
 /// This class represents the default, built-in strings for the other feedback feature.
 @JsonSerializable()
-class AiutaTryOnFeedbackOtherStringsBuiltIn extends AiutaTryOnFeedbackOtherStrings {
+class AiutaTryOnFeedbackOtherStringsBuiltIn
+    extends AiutaTryOnFeedbackOtherStrings {
   /// Creates an instance of the built-in try-on feedback other strings.
-  AiutaTryOnFeedbackOtherStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaTryOnFeedbackOtherStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaTryOnFeedbackOtherStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnFeedbackOtherStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnFeedbackOtherStringsBuiltInFromJson(json);
 
   @override
@@ -47,7 +50,8 @@ class AiutaTryOnFeedbackOtherStringsBuiltIn extends AiutaTryOnFeedbackOtherStrin
 ///
 /// This class allows for custom strings to be provided for the other feedback feature.
 @JsonSerializable()
-class AiutaTryOnFeedbackOtherStringsCustom extends AiutaTryOnFeedbackOtherStrings {
+class AiutaTryOnFeedbackOtherStringsCustom
+    extends AiutaTryOnFeedbackOtherStrings {
   /// Title for the other feedback section.
   final String otherFeedbackTitle;
 
@@ -73,7 +77,8 @@ class AiutaTryOnFeedbackOtherStringsCustom extends AiutaTryOnFeedbackOtherString
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaTryOnFeedbackOtherStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnFeedbackOtherStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnFeedbackOtherStringsCustomFromJson(json);
 
   @override

@@ -39,8 +39,7 @@ class AiutaShareStringsBuiltIn extends AiutaShareStrings {
       _$AiutaShareStringsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaShareStringsBuiltInToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaShareStringsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaShareStrings`.
@@ -61,6 +60,5 @@ class AiutaShareStringsCustom extends AiutaShareStrings {
       _$AiutaShareStringsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaShareStringsCustomToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaShareStringsCustomToJson(this);
 }

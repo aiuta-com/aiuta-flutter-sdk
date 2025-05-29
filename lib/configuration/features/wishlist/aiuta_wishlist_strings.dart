@@ -39,8 +39,7 @@ class AiutaWishlistStringsBuiltIn extends AiutaWishlistStrings {
       _$AiutaWishlistStringsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaWishlistStringsBuiltInToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaWishlistStringsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaWishlistStrings`.
@@ -61,6 +60,5 @@ class AiutaWishlistStringsCustom extends AiutaWishlistStrings {
       _$AiutaWishlistStringsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaWishlistStringsCustomToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaWishlistStringsCustomToJson(this);
 }

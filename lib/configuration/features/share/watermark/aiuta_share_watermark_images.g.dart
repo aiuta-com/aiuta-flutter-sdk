@@ -6,14 +6,22 @@ part of 'aiuta_share_watermark_images.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaShareWatermarkImages _$AiutaShareWatermarkImagesFromJson(
+AiutaShareWatermarkImagesBuiltIn _$AiutaShareWatermarkImagesBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaShareWatermarkImages(
+    AiutaShareWatermarkImagesBuiltIn();
+
+Map<String, dynamic> _$AiutaShareWatermarkImagesBuiltInToJson(
+        AiutaShareWatermarkImagesBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaShareWatermarkImagesCustom _$AiutaShareWatermarkImagesCustomFromJson(
+        Map<String, dynamic> json) =>
+    AiutaShareWatermarkImagesCustom(
       watermark: json['watermark'] as String,
     );
 
-Map<String, dynamic> _$AiutaShareWatermarkImagesToJson(
-        AiutaShareWatermarkImages instance) =>
+Map<String, dynamic> _$AiutaShareWatermarkImagesCustomToJson(
+        AiutaShareWatermarkImagesCustom instance) =>
     <String, dynamic>{
       'watermark': instance.watermark,
     };

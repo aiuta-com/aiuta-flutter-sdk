@@ -32,12 +32,15 @@ sealed class AiutaConsentStandaloneStrings {
 /// standalone feature. It does not require any custom implementation and uses
 /// predefined behavior.
 @JsonSerializable()
-class AiutaConsentStandaloneStringsBuiltIn extends AiutaConsentStandaloneStrings {
+class AiutaConsentStandaloneStringsBuiltIn
+    extends AiutaConsentStandaloneStrings {
   /// Creates an instance of the built-in consent standalone strings.
-  AiutaConsentStandaloneStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaConsentStandaloneStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaConsentStandaloneStringsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaConsentStandaloneStringsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaConsentStandaloneStringsBuiltInFromJson(json);
 
   @override
@@ -50,7 +53,8 @@ class AiutaConsentStandaloneStringsBuiltIn extends AiutaConsentStandaloneStrings
 /// This class allows for custom strings to be provided for the consent
 /// standalone feature, including custom titles, descriptions, and button texts.
 @JsonSerializable()
-class AiutaConsentStandaloneStringsCustom extends AiutaConsentStandaloneStrings {
+class AiutaConsentStandaloneStringsCustom
+    extends AiutaConsentStandaloneStrings {
   /// Title for the consent page (optional).
   final String? consentPageTitle;
 
@@ -86,7 +90,8 @@ class AiutaConsentStandaloneStringsCustom extends AiutaConsentStandaloneStrings 
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaConsentStandaloneStringsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaConsentStandaloneStringsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaConsentStandaloneStringsCustomFromJson(json);
 
   @override
