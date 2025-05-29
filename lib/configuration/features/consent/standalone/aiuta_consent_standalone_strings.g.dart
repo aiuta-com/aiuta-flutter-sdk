@@ -6,19 +6,27 @@ part of 'aiuta_consent_standalone_strings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaConsentStandaloneStrings _$AiutaConsentStandaloneStringsFromJson(
-        Map<String, dynamic> json) =>
-    AiutaConsentStandaloneStrings(
-      consentPageTitle: json['consentPageTitle'] as String?,
-      consentTitle: json['consentTitle'] as String,
-      consentDescriptionHtml: json['consentDescriptionHtml'] as String,
-      consentFooterHtml: json['consentFooterHtml'] as String?,
-      consentButtonAccept: json['consentButtonAccept'] as String,
-      consentButtonReject: json['consentButtonReject'] as String?,
-    );
+AiutaConsentStandaloneStringsBuiltIn
+    _$AiutaConsentStandaloneStringsBuiltInFromJson(Map<String, dynamic> json) =>
+        AiutaConsentStandaloneStringsBuiltIn();
 
-Map<String, dynamic> _$AiutaConsentStandaloneStringsToJson(
-        AiutaConsentStandaloneStrings instance) =>
+Map<String, dynamic> _$AiutaConsentStandaloneStringsBuiltInToJson(
+        AiutaConsentStandaloneStringsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaConsentStandaloneStringsCustom
+    _$AiutaConsentStandaloneStringsCustomFromJson(Map<String, dynamic> json) =>
+        AiutaConsentStandaloneStringsCustom(
+          consentPageTitle: json['consentPageTitle'] as String?,
+          consentTitle: json['consentTitle'] as String,
+          consentDescriptionHtml: json['consentDescriptionHtml'] as String,
+          consentFooterHtml: json['consentFooterHtml'] as String?,
+          consentButtonAccept: json['consentButtonAccept'] as String,
+          consentButtonReject: json['consentButtonReject'] as String?,
+        );
+
+Map<String, dynamic> _$AiutaConsentStandaloneStringsCustomToJson(
+        AiutaConsentStandaloneStringsCustom instance) =>
     <String, dynamic>{
       'consentPageTitle': instance.consentPageTitle,
       'consentTitle': instance.consentTitle,

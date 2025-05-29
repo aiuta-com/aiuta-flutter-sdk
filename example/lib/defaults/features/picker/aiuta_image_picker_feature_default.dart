@@ -20,7 +20,7 @@ final class ImagePickerFeatureBuilder {
             "res/images/onboarding_good_image_1.png",
           ],
         ),
-        strings: AiutaImagePickerStrings(
+        strings: AiutaImagePickerStringsCustom(
           imagePickerTitleEmpty: "Upload a photo of you",
           imagePickerDescriptionEmpty:
               "Select a photo where you are standing straight and clearly visible",

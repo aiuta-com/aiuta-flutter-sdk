@@ -6,15 +6,25 @@ part of 'aiuta_try_on_generations_history_strings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaTryOnGenerationsHistoryStrings
-    _$AiutaTryOnGenerationsHistoryStringsFromJson(Map<String, dynamic> json) =>
-        AiutaTryOnGenerationsHistoryStrings(
+AiutaTryOnGenerationsHistoryStringsBuiltIn
+    _$AiutaTryOnGenerationsHistoryStringsBuiltInFromJson(
+            Map<String, dynamic> json) =>
+        AiutaTryOnGenerationsHistoryStringsBuiltIn();
+
+Map<String, dynamic> _$AiutaTryOnGenerationsHistoryStringsBuiltInToJson(
+        AiutaTryOnGenerationsHistoryStringsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaTryOnGenerationsHistoryStringsCustom
+    _$AiutaTryOnGenerationsHistoryStringsCustomFromJson(
+            Map<String, dynamic> json) =>
+        AiutaTryOnGenerationsHistoryStringsCustom(
           generationsHistoryPageTitle:
               json['generationsHistoryPageTitle'] as String,
         );
 
-Map<String, dynamic> _$AiutaTryOnGenerationsHistoryStringsToJson(
-        AiutaTryOnGenerationsHistoryStrings instance) =>
+Map<String, dynamic> _$AiutaTryOnGenerationsHistoryStringsCustomToJson(
+        AiutaTryOnGenerationsHistoryStringsCustom instance) =>
     <String, dynamic>{
       'generationsHistoryPageTitle': instance.generationsHistoryPageTitle,
     };

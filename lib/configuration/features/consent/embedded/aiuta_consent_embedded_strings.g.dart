@@ -6,14 +6,22 @@ part of 'aiuta_consent_embedded_strings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaConsentEmbeddedStrings _$AiutaConsentEmbeddedStringsFromJson(
+AiutaConsentEmbeddedStringsBuiltIn _$AiutaConsentEmbeddedStringsBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaConsentEmbeddedStrings(
+    AiutaConsentEmbeddedStringsBuiltIn();
+
+Map<String, dynamic> _$AiutaConsentEmbeddedStringsBuiltInToJson(
+        AiutaConsentEmbeddedStringsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaConsentEmbeddedStringsCustom _$AiutaConsentEmbeddedStringsCustomFromJson(
+        Map<String, dynamic> json) =>
+    AiutaConsentEmbeddedStringsCustom(
       consentHtml: json['consentHtml'] as String,
     );
 
-Map<String, dynamic> _$AiutaConsentEmbeddedStringsToJson(
-        AiutaConsentEmbeddedStrings instance) =>
+Map<String, dynamic> _$AiutaConsentEmbeddedStringsCustomToJson(
+        AiutaConsentEmbeddedStringsCustom instance) =>
     <String, dynamic>{
       'consentHtml': instance.consentHtml,
     };

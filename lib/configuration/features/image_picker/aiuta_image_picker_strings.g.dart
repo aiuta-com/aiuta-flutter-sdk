@@ -6,9 +6,17 @@ part of 'aiuta_image_picker_strings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaImagePickerStrings _$AiutaImagePickerStringsFromJson(
+AiutaImagePickerStringsBuiltIn _$AiutaImagePickerStringsBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaImagePickerStrings(
+    AiutaImagePickerStringsBuiltIn();
+
+Map<String, dynamic> _$AiutaImagePickerStringsBuiltInToJson(
+        AiutaImagePickerStringsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaImagePickerStringsCustom _$AiutaImagePickerStringsCustomFromJson(
+        Map<String, dynamic> json) =>
+    AiutaImagePickerStringsCustom(
       imagePickerTitleEmpty: json['imagePickerTitleEmpty'] as String,
       imagePickerDescriptionEmpty:
           json['imagePickerDescriptionEmpty'] as String,
@@ -16,8 +24,8 @@ AiutaImagePickerStrings _$AiutaImagePickerStringsFromJson(
           json['imagePickerButtonUploadImage'] as String,
     );
 
-Map<String, dynamic> _$AiutaImagePickerStringsToJson(
-        AiutaImagePickerStrings instance) =>
+Map<String, dynamic> _$AiutaImagePickerStringsCustomToJson(
+        AiutaImagePickerStringsCustom instance) =>
     <String, dynamic>{
       'imagePickerTitleEmpty': instance.imagePickerTitleEmpty,
       'imagePickerDescriptionEmpty': instance.imagePickerDescriptionEmpty,

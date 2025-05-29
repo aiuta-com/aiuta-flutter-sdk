@@ -5,7 +5,7 @@ import 'package:aiuta_flutter/configuration/ui/theme/power_bar/aiuta_power_bar_t
 
 final class PowerBarThemeBuilder {
   AiutaPowerBarTheme build() => AiutaPowerBarTheme(
-        strings: AiutaPowerBarStrings(
+        strings: AiutaPowerBarStringsCustom(
           poweredByAiuta: "Powered by Aiuta",
         ),
         colors: AiutaPowerBarColors(

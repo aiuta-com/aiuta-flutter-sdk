@@ -6,10 +6,19 @@ part of 'aiuta_image_picker_uploads_history_strings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaImagePickerUploadsHistoryStrings
-    _$AiutaImagePickerUploadsHistoryStringsFromJson(
+AiutaImagePickerUploadsHistoryStringsBuiltIn
+    _$AiutaImagePickerUploadsHistoryStringsBuiltInFromJson(
             Map<String, dynamic> json) =>
-        AiutaImagePickerUploadsHistoryStrings(
+        AiutaImagePickerUploadsHistoryStringsBuiltIn();
+
+Map<String, dynamic> _$AiutaImagePickerUploadsHistoryStringsBuiltInToJson(
+        AiutaImagePickerUploadsHistoryStringsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaImagePickerUploadsHistoryStringsCustom
+    _$AiutaImagePickerUploadsHistoryStringsCustomFromJson(
+            Map<String, dynamic> json) =>
+        AiutaImagePickerUploadsHistoryStringsCustom(
           uploadsHistoryButtonNewPhoto:
               json['uploadsHistoryButtonNewPhoto'] as String,
           uploadsHistoryTitle: json['uploadsHistoryTitle'] as String,
@@ -17,8 +26,8 @@ AiutaImagePickerUploadsHistoryStrings
               json['uploadsHistoryButtonChangePhoto'] as String,
         );
 
-Map<String, dynamic> _$AiutaImagePickerUploadsHistoryStringsToJson(
-        AiutaImagePickerUploadsHistoryStrings instance) =>
+Map<String, dynamic> _$AiutaImagePickerUploadsHistoryStringsCustomToJson(
+        AiutaImagePickerUploadsHistoryStringsCustom instance) =>
     <String, dynamic>{
       'uploadsHistoryButtonNewPhoto': instance.uploadsHistoryButtonNewPhoto,
       'uploadsHistoryTitle': instance.uploadsHistoryTitle,

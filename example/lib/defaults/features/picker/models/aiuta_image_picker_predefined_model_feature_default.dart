@@ -9,7 +9,7 @@ final class ImagePickerPredefinedModelFeatureBuilder {
         icons: AiutaImagePickerPredefinedModelIcons(
           selectModels24: AiutaIcon(path: "res/icons/ic_select_model_24.png"),
         ),
-        strings: AiutaImagePickerPredefinedModelStrings(
+        strings: AiutaImagePickerPredefinedModelStringsCustom(
           predefinedModelPageTitle: "Select your model",
           predefinedModelOr: "Or",
           predefinedModelErrorEmptyModelsList: "The models list is empty",

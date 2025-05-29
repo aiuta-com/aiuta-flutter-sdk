@@ -15,7 +15,7 @@ final class TryOnGenerationsHistoryFeatureBuilder {
       icons: AiutaTryOnGenerationsHistoryIcons(
         history24: AiutaIcon(path: "res/icons/ic_history_24.png"),
       ),
-      strings: AiutaTryOnGenerationsHistoryStrings(
+      strings: AiutaTryOnGenerationsHistoryStringsCustom(
         generationsHistoryPageTitle: "History",
       ),
       dataProvider: AiutaTryOnGenerationsHistoryDataProviderCustom(

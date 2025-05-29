@@ -6,10 +6,19 @@ part of 'aiuta_image_picker_predefined_model_strings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaImagePickerPredefinedModelStrings
-    _$AiutaImagePickerPredefinedModelStringsFromJson(
+AiutaImagePickerPredefinedModelStringsBuiltIn
+    _$AiutaImagePickerPredefinedModelStringsBuiltInFromJson(
             Map<String, dynamic> json) =>
-        AiutaImagePickerPredefinedModelStrings(
+        AiutaImagePickerPredefinedModelStringsBuiltIn();
+
+Map<String, dynamic> _$AiutaImagePickerPredefinedModelStringsBuiltInToJson(
+        AiutaImagePickerPredefinedModelStringsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaImagePickerPredefinedModelStringsCustom
+    _$AiutaImagePickerPredefinedModelStringsCustomFromJson(
+            Map<String, dynamic> json) =>
+        AiutaImagePickerPredefinedModelStringsCustom(
           predefinedModelPageTitle: json['predefinedModelPageTitle'] as String,
           predefinedModelOr: json['predefinedModelOr'] as String,
           predefinedModelErrorEmptyModelsList:
@@ -18,8 +27,8 @@ AiutaImagePickerPredefinedModelStrings
               json['predefinedModelCategories'] as Map),
         );
 
-Map<String, dynamic> _$AiutaImagePickerPredefinedModelStringsToJson(
-        AiutaImagePickerPredefinedModelStrings instance) =>
+Map<String, dynamic> _$AiutaImagePickerPredefinedModelStringsCustomToJson(
+        AiutaImagePickerPredefinedModelStringsCustom instance) =>
     <String, dynamic>{
       'predefinedModelPageTitle': instance.predefinedModelPageTitle,
       'predefinedModelOr': instance.predefinedModelOr,

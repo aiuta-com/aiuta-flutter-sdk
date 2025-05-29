@@ -14,7 +14,7 @@ final class OnboardingFeatureBuilder {
     return AiutaOnboardingFeature(
       howItWorksPage: OnboardingHowItWorksPageFeatureBuilder().build(),
       bestResultsPage: OnboardingBestResultsPageFeatureBuilder().build(),
-      strings: AiutaOnboardingStrings(
+      strings: AiutaOnboardingStringsCustom(
         onboardingButtonNext: "Next",
         onboardingButtonStart: "Start",
       ),

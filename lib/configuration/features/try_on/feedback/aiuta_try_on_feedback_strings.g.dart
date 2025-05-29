@@ -6,9 +6,17 @@ part of 'aiuta_try_on_feedback_strings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaTryOnFeedbackStrings _$AiutaTryOnFeedbackStringsFromJson(
+AiutaTryOnFeedbackStringsBuiltIn _$AiutaTryOnFeedbackStringsBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaTryOnFeedbackStrings(
+    AiutaTryOnFeedbackStringsBuiltIn();
+
+Map<String, dynamic> _$AiutaTryOnFeedbackStringsBuiltInToJson(
+        AiutaTryOnFeedbackStringsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaTryOnFeedbackStringsCustom _$AiutaTryOnFeedbackStringsCustomFromJson(
+        Map<String, dynamic> json) =>
+    AiutaTryOnFeedbackStringsCustom(
       feedbackOptions: (json['feedbackOptions'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -18,8 +26,8 @@ AiutaTryOnFeedbackStrings _$AiutaTryOnFeedbackStringsFromJson(
       feedbackGratitudeText: json['feedbackGratitudeText'] as String,
     );
 
-Map<String, dynamic> _$AiutaTryOnFeedbackStringsToJson(
-        AiutaTryOnFeedbackStrings instance) =>
+Map<String, dynamic> _$AiutaTryOnFeedbackStringsCustomToJson(
+        AiutaTryOnFeedbackStringsCustom instance) =>
     <String, dynamic>{
       'feedbackOptions': instance.feedbackOptions,
       'feedbackTitle': instance.feedbackTitle,

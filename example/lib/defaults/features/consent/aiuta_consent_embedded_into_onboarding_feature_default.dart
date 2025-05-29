@@ -9,7 +9,7 @@ final class ConsentEmbeddedIntoOnboardingFeatureBuilder {
 
   AiutaConsentEmbeddedIntoOnboardingFeature build() =>
       AiutaConsentEmbeddedIntoOnboardingFeature(
-        strings: AiutaConsentEmbeddedStrings(
+        strings: AiutaConsentEmbeddedStringsCustom(
           consentHtml:
               'Your photos will be processed by <b><a href="$termsOfServiceUrl">Terms of Use</a></b>',
         ),

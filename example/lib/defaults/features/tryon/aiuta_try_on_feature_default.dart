@@ -27,7 +27,7 @@ final class TryOnFeatureBuilder {
         icons: AiutaTryOnIcons(
           tryOn20: AiutaIcon(path: "res/icons/ic_tryon_20.png"),
         ),
-        strings: AiutaTryOnStrings(
+        strings: AiutaTryOnStringsCustom(
           tryOnPageTitle: "Virtual Try-on",
           tryOn: "Try on",
         ),

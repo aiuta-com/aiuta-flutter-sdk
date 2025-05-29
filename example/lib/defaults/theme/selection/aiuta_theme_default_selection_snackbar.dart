@@ -6,7 +6,7 @@ import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 
 final class SelectionSnackbarThemeBuilder {
   AiutaSelectionSnackbarTheme build() => AiutaSelectionSnackbarTheme(
-        strings: AiutaSelectionSnackbarStrings(
+        strings: AiutaSelectionSnackbarStringsCustom(
           select: "Select",
           cancel: "Cancel",
           selectAll: "Select All",

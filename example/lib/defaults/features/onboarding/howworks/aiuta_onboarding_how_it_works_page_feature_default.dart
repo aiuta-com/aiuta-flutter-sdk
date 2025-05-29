@@ -21,7 +21,7 @@ final class OnboardingHowItWorksPageFeatureBuilder {
             ),
           ],
         ),
-        strings: AiutaOnboardingHowItWorksPageStrings(
+        strings: AiutaOnboardingHowItWorksPageStringsCustom(
           onboardingHowItWorksPageTitle: "<b>Step 1/2</b> - How it works",
           onboardingHowItWorksTitle: "Try on before buying",
           onboardingHowItWorksDescription:

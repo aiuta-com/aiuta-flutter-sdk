@@ -11,7 +11,7 @@ final class TryOnFeedbackFeatureBuilder {
           dislike36: AiutaIcon(path: "res/icons/ic_dislike_36.png"),
           gratitude40: AiutaIcon(path: "res/icons/ic_gratitude_40.png"),
         ),
-        strings: AiutaTryOnFeedbackStrings(
+        strings: AiutaTryOnFeedbackStringsCustom(
           feedbackOptions: [
             "This style isn’t for me",
             "The item looks off",

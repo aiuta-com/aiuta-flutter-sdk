@@ -7,7 +7,7 @@ final class TryOnFitDisclaimerFeatureBuilder {
         icons: AiutaTryOnFitDisclaimerIcons(
           info20: null,
         ),
-        strings: AiutaTryOnFitDisclaimerStrings(
+        strings: AiutaTryOnFitDisclaimerStringsCustom(
           fitDisclaimerTitle: "Results may vary from real-life fit",
           fitDisclaimerDescription:
               "Virtual try-on is a visualization tool that shows how items might look and may not perfectly represent how the item will fit in reality",

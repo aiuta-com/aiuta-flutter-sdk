@@ -6,9 +6,17 @@ part of 'aiuta_try_on_loading_page_strings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaTryOnLoadingPageStrings _$AiutaTryOnLoadingPageStringsFromJson(
+AiutaTryOnLoadingPageStringsBuiltIn
+    _$AiutaTryOnLoadingPageStringsBuiltInFromJson(Map<String, dynamic> json) =>
+        AiutaTryOnLoadingPageStringsBuiltIn();
+
+Map<String, dynamic> _$AiutaTryOnLoadingPageStringsBuiltInToJson(
+        AiutaTryOnLoadingPageStringsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaTryOnLoadingPageStringsCustom _$AiutaTryOnLoadingPageStringsCustomFromJson(
         Map<String, dynamic> json) =>
-    AiutaTryOnLoadingPageStrings(
+    AiutaTryOnLoadingPageStringsCustom(
       tryOnLoadingStatusUploadingImage:
           json['tryOnLoadingStatusUploadingImage'] as String,
       tryOnLoadingStatusScanningBody:
@@ -17,8 +25,8 @@ AiutaTryOnLoadingPageStrings _$AiutaTryOnLoadingPageStringsFromJson(
           json['tryOnLoadingStatusGeneratingOutfit'] as String,
     );
 
-Map<String, dynamic> _$AiutaTryOnLoadingPageStringsToJson(
-        AiutaTryOnLoadingPageStrings instance) =>
+Map<String, dynamic> _$AiutaTryOnLoadingPageStringsCustomToJson(
+        AiutaTryOnLoadingPageStringsCustom instance) =>
     <String, dynamic>{
       'tryOnLoadingStatusUploadingImage':
           instance.tryOnLoadingStatusUploadingImage,

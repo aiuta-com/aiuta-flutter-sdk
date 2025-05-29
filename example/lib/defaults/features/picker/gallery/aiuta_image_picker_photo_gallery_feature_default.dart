@@ -9,7 +9,7 @@ final class ImagePickerPhotoGalleryFeatureBuilder {
         icons: AiutaImagePickerPhotoGalleryIcons(
           gallery24: AiutaIcon(path: "res/icons/ic_gallery_24.png"),
         ),
-        strings: AiutaImagePickerPhotoGalleryStrings(
+        strings: AiutaImagePickerPhotoGalleryStringsCustom(
           galleryButtonSelectPhoto: "Choose from library",
         ),
       );

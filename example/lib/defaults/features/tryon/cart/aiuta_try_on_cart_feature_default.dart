@@ -4,7 +4,7 @@ import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_ca
 
 final class TryOnCartFeatureBuilder {
   AiutaTryOnCartFeature build() => AiutaTryOnCartFeature(
-        strings: AiutaTryOnCartStrings(
+        strings: AiutaTryOnCartStringsCustom(
           addToCart: "Add to cart",
         ),
         handler: AiutaTryOnCartHandler(

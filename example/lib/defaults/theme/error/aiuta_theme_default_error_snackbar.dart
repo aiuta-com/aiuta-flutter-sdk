@@ -6,7 +6,7 @@ import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 
 final class ErrorSnackbarThemeBuilder {
   AiutaErrorSnackbarTheme build() => AiutaErrorSnackbarTheme(
-        strings: AiutaErrorSnackbarStrings(
+        strings: AiutaErrorSnackbarStringsCustom(
           defaultErrorMessage: "Something went wrong. Please try again later",
           tryAgainButton: "Try again",
         ),

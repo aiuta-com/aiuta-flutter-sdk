@@ -15,7 +15,7 @@ final class ImagePickerUploadsHistoryFeatureBuilder {
     final uploadedImagesNotifier = ValueNotifier<List<AiutaInputImage>>([]);
 
     return AiutaImagePickerUploadsHistoryFeature(
-      strings: AiutaImagePickerUploadsHistoryStrings(
+      strings: AiutaImagePickerUploadsHistoryStringsCustom(
         uploadsHistoryTitle: "Previously used photos",
         uploadsHistoryButtonNewPhoto:
             isPredefinedModelAvailable ? "+ New photo or model" : "+ New photo",

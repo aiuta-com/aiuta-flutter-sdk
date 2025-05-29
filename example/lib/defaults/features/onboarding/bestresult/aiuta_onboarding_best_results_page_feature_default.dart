@@ -24,7 +24,7 @@ final class OnboardingBestResultsPageFeatureBuilder {
           onboardingBestResultsBad24: AiutaIcon(
               path: "res/icons/ic_onboarding_best_results_bad_24.png"),
         ),
-        strings: AiutaOnboardingBestResultsPageStrings(
+        strings: AiutaOnboardingBestResultsPageStringsCustom(
           onboardingBestResultsPageTitle: "<b>Step 2/2</b> - For best result",
           onboardingBestResultsTitle: "For best results",
           onboardingBestResultsDescription:

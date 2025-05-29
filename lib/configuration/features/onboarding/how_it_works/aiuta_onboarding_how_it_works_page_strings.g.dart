@@ -6,9 +6,19 @@ part of 'aiuta_onboarding_how_it_works_page_strings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaOnboardingHowItWorksPageStrings
-    _$AiutaOnboardingHowItWorksPageStringsFromJson(Map<String, dynamic> json) =>
-        AiutaOnboardingHowItWorksPageStrings(
+AiutaOnboardingHowItWorksPageStringsBuiltIn
+    _$AiutaOnboardingHowItWorksPageStringsBuiltInFromJson(
+            Map<String, dynamic> json) =>
+        AiutaOnboardingHowItWorksPageStringsBuiltIn();
+
+Map<String, dynamic> _$AiutaOnboardingHowItWorksPageStringsBuiltInToJson(
+        AiutaOnboardingHowItWorksPageStringsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaOnboardingHowItWorksPageStringsCustom
+    _$AiutaOnboardingHowItWorksPageStringsCustomFromJson(
+            Map<String, dynamic> json) =>
+        AiutaOnboardingHowItWorksPageStringsCustom(
           onboardingHowItWorksPageTitle:
               json['onboardingHowItWorksPageTitle'] as String?,
           onboardingHowItWorksTitle:
@@ -17,8 +27,8 @@ AiutaOnboardingHowItWorksPageStrings
               json['onboardingHowItWorksDescription'] as String,
         );
 
-Map<String, dynamic> _$AiutaOnboardingHowItWorksPageStringsToJson(
-        AiutaOnboardingHowItWorksPageStrings instance) =>
+Map<String, dynamic> _$AiutaOnboardingHowItWorksPageStringsCustomToJson(
+        AiutaOnboardingHowItWorksPageStringsCustom instance) =>
     <String, dynamic>{
       'onboardingHowItWorksPageTitle': instance.onboardingHowItWorksPageTitle,
       'onboardingHowItWorksTitle': instance.onboardingHowItWorksTitle,

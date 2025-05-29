@@ -6,12 +6,22 @@ part of 'aiuta_share_strings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaShareStrings _$AiutaShareStringsFromJson(Map<String, dynamic> json) =>
-    AiutaShareStrings(
+AiutaShareStringsBuiltIn _$AiutaShareStringsBuiltInFromJson(
+        Map<String, dynamic> json) =>
+    AiutaShareStringsBuiltIn();
+
+Map<String, dynamic> _$AiutaShareStringsBuiltInToJson(
+        AiutaShareStringsBuiltIn instance) =>
+    <String, dynamic>{};
+
+AiutaShareStringsCustom _$AiutaShareStringsCustomFromJson(
+        Map<String, dynamic> json) =>
+    AiutaShareStringsCustom(
       shareButton: json['shareButton'] as String,
     );
 
-Map<String, dynamic> _$AiutaShareStringsToJson(AiutaShareStrings instance) =>
+Map<String, dynamic> _$AiutaShareStringsCustomToJson(
+        AiutaShareStringsCustom instance) =>
     <String, dynamic>{
       'shareButton': instance.shareButton,
     };

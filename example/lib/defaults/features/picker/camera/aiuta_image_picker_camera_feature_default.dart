@@ -8,7 +8,7 @@ final class ImagePickerCameraFeatureBuilder {
         icons: AiutaImagePickerCameraIcons(
           camera24: AiutaIcon(path: "res/icons/ic_camera_24.png"),
         ),
-        strings: AiutaImagePickerCameraStrings(
+        strings: AiutaImagePickerCameraStringsCustom(
           cameraButtonTakePhoto: "Take a photo",
           cameraPermissionTitle: "Camera permission",
           cameraPermissionDescription:

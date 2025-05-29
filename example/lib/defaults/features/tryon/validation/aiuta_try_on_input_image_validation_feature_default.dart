@@ -4,7 +4,7 @@ import 'package:aiuta_flutter/configuration/features/try_on/input_image_validati
 final class TryOnInputImageValidationFeatureBuilder {
   AiutaTryOnInputImageValidationFeature build() =>
       AiutaTryOnInputImageValidationFeature(
-        strings: AiutaTryOnInputImageValidationStrings(
+        strings: AiutaTryOnInputImageValidationStringsCustom(
           invalidInputImageDescription:
               "We couldn’t detect anyone in this photo",
           invalidInputImageChangePhotoButton: "Change photo",

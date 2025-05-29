@@ -8,7 +8,7 @@ final class TryOnLoadingPageFeatureBuilder {
         icons: AiutaTryOnLoadingPageIcons(
           loading14: null,
         ),
-        strings: AiutaTryOnLoadingPageStrings(
+        strings: AiutaTryOnLoadingPageStringsCustom(
           tryOnLoadingStatusUploadingImage: "Uploading image",
           tryOnLoadingStatusScanningBody: "Scanning your body",
           tryOnLoadingStatusGeneratingOutfit: "Generating outfit",
