@@ -10,17 +10,17 @@ AiutaImagePickerUploadsHistoryDataProviderBuiltIn
     _$AiutaImagePickerUploadsHistoryDataProviderBuiltInFromJson(
             Map<String, dynamic> json) =>
         AiutaImagePickerUploadsHistoryDataProviderBuiltIn()
-          ..type = $enumDecode(_$AiutaDataProviderTypeEnumMap, json['type']);
+          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaImagePickerUploadsHistoryDataProviderBuiltInToJson(
         AiutaImagePickerUploadsHistoryDataProviderBuiltIn instance) =>
     <String, dynamic>{
-      'type': _$AiutaDataProviderTypeEnumMap[instance.type]!,
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
     };
 
-const _$AiutaDataProviderTypeEnumMap = {
-  AiutaDataProviderType.builtIn: 'builtIn',
-  AiutaDataProviderType.custom: 'custom',
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
 };
 
 AiutaImagePickerUploadsHistoryDataProviderCustom
@@ -31,12 +31,12 @@ AiutaImagePickerUploadsHistoryDataProviderCustom
           addUploadedImages: toNull(json['addUploadedImages']),
           deleteUploadedImages: toNull(json['deleteUploadedImages']),
           selectUploadedImage: toNull(json['selectUploadedImage']),
-        )..type = $enumDecode(_$AiutaDataProviderTypeEnumMap, json['type']);
+        )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaImagePickerUploadsHistoryDataProviderCustomToJson(
     AiutaImagePickerUploadsHistoryDataProviderCustom instance) {
   final val = <String, dynamic>{
-    'type': _$AiutaDataProviderTypeEnumMap[instance.type]!,
+    'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
   };
 
   void writeNotNull(String key, dynamic value) {
