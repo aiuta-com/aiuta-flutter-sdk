@@ -7,7 +7,7 @@ part 'aiuta_share_icons.g.dart';
 /// Icons used in the share feature.
 sealed class AiutaShareIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaShareIcons] with the specified [type].
   AiutaShareIcons(this.type);

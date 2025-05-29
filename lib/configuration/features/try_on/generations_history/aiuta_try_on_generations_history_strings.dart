@@ -6,7 +6,7 @@ part 'aiuta_try_on_generations_history_strings.g.dart';
 /// Strings used in the generations history feature.
 sealed class AiutaTryOnGenerationsHistoryStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnGenerationsHistoryStrings] with the specified [type].
   AiutaTryOnGenerationsHistoryStrings(this.type);

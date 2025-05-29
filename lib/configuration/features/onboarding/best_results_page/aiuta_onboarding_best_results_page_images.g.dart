@@ -9,11 +9,19 @@ part of 'aiuta_onboarding_best_results_page_images.dart';
 AiutaOnboardingBestResultsPageImagesBuiltIn
     _$AiutaOnboardingBestResultsPageImagesBuiltInFromJson(
             Map<String, dynamic> json) =>
-        AiutaOnboardingBestResultsPageImagesBuiltIn();
+        AiutaOnboardingBestResultsPageImagesBuiltIn()
+          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaOnboardingBestResultsPageImagesBuiltInToJson(
         AiutaOnboardingBestResultsPageImagesBuiltIn instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
 
 AiutaOnboardingBestResultsPageImagesCustom
     _$AiutaOnboardingBestResultsPageImagesCustomFromJson(
@@ -27,11 +35,12 @@ AiutaOnboardingBestResultsPageImagesCustom
               (json['onboardingBestResultsBad'] as List<dynamic>)
                   .map((e) => e as String)
                   .toList(),
-        );
+        )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaOnboardingBestResultsPageImagesCustomToJson(
         AiutaOnboardingBestResultsPageImagesCustom instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'onboardingBestResultsGood': instance.onboardingBestResultsGood,
       'onboardingBestResultsBad': instance.onboardingBestResultsBad,
     };

@@ -6,7 +6,7 @@ part 'aiuta_try_on_loading_page_strings.g.dart';
 /// The strings used in the loading page feature.
 sealed class AiutaTryOnLoadingPageStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnLoadingPageStrings] with the specified [type].
   AiutaTryOnLoadingPageStrings(this.type);

@@ -8,11 +8,19 @@ part of 'aiuta_consent_standalone_strings.dart';
 
 AiutaConsentStandaloneStringsBuiltIn
     _$AiutaConsentStandaloneStringsBuiltInFromJson(Map<String, dynamic> json) =>
-        AiutaConsentStandaloneStringsBuiltIn();
+        AiutaConsentStandaloneStringsBuiltIn()
+          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaConsentStandaloneStringsBuiltInToJson(
         AiutaConsentStandaloneStringsBuiltIn instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
 
 AiutaConsentStandaloneStringsCustom
     _$AiutaConsentStandaloneStringsCustomFromJson(Map<String, dynamic> json) =>
@@ -23,11 +31,12 @@ AiutaConsentStandaloneStringsCustom
           consentFooterHtml: json['consentFooterHtml'] as String?,
           consentButtonAccept: json['consentButtonAccept'] as String,
           consentButtonReject: json['consentButtonReject'] as String?,
-        );
+        )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaConsentStandaloneStringsCustomToJson(
         AiutaConsentStandaloneStringsCustom instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'consentPageTitle': instance.consentPageTitle,
       'consentTitle': instance.consentTitle,
       'consentDescriptionHtml': instance.consentDescriptionHtml,

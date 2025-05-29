@@ -6,7 +6,7 @@ part 'aiuta_onboarding_how_it_works_page_strings.g.dart';
 /// This class represents the strings used in the How It Works page of the Aiuta onboarding process.
 sealed class AiutaOnboardingHowItWorksPageStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaOnboardingHowItWorksPageStrings] with the specified [type].
   AiutaOnboardingHowItWorksPageStrings(this.type);

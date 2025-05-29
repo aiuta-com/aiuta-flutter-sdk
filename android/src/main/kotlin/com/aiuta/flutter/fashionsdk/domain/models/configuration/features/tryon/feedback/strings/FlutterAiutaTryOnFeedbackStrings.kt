@@ -1,10 +1,23 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.feedback.strings
 
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterCustomizationType
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonClassDiscriminator
+
+@OptIn(ExperimentalSerializationApi::class)
+@Serializable
+@JsonClassDiscriminator("type")
+sealed interface FlutterAiutaTryOnFeedbackStrings
 
 @Serializable
-data class FlutterAiutaTryOnFeedbackStrings(
+@SerialName(FlutterCustomizationType.TYPE_BUILT_IN)
+object FlutterAiutaTryOnFeedbackStringsBuiltIn : FlutterAiutaTryOnFeedbackStrings
+
+@Serializable
+@SerialName(FlutterCustomizationType.TYPE_CUSTOM)
+data class FlutterAiutaTryOnFeedbackStringsCustom(
     @SerialName("feedbackOptions")
     val feedbackOptions: List<String>,
 
@@ -19,4 +32,4 @@ data class FlutterAiutaTryOnFeedbackStrings(
 
     @SerialName("feedbackGratitudeText")
     val feedbackGratitudeText: String
-)
+) : FlutterAiutaTryOnFeedbackStrings

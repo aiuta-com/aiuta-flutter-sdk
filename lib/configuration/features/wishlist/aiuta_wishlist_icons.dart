@@ -7,7 +7,7 @@ part 'aiuta_wishlist_icons.g.dart';
 /// Icons used in the wishlist feature.
 sealed class AiutaWishlistIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaWishlistIcons] with the specified [type].
   AiutaWishlistIcons(this.type);

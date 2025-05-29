@@ -6,7 +6,7 @@ part 'aiuta_share_watermark_images.g.dart';
 /// This class represents the images used in the watermark for the share feature.
 sealed class AiutaShareWatermarkImages {
   /// The type of the images, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaShareWatermarkImages] with the specified [type].
   AiutaShareWatermarkImages(this.type);

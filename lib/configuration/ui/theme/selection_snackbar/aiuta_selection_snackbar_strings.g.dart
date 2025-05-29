@@ -8,11 +8,19 @@ part of 'aiuta_selection_snackbar_strings.dart';
 
 AiutaSelectionSnackbarStringsBuiltIn
     _$AiutaSelectionSnackbarStringsBuiltInFromJson(Map<String, dynamic> json) =>
-        AiutaSelectionSnackbarStringsBuiltIn();
+        AiutaSelectionSnackbarStringsBuiltIn()
+          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaSelectionSnackbarStringsBuiltInToJson(
         AiutaSelectionSnackbarStringsBuiltIn instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
 
 AiutaSelectionSnackbarStringsCustom
     _$AiutaSelectionSnackbarStringsCustomFromJson(Map<String, dynamic> json) =>
@@ -21,11 +29,12 @@ AiutaSelectionSnackbarStringsCustom
           cancel: json['cancel'] as String,
           selectAll: json['selectAll'] as String,
           unselectAll: json['unselectAll'] as String,
-        );
+        )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaSelectionSnackbarStringsCustomToJson(
         AiutaSelectionSnackbarStringsCustom instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'select': instance.select,
       'cancel': instance.cancel,
       'selectAll': instance.selectAll,

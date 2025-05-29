@@ -6,7 +6,7 @@ part 'aiuta_onboarding_strings.g.dart';
 /// This class represents the common strings used for all pages in the onboarding feature.
 sealed class AiutaOnboardingStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaOnboardingStrings] with the specified [type].
   AiutaOnboardingStrings(this.type);

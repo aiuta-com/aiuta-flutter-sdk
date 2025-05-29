@@ -6,7 +6,7 @@ part 'aiuta_image_picker_uploads_history_strings.g.dart';
 /// Strings used in the uploads history feature.
 sealed class AiutaImagePickerUploadsHistoryStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaImagePickerUploadsHistoryStrings] with the specified [type].
   AiutaImagePickerUploadsHistoryStrings(this.type);
@@ -34,9 +34,13 @@ sealed class AiutaImagePickerUploadsHistoryStrings {
 @JsonSerializable()
 class AiutaImagePickerUploadsHistoryStringsBuiltIn
     extends AiutaImagePickerUploadsHistoryStrings {
+  /// Whether the predefined model is available.
+  final bool isPredefinedModelAvailable;
+
   /// Creates an instance of the built-in uploads history strings.
-  AiutaImagePickerUploadsHistoryStringsBuiltIn()
-      : super(AiutaCustomizationType.builtIn);
+  AiutaImagePickerUploadsHistoryStringsBuiltIn({
+    required this.isPredefinedModelAvailable,
+  }) : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
   factory AiutaImagePickerUploadsHistoryStringsBuiltIn.fromJson(

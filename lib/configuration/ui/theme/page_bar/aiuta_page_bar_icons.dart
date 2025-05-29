@@ -7,7 +7,7 @@ part 'aiuta_page_bar_icons.g.dart';
 /// This class represents the icons used in the Aiuta page bar.
 sealed class AiutaPageBarIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaPageBarIcons] with the specified [type].
   AiutaPageBarIcons(this.type);

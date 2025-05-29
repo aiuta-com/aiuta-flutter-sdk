@@ -6,7 +6,7 @@ part 'aiuta_power_bar_strings.g.dart';
 /// Strings used in the `powered by` bar.
 sealed class AiutaPowerBarStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaPowerBarStrings] with the specified [type].
   AiutaPowerBarStrings(this.type);

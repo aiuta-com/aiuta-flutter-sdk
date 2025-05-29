@@ -7,7 +7,7 @@ part 'aiuta_welcome_screen_icons.g.dart';
 /// Icons used in the welcome screen feature.
 sealed class AiutaWelcomeScreenIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaWelcomeScreenIcons] with the specified [type].
   AiutaWelcomeScreenIcons(this.type);

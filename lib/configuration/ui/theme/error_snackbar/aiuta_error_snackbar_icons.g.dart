@@ -8,20 +8,29 @@ part of 'aiuta_error_snackbar_icons.dart';
 
 AiutaErrorSnackbarIconsBuiltIn _$AiutaErrorSnackbarIconsBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaErrorSnackbarIconsBuiltIn();
+    AiutaErrorSnackbarIconsBuiltIn()
+      ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaErrorSnackbarIconsBuiltInToJson(
         AiutaErrorSnackbarIconsBuiltIn instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
 
 AiutaErrorSnackbarIconsCustom _$AiutaErrorSnackbarIconsCustomFromJson(
         Map<String, dynamic> json) =>
     AiutaErrorSnackbarIconsCustom(
       error36: AiutaIcon.fromJson(json['error36'] as Map<String, dynamic>),
-    );
+    )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaErrorSnackbarIconsCustomToJson(
         AiutaErrorSnackbarIconsCustom instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'error36': instance.error36,
     };

@@ -6,7 +6,7 @@ part 'aiuta_try_on_strings.g.dart';
 /// Strings for the Try-On feature.
 sealed class AiutaTryOnStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnStrings] with the specified [type].
   AiutaTryOnStrings(this.type);

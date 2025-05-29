@@ -7,7 +7,7 @@ part 'aiuta_try_on_with_other_photo_icons.g.dart';
 /// Icons used in the Try-On with other photo feature.
 sealed class AiutaTryOnWithOtherPhotoIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnWithOtherPhotoIcons] with the specified [type].
   AiutaTryOnWithOtherPhotoIcons(this.type);
@@ -31,23 +31,28 @@ sealed class AiutaTryOnWithOtherPhotoIcons {
 ///
 /// This class represents the default, built-in icons for the try-on with other photo feature.
 @JsonSerializable()
-class AiutaTryOnWithOtherPhotoIconsBuiltIn extends AiutaTryOnWithOtherPhotoIcons {
+class AiutaTryOnWithOtherPhotoIconsBuiltIn
+    extends AiutaTryOnWithOtherPhotoIcons {
   /// Creates an instance of the built-in try-on with other photo icons.
-  AiutaTryOnWithOtherPhotoIconsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaTryOnWithOtherPhotoIconsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaTryOnWithOtherPhotoIconsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnWithOtherPhotoIconsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnWithOtherPhotoIconsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaTryOnWithOtherPhotoIconsBuiltInToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaTryOnWithOtherPhotoIconsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaTryOnWithOtherPhotoIcons`.
 ///
 /// This class allows for custom icons to be provided for the try-on with other photo feature.
 @JsonSerializable()
-class AiutaTryOnWithOtherPhotoIconsCustom extends AiutaTryOnWithOtherPhotoIcons {
+class AiutaTryOnWithOtherPhotoIconsCustom
+    extends AiutaTryOnWithOtherPhotoIcons {
   /// Icon for changing the photo.
   final AiutaIcon changePhoto24;
 
@@ -59,9 +64,11 @@ class AiutaTryOnWithOtherPhotoIconsCustom extends AiutaTryOnWithOtherPhotoIcons 
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaTryOnWithOtherPhotoIconsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnWithOtherPhotoIconsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnWithOtherPhotoIconsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaTryOnWithOtherPhotoIconsCustomToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaTryOnWithOtherPhotoIconsCustomToJson(this);
 }

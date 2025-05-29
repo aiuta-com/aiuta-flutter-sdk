@@ -6,7 +6,7 @@ part 'aiuta_image_picker_camera_strings.g.dart';
 /// Strings used in the camera feature of the image picker.
 sealed class AiutaImagePickerCameraStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaImagePickerCameraStrings] with the specified [type].
   AiutaImagePickerCameraStrings(this.type);

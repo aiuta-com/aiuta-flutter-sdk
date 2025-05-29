@@ -7,7 +7,7 @@ part 'aiuta_try_on_icons.g.dart';
 /// Icons used in the try-on feature.
 sealed class AiutaTryOnIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnIcons] with the specified [type].
   AiutaTryOnIcons(this.type);
@@ -55,7 +55,7 @@ class AiutaTryOnIconsCustom extends AiutaTryOnIcons {
   /// "Try-On" buttons.
   AiutaTryOnIconsCustom({
     required this.tryOn20,
-  })  : super(AiutaCustomizationType.custom);
+  }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
   factory AiutaTryOnIconsCustom.fromJson(Map<String, dynamic> json) =>

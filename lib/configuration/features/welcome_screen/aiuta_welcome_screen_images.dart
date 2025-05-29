@@ -6,7 +6,7 @@ part 'aiuta_welcome_screen_images.g.dart';
 /// This class represents the images used in the welcome screen of the Aiuta SDK.
 sealed class AiutaWelcomeScreenImages {
   /// The type of the images, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaWelcomeScreenImages] with the specified [type].
   AiutaWelcomeScreenImages(this.type);

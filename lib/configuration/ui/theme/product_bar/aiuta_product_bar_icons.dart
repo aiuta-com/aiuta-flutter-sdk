@@ -7,7 +7,7 @@ part 'aiuta_product_bar_icons.g.dart';
 /// Configuration for the product bar icons.
 sealed class AiutaProductBarIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaProductBarIcons] with the specified [type].
   AiutaProductBarIcons(this.type);

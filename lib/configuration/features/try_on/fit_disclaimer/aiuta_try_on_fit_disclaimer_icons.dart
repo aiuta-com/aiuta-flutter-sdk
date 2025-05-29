@@ -7,7 +7,7 @@ part 'aiuta_try_on_fit_disclaimer_icons.g.dart';
 /// Icons used in the try-on fit disclaimer feature.
 sealed class AiutaTryOnFitDisclaimerIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnFitDisclaimerIcons] with the specified [type].
   AiutaTryOnFitDisclaimerIcons(this.type);
@@ -36,11 +36,13 @@ class AiutaTryOnFitDisclaimerIconsBuiltIn extends AiutaTryOnFitDisclaimerIcons {
   AiutaTryOnFitDisclaimerIconsBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaTryOnFitDisclaimerIconsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnFitDisclaimerIconsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnFitDisclaimerIconsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaTryOnFitDisclaimerIconsBuiltInToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaTryOnFitDisclaimerIconsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaTryOnFitDisclaimerIcons`.
@@ -58,9 +60,11 @@ class AiutaTryOnFitDisclaimerIconsCustom extends AiutaTryOnFitDisclaimerIcons {
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaTryOnFitDisclaimerIconsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnFitDisclaimerIconsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnFitDisclaimerIconsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaTryOnFitDisclaimerIconsCustomToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaTryOnFitDisclaimerIconsCustomToJson(this);
 }

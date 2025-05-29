@@ -7,7 +7,7 @@ part 'aiuta_try_on_loading_page_icons.g.dart';
 /// Icons used in the try-on loading page feature.
 sealed class AiutaTryOnLoadingPageIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnLoadingPageIcons] with the specified [type].
   AiutaTryOnLoadingPageIcons(this.type);
@@ -36,11 +36,13 @@ class AiutaTryOnLoadingPageIconsBuiltIn extends AiutaTryOnLoadingPageIcons {
   AiutaTryOnLoadingPageIconsBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaTryOnLoadingPageIconsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnLoadingPageIconsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnLoadingPageIconsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaTryOnLoadingPageIconsBuiltInToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaTryOnLoadingPageIconsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaTryOnLoadingPageIcons`.
@@ -59,9 +61,11 @@ class AiutaTryOnLoadingPageIconsCustom extends AiutaTryOnLoadingPageIcons {
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaTryOnLoadingPageIconsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaTryOnLoadingPageIconsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaTryOnLoadingPageIconsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaTryOnLoadingPageIconsCustomToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaTryOnLoadingPageIconsCustomToJson(this);
 }

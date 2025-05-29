@@ -6,7 +6,7 @@ part 'aiuta_image_picker_predefined_model_strings.g.dart';
 /// Strings used in the predefined model feature.
 sealed class AiutaImagePickerPredefinedModelStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaImagePickerPredefinedModelStrings] with the specified [type].
   AiutaImagePickerPredefinedModelStrings(this.type);

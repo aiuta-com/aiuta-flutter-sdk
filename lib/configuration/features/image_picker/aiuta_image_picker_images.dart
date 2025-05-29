@@ -6,7 +6,7 @@ part 'aiuta_image_picker_images.g.dart';
 /// Configuration for the image picker feature.
 sealed class AiutaImagePickerImages {
   /// The type of the images, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaImagePickerImages] with the specified [type].
   AiutaImagePickerImages(this.type);

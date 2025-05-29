@@ -8,11 +8,19 @@ part of 'aiuta_image_picker_camera_strings.dart';
 
 AiutaImagePickerCameraStringsBuiltIn
     _$AiutaImagePickerCameraStringsBuiltInFromJson(Map<String, dynamic> json) =>
-        AiutaImagePickerCameraStringsBuiltIn();
+        AiutaImagePickerCameraStringsBuiltIn()
+          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaImagePickerCameraStringsBuiltInToJson(
         AiutaImagePickerCameraStringsBuiltIn instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
 
 AiutaImagePickerCameraStringsCustom
     _$AiutaImagePickerCameraStringsCustomFromJson(Map<String, dynamic> json) =>
@@ -23,11 +31,12 @@ AiutaImagePickerCameraStringsCustom
               json['cameraPermissionDescription'] as String,
           cameraPermissionButtonOpenSettings:
               json['cameraPermissionButtonOpenSettings'] as String,
-        );
+        )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaImagePickerCameraStringsCustomToJson(
         AiutaImagePickerCameraStringsCustom instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'cameraButtonTakePhoto': instance.cameraButtonTakePhoto,
       'cameraPermissionTitle': instance.cameraPermissionTitle,
       'cameraPermissionDescription': instance.cameraPermissionDescription,

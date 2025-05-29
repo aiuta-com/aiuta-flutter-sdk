@@ -9,11 +9,19 @@ part of 'aiuta_try_on_generations_history_strings.dart';
 AiutaTryOnGenerationsHistoryStringsBuiltIn
     _$AiutaTryOnGenerationsHistoryStringsBuiltInFromJson(
             Map<String, dynamic> json) =>
-        AiutaTryOnGenerationsHistoryStringsBuiltIn();
+        AiutaTryOnGenerationsHistoryStringsBuiltIn()
+          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaTryOnGenerationsHistoryStringsBuiltInToJson(
         AiutaTryOnGenerationsHistoryStringsBuiltIn instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
 
 AiutaTryOnGenerationsHistoryStringsCustom
     _$AiutaTryOnGenerationsHistoryStringsCustomFromJson(
@@ -21,10 +29,11 @@ AiutaTryOnGenerationsHistoryStringsCustom
         AiutaTryOnGenerationsHistoryStringsCustom(
           generationsHistoryPageTitle:
               json['generationsHistoryPageTitle'] as String,
-        );
+        )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaTryOnGenerationsHistoryStringsCustomToJson(
         AiutaTryOnGenerationsHistoryStringsCustom instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'generationsHistoryPageTitle': instance.generationsHistoryPageTitle,
     };

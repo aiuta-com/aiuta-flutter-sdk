@@ -6,7 +6,7 @@ part 'aiuta_try_on_feedback_other_strings.g.dart';
 /// Strings used in the other feedback feature.
 sealed class AiutaTryOnFeedbackOtherStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnFeedbackOtherStrings] with the specified [type].
   AiutaTryOnFeedbackOtherStrings(this.type);

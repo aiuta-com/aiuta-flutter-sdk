@@ -7,7 +7,7 @@ part 'aiuta_image_picker_camera_icons.g.dart';
 /// Icons used in the camera feature of the image picker.
 sealed class AiutaImagePickerCameraIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaImagePickerCameraIcons] with the specified [type].
   AiutaImagePickerCameraIcons(this.type);
@@ -36,11 +36,13 @@ class AiutaImagePickerCameraIconsBuiltIn extends AiutaImagePickerCameraIcons {
   AiutaImagePickerCameraIconsBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaImagePickerCameraIconsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaImagePickerCameraIconsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaImagePickerCameraIconsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaImagePickerCameraIconsBuiltInToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaImagePickerCameraIconsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaImagePickerCameraIcons`.
@@ -58,9 +60,11 @@ class AiutaImagePickerCameraIconsCustom extends AiutaImagePickerCameraIcons {
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaImagePickerCameraIconsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaImagePickerCameraIconsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaImagePickerCameraIconsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaImagePickerCameraIconsCustomToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaImagePickerCameraIconsCustomToJson(this);
 }

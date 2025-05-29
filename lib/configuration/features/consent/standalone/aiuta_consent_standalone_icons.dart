@@ -7,7 +7,7 @@ part 'aiuta_consent_standalone_icons.g.dart';
 /// This class contains the icons used in the consent standalone feature.
 sealed class AiutaConsentStandaloneIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaConsentStandaloneIcons] with the specified [type].
   AiutaConsentStandaloneIcons(this.type);
@@ -36,11 +36,13 @@ class AiutaConsentStandaloneIconsBuiltIn extends AiutaConsentStandaloneIcons {
   AiutaConsentStandaloneIconsBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaConsentStandaloneIconsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaConsentStandaloneIconsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaConsentStandaloneIconsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaConsentStandaloneIconsBuiltInToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaConsentStandaloneIconsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaConsentStandaloneIcons`.
@@ -57,9 +59,11 @@ class AiutaConsentStandaloneIconsCustom extends AiutaConsentStandaloneIcons {
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaConsentStandaloneIconsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaConsentStandaloneIconsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaConsentStandaloneIconsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaConsentStandaloneIconsCustomToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaConsentStandaloneIconsCustomToJson(this);
 }

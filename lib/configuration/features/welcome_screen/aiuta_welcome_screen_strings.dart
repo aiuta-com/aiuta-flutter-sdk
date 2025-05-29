@@ -6,7 +6,7 @@ part 'aiuta_welcome_screen_strings.g.dart';
 /// This class represents the strings used in the welcome screen of the Aiuta SDK.
 sealed class AiutaWelcomeScreenStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaWelcomeScreenStrings] with the specified [type].
   AiutaWelcomeScreenStrings(this.type);

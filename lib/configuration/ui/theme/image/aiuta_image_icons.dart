@@ -7,7 +7,7 @@ part 'aiuta_image_icons.g.dart';
 /// This contains the icons for the image views.
 sealed class AiutaImageIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaImageIcons] with the specified [type].
   AiutaImageIcons(this.type);

@@ -6,7 +6,7 @@ part 'aiuta_try_on_cart_strings.g.dart';
 /// Strings used in the cart feature.
 sealed class AiutaTryOnCartStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnCartStrings] with the specified [type].
   AiutaTryOnCartStrings(this.type);

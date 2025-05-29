@@ -7,7 +7,7 @@ part 'aiuta_consent_embedded_strings.g.dart';
 /// embedded into the onboarding pages.
 sealed class AiutaConsentEmbeddedStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaConsentEmbeddedStrings] with the specified [type].
   AiutaConsentEmbeddedStrings(this.type);
@@ -34,8 +34,13 @@ sealed class AiutaConsentEmbeddedStrings {
 /// predefined behavior.
 @JsonSerializable()
 class AiutaConsentEmbeddedStringsBuiltIn extends AiutaConsentEmbeddedStrings {
+  /// The URL of the terms of service.
+  final String termsOfServiceUrl;
+
   /// Creates an instance of the built-in consent embedded strings.
-  AiutaConsentEmbeddedStringsBuiltIn() : super(AiutaCustomizationType.builtIn);
+  AiutaConsentEmbeddedStringsBuiltIn({
+    required this.termsOfServiceUrl,
+  }) : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
   factory AiutaConsentEmbeddedStringsBuiltIn.fromJson(

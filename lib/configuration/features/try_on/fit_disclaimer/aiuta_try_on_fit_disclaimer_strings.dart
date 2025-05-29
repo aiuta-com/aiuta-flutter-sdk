@@ -6,7 +6,7 @@ part 'aiuta_try_on_fit_disclaimer_strings.g.dart';
 /// Strings for the Fit Disclaimer feature.
 sealed class AiutaTryOnFitDisclaimerStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnFitDisclaimerStrings] with the specified [type].
   AiutaTryOnFitDisclaimerStrings(this.type);

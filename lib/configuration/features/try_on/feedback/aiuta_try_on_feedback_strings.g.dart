@@ -8,11 +8,19 @@ part of 'aiuta_try_on_feedback_strings.dart';
 
 AiutaTryOnFeedbackStringsBuiltIn _$AiutaTryOnFeedbackStringsBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaTryOnFeedbackStringsBuiltIn();
+    AiutaTryOnFeedbackStringsBuiltIn()
+      ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaTryOnFeedbackStringsBuiltInToJson(
         AiutaTryOnFeedbackStringsBuiltIn instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
 
 AiutaTryOnFeedbackStringsCustom _$AiutaTryOnFeedbackStringsCustomFromJson(
         Map<String, dynamic> json) =>
@@ -24,11 +32,12 @@ AiutaTryOnFeedbackStringsCustom _$AiutaTryOnFeedbackStringsCustomFromJson(
       feedbackButtonSkip: json['feedbackButtonSkip'] as String,
       feedbackButtonSend: json['feedbackButtonSend'] as String,
       feedbackGratitudeText: json['feedbackGratitudeText'] as String,
-    );
+    )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaTryOnFeedbackStringsCustomToJson(
         AiutaTryOnFeedbackStringsCustom instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'feedbackOptions': instance.feedbackOptions,
       'feedbackTitle': instance.feedbackTitle,
       'feedbackButtonSkip': instance.feedbackButtonSkip,

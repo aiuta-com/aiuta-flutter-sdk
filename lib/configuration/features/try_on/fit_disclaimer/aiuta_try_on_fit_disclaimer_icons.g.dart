@@ -8,20 +8,29 @@ part of 'aiuta_try_on_fit_disclaimer_icons.dart';
 
 AiutaTryOnFitDisclaimerIconsBuiltIn
     _$AiutaTryOnFitDisclaimerIconsBuiltInFromJson(Map<String, dynamic> json) =>
-        AiutaTryOnFitDisclaimerIconsBuiltIn();
+        AiutaTryOnFitDisclaimerIconsBuiltIn()
+          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaTryOnFitDisclaimerIconsBuiltInToJson(
         AiutaTryOnFitDisclaimerIconsBuiltIn instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
 
 AiutaTryOnFitDisclaimerIconsCustom _$AiutaTryOnFitDisclaimerIconsCustomFromJson(
         Map<String, dynamic> json) =>
     AiutaTryOnFitDisclaimerIconsCustom(
       info20: AiutaIcon.fromJson(json['info20'] as Map<String, dynamic>),
-    );
+    )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaTryOnFitDisclaimerIconsCustomToJson(
         AiutaTryOnFitDisclaimerIconsCustom instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'info20': instance.info20,
     };

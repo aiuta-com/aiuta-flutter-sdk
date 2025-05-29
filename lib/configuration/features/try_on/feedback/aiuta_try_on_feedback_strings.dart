@@ -6,7 +6,7 @@ part 'aiuta_try_on_feedback_strings.g.dart';
 /// Strings used in the feedback feature of the virtual try-on functionality.
 sealed class AiutaTryOnFeedbackStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnFeedbackStrings] with the specified [type].
   AiutaTryOnFeedbackStrings(this.type);

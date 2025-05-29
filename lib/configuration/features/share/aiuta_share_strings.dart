@@ -6,7 +6,7 @@ part 'aiuta_share_strings.g.dart';
 /// Strings used in the share feature.
 sealed class AiutaShareStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaShareStrings] with the specified [type].
   AiutaShareStrings(this.type);

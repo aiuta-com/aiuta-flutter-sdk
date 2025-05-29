@@ -7,7 +7,7 @@ part 'aiuta_error_snackbar_icons.g.dart';
 /// Icons configuration for the error snackbar.
 sealed class AiutaErrorSnackbarIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaErrorSnackbarIcons] with the specified [type].
   AiutaErrorSnackbarIcons(this.type);

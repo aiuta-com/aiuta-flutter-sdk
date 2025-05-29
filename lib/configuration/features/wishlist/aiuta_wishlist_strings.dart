@@ -6,7 +6,7 @@ part 'aiuta_wishlist_strings.g.dart';
 /// The strings used in the wishlist feature.
 sealed class AiutaWishlistStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaWishlistStrings] with the specified [type].
   AiutaWishlistStrings(this.type);

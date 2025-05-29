@@ -6,7 +6,7 @@ part 'aiuta_try_on_input_image_validation_strings.g.dart';
 /// Strings used in the input image validation feature.
 sealed class AiutaTryOnInputImageValidationStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnInputImageValidationStrings] with the specified [type].
   AiutaTryOnInputImageValidationStrings(this.type);

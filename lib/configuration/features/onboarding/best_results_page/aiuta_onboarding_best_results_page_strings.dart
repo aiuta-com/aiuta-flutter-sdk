@@ -6,7 +6,7 @@ part 'aiuta_onboarding_best_results_page_strings.g.dart';
 /// This class represents the strings used in the Best Results page of the onboarding process.
 sealed class AiutaOnboardingBestResultsPageStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaOnboardingBestResultsPageStrings] with the specified [type].
   AiutaOnboardingBestResultsPageStrings(this.type);

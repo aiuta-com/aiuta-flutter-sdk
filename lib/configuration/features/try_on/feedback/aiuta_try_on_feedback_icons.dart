@@ -7,7 +7,7 @@ part 'aiuta_try_on_feedback_icons.g.dart';
 /// Icons used in the try-on feedback feature.
 sealed class AiutaTryOnFeedbackIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnFeedbackIcons] with the specified [type].
   AiutaTryOnFeedbackIcons(this.type);

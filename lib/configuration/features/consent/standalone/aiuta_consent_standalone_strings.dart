@@ -6,7 +6,7 @@ part 'aiuta_consent_standalone_strings.g.dart';
 /// This class represents the strings used in the Aiuta consent standalone page.
 sealed class AiutaConsentStandaloneStrings {
   /// The type of the strings, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaConsentStandaloneStrings] with the specified [type].
   AiutaConsentStandaloneStrings(this.type);

@@ -6,7 +6,7 @@ part 'aiuta_onboarding_how_it_works_page_images.g.dart';
 /// This class contains the images used in the How It Works page.
 sealed class AiutaOnboardingHowItWorksPageImages {
   /// The type of the images, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaOnboardingHowItWorksPageImages] with the specified [type].
   AiutaOnboardingHowItWorksPageImages(this.type);

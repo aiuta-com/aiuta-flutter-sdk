@@ -9,11 +9,19 @@ part of 'aiuta_image_picker_predefined_model_strings.dart';
 AiutaImagePickerPredefinedModelStringsBuiltIn
     _$AiutaImagePickerPredefinedModelStringsBuiltInFromJson(
             Map<String, dynamic> json) =>
-        AiutaImagePickerPredefinedModelStringsBuiltIn();
+        AiutaImagePickerPredefinedModelStringsBuiltIn()
+          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaImagePickerPredefinedModelStringsBuiltInToJson(
         AiutaImagePickerPredefinedModelStringsBuiltIn instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
 
 AiutaImagePickerPredefinedModelStringsCustom
     _$AiutaImagePickerPredefinedModelStringsCustomFromJson(
@@ -25,11 +33,12 @@ AiutaImagePickerPredefinedModelStringsCustom
               json['predefinedModelErrorEmptyModelsList'] as String,
           predefinedModelCategories: Map<String, String>.from(
               json['predefinedModelCategories'] as Map),
-        );
+        )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaImagePickerPredefinedModelStringsCustomToJson(
         AiutaImagePickerPredefinedModelStringsCustom instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'predefinedModelPageTitle': instance.predefinedModelPageTitle,
       'predefinedModelOr': instance.predefinedModelOr,
       'predefinedModelErrorEmptyModelsList':

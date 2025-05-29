@@ -6,7 +6,7 @@ part 'aiuta_onboarding_best_results_page_images.g.dart';
 /// Samples of good and bad input images to show in the Best Results page.
 sealed class AiutaOnboardingBestResultsPageImages {
   /// The type of the images, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaOnboardingBestResultsPageImages] with the specified [type].
   AiutaOnboardingBestResultsPageImages(this.type);

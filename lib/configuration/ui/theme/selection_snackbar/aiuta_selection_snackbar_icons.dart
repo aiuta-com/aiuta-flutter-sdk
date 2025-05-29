@@ -7,7 +7,7 @@ part 'aiuta_selection_snackbar_icons.g.dart';
 /// Configuration for the icons used in the selection snackbar.
 sealed class AiutaSelectionSnackbarIcons {
   /// The type of the icons, indicating whether it is built-in or custom.
-  final AiutaCustomizationType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaSelectionSnackbarIcons] with the specified [type].
   AiutaSelectionSnackbarIcons(this.type);
@@ -36,11 +36,13 @@ class AiutaSelectionSnackbarIconsBuiltIn extends AiutaSelectionSnackbarIcons {
   AiutaSelectionSnackbarIconsBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
-  factory AiutaSelectionSnackbarIconsBuiltIn.fromJson(Map<String, dynamic> json) =>
+  factory AiutaSelectionSnackbarIconsBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaSelectionSnackbarIconsBuiltInFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaSelectionSnackbarIconsBuiltInToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaSelectionSnackbarIconsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaSelectionSnackbarIcons`.
@@ -62,9 +64,11 @@ class AiutaSelectionSnackbarIconsCustom extends AiutaSelectionSnackbarIcons {
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaSelectionSnackbarIconsCustom.fromJson(Map<String, dynamic> json) =>
+  factory AiutaSelectionSnackbarIconsCustom.fromJson(
+          Map<String, dynamic> json) =>
       _$AiutaSelectionSnackbarIconsCustomFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AiutaSelectionSnackbarIconsCustomToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AiutaSelectionSnackbarIconsCustomToJson(this);
 }
