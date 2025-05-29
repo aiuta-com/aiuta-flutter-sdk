@@ -11,7 +11,7 @@ fun FlutterAiutaConsentStandaloneIcons.toNative(
     assetManager: AssetManager
 ): AiutaConsentStandaloneFeatureIcons {
     return when (this) {
-        is FlutterAiutaConsentStandaloneIconsBuiltIn -> error("Need support DefaultAiutaConsentStandaloneFeatureIcons")
+        is FlutterAiutaConsentStandaloneIconsBuiltIn -> error("TODO: Need support DefaultAiutaConsentStandaloneFeatureIcons")
         is FlutterAiutaConsentStandaloneIconsCustom -> object : AiutaConsentStandaloneFeatureIcons {
             override val consentTitle24 = this@toNative.consentTitle24?.toNative(assetManager)
         }
