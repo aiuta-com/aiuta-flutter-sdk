@@ -3,7 +3,6 @@ import 'package:aiuta_flutter/configuration/features/onboarding/best_results_pag
 import 'package:aiuta_flutter/configuration/features/onboarding/best_results_page/aiuta_onboarding_best_results_page_images.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/best_results_page/aiuta_onboarding_best_results_page_strings.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/best_results_page/aiuta_onboarding_best_results_page_styles.dart';
-import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 
 final class AiutaOnboardingBestResultsPageFeatureDefaultBuilder {
   AiutaOnboardingBestResultsPageFeature build() =>

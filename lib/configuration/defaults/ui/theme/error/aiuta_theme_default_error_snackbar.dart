@@ -2,7 +2,6 @@ import 'package:aiuta_flutter/configuration/ui/theme/error_snackbar/aiuta_error_
 import 'package:aiuta_flutter/configuration/ui/theme/error_snackbar/aiuta_error_snackbar_icons.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/error_snackbar/aiuta_error_snackbar_strings.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/error_snackbar/aiuta_error_snackbar_theme.dart';
-import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 
 final class ErrorSnackbarThemeBuilder {
   AiutaErrorSnackbarTheme build() => AiutaErrorSnackbarTheme(
