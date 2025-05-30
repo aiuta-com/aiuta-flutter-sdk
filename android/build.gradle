@@ -66,6 +66,8 @@ dependencies {
     implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
     implementation("com.aiuta:fashionsdk-analytic")
     implementation("com.aiuta:fashionsdk-tryon-compose")
+    implementation("com.aiuta:fashionsdk-configuration-defaults-icons")
+    implementation("com.aiuta:fashionsdk-configuration-defaults-images")
 
     // Material
     def materialVersion = "1.12.0"

@@ -1,4 +1,4 @@
-import 'package:aiuta_flutter/configuration/features/base/aiuta_data_provider_type.dart';
+import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
 import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -8,7 +8,7 @@ part 'aiuta_wishlist_data_provider.g.dart';
 /// A data provider for managing the wishlist state of products.
 sealed class AiutaWishlistDataProvider {
   /// The type of the data provider, indicating whether it is built-in or custom.
-  AiutaDataProviderType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaWishlistDataProvider] with the specified [type].
   AiutaWishlistDataProvider(this.type);
@@ -52,7 +52,7 @@ class AiutaWishlistDataProviderCustom extends AiutaWishlistDataProvider {
   AiutaWishlistDataProviderCustom({
     required this.wishlistProductIds,
     required this.setProductInWishlist,
-  }) : super(AiutaDataProviderType.custom);
+  }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
   factory AiutaWishlistDataProviderCustom.fromJson(Map<String, dynamic> json) =>

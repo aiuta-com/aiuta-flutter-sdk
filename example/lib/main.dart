@@ -1,13 +1,8 @@
 import 'package:aiuta_flutter/aiuta_flutter.dart';
-import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_auth.dart';
-import 'package:aiuta_flutter/configuration/ui/aiuta_user_interface.dart';
-import 'package:aiuta_flutter/configuration/ui/policies/aiuta_presentation_style.dart';
-import 'package:aiuta_flutter/configuration/ui/policies/aiuta_swipe_to_dismiss_policy.dart';
+import 'package:aiuta_flutter/configuration/defaults/aiuta_configuration_defaults.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_cart_handler.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
-import 'package:aiutasdk_example/defaults/debug/aiuta_debug_defults.dart';
-import 'package:aiutasdk_example/defaults/features/aiuta_fatures_defaults.dart';
-import 'package:aiutasdk_example/defaults/theme/aiuta_theme_defaults.dart';
 import 'package:aiutasdk_example/env/env.dart';
 import 'package:flutter/material.dart';
 
@@ -24,15 +19,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _aiuta = Aiuta(
-    configuration: AiutaConfiguration(
+    configuration: AiutaConfigurationDefaultBuilder().build(
       auth: AiutaApiKeyAuth(apiKey: Env.API_KEY),
-      userInterface: AiutaUserInterfaceConfiguration(
-        presentationStyle: AiutaPresentationStyle.fullScreen,
-        swipeToDismiss: AiutaSwipeToDismissPolicy.allowAlways,
-        theme: ThemeBuilder().build(),
+      termsOfServiceUrl: "https://your-domain.com/you-tos",
+      cartHandler: AiutaTryOnCartHandler(
+        addToCart: (productId) {
+          // Handle adding product to cart
+        },
       ),
-      features: FeaturesBuilder().build(),
-      debugSettings: DebugSettingsBuilder().build(),
     ),
   );
 

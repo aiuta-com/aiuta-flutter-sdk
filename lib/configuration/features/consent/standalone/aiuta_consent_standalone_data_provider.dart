@@ -1,4 +1,4 @@
-import 'package:aiuta_flutter/configuration/features/base/aiuta_data_provider_type.dart';
+import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
 import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -11,7 +11,7 @@ part 'aiuta_consent_standalone_data_provider.g.dart';
 /// operations, such as managing obtained consent identifiers and processing user-given consents.
 sealed class AiutaConsentStandaloneDataProvider {
   /// The type of the data provider, indicating whether it is built-in or custom.
-  AiutaDataProviderType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaConsentStandaloneDataProvider] with the specified [type].
   AiutaConsentStandaloneDataProvider(this.type);
@@ -41,7 +41,7 @@ class AiutaConsentStandaloneDataProviderBuiltIn
     extends AiutaConsentStandaloneDataProvider {
   /// Creates an instance of [AiutaConsentStandaloneDataProviderBuiltIn].
   AiutaConsentStandaloneDataProviderBuiltIn()
-      : super(AiutaDataProviderType.builtIn);
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
   factory AiutaConsentStandaloneDataProviderBuiltIn.fromJson(
@@ -77,7 +77,7 @@ class AiutaConsentStandaloneDataProviderCustom
   AiutaConsentStandaloneDataProviderCustom({
     required this.obtainedConsentsIds,
     required this.obtainConsentsIds,
-  }) : super(AiutaDataProviderType.custom);
+  }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
   factory AiutaConsentStandaloneDataProviderCustom.fromJson(

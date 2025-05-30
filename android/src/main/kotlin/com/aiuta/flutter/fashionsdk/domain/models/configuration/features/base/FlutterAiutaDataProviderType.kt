@@ -8,17 +8,12 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable
 @JsonClassDiscriminator("type")
-sealed interface FlutterAiutaBaseDataProvider {
-    companion object {
-        const val TYPE_BUILT_IN= "builtIn"
-        const val TYPE_CUSTOM = "custom"
-    }
-}
+sealed interface FlutterAiutaBaseDataProvider
 
 @Serializable
-@SerialName(FlutterAiutaBaseDataProvider.TYPE_BUILT_IN)
+@SerialName(FlutterCustomizationType.TYPE_BUILT_IN)
 object FlutterAiutaBaseDataProviderBuiltIn : FlutterAiutaBaseDataProvider
 
 @Serializable
-@SerialName(FlutterAiutaBaseDataProvider.TYPE_CUSTOM)
+@SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 object FlutterAiutaBaseDataProviderCustom: FlutterAiutaBaseDataProvider

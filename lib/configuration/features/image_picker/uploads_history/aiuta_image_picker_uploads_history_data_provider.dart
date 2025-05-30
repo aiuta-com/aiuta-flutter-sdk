@@ -1,4 +1,4 @@
-import 'package:aiuta_flutter/configuration/features/base/aiuta_data_provider_type.dart';
+import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
 import 'package:aiuta_flutter/models/images/aiuta_input_image.dart';
 import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:flutter/foundation.dart';
@@ -9,7 +9,7 @@ part 'aiuta_image_picker_uploads_history_data_provider.g.dart';
 /// Data provider for the uploads history feature.
 sealed class AiutaImagePickerUploadsHistoryDataProvider {
   /// The type of the data provider, indicating whether it is built-in or custom.
-  AiutaDataProviderType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaImagePickerUploadsHistoryDataProvider] with the specified [type].
   AiutaImagePickerUploadsHistoryDataProvider(this.type);
@@ -40,7 +40,7 @@ class AiutaImagePickerUploadsHistoryDataProviderBuiltIn
     extends AiutaImagePickerUploadsHistoryDataProvider {
   /// Creates an instance of the built-in uploads history data provider.
   AiutaImagePickerUploadsHistoryDataProviderBuiltIn()
-      : super(AiutaDataProviderType.builtIn);
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
   factory AiutaImagePickerUploadsHistoryDataProviderBuiltIn.fromJson(
@@ -94,7 +94,7 @@ class AiutaImagePickerUploadsHistoryDataProviderCustom
     required this.addUploadedImages,
     required this.deleteUploadedImages,
     required this.selectUploadedImage,
-  }) : super(AiutaDataProviderType.custom);
+  }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
   factory AiutaImagePickerUploadsHistoryDataProviderCustom.fromJson(

@@ -10,17 +10,17 @@ AiutaConsentStandaloneDataProviderBuiltIn
     _$AiutaConsentStandaloneDataProviderBuiltInFromJson(
             Map<String, dynamic> json) =>
         AiutaConsentStandaloneDataProviderBuiltIn()
-          ..type = $enumDecode(_$AiutaDataProviderTypeEnumMap, json['type']);
+          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaConsentStandaloneDataProviderBuiltInToJson(
         AiutaConsentStandaloneDataProviderBuiltIn instance) =>
     <String, dynamic>{
-      'type': _$AiutaDataProviderTypeEnumMap[instance.type]!,
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
     };
 
-const _$AiutaDataProviderTypeEnumMap = {
-  AiutaDataProviderType.builtIn: 'builtIn',
-  AiutaDataProviderType.custom: 'custom',
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
 };
 
 AiutaConsentStandaloneDataProviderCustom
@@ -29,12 +29,12 @@ AiutaConsentStandaloneDataProviderCustom
         AiutaConsentStandaloneDataProviderCustom(
           obtainedConsentsIds: toNull(json['obtainedConsentsIds']),
           obtainConsentsIds: toNull(json['obtainConsentsIds']),
-        )..type = $enumDecode(_$AiutaDataProviderTypeEnumMap, json['type']);
+        )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaConsentStandaloneDataProviderCustomToJson(
     AiutaConsentStandaloneDataProviderCustom instance) {
   final val = <String, dynamic>{
-    'type': _$AiutaDataProviderTypeEnumMap[instance.type]!,
+    'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
   };
 
   void writeNotNull(String key, dynamic value) {

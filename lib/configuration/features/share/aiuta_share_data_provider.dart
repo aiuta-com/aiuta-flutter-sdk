@@ -1,4 +1,4 @@
-import 'package:aiuta_flutter/configuration/features/base/aiuta_data_provider_type.dart';
+import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
 import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -10,7 +10,7 @@ part 'aiuta_share_data_provider.g.dart';
 /// operations, such as retrieving share text based on product IDs.
 sealed class AiutaShareDataProvider {
   /// The type of the data provider, indicating whether it is built-in or custom.
-  AiutaDataProviderType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaShareDataProvider] with the specified [type].
   AiutaShareDataProvider(this.type);
@@ -40,7 +40,7 @@ class AiutaShareDataProviderCustom extends AiutaShareDataProvider {
 
   AiutaShareDataProviderCustom({
     required this.getShareText,
-  }) : super(AiutaDataProviderType.custom);
+  }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
   factory AiutaShareDataProviderCustom.fromJson(Map<String, dynamic> json) =>

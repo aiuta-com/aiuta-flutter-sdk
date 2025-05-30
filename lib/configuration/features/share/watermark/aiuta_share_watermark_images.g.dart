@@ -6,14 +6,31 @@ part of 'aiuta_share_watermark_images.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaShareWatermarkImages _$AiutaShareWatermarkImagesFromJson(
+AiutaShareWatermarkImagesBuiltIn _$AiutaShareWatermarkImagesBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaShareWatermarkImages(
-      watermark: json['watermark'] as String,
-    );
+    AiutaShareWatermarkImagesBuiltIn()
+      ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
-Map<String, dynamic> _$AiutaShareWatermarkImagesToJson(
-        AiutaShareWatermarkImages instance) =>
+Map<String, dynamic> _$AiutaShareWatermarkImagesBuiltInToJson(
+        AiutaShareWatermarkImagesBuiltIn instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
+
+AiutaShareWatermarkImagesCustom _$AiutaShareWatermarkImagesCustomFromJson(
+        Map<String, dynamic> json) =>
+    AiutaShareWatermarkImagesCustom(
+      watermark: json['watermark'] as String,
+    )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
+
+Map<String, dynamic> _$AiutaShareWatermarkImagesCustomToJson(
+        AiutaShareWatermarkImagesCustom instance) =>
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'watermark': instance.watermark,
     };

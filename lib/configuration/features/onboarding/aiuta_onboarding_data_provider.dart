@@ -1,4 +1,4 @@
-import 'package:aiuta_flutter/configuration/features/base/aiuta_data_provider_type.dart';
+import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
 import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -8,7 +8,7 @@ part 'aiuta_onboarding_data_provider.g.dart';
 /// This class provides the data needed for the onboarding process in the Aiuta app.
 sealed class AiutaOnboardingDataProvider {
   /// The type of the data provider, indicating whether it is built-in or custom.
-  AiutaDataProviderType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaOnboardingDataProvider] with the specified [type].
   AiutaOnboardingDataProvider(this.type);
@@ -36,7 +36,7 @@ sealed class AiutaOnboardingDataProvider {
 @JsonSerializable()
 class AiutaOnboardingDataProviderBuiltIn extends AiutaOnboardingDataProvider {
   /// Creates an instance of [AiutaOnboardingDataProviderBuiltIn].
-  AiutaOnboardingDataProviderBuiltIn() : super(AiutaDataProviderType.builtIn);
+  AiutaOnboardingDataProviderBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
   factory AiutaOnboardingDataProviderBuiltIn.fromJson(
@@ -71,7 +71,7 @@ class AiutaOnboardingDataProviderCustom extends AiutaOnboardingDataProvider {
   AiutaOnboardingDataProviderCustom({
     required this.isOnboardingCompleted,
     required this.completeOnboarding,
-  }) : super(AiutaDataProviderType.custom);
+  }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
   factory AiutaOnboardingDataProviderCustom.fromJson(
