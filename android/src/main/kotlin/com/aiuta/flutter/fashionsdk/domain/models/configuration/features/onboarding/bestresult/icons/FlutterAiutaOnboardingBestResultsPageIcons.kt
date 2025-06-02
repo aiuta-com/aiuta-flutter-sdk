@@ -13,10 +13,6 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 sealed interface FlutterAiutaOnboardingBestResultsPageIcons
 
 @Serializable
-@SerialName(FlutterCustomizationType.TYPE_BUILT_IN)
-object FlutterAiutaOnboardingBestResultsPageIconsBuiltIn : FlutterAiutaOnboardingBestResultsPageIcons
-
-@Serializable
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 data class FlutterAiutaOnboardingBestResultsPageIconsCustom(
     @SerialName("onboardingBestResultsGood24")

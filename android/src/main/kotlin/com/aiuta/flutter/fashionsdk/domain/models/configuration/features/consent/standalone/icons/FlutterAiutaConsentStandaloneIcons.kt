@@ -13,10 +13,6 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 sealed interface FlutterAiutaConsentStandaloneIcons
 
 @Serializable
-@SerialName(FlutterCustomizationType.TYPE_BUILT_IN)
-object FlutterAiutaConsentStandaloneIconsBuiltIn : FlutterAiutaConsentStandaloneIcons
-
-@Serializable
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 data class FlutterAiutaConsentStandaloneIconsCustom(
     @SerialName("consentTitle24")

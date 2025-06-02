@@ -13,10 +13,6 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 sealed interface FlutterAiutaTryOnFitDisclaimerIcons
 
 @Serializable
-@SerialName(FlutterCustomizationType.TYPE_BUILT_IN)
-object FlutterAiutaTryOnFitDisclaimerIconsBuiltIn : FlutterAiutaTryOnFitDisclaimerIcons
-
-@Serializable
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 data class FlutterAiutaTryOnFitDisclaimerIconsCustom(
     @SerialName("info20")
