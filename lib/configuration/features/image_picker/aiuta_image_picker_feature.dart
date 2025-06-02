@@ -46,6 +46,19 @@ class AiutaImagePickerFeature {
     required this.strings,
   });
 
+  factory AiutaImagePickerFeature.builtIn() {
+    return AiutaImagePickerFeature(
+      camera: AiutaImagePickerCameraFeature.builtIn(),
+      photoGallery: AiutaImagePickerPhotoGalleryFeature.builtIn(),
+      predefinedModels: AiutaImagePickerPredefinedModelFeature.builtIn(),
+      uploadsHistory: AiutaImagePickerUploadsHistoryFeature.builtIn(
+        isPredefinedModelAvailable: true,
+      ),
+      images: AiutaImagePickerImagesBuiltIn(),
+      strings: AiutaImagePickerStringsBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaImagePickerFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaImagePickerFeatureFromJson(json);

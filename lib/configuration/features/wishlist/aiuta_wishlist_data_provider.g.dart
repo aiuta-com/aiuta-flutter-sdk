@@ -11,12 +11,12 @@ AiutaWishlistDataProviderCustom _$AiutaWishlistDataProviderCustomFromJson(
     AiutaWishlistDataProviderCustom(
       wishlistProductIds: toNull(json['wishlistProductIds']),
       setProductInWishlist: toNull(json['setProductInWishlist']),
-    )..type = $enumDecode(_$AiutaDataProviderTypeEnumMap, json['type']);
+    )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaWishlistDataProviderCustomToJson(
     AiutaWishlistDataProviderCustom instance) {
   final val = <String, dynamic>{
-    'type': _$AiutaDataProviderTypeEnumMap[instance.type]!,
+    'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -30,7 +30,7 @@ Map<String, dynamic> _$AiutaWishlistDataProviderCustomToJson(
   return val;
 }
 
-const _$AiutaDataProviderTypeEnumMap = {
-  AiutaDataProviderType.builtIn: 'builtIn',
-  AiutaDataProviderType.custom: 'custom',
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
 };

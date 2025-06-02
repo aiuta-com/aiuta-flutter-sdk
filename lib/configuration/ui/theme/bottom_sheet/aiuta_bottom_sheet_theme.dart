@@ -32,6 +32,15 @@ class AiutaBottomSheetTheme {
     required this.toggles,
   });
 
+  factory AiutaBottomSheetTheme.builtIn() {
+    return AiutaBottomSheetTheme(
+      typography: AiutaBottomSheetTypographyBuiltIn(),
+      shapes: AiutaBottomSheetShapes.builtIn(),
+      grabber: AiutaBottomSheetGrabber.builtIn(),
+      toggles: AiutaBottomSheetToggles.builtIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaBottomSheetTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaBottomSheetThemeFromJson(json);

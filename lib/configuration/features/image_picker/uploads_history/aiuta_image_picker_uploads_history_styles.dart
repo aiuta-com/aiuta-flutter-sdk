@@ -25,6 +25,12 @@ class AiutaImagePickerUploadsHistoryStyles {
     required this.changePhotoButtonStyle,
   });
 
+  factory AiutaImagePickerUploadsHistoryStyles.builtIn() {
+    return AiutaImagePickerUploadsHistoryStyles(
+      changePhotoButtonStyle: AiutaImagePickerUploadsHistoryButtonStyle.blurred,
+    );
+  }
+
   // Internal json staff
   factory AiutaImagePickerUploadsHistoryStyles.fromJson(
           Map<String, dynamic> json) =>

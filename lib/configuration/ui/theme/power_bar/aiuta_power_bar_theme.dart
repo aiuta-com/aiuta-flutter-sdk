@@ -29,6 +29,13 @@ class AiutaPowerBarTheme {
     required this.colors,
   });
 
+  factory AiutaPowerBarTheme.builtIn() {
+    return AiutaPowerBarTheme(
+      strings: AiutaPowerBarStringsBuiltIn(),
+      colors: AiutaPowerBarColors.builtIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaPowerBarTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaPowerBarThemeFromJson(json);

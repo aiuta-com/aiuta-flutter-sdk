@@ -14,6 +14,12 @@ class AiutaPowerBarColors {
     required this.aiuta,
   });
 
+  factory AiutaPowerBarColors.builtIn() {
+    return AiutaPowerBarColors(
+      aiuta: AiutaPowerBarColorsScheme.standard,
+    );
+  }
+
   // Internal json staff
   factory AiutaPowerBarColors.fromJson(Map<String, dynamic> json) =>
       _$AiutaPowerBarColorsFromJson(json);

@@ -21,6 +21,13 @@ class AiutaOnboardingHowItWorksPageFeature {
     required this.strings,
   });
 
+  factory AiutaOnboardingHowItWorksPageFeature.builtIn() {
+    return AiutaOnboardingHowItWorksPageFeature(
+      images: AiutaOnboardingHowItWorksPageImagesBuiltIn(),
+      strings: AiutaOnboardingHowItWorksPageStringsBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaOnboardingHowItWorksPageFeature.fromJson(
           Map<String, dynamic> json) =>

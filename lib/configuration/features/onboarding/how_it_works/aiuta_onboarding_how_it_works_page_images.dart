@@ -1,27 +1,76 @@
+import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_onboarding_how_it_works_page_images.g.dart';
 
 /// This class contains the images used in the How It Works page.
+sealed class AiutaOnboardingHowItWorksPageImages {
+  /// The type of the images, indicating whether it is built-in or custom.
+  AiutaCustomizationType type;
+
+  /// Constructs an [AiutaOnboardingHowItWorksPageImages] with the specified [type].
+  AiutaOnboardingHowItWorksPageImages(this.type);
+
+  // Internal json staff
+  factory AiutaOnboardingHowItWorksPageImages.fromJson(
+      Map<String, dynamic> json) {
+    switch (json['type'] as String) {
+      case 'builtIn':
+        return AiutaOnboardingHowItWorksPageImagesBuiltIn.fromJson(json);
+      case 'custom':
+        return AiutaOnboardingHowItWorksPageImagesCustom.fromJson(json);
+      default:
+        throw Exception('Unknown onboarding how it works page images type');
+    }
+  }
+
+  Map<String, dynamic> toJson();
+}
+
+/// A built-in implementation of the `AiutaOnboardingHowItWorksPageImages`.
+///
+/// This class represents the default, built-in images for the How It Works page.
 @JsonSerializable()
-class AiutaOnboardingHowItWorksPageImages {
+class AiutaOnboardingHowItWorksPageImagesBuiltIn
+    extends AiutaOnboardingHowItWorksPageImages {
+  /// Creates an instance of the built-in onboarding how it works page images.
+  AiutaOnboardingHowItWorksPageImagesBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
+
+  // Internal json staff
+  factory AiutaOnboardingHowItWorksPageImagesBuiltIn.fromJson(
+          Map<String, dynamic> json) =>
+      _$AiutaOnboardingHowItWorksPageImagesBuiltInFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$AiutaOnboardingHowItWorksPageImagesBuiltInToJson(this);
+}
+
+/// A custom implementation of the `AiutaOnboardingHowItWorksPageImages`.
+///
+/// This class allows for custom images to be provided for the How It Works page.
+@JsonSerializable()
+class AiutaOnboardingHowItWorksPageImagesCustom
+    extends AiutaOnboardingHowItWorksPageImages {
   /// List of [OnboardingHowItWorksItem] with their photos and previews.
   /// This list should contain exactly 3 items.
   final List<OnboardingHowItWorksItem> onboardingHowItWorksItems;
 
-  /// Creates an [AiutaOnboardingHowItWorksPageImages] with the given exact 3
+  /// Creates an [AiutaOnboardingHowItWorksPageImagesCustom] with the given exact 3
   /// items in the [onboardingHowItWorksItems] with their photos and previews.
-  AiutaOnboardingHowItWorksPageImages({
+  AiutaOnboardingHowItWorksPageImagesCustom({
     required this.onboardingHowItWorksItems,
-  });
+  }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
-  factory AiutaOnboardingHowItWorksPageImages.fromJson(
+  factory AiutaOnboardingHowItWorksPageImagesCustom.fromJson(
           Map<String, dynamic> json) =>
-      _$AiutaOnboardingHowItWorksPageImagesFromJson(json);
+      _$AiutaOnboardingHowItWorksPageImagesCustomFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() =>
-      _$AiutaOnboardingHowItWorksPageImagesToJson(this);
+      _$AiutaOnboardingHowItWorksPageImagesCustomToJson(this);
 }
 
 /// This class contains the photo and preview of a Try-On example

@@ -1,4 +1,4 @@
-import 'package:aiuta_flutter/configuration/features/base/aiuta_data_provider_type.dart';
+import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
 import 'package:aiuta_flutter/models/images/aiuta_generated_image.dart';
 import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:flutter/foundation.dart';
@@ -8,7 +8,7 @@ part 'aiuta_try_on_generations_history_data_provider.g.dart';
 
 /// The data provider for the generations history feature in the virtual try-on.
 sealed class AiutaTryOnGenerationsHistoryDataProvider {
-  AiutaDataProviderType type;
+  AiutaCustomizationType type;
 
   /// Constructs an [AiutaTryOnGenerationsHistoryDataProvider] with the specified [type].
   AiutaTryOnGenerationsHistoryDataProvider(this.type);
@@ -38,7 +38,7 @@ class AiutaTryOnGenerationsHistoryDataProviderBuiltIn
     extends AiutaTryOnGenerationsHistoryDataProvider {
   /// Creates an instance of [AiutaTryOnGenerationsHistoryDataProviderBuiltIn].
   AiutaTryOnGenerationsHistoryDataProviderBuiltIn()
-      : super(AiutaDataProviderType.builtIn);
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
   factory AiutaTryOnGenerationsHistoryDataProviderBuiltIn.fromJson(
@@ -78,7 +78,7 @@ class AiutaTryOnGenerationsHistoryDataProviderCustom
     required this.generatedImages,
     required this.addGeneratedImages,
     required this.deleteGeneratedImages,
-  }) : super(AiutaDataProviderType.custom);
+  }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
   factory AiutaTryOnGenerationsHistoryDataProviderCustom.fromJson(

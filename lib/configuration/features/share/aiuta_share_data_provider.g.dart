@@ -10,12 +10,12 @@ AiutaShareDataProviderCustom _$AiutaShareDataProviderCustomFromJson(
         Map<String, dynamic> json) =>
     AiutaShareDataProviderCustom(
       getShareText: toNull(json['getShareText']),
-    )..type = $enumDecode(_$AiutaDataProviderTypeEnumMap, json['type']);
+    )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaShareDataProviderCustomToJson(
     AiutaShareDataProviderCustom instance) {
   final val = <String, dynamic>{
-    'type': _$AiutaDataProviderTypeEnumMap[instance.type]!,
+    'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -28,7 +28,7 @@ Map<String, dynamic> _$AiutaShareDataProviderCustomToJson(
   return val;
 }
 
-const _$AiutaDataProviderTypeEnumMap = {
-  AiutaDataProviderType.builtIn: 'builtIn',
-  AiutaDataProviderType.custom: 'custom',
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
 };

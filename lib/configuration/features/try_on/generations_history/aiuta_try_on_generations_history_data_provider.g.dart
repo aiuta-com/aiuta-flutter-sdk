@@ -10,17 +10,17 @@ AiutaTryOnGenerationsHistoryDataProviderBuiltIn
     _$AiutaTryOnGenerationsHistoryDataProviderBuiltInFromJson(
             Map<String, dynamic> json) =>
         AiutaTryOnGenerationsHistoryDataProviderBuiltIn()
-          ..type = $enumDecode(_$AiutaDataProviderTypeEnumMap, json['type']);
+          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaTryOnGenerationsHistoryDataProviderBuiltInToJson(
         AiutaTryOnGenerationsHistoryDataProviderBuiltIn instance) =>
     <String, dynamic>{
-      'type': _$AiutaDataProviderTypeEnumMap[instance.type]!,
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
     };
 
-const _$AiutaDataProviderTypeEnumMap = {
-  AiutaDataProviderType.builtIn: 'builtIn',
-  AiutaDataProviderType.custom: 'custom',
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
 };
 
 AiutaTryOnGenerationsHistoryDataProviderCustom
@@ -30,12 +30,12 @@ AiutaTryOnGenerationsHistoryDataProviderCustom
           generatedImages: toNull(json['generatedImages']),
           addGeneratedImages: toNull(json['addGeneratedImages']),
           deleteGeneratedImages: toNull(json['deleteGeneratedImages']),
-        )..type = $enumDecode(_$AiutaDataProviderTypeEnumMap, json['type']);
+        )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaTryOnGenerationsHistoryDataProviderCustomToJson(
     AiutaTryOnGenerationsHistoryDataProviderCustom instance) {
   final val = <String, dynamic>{
-    'type': _$AiutaDataProviderTypeEnumMap[instance.type]!,
+    'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
   };
 
   void writeNotNull(String key, dynamic value) {

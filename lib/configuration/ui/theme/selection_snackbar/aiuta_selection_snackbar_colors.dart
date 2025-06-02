@@ -13,6 +13,12 @@ class AiutaSelectionSnackbarColors {
     required this.selectionBackground,
   });
 
+  factory AiutaSelectionSnackbarColors.builtIn() {
+    return AiutaSelectionSnackbarColors(
+      selectionBackground: "#FF000000",
+    );
+  }
+
   // Internal json staff
   factory AiutaSelectionSnackbarColors.fromJson(Map<String, dynamic> json) =>
       _$AiutaSelectionSnackbarColorsFromJson(json);

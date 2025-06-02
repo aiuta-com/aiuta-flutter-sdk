@@ -26,6 +26,13 @@ class AiutaImagePickerPredefinedModelFeature {
     required this.strings,
   });
 
+  factory AiutaImagePickerPredefinedModelFeature.builtIn() {
+    return AiutaImagePickerPredefinedModelFeature(
+      icons: AiutaImagePickerPredefinedModelIconsBuiltIn(),
+      strings: AiutaImagePickerPredefinedModelStringsBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaImagePickerPredefinedModelFeature.fromJson(
           Map<String, dynamic> json) =>

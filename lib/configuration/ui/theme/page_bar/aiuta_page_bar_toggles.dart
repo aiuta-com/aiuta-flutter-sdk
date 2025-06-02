@@ -14,6 +14,12 @@ class AiutaPageBarToggles {
     required this.preferCloseButtonOnTheRight,
   });
 
+  factory AiutaPageBarToggles.builtIn() {
+    return AiutaPageBarToggles(
+      preferCloseButtonOnTheRight: false,
+    );
+  }
+
   // Internal json staff
   factory AiutaPageBarToggles.fromJson(Map<String, dynamic> json) =>
       _$AiutaPageBarTogglesFromJson(json);

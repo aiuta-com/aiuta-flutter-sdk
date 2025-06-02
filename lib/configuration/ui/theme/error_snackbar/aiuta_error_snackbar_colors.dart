@@ -18,6 +18,13 @@ class AiutaErrorSnackbarColors {
     required this.errorPrimary,
   });
 
+  factory AiutaErrorSnackbarColors.builtIn() {
+    return AiutaErrorSnackbarColors(
+      errorBackground: "#FFFFF5F5",
+      errorPrimary: "#FF000000",
+    );
+  }
+
   // Internal json staff
   factory AiutaErrorSnackbarColors.fromJson(Map<String, dynamic> json) =>
       _$AiutaErrorSnackbarColorsFromJson(json);

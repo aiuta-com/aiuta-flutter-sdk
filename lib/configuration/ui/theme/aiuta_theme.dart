@@ -87,6 +87,22 @@ class AiutaTheme {
     required this.powerBar,
   });
 
+  factory AiutaTheme.builtIn() {
+    return AiutaTheme(
+      color: AiutaColorTheme.builtIn(),
+      fonts: [],
+      label: AiutaLabelTheme.builtIn(),
+      image: AiutaImageTheme.builtIn(),
+      button: AiutaButtonTheme.builtIn(),
+      pageBar: AiutaPageBarTheme.builtIn(),
+      bottomSheet: AiutaBottomSheetTheme.builtIn(),
+      selectionSnackbar: AiutaSelectionSnackbarTheme.builtIn(),
+      errorSnackbar: AiutaErrorSnackbarTheme.builtIn(),
+      productBar: AiutaProductBarTheme.builtIn(),
+      powerBar: AiutaPowerBarTheme.builtIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaThemeFromJson(json);

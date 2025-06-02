@@ -27,6 +27,18 @@ class AiutaImagePickerUploadsHistoryFeature {
     required this.dataProvider,
   });
 
+  factory AiutaImagePickerUploadsHistoryFeature.builtIn({
+    required bool isPredefinedModelAvailable,
+  }) {
+    return AiutaImagePickerUploadsHistoryFeature(
+      strings: AiutaImagePickerUploadsHistoryStringsBuiltIn(
+        isPredefinedModelAvailable: isPredefinedModelAvailable,
+      ),
+      styles: AiutaImagePickerUploadsHistoryStyles.builtIn(),
+      dataProvider: AiutaImagePickerUploadsHistoryDataProviderBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaImagePickerUploadsHistoryFeature.fromJson(
           Map<String, dynamic> json) =>

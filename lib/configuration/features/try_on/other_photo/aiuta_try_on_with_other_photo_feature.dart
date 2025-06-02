@@ -15,6 +15,12 @@ class AiutaTryOnWithOtherPhotoFeature {
     required this.icons,
   });
 
+  factory AiutaTryOnWithOtherPhotoFeature.builtIn() {
+    return AiutaTryOnWithOtherPhotoFeature(
+      icons: AiutaTryOnWithOtherPhotoIconsBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaTryOnWithOtherPhotoFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnWithOtherPhotoFeatureFromJson(json);

@@ -6,16 +6,31 @@ part of 'aiuta_try_on_loading_page_icons.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaTryOnLoadingPageIcons _$AiutaTryOnLoadingPageIconsFromJson(
+AiutaTryOnLoadingPageIconsBuiltIn _$AiutaTryOnLoadingPageIconsBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaTryOnLoadingPageIcons(
-      loading14: json['loading14'] == null
-          ? null
-          : AiutaIcon.fromJson(json['loading14'] as Map<String, dynamic>),
-    );
+    AiutaTryOnLoadingPageIconsBuiltIn()
+      ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
-Map<String, dynamic> _$AiutaTryOnLoadingPageIconsToJson(
-        AiutaTryOnLoadingPageIcons instance) =>
+Map<String, dynamic> _$AiutaTryOnLoadingPageIconsBuiltInToJson(
+        AiutaTryOnLoadingPageIconsBuiltIn instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
+
+AiutaTryOnLoadingPageIconsCustom _$AiutaTryOnLoadingPageIconsCustomFromJson(
+        Map<String, dynamic> json) =>
+    AiutaTryOnLoadingPageIconsCustom(
+      loading14: AiutaIcon.fromJson(json['loading14'] as Map<String, dynamic>),
+    )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
+
+Map<String, dynamic> _$AiutaTryOnLoadingPageIconsCustomToJson(
+        AiutaTryOnLoadingPageIconsCustom instance) =>
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'loading14': instance.loading14,
     };

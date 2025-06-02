@@ -24,6 +24,12 @@ class AiutaTryOnToggles {
     required this.isBackgroundExecutionAllowed,
   });
 
+  factory AiutaTryOnToggles.builtIn() {
+    return AiutaTryOnToggles(
+      isBackgroundExecutionAllowed: false,
+    );
+  }
+
   // Internal json staff
   factory AiutaTryOnToggles.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnTogglesFromJson(json);

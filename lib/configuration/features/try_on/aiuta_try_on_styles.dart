@@ -17,6 +17,12 @@ class AiutaTryOnStyles {
     this.tryOnButtonGradient,
   });
 
+  factory AiutaTryOnStyles.builtIn() {
+    return AiutaTryOnStyles(
+      tryOnButtonGradient: null,
+    );
+  }
+
   // Internal json staff
   factory AiutaTryOnStyles.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnStylesFromJson(json);

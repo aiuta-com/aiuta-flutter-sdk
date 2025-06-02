@@ -3,6 +3,7 @@ import 'package:aiuta_flutter/configuration/features/try_on/aiuta_try_on_strings
 import 'package:aiuta_flutter/configuration/features/try_on/aiuta_try_on_styles.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/aiuta_try_on_toggles.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_cart_feature.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_cart_handler.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/feedback/aiuta_try_on_feedback_feature.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/fit_disclaimer/aiuta_try_on_fit_disclaimer_feature.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/generations_history/aiuta_try_on_generations_history_feature.dart';
@@ -83,6 +84,26 @@ class AiutaTryOnFeature {
     required this.strings,
     required this.styles,
   });
+
+  factory AiutaTryOnFeature.builtIn({
+    required AiutaTryOnCartHandler cartHandler,
+  }) {
+    return AiutaTryOnFeature(
+      loadingPage: AiutaTryOnLoadingPageFeature.builtIn(),
+      inputImageValidation: AiutaTryOnInputImageValidationFeature.builtIn(),
+      cart: AiutaTryOnCartFeature.builtIn(
+        handler: cartHandler,
+      ),
+      fitDisclaimer: null,
+      feedback: AiutaTryOnFeedbackFeature.builtIn(),
+      generationsHistory: AiutaTryOnGenerationsHistoryFeature.builtIn(),
+      otherPhoto: AiutaTryOnWithOtherPhotoFeature.builtIn(),
+      toggles: AiutaTryOnToggles.builtIn(),
+      icons: AiutaTryOnIconsBuiltIn(),
+      strings: AiutaTryOnStringsBuiltIn(),
+      styles: AiutaTryOnStyles.builtIn(),
+    );
+  }
 
   // Internal json staff
   factory AiutaTryOnFeature.fromJson(Map<String, dynamic> json) =>

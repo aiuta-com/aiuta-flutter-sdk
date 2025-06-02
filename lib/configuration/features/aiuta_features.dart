@@ -1,4 +1,5 @@
 import 'package:aiuta_flutter/configuration/features/consent/aiuta_consent_feature.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_cart_handler.dart';
 import 'package:aiuta_flutter/configuration/features/welcome_screen/aiuta_welcome_screen_feature.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/aiuta_onboarding_feature.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/aiuta_image_picker_feature.dart';
@@ -81,6 +82,23 @@ class AiutaFeatures {
     this.share,
     this.wishlist,
   });
+
+  factory AiutaFeatures.builtIn({
+    required String termsOfServiceUrl,
+    required AiutaTryOnCartHandler cartHandler,
+  }) {
+    return AiutaFeatures(
+      onboarding: AiutaOnboardingFeature.builtIn(),
+      consent: AiutaConsentFeature.builtIn(
+        termsOfServiceUrl: termsOfServiceUrl,
+      ),
+      imagePicker: AiutaImagePickerFeature.builtIn(),
+      tryOn: AiutaTryOnFeature.builtIn(
+        cartHandler: cartHandler,
+      ),
+      share: AiutaShareFeature.builtIn(),
+    );
+  }
 
   // Internal json staff
   factory AiutaFeatures.fromJson(Map<String, dynamic> json) =>

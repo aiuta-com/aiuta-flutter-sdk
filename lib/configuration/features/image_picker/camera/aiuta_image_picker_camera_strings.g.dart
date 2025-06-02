@@ -6,20 +6,37 @@ part of 'aiuta_image_picker_camera_strings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaImagePickerCameraStrings _$AiutaImagePickerCameraStringsFromJson(
-        Map<String, dynamic> json) =>
-    AiutaImagePickerCameraStrings(
-      cameraButtonTakePhoto: json['cameraButtonTakePhoto'] as String,
-      cameraPermissionTitle: json['cameraPermissionTitle'] as String,
-      cameraPermissionDescription:
-          json['cameraPermissionDescription'] as String,
-      cameraPermissionButtonOpenSettings:
-          json['cameraPermissionButtonOpenSettings'] as String,
-    );
+AiutaImagePickerCameraStringsBuiltIn
+    _$AiutaImagePickerCameraStringsBuiltInFromJson(Map<String, dynamic> json) =>
+        AiutaImagePickerCameraStringsBuiltIn()
+          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
-Map<String, dynamic> _$AiutaImagePickerCameraStringsToJson(
-        AiutaImagePickerCameraStrings instance) =>
+Map<String, dynamic> _$AiutaImagePickerCameraStringsBuiltInToJson(
+        AiutaImagePickerCameraStringsBuiltIn instance) =>
     <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
+    };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};
+
+AiutaImagePickerCameraStringsCustom
+    _$AiutaImagePickerCameraStringsCustomFromJson(Map<String, dynamic> json) =>
+        AiutaImagePickerCameraStringsCustom(
+          cameraButtonTakePhoto: json['cameraButtonTakePhoto'] as String,
+          cameraPermissionTitle: json['cameraPermissionTitle'] as String,
+          cameraPermissionDescription:
+              json['cameraPermissionDescription'] as String,
+          cameraPermissionButtonOpenSettings:
+              json['cameraPermissionButtonOpenSettings'] as String,
+        )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
+
+Map<String, dynamic> _$AiutaImagePickerCameraStringsCustomToJson(
+        AiutaImagePickerCameraStringsCustom instance) =>
+    <String, dynamic>{
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'cameraButtonTakePhoto': instance.cameraButtonTakePhoto,
       'cameraPermissionTitle': instance.cameraPermissionTitle,
       'cameraPermissionDescription': instance.cameraPermissionDescription,

@@ -9,17 +9,17 @@ part of 'aiuta_onboarding_data_provider.dart';
 AiutaOnboardingDataProviderBuiltIn _$AiutaOnboardingDataProviderBuiltInFromJson(
         Map<String, dynamic> json) =>
     AiutaOnboardingDataProviderBuiltIn()
-      ..type = $enumDecode(_$AiutaDataProviderTypeEnumMap, json['type']);
+      ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaOnboardingDataProviderBuiltInToJson(
         AiutaOnboardingDataProviderBuiltIn instance) =>
     <String, dynamic>{
-      'type': _$AiutaDataProviderTypeEnumMap[instance.type]!,
+      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
     };
 
-const _$AiutaDataProviderTypeEnumMap = {
-  AiutaDataProviderType.builtIn: 'builtIn',
-  AiutaDataProviderType.custom: 'custom',
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
 };
 
 AiutaOnboardingDataProviderCustom _$AiutaOnboardingDataProviderCustomFromJson(
@@ -27,12 +27,12 @@ AiutaOnboardingDataProviderCustom _$AiutaOnboardingDataProviderCustomFromJson(
     AiutaOnboardingDataProviderCustom(
       isOnboardingCompleted: toNull(json['isOnboardingCompleted']),
       completeOnboarding: toNull(json['completeOnboarding']),
-    )..type = $enumDecode(_$AiutaDataProviderTypeEnumMap, json['type']);
+    )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaOnboardingDataProviderCustomToJson(
     AiutaOnboardingDataProviderCustom instance) {
   final val = <String, dynamic>{
-    'type': _$AiutaDataProviderTypeEnumMap[instance.type]!,
+    'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
   };
 
   void writeNotNull(String key, dynamic value) {

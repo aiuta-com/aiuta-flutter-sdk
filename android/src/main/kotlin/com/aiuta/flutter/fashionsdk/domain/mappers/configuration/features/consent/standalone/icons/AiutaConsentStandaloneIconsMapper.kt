@@ -4,11 +4,14 @@ import android.content.res.AssetManager
 import com.aiuta.fashionsdk.configuration.features.consent.standalone.icons.AiutaConsentStandaloneFeatureIcons
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.consent.standalone.icons.FlutterAiutaConsentStandaloneIcons
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.consent.standalone.icons.FlutterAiutaConsentStandaloneIconsCustom
 
 fun FlutterAiutaConsentStandaloneIcons.toNative(
     assetManager: AssetManager
 ): AiutaConsentStandaloneFeatureIcons {
-    return object : AiutaConsentStandaloneFeatureIcons {
-        override val consentTitle24 = this@toNative.consentTitle24?.toNative(assetManager)
+    return when (this) {
+        is FlutterAiutaConsentStandaloneIconsCustom -> object : AiutaConsentStandaloneFeatureIcons {
+            override val consentTitle24 = this@toNative.consentTitle24?.toNative(assetManager)
+        }
     }
 }

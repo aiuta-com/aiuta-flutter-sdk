@@ -23,6 +23,15 @@ class AiutaTryOnCartFeature {
     required this.handler,
   });
 
+  factory AiutaTryOnCartFeature.builtIn({
+    required AiutaTryOnCartHandler handler,
+  }) {
+    return AiutaTryOnCartFeature(
+      strings: AiutaTryOnCartStringsBuiltIn(),
+      handler: handler,
+    );
+  }
+
   // Internal json staff
   factory AiutaTryOnCartFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnCartFeatureFromJson(json);

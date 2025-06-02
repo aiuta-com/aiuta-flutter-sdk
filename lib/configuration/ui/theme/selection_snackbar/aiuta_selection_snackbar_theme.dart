@@ -27,6 +27,14 @@ class AiutaSelectionSnackbarTheme {
     required this.colors,
   });
 
+  factory AiutaSelectionSnackbarTheme.builtIn() {
+    return AiutaSelectionSnackbarTheme(
+      strings: AiutaSelectionSnackbarStringsBuiltIn(),
+      icons: AiutaSelectionSnackbarIconsBuiltIn(),
+      colors: AiutaSelectionSnackbarColors.builtIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaSelectionSnackbarTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaSelectionSnackbarThemeFromJson(json);

@@ -17,6 +17,13 @@ class AiutaBottomSheetToggles {
     required this.extendDelimitersToTheLeft,
   });
 
+  factory AiutaBottomSheetToggles.builtIn() {
+    return AiutaBottomSheetToggles(
+      extendDelimitersToTheRight: false,
+      extendDelimitersToTheLeft: false,
+    );
+  }
+
   // Internal json staff
   factory AiutaBottomSheetToggles.fromJson(Map<String, dynamic> json) =>
       _$AiutaBottomSheetTogglesFromJson(json);

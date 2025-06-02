@@ -17,6 +17,13 @@ class AiutaImagePickerCameraFeature {
     required this.strings,
   });
 
+  factory AiutaImagePickerCameraFeature.builtIn() {
+    return AiutaImagePickerCameraFeature(
+      icons: AiutaImagePickerCameraIconsBuiltIn(),
+      strings: AiutaImagePickerCameraStringsBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaImagePickerCameraFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaImagePickerCameraFeatureFromJson(json);

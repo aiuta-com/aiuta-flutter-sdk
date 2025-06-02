@@ -37,6 +37,20 @@ class AiutaDebugSettings {
     required this.listSizePolicy,
   });
 
+  /// Returns the built-in default debug settings.
+  ///
+  /// This factory constructor creates an [AiutaDebugSettings] instance with
+  /// logging disabled and all validation policies set to [AiutaValidationPolicy.warning].
+  factory AiutaDebugSettings.builtIn() {
+    return AiutaDebugSettings(
+      isLoggingEnabled: false,
+      emptyStringsPolicy: AiutaValidationPolicy.warning,
+      unavailableResourcesPolicy: AiutaValidationPolicy.warning,
+      infoPlistDescriptionsPolicy: AiutaValidationPolicy.warning,
+      listSizePolicy: AiutaValidationPolicy.warning,
+    );
+  }
+
   // Internal json staff
   factory AiutaDebugSettings.fromJson(Map<String, dynamic> json) =>
       _$AiutaDebugSettingsFromJson(json);

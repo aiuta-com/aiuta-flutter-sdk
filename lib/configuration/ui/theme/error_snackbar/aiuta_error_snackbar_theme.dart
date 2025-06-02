@@ -24,6 +24,14 @@ class AiutaErrorSnackbarTheme {
     required this.colors,
   });
 
+  factory AiutaErrorSnackbarTheme.builtIn() {
+    return AiutaErrorSnackbarTheme(
+      strings: AiutaErrorSnackbarStringsBuiltIn(),
+      icons: AiutaErrorSnackbarIconsBuiltIn(),
+      colors: AiutaErrorSnackbarColors.builtIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaErrorSnackbarTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaErrorSnackbarThemeFromJson(json);

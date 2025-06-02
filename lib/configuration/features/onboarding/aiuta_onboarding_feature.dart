@@ -48,6 +48,16 @@ class AiutaOnboardingFeature {
     required this.dataProvider,
   });
 
+  factory AiutaOnboardingFeature.builtIn() {
+    return AiutaOnboardingFeature(
+      howItWorksPage: AiutaOnboardingHowItWorksPageFeature.builtIn(),
+      bestResultsPage: null,
+      strings: AiutaOnboardingStringsBuiltIn(),
+      shapes: AiutaOnboardingShapes.builtIn(),
+      dataProvider: AiutaOnboardingDataProviderBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaOnboardingFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaOnboardingFeatureFromJson(json);
