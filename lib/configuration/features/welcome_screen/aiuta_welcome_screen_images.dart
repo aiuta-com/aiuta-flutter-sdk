@@ -14,8 +14,6 @@ sealed class AiutaWelcomeScreenImages {
   // Internal json staff
   factory AiutaWelcomeScreenImages.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as String) {
-      case 'builtIn':
-        return AiutaWelcomeScreenImagesBuiltIn.fromJson(json);
       case 'custom':
         return AiutaWelcomeScreenImagesCustom.fromJson(json);
       default:
@@ -24,23 +22,6 @@ sealed class AiutaWelcomeScreenImages {
   }
 
   Map<String, dynamic> toJson();
-}
-
-/// A built-in implementation of the `AiutaWelcomeScreenImages`.
-///
-/// This class represents the default, built-in images for the welcome screen feature.
-@JsonSerializable()
-class AiutaWelcomeScreenImagesBuiltIn extends AiutaWelcomeScreenImages {
-  /// Creates an instance of the built-in welcome screen images.
-  AiutaWelcomeScreenImagesBuiltIn() : super(AiutaCustomizationType.builtIn);
-
-  // Internal json staff
-  factory AiutaWelcomeScreenImagesBuiltIn.fromJson(Map<String, dynamic> json) =>
-      _$AiutaWelcomeScreenImagesBuiltInFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaWelcomeScreenImagesBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaWelcomeScreenImages`.

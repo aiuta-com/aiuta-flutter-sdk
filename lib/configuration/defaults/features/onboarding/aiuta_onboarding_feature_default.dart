@@ -1,4 +1,3 @@
-import 'package:aiuta_flutter/configuration/defaults/features/onboarding/bestresult/aiuta_onboarding_best_results_page_feature_default.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/aiuta_onboarding_data_provider.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/aiuta_onboarding_feature.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/aiuta_onboarding_shapes.dart';
@@ -10,8 +9,7 @@ final class AiutaOnboardingFeatureDefaultBuilder {
     return AiutaOnboardingFeature(
       howItWorksPage:
           AiutaOnboardingHowItWorksPageFeatureDefaultBuilder().build(),
-      bestResultsPage:
-          AiutaOnboardingBestResultsPageFeatureDefaultBuilder().build(),
+      bestResultsPage: null,
       strings: AiutaOnboardingStringsBuiltIn(),
       shapes: AiutaOnboardingShapes(
         onboardingImageL: 16,

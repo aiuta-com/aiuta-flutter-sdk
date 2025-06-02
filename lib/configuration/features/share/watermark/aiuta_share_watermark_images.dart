@@ -14,8 +14,6 @@ sealed class AiutaShareWatermarkImages {
   // Internal json staff
   factory AiutaShareWatermarkImages.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as String) {
-      case 'builtIn':
-        return AiutaShareWatermarkImagesBuiltIn.fromJson(json);
       case 'custom':
         return AiutaShareWatermarkImagesCustom.fromJson(json);
       default:
@@ -24,24 +22,6 @@ sealed class AiutaShareWatermarkImages {
   }
 
   Map<String, dynamic> toJson();
-}
-
-/// A built-in implementation of the `AiutaShareWatermarkImages`.
-///
-/// This class represents the default, built-in images for the share watermark feature.
-@JsonSerializable()
-class AiutaShareWatermarkImagesBuiltIn extends AiutaShareWatermarkImages {
-  /// Creates an instance of the built-in share watermark images.
-  AiutaShareWatermarkImagesBuiltIn() : super(AiutaCustomizationType.builtIn);
-
-  // Internal json staff
-  factory AiutaShareWatermarkImagesBuiltIn.fromJson(
-          Map<String, dynamic> json) =>
-      _$AiutaShareWatermarkImagesBuiltInFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaShareWatermarkImagesBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaShareWatermarkImages`.
