@@ -26,7 +26,7 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
-import com.aiuta.fashionsdk.analytic.analytic
+import com.aiuta.fashionsdk.analytics.analytics
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticHandler
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
@@ -45,7 +45,7 @@ abstract class BaseAiutaBottomSheetDialog(
     ActivityResultRegistryOwner {
 
     protected val aiuta by lazy { AiutaHolder.getAiuta() }
-    private val aiutaAnalytic by lazy { aiuta.analytic }
+    private val aiutaAnalytic by lazy { aiuta.analytics }
 
     // For launcher picker
     override val activityResultRegistry: ActivityResultRegistry =
