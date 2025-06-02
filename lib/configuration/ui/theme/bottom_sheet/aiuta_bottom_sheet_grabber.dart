@@ -24,8 +24,8 @@ class AiutaBottomSheetGrabber {
   factory AiutaBottomSheetGrabber.builtIn() {
     return AiutaBottomSheetGrabber(
       width: 36,
-      height: 3,
-      topPadding: 8,
+      height: 4,
+      topPadding: 6,
     );
   }
 
