@@ -1,6 +1,6 @@
 import 'package:aiuta_flutter/aiuta_flutter.dart';
+import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_auth.dart';
-import 'package:aiuta_flutter/configuration/defaults/aiuta_configuration_defaults.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_cart_handler.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiutasdk_example/env/env.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _aiuta = Aiuta(
-    configuration: AiutaConfigurationDefaultBuilder().build(
+    configuration: AiutaConfiguration.builtIn(
       auth: AiutaApiKeyAuth(apiKey: Env.API_KEY),
       termsOfServiceUrl: "https://your-domain.com/you-tos",
       cartHandler: AiutaTryOnCartHandler(

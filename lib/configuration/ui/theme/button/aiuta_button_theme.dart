@@ -19,6 +19,13 @@ class AiutaButtonTheme {
     required this.shapes,
   });
 
+  factory AiutaButtonTheme.builtIn() {
+    return AiutaButtonTheme(
+      typography: AiutaButtonTypographyBuiltIn(),
+      shapes: AiutaButtonShapes.builtIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaButtonTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaButtonThemeFromJson(json);

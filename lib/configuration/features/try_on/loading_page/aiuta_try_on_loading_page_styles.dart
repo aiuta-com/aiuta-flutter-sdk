@@ -35,6 +35,12 @@ class AiutaTryOnLoadingPageStyles {
     required this.loadingStatusStyle,
   });
 
+  factory AiutaTryOnLoadingPageStyles.builtIn() {
+    return AiutaTryOnLoadingPageStyles(
+      loadingStatusStyle: AiutaTryOnLoadingPageStyle.blurred,
+    );
+  }
+
   // Internal json staff
   factory AiutaTryOnLoadingPageStyles.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnLoadingPageStylesFromJson(json);

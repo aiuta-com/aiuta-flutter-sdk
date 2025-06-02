@@ -26,6 +26,14 @@ class AiutaTryOnLoadingPageFeature {
     required this.styles,
   });
 
+  factory AiutaTryOnLoadingPageFeature.builtIn() {
+    return AiutaTryOnLoadingPageFeature(
+      icons: AiutaTryOnLoadingPageIconsBuiltIn(),
+      strings: AiutaTryOnLoadingPageStringsBuiltIn(),
+      styles: AiutaTryOnLoadingPageStyles.builtIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaTryOnLoadingPageFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnLoadingPageFeatureFromJson(json);

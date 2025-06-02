@@ -15,6 +15,12 @@ class AiutaTryOnInputImageValidationFeature {
     required this.strings,
   });
 
+  factory AiutaTryOnInputImageValidationFeature.builtIn() {
+    return AiutaTryOnInputImageValidationFeature(
+      strings: AiutaTryOnInputImageValidationStringsBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaTryOnInputImageValidationFeature.fromJson(
           Map<String, dynamic> json) =>

@@ -65,6 +65,22 @@ class AiutaColorTheme {
     required this.outline,
   });
 
+  factory AiutaColorTheme.builtIn() {
+    return AiutaColorTheme(
+      scheme: AiutaColorScheme.light,
+      brand: "#FF4000FF",
+      primary: "#FF000000",
+      secondary: "#FF9F9F9F",
+      onDark: "#FFFFFFFF",
+      onLight: "#FF000000",
+      background: "#FFFFFFFF",
+      screen: "#FFFFFFFF",
+      neutral: "#FFF2F2F7",
+      border: "#FFE5E5EA",
+      outline: "#FFC7C7CC",
+    );
+  }
+
   // Internal json staff
   factory AiutaColorTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaColorThemeFromJson(json);

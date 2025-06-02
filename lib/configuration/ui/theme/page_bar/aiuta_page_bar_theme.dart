@@ -26,6 +26,14 @@ class AiutaPageBarTheme {
     required this.toggles,
   });
 
+  factory AiutaPageBarTheme.builtIn() {
+    return AiutaPageBarTheme(
+      typography: AiutaPageBarTypographyBuiltIn(),
+      icons: AiutaPageBarIconsBuiltIn(),
+      toggles: AiutaPageBarToggles.builtIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaPageBarTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaPageBarThemeFromJson(json);

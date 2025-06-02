@@ -28,6 +28,14 @@ class AiutaUserInterfaceConfiguration {
     required this.theme,
   });
 
+  factory AiutaUserInterfaceConfiguration.builtIn() {
+    return AiutaUserInterfaceConfiguration(
+      presentationStyle: AiutaPresentationStyle.fullScreen,
+      swipeToDismiss: AiutaSwipeToDismissPolicy.protectTheNecessaryPages,
+      theme: AiutaTheme.builtIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaUserInterfaceConfiguration.fromJson(Map<String, dynamic> json) =>
       _$AiutaUserInterfaceConfigurationFromJson(json);

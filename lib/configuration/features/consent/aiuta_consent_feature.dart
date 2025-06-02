@@ -19,6 +19,16 @@ sealed class AiutaConsentFeature {
   /// Base constructor for AiutaConsentFeature with [mode].
   AiutaConsentFeature(this.mode);
 
+  factory AiutaConsentFeature.builtIn({
+    required String termsOfServiceUrl,
+  }) {
+    return AiutaConsentEmbeddedIntoOnboardingFeature(
+      strings: AiutaConsentEmbeddedStringsBuiltIn(
+        termsOfServiceUrl: termsOfServiceUrl,
+      ),
+    );
+  }
+
   // Internal json staff
   factory AiutaConsentFeature.fromJson(Map<String, dynamic> json) {
     switch (json['mode'] as String) {

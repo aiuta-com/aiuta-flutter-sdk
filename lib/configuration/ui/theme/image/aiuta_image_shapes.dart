@@ -18,6 +18,13 @@ class AiutaImageShapes {
     required this.imageS,
   });
 
+  factory AiutaImageShapes.builtIn() {
+    return AiutaImageShapes(
+      imageL: 24,
+      imageS: 16,
+    );
+  }
+
   // Internal json staff
   factory AiutaImageShapes.fromJson(Map<String, dynamic> json) =>
       _$AiutaImageShapesFromJson(json);

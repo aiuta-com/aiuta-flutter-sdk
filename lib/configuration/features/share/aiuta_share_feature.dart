@@ -35,6 +35,13 @@ class AiutaShareFeature {
     this.dataProvider,
   });
 
+  factory AiutaShareFeature.builtIn() {
+    return AiutaShareFeature(
+      icons: AiutaShareIconsBuiltIn(),
+      strings: AiutaShareStringsBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaShareFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaShareFeatureFromJson(json);

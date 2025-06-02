@@ -17,6 +17,13 @@ class AiutaOnboardingShapes {
     required this.onboardingImageS,
   });
 
+  factory AiutaOnboardingShapes.builtIn() {
+    return AiutaOnboardingShapes(
+      onboardingImageL: 16,
+      onboardingImageS: 16,
+    );
+  }
+
   // Internal json staff
   factory AiutaOnboardingShapes.fromJson(Map<String, dynamic> json) =>
       _$AiutaOnboardingShapesFromJson(json);

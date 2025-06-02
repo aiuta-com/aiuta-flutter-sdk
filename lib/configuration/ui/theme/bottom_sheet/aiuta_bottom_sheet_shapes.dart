@@ -19,6 +19,13 @@ class AiutaBottomSheetShapes {
     required this.chipsButton,
   });
 
+  factory AiutaBottomSheetShapes.builtIn() {
+    return AiutaBottomSheetShapes(
+      bottomSheet: 16,
+      chipsButton: 8,
+    );
+  }
+
   // Internal json staff
   factory AiutaBottomSheetShapes.fromJson(Map<String, dynamic> json) =>
       _$AiutaBottomSheetShapesFromJson(json);

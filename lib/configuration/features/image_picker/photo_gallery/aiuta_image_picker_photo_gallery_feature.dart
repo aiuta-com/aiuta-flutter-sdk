@@ -20,6 +20,13 @@ class AiutaImagePickerPhotoGalleryFeature {
     required this.strings,
   });
 
+  factory AiutaImagePickerPhotoGalleryFeature.builtIn() {
+    return AiutaImagePickerPhotoGalleryFeature(
+      icons: AiutaImagePickerPhotoGalleryIconsBuiltIn(),
+      strings: AiutaImagePickerPhotoGalleryStringsBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaImagePickerPhotoGalleryFeature.fromJson(
           Map<String, dynamic> json) =>

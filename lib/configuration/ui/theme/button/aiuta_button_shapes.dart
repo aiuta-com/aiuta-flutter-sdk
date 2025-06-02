@@ -18,6 +18,13 @@ class AiutaButtonShapes {
     required this.buttonS,
   });
 
+  factory AiutaButtonShapes.builtIn() {
+    return AiutaButtonShapes(
+      buttonM: 8,
+      buttonS: 8,
+    );
+  }
+
   // Internal json staff
   factory AiutaButtonShapes.fromJson(Map<String, dynamic> json) =>
       _$AiutaButtonShapesFromJson(json);

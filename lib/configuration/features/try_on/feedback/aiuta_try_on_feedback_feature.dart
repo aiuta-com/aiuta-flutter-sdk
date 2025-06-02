@@ -26,6 +26,13 @@ class AiutaTryOnFeedbackFeature {
     required this.strings,
   });
 
+  factory AiutaTryOnFeedbackFeature.builtIn() {
+    return AiutaTryOnFeedbackFeature(
+      icons: AiutaTryOnFeedbackIconsBuiltIn(),
+      strings: AiutaTryOnFeedbackStringsBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaTryOnFeedbackFeature.fromJson(Map<String, dynamic> json) =>
       _$AiutaTryOnFeedbackFeatureFromJson(json);

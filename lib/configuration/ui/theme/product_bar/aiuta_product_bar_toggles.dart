@@ -15,6 +15,12 @@ class AiutaProductBarToggles {
     required this.applyProductFirstImageExtraPadding,
   });
 
+  factory AiutaProductBarToggles.builtIn() {
+    return AiutaProductBarToggles(
+      applyProductFirstImageExtraPadding: false,
+    );
+  }
+
   // Internal json staff
   factory AiutaProductBarToggles.fromJson(Map<String, dynamic> json) =>
       _$AiutaProductBarTogglesFromJson(json);

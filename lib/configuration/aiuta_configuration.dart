@@ -2,6 +2,7 @@ import 'package:aiuta_flutter/configuration/analytics/aiuta_analytics.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_auth.dart';
 import 'package:aiuta_flutter/configuration/debug/aiuta_debug_settings.dart';
 import 'package:aiuta_flutter/configuration/features/aiuta_features.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_cart_handler.dart';
 import 'package:aiuta_flutter/configuration/ui/aiuta_user_interface.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -51,6 +52,22 @@ class AiutaConfiguration {
     this.analytics,
     required this.debugSettings,
   });
+
+  factory AiutaConfiguration.builtIn({
+    required AiutaAuth auth,
+    required String termsOfServiceUrl,
+    required AiutaTryOnCartHandler cartHandler,
+  }) {
+    return AiutaConfiguration(
+      auth: auth,
+      userInterface: AiutaUserInterfaceConfiguration.builtIn(),
+      features: AiutaFeatures.builtIn(
+        termsOfServiceUrl: termsOfServiceUrl,
+        cartHandler: cartHandler,
+      ),
+      debugSettings: AiutaDebugSettings.builtIn(),
+    );
+  }
 
   // Internal json staff
   factory AiutaConfiguration.fromJson(Map<String, dynamic> json) =>

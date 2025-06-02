@@ -19,6 +19,13 @@ class AiutaImageTheme {
     required this.icons,
   });
 
+  factory AiutaImageTheme.builtIn() {
+    return AiutaImageTheme(
+      shapes: AiutaImageShapes.builtIn(),
+      icons: AiutaImageIconsBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaImageTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaImageThemeFromJson(json);

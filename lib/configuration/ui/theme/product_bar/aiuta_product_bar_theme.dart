@@ -33,6 +33,15 @@ class AiutaProductBarTheme {
     required this.toggles,
   });
 
+  factory AiutaProductBarTheme.builtIn() {
+    return AiutaProductBarTheme(
+      prices: null,
+      typography: AiutaProductBarTypographyBuiltIn(),
+      icons: AiutaProductBarIconsBuiltIn(),
+      toggles: AiutaProductBarToggles.builtIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaProductBarTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaProductBarThemeFromJson(json);

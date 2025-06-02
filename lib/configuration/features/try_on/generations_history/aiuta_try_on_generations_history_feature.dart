@@ -27,6 +27,14 @@ class AiutaTryOnGenerationsHistoryFeature {
     required this.dataProvider,
   });
 
+  factory AiutaTryOnGenerationsHistoryFeature.builtIn() {
+    return AiutaTryOnGenerationsHistoryFeature(
+      icons: AiutaTryOnGenerationsHistoryIconsBuiltIn(),
+      strings: AiutaTryOnGenerationsHistoryStringsBuiltIn(),
+      dataProvider: AiutaTryOnGenerationsHistoryDataProviderBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaTryOnGenerationsHistoryFeature.fromJson(
           Map<String, dynamic> json) =>

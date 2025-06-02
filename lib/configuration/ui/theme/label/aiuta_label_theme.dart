@@ -14,6 +14,12 @@ class AiutaLabelTheme {
     required this.typography,
   });
 
+  factory AiutaLabelTheme.builtIn() {
+    return AiutaLabelTheme(
+      typography: AiutaLabelTypographyBuiltIn(),
+    );
+  }
+
   // Internal json staff
   factory AiutaLabelTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaLabelThemeFromJson(json);

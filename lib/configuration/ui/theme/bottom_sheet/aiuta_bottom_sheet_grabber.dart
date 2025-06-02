@@ -21,6 +21,14 @@ class AiutaBottomSheetGrabber {
     required this.topPadding,
   });
 
+  factory AiutaBottomSheetGrabber.builtIn() {
+    return AiutaBottomSheetGrabber(
+      width: 36,
+      height: 3,
+      topPadding: 8,
+    );
+  }
+
   // Internal json staff
   factory AiutaBottomSheetGrabber.fromJson(Map<String, dynamic> json) =>
       _$AiutaBottomSheetGrabberFromJson(json);
