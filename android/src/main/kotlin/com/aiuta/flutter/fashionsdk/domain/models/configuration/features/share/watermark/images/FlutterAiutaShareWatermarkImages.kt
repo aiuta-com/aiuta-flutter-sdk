@@ -12,10 +12,6 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 sealed interface FlutterAiutaShareWatermarkImages
 
 @Serializable
-@SerialName(FlutterCustomizationType.TYPE_BUILT_IN)
-object FlutterAiutaShareWatermarkImagesBuiltIn : FlutterAiutaShareWatermarkImages
-
-@Serializable
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 class FlutterAiutaShareWatermarkImagesCustom(
     @SerialName("watermark")

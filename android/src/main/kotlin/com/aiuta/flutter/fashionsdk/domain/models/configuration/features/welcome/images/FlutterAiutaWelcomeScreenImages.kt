@@ -12,10 +12,6 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 sealed interface FlutterAiutaWelcomeScreenImages
 
 @Serializable
-@SerialName(FlutterCustomizationType.TYPE_BUILT_IN)
-object FlutterAiutaWelcomeScreenImagesBuiltIn : FlutterAiutaWelcomeScreenImages
-
-@Serializable
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 class FlutterAiutaWelcomeScreenImagesCustom(
     @SerialName("welcomeBackground")
