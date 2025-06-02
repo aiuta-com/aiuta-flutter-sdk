@@ -6,23 +6,6 @@ part of 'aiuta_onboarding_best_results_page_icons.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaOnboardingBestResultsPageIconsBuiltIn
-    _$AiutaOnboardingBestResultsPageIconsBuiltInFromJson(
-            Map<String, dynamic> json) =>
-        AiutaOnboardingBestResultsPageIconsBuiltIn()
-          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
-
-Map<String, dynamic> _$AiutaOnboardingBestResultsPageIconsBuiltInToJson(
-        AiutaOnboardingBestResultsPageIconsBuiltIn instance) =>
-    <String, dynamic>{
-      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
-    };
-
-const _$AiutaCustomizationTypeEnumMap = {
-  AiutaCustomizationType.builtIn: 'builtIn',
-  AiutaCustomizationType.custom: 'custom',
-};
-
 AiutaOnboardingBestResultsPageIconsCustom
     _$AiutaOnboardingBestResultsPageIconsCustomFromJson(
             Map<String, dynamic> json) =>
@@ -40,3 +23,8 @@ Map<String, dynamic> _$AiutaOnboardingBestResultsPageIconsCustomToJson(
       'onboardingBestResultsGood24': instance.onboardingBestResultsGood24,
       'onboardingBestResultsBad24': instance.onboardingBestResultsBad24,
     };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};

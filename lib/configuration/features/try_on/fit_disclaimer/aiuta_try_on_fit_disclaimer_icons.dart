@@ -15,8 +15,6 @@ sealed class AiutaTryOnFitDisclaimerIcons {
   // Internal json staff
   factory AiutaTryOnFitDisclaimerIcons.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as String) {
-      case 'builtIn':
-        return AiutaTryOnFitDisclaimerIconsBuiltIn.fromJson(json);
       case 'custom':
         return AiutaTryOnFitDisclaimerIconsCustom.fromJson(json);
       default:
@@ -25,24 +23,6 @@ sealed class AiutaTryOnFitDisclaimerIcons {
   }
 
   Map<String, dynamic> toJson();
-}
-
-/// A built-in implementation of the `AiutaTryOnFitDisclaimerIcons`.
-///
-/// This class represents the default, built-in icons for the try-on fit disclaimer feature.
-@JsonSerializable()
-class AiutaTryOnFitDisclaimerIconsBuiltIn extends AiutaTryOnFitDisclaimerIcons {
-  /// Creates an instance of the built-in try-on fit disclaimer icons.
-  AiutaTryOnFitDisclaimerIconsBuiltIn() : super(AiutaCustomizationType.builtIn);
-
-  // Internal json staff
-  factory AiutaTryOnFitDisclaimerIconsBuiltIn.fromJson(
-          Map<String, dynamic> json) =>
-      _$AiutaTryOnFitDisclaimerIconsBuiltInFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaTryOnFitDisclaimerIconsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaTryOnFitDisclaimerIcons`.

@@ -6,22 +6,6 @@ part of 'aiuta_try_on_fit_disclaimer_icons.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaTryOnFitDisclaimerIconsBuiltIn
-    _$AiutaTryOnFitDisclaimerIconsBuiltInFromJson(Map<String, dynamic> json) =>
-        AiutaTryOnFitDisclaimerIconsBuiltIn()
-          ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
-
-Map<String, dynamic> _$AiutaTryOnFitDisclaimerIconsBuiltInToJson(
-        AiutaTryOnFitDisclaimerIconsBuiltIn instance) =>
-    <String, dynamic>{
-      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
-    };
-
-const _$AiutaCustomizationTypeEnumMap = {
-  AiutaCustomizationType.builtIn: 'builtIn',
-  AiutaCustomizationType.custom: 'custom',
-};
-
 AiutaTryOnFitDisclaimerIconsCustom _$AiutaTryOnFitDisclaimerIconsCustomFromJson(
         Map<String, dynamic> json) =>
     AiutaTryOnFitDisclaimerIconsCustom(
@@ -34,3 +18,8 @@ Map<String, dynamic> _$AiutaTryOnFitDisclaimerIconsCustomToJson(
       'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'info20': instance.info20,
     };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};

@@ -6,22 +6,6 @@ part of 'aiuta_welcome_screen_icons.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaWelcomeScreenIconsBuiltIn _$AiutaWelcomeScreenIconsBuiltInFromJson(
-        Map<String, dynamic> json) =>
-    AiutaWelcomeScreenIconsBuiltIn()
-      ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
-
-Map<String, dynamic> _$AiutaWelcomeScreenIconsBuiltInToJson(
-        AiutaWelcomeScreenIconsBuiltIn instance) =>
-    <String, dynamic>{
-      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
-    };
-
-const _$AiutaCustomizationTypeEnumMap = {
-  AiutaCustomizationType.builtIn: 'builtIn',
-  AiutaCustomizationType.custom: 'custom',
-};
-
 AiutaWelcomeScreenIconsCustom _$AiutaWelcomeScreenIconsCustomFromJson(
         Map<String, dynamic> json) =>
     AiutaWelcomeScreenIconsCustom(
@@ -34,3 +18,8 @@ Map<String, dynamic> _$AiutaWelcomeScreenIconsCustomToJson(
       'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'welcome82': instance.welcome82,
     };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};

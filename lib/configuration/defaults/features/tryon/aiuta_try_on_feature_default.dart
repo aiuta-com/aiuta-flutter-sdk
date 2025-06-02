@@ -1,5 +1,4 @@
 import 'package:aiuta_flutter/configuration/defaults/features/tryon/cart/aiuta_try_on_cart_feature_default.dart';
-import 'package:aiuta_flutter/configuration/defaults/features/tryon/disclaimer/aiuta_try_on_fit_disclaimer_feature_default.dart';
 import 'package:aiuta_flutter/configuration/defaults/features/tryon/feedback/aiuta_try_on_feedback_feature_default.dart';
 import 'package:aiuta_flutter/configuration/defaults/features/tryon/history/aiuta_try_on_generations_history_feature_default.dart';
 import 'package:aiuta_flutter/configuration/defaults/features/tryon/loading/aiuta_try_on_loading_page_feature_default.dart';
@@ -23,7 +22,7 @@ final class AiutaTryOnFeatureDefaultBuilder {
         cart: AiutaTryOnCartFeatureDefaultBuilder().build(
           handler: cartHandler,
         ),
-        fitDisclaimer: AiutaTryOnFitDisclaimerFeatureDefaultBuilder().build(),
+        fitDisclaimer: null,
         feedback: AiutaTryOnFeedbackFeatureDefaultBuilder().build(),
         generationsHistory:
             AiutaTryOnGenerationsHistoryFeatureDefaultBuilder().build(),

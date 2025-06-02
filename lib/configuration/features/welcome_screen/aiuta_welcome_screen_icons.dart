@@ -15,8 +15,6 @@ sealed class AiutaWelcomeScreenIcons {
   // Internal json staff
   factory AiutaWelcomeScreenIcons.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as String) {
-      case 'builtIn':
-        return AiutaWelcomeScreenIconsBuiltIn.fromJson(json);
       case 'custom':
         return AiutaWelcomeScreenIconsCustom.fromJson(json);
       default:
@@ -25,22 +23,6 @@ sealed class AiutaWelcomeScreenIcons {
   }
 
   Map<String, dynamic> toJson();
-}
-
-/// A built-in implementation of the `AiutaWelcomeScreenIcons`.
-///
-/// This class represents the default, built-in icons for the welcome screen feature.
-@JsonSerializable()
-class AiutaWelcomeScreenIconsBuiltIn extends AiutaWelcomeScreenIcons {
-  /// Creates an instance of the built-in welcome screen icons.
-  AiutaWelcomeScreenIconsBuiltIn() : super(AiutaCustomizationType.builtIn);
-
-  // Internal json staff
-  factory AiutaWelcomeScreenIconsBuiltIn.fromJson(Map<String, dynamic> json) =>
-      _$AiutaWelcomeScreenIconsBuiltInFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => _$AiutaWelcomeScreenIconsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaWelcomeScreenIcons`.

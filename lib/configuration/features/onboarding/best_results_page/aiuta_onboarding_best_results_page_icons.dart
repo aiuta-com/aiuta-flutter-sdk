@@ -16,8 +16,6 @@ sealed class AiutaOnboardingBestResultsPageIcons {
   factory AiutaOnboardingBestResultsPageIcons.fromJson(
       Map<String, dynamic> json) {
     switch (json['type'] as String) {
-      case 'builtIn':
-        return AiutaOnboardingBestResultsPageIconsBuiltIn.fromJson(json);
       case 'custom':
         return AiutaOnboardingBestResultsPageIconsCustom.fromJson(json);
       default:
@@ -26,26 +24,6 @@ sealed class AiutaOnboardingBestResultsPageIcons {
   }
 
   Map<String, dynamic> toJson();
-}
-
-/// A built-in implementation of the `AiutaOnboardingBestResultsPageIcons`.
-///
-/// This class represents the default, built-in icons for the best results page.
-@JsonSerializable()
-class AiutaOnboardingBestResultsPageIconsBuiltIn
-    extends AiutaOnboardingBestResultsPageIcons {
-  /// Creates an instance of the built-in onboarding best results page icons.
-  AiutaOnboardingBestResultsPageIconsBuiltIn()
-      : super(AiutaCustomizationType.builtIn);
-
-  // Internal json staff
-  factory AiutaOnboardingBestResultsPageIconsBuiltIn.fromJson(
-          Map<String, dynamic> json) =>
-      _$AiutaOnboardingBestResultsPageIconsBuiltInFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaOnboardingBestResultsPageIconsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaOnboardingBestResultsPageIcons`.
