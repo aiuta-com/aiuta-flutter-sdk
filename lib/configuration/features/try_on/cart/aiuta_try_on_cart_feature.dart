@@ -23,6 +23,7 @@ class AiutaTryOnCartFeature {
     required this.handler,
   });
 
+  /// Creates a built-in try-on cart feature configuration with default settings.
   factory AiutaTryOnCartFeature.builtIn({
     required AiutaTryOnCartHandler handler,
   }) {

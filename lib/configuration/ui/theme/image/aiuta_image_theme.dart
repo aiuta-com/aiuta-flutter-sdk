@@ -19,6 +19,7 @@ class AiutaImageTheme {
     required this.icons,
   });
 
+  /// Creates a built-in image theme configuration with default settings.
   factory AiutaImageTheme.builtIn() {
     return AiutaImageTheme(
       shapes: AiutaImageShapes.builtIn(),

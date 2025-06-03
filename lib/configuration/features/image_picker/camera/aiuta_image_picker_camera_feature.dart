@@ -17,6 +17,7 @@ class AiutaImagePickerCameraFeature {
     required this.strings,
   });
 
+  /// Creates a built-in camera feature configuration with default settings.
   factory AiutaImagePickerCameraFeature.builtIn() {
     return AiutaImagePickerCameraFeature(
       icons: AiutaImagePickerCameraIconsBuiltIn(),

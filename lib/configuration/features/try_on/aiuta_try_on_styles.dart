@@ -17,6 +17,7 @@ class AiutaTryOnStyles {
     this.tryOnButtonGradient,
   });
 
+  /// Creates a built-in try-on styles configuration with default settings.
   factory AiutaTryOnStyles.builtIn() {
     return AiutaTryOnStyles(
       tryOnButtonGradient: null,

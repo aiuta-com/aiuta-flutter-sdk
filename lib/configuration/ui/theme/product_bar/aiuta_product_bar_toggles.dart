@@ -15,6 +15,7 @@ class AiutaProductBarToggles {
     required this.applyProductFirstImageExtraPadding,
   });
 
+  /// Creates a built-in product bar toggles configuration with default settings.
   factory AiutaProductBarToggles.builtIn() {
     return AiutaProductBarToggles(
       applyProductFirstImageExtraPadding: false,

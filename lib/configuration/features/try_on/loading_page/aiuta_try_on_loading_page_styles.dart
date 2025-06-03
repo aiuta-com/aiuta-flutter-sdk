@@ -35,6 +35,7 @@ class AiutaTryOnLoadingPageStyles {
     required this.loadingStatusStyle,
   });
 
+  /// Creates a built-in loading page styles configuration with default settings.
   factory AiutaTryOnLoadingPageStyles.builtIn() {
     return AiutaTryOnLoadingPageStyles(
       loadingStatusStyle: AiutaTryOnLoadingPageStyle.blurred,

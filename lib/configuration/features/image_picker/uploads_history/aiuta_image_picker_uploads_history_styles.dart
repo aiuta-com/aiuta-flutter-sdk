@@ -25,6 +25,7 @@ class AiutaImagePickerUploadsHistoryStyles {
     required this.changePhotoButtonStyle,
   });
 
+  /// Creates a built-in uploads history styles configuration with default settings.
   factory AiutaImagePickerUploadsHistoryStyles.builtIn() {
     return AiutaImagePickerUploadsHistoryStyles(
       changePhotoButtonStyle: AiutaImagePickerUploadsHistoryButtonStyle.blurred,

@@ -29,6 +29,7 @@ class AiutaPowerBarTheme {
     required this.colors,
   });
 
+  /// Creates a built-in power bar theme configuration with default settings.
   factory AiutaPowerBarTheme.builtIn() {
     return AiutaPowerBarTheme(
       strings: AiutaPowerBarStringsBuiltIn(),

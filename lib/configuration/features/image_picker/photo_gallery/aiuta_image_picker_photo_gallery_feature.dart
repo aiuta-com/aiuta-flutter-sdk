@@ -20,6 +20,7 @@ class AiutaImagePickerPhotoGalleryFeature {
     required this.strings,
   });
 
+  /// Creates a built-in photo gallery feature configuration with default settings.
   factory AiutaImagePickerPhotoGalleryFeature.builtIn() {
     return AiutaImagePickerPhotoGalleryFeature(
       icons: AiutaImagePickerPhotoGalleryIconsBuiltIn(),

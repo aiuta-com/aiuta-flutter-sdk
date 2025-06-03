@@ -87,6 +87,7 @@ class AiutaTheme {
     required this.powerBar,
   });
 
+  /// Creates a built-in theme configuration with default settings.
   factory AiutaTheme.builtIn() {
     return AiutaTheme(
       color: AiutaColorTheme.builtIn(),

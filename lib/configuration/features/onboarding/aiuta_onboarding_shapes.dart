@@ -17,6 +17,7 @@ class AiutaOnboardingShapes {
     required this.onboardingImageS,
   });
 
+  /// Creates a built-in onboarding shapes configuration with default settings.
   factory AiutaOnboardingShapes.builtIn() {
     return AiutaOnboardingShapes(
       onboardingImageL: 16,

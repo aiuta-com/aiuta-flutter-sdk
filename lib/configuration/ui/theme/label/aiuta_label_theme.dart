@@ -14,6 +14,7 @@ class AiutaLabelTheme {
     required this.typography,
   });
 
+  /// Creates a built-in label theme configuration with default settings.
   factory AiutaLabelTheme.builtIn() {
     return AiutaLabelTheme(
       typography: AiutaLabelTypographyBuiltIn(),

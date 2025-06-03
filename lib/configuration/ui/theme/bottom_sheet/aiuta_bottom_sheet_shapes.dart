@@ -19,6 +19,7 @@ class AiutaBottomSheetShapes {
     required this.chipsButton,
   });
 
+  /// Creates a built-in bottom sheet shapes configuration with default settings.
   factory AiutaBottomSheetShapes.builtIn() {
     return AiutaBottomSheetShapes(
       bottomSheet: 16,

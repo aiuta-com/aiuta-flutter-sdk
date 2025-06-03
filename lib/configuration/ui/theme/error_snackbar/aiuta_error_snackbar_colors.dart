@@ -18,6 +18,7 @@ class AiutaErrorSnackbarColors {
     required this.errorPrimary,
   });
 
+  /// Creates a built-in error snackbar colors configuration with default settings.
   factory AiutaErrorSnackbarColors.builtIn() {
     return AiutaErrorSnackbarColors(
       errorBackground: "#FFFFF5F5",

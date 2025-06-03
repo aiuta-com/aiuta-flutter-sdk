@@ -32,6 +32,7 @@ class AiutaBottomSheetTheme {
     required this.toggles,
   });
 
+  /// Creates a built-in bottom sheet theme configuration with default settings.
   factory AiutaBottomSheetTheme.builtIn() {
     return AiutaBottomSheetTheme(
       typography: AiutaBottomSheetTypographyBuiltIn(),

@@ -33,6 +33,7 @@ class AiutaProductBarTheme {
     required this.toggles,
   });
 
+  /// Creates a built-in product bar theme configuration with default settings.
   factory AiutaProductBarTheme.builtIn() {
     return AiutaProductBarTheme(
       prices: null,

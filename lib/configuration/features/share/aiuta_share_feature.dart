@@ -35,6 +35,7 @@ class AiutaShareFeature {
     this.dataProvider,
   });
 
+  /// Creates a built-in share feature configuration with default settings.
   factory AiutaShareFeature.builtIn() {
     return AiutaShareFeature(
       icons: AiutaShareIconsBuiltIn(),

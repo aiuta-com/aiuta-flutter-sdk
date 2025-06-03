@@ -24,6 +24,7 @@ class AiutaErrorSnackbarTheme {
     required this.colors,
   });
 
+  /// Creates a built-in error snackbar theme configuration with default settings.
   factory AiutaErrorSnackbarTheme.builtIn() {
     return AiutaErrorSnackbarTheme(
       strings: AiutaErrorSnackbarStringsBuiltIn(),

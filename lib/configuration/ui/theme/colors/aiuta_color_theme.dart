@@ -65,6 +65,7 @@ class AiutaColorTheme {
     required this.outline,
   });
 
+  /// Creates a built-in color theme configuration with default settings.
   factory AiutaColorTheme.builtIn() {
     return AiutaColorTheme(
       scheme: AiutaColorScheme.light,

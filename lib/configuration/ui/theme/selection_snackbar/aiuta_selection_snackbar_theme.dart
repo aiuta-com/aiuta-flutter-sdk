@@ -27,6 +27,7 @@ class AiutaSelectionSnackbarTheme {
     required this.colors,
   });
 
+  /// Creates a built-in selection snackbar theme configuration with default settings.
   factory AiutaSelectionSnackbarTheme.builtIn() {
     return AiutaSelectionSnackbarTheme(
       strings: AiutaSelectionSnackbarStringsBuiltIn(),

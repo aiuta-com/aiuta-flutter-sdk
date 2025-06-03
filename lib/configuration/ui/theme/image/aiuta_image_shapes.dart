@@ -18,6 +18,7 @@ class AiutaImageShapes {
     required this.imageS,
   });
 
+  /// Creates a built-in image shapes configuration with default settings.
   factory AiutaImageShapes.builtIn() {
     return AiutaImageShapes(
       imageL: 24,
