@@ -30,4 +30,7 @@ enum AiutaAnalyticsEventType {
 
   /// Interactions with the generation history.
   history,
+
+  /// Events related to sharing functionality.
+  share,
 }

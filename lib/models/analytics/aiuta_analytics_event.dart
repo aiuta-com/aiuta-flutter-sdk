@@ -8,6 +8,7 @@ import 'package:aiuta_flutter/models/analytics/aiuta_analytics_feedback_event_ty
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_history_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_picker_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_results_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_share_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_event_error_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_event_type.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -56,6 +57,8 @@ sealed class AiutaAnalyticsEvent {
         return AiutaAnalyticsFeedbackEvent.fromJson(json);
       case 'history':
         return AiutaAnalyticsHistoryEvent.fromJson(json);
+      case 'share':
+        return AiutaAnalyticsShareEvent.fromJson(json);
       default:
         throw Exception('Unknown analytic type');
     }
@@ -443,4 +446,33 @@ class AiutaAnalyticsHistoryEvent extends AiutaAnalyticsEvent {
 
   @override
   Map<String, dynamic> toJson() => _$AiutaAnalyticsHistoryEventToJson(this);
+}
+
+/// This event is sent when a user shares content.
+@JsonSerializable()
+class AiutaAnalyticsShareEvent extends AiutaAnalyticsEvent {
+  /// Type of share event.
+  final AiutaAnalyticsShareEventType event;
+
+  /// ID of the target platform where content is shared.
+  final String? targetId;
+
+  /// Creates a share event.
+  AiutaAnalyticsShareEvent({
+    required this.event,
+    this.targetId,
+    AiutaAnalyticsPageId? pageId,
+    String? productId,
+  }) : super(
+          type: AiutaAnalyticsEventType.share,
+          pageId: pageId,
+          productId: productId,
+        );
+
+  // Internal json staff
+  factory AiutaAnalyticsShareEvent.fromJson(Map<String, dynamic> json) =>
+      _$AiutaAnalyticsShareEventFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$AiutaAnalyticsShareEventToJson(this);
 }

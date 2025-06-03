@@ -325,3 +325,30 @@ const _$AiutaAnalyticsHistoryEventTypeEnumMap = {
   AiutaAnalyticsHistoryEventType.generatedImageShared: 'generatedImageShared',
   AiutaAnalyticsHistoryEventType.generatedImageDeleted: 'generatedImageDeleted',
 };
+
+AiutaAnalyticsShareEvent _$AiutaAnalyticsShareEventFromJson(
+        Map<String, dynamic> json) =>
+    AiutaAnalyticsShareEvent(
+      event: $enumDecode(_$AiutaAnalyticsShareEventTypeEnumMap, json['event']),
+      targetId: json['targetId'] as String?,
+      pageId:
+          $enumDecodeNullable(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
+      productId: json['productId'] as String?,
+    );
+
+Map<String, dynamic> _$AiutaAnalyticsShareEventToJson(
+        AiutaAnalyticsShareEvent instance) =>
+    <String, dynamic>{
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId],
+      'productId': instance.productId,
+      'event': _$AiutaAnalyticsShareEventTypeEnumMap[instance.event]!,
+      'targetId': instance.targetId,
+    };
+
+const _$AiutaAnalyticsShareEventTypeEnumMap = {
+  AiutaAnalyticsShareEventType.initiated: 'initiated',
+  AiutaAnalyticsShareEventType.succeeded: 'succeeded',
+  AiutaAnalyticsShareEventType.canceled: 'canceled',
+  AiutaAnalyticsShareEventType.failed: 'failed',
+  AiutaAnalyticsShareEventType.screenshot: 'screenshot',
+};
