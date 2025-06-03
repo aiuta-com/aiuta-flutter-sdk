@@ -214,6 +214,8 @@ AiutaAnalyticsTryOnEvent _$AiutaAnalyticsTryOnEventFromJson(
       errorType: $enumDecodeNullable(
           _$AiutaAnalyticsTryOnEventErrorTypeEnumMap, json['errorType']),
       errorMessage: json['errorMessage'] as String?,
+      abortReason: $enumDecodeNullable(
+          _$AiutaAnalyticsTryOnAbortedReasonTypeEnumMap, json['abortReason']),
       uploadDuration: (json['uploadDuration'] as num?)?.toDouble(),
       tryOnDuration: (json['tryOnDuration'] as num?)?.toDouble(),
       downloadDuration: (json['downloadDuration'] as num?)?.toDouble(),
@@ -229,6 +231,8 @@ Map<String, dynamic> _$AiutaAnalyticsTryOnEventToJson(
       'errorType':
           _$AiutaAnalyticsTryOnEventErrorTypeEnumMap[instance.errorType],
       'errorMessage': instance.errorMessage,
+      'abortReason':
+          _$AiutaAnalyticsTryOnAbortedReasonTypeEnumMap[instance.abortReason],
       'uploadDuration': instance.uploadDuration,
       'tryOnDuration': instance.tryOnDuration,
       'downloadDuration': instance.downloadDuration,
@@ -252,13 +256,17 @@ const _$AiutaAnalyticsTryOnEventErrorTypeEnumMap = {
   AiutaAnalyticsTryOnEventErrorType.startOperationFailed:
       'startOperationFailed',
   AiutaAnalyticsTryOnEventErrorType.operationFailed: 'operationFailed',
-  AiutaAnalyticsTryOnEventErrorType.operationAborted: 'operationAborted',
   AiutaAnalyticsTryOnEventErrorType.operationTimeout: 'operationTimeout',
   AiutaAnalyticsTryOnEventErrorType.operationEmptyResults:
       'operationEmptyResults',
   AiutaAnalyticsTryOnEventErrorType.downloadResultFailed:
       'downloadResultFailed',
   AiutaAnalyticsTryOnEventErrorType.internalSdkError: 'internalSdkError',
+};
+
+const _$AiutaAnalyticsTryOnAbortedReasonTypeEnumMap = {
+  AiutaAnalyticsTryOnAbortedReasonType.operationAborted: 'operationAborted',
+  AiutaAnalyticsTryOnAbortedReasonType.userCancelled: 'userCancelled',
 };
 
 AiutaAnalyticsResultsEvent _$AiutaAnalyticsResultsEventFromJson(

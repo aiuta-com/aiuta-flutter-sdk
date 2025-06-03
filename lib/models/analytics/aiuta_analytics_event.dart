@@ -9,6 +9,7 @@ import 'package:aiuta_flutter/models/analytics/aiuta_analytics_history_event_typ
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_picker_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_results_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_share_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_aborted_reason_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_event_error_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_event_type.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -323,6 +324,9 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
   /// Additional message in case of try on progress
   final String? errorMessage;
 
+  /// Additional message in case of try on progress
+  final AiutaAnalyticsTryOnAbortedReasonType? abortReason;
+
   /// Duration in seconds for uploading the photo, if available.
   final double? uploadDuration;
 
@@ -342,6 +346,7 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
     required this.productId,
     this.errorType,
     this.errorMessage,
+    this.abortReason,
     this.uploadDuration,
     this.tryOnDuration,
     this.downloadDuration,

@@ -26,11 +26,6 @@ enum AiutaAnalyticsTryOnEventErrorType {
   operationFailed,
 
   /// SDK successfully made a request to the server to start the try-on process,
-  /// operation was started, but the server aborted the operation, because
-  /// of the invalid user input photo.
-  operationAborted,
-
-  /// SDK successfully made a request to the server to start the try-on process,
   /// operation was started, but the status of the operation was not changed
   /// for a long time, and the SDK stopped waiting for the result.
   operationTimeout,
