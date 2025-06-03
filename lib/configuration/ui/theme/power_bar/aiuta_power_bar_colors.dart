@@ -14,6 +14,7 @@ class AiutaPowerBarColors {
     required this.aiuta,
   });
 
+  /// Creates a built-in power bar colors configuration with default settings.
   factory AiutaPowerBarColors.builtIn() {
     return AiutaPowerBarColors(
       aiuta: AiutaPowerBarColorsScheme.standard,

@@ -14,6 +14,7 @@ class AiutaPageBarToggles {
     required this.preferCloseButtonOnTheRight,
   });
 
+  /// Creates a built-in page bar toggles configuration with default settings.
   factory AiutaPageBarToggles.builtIn() {
     return AiutaPageBarToggles(
       preferCloseButtonOnTheRight: false,

@@ -21,6 +21,7 @@ class AiutaOnboardingHowItWorksPageFeature {
     required this.strings,
   });
 
+  /// Creates a built-in How It Works page feature configuration with default settings.
   factory AiutaOnboardingHowItWorksPageFeature.builtIn() {
     return AiutaOnboardingHowItWorksPageFeature(
       images: AiutaOnboardingHowItWorksPageImagesBuiltIn(),

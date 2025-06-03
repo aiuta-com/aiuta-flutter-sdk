@@ -19,6 +19,7 @@ class AiutaButtonTheme {
     required this.shapes,
   });
 
+  /// Creates a built-in button theme configuration with default settings.
   factory AiutaButtonTheme.builtIn() {
     return AiutaButtonTheme(
       typography: AiutaButtonTypographyBuiltIn(),

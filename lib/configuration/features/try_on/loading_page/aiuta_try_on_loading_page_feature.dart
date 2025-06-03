@@ -26,6 +26,7 @@ class AiutaTryOnLoadingPageFeature {
     required this.styles,
   });
 
+  /// Creates a built-in loading page feature configuration with default settings.
   factory AiutaTryOnLoadingPageFeature.builtIn() {
     return AiutaTryOnLoadingPageFeature(
       icons: AiutaTryOnLoadingPageIconsBuiltIn(),

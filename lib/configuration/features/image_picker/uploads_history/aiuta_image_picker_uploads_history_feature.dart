@@ -27,6 +27,7 @@ class AiutaImagePickerUploadsHistoryFeature {
     required this.dataProvider,
   });
 
+  /// Creates a built-in uploads history feature configuration with default settings.
   factory AiutaImagePickerUploadsHistoryFeature.builtIn({
     required bool isPredefinedModelAvailable,
   }) {

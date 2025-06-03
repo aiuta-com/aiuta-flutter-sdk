@@ -53,6 +53,7 @@ class AiutaConfiguration {
     required this.debugSettings,
   });
 
+  /// Creates a built-in configuration with default settings.
   factory AiutaConfiguration.builtIn({
     required AiutaAuth auth,
     required String termsOfServiceUrl,

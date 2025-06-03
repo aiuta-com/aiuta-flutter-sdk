@@ -26,6 +26,7 @@ class AiutaPageBarTheme {
     required this.toggles,
   });
 
+  /// Creates a built-in page bar theme configuration with default settings.
   factory AiutaPageBarTheme.builtIn() {
     return AiutaPageBarTheme(
       typography: AiutaPageBarTypographyBuiltIn(),

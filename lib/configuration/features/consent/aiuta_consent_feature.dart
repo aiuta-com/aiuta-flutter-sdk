@@ -19,6 +19,7 @@ sealed class AiutaConsentFeature {
   /// Base constructor for AiutaConsentFeature with [mode].
   AiutaConsentFeature(this.mode);
 
+  /// Creates a built-in consent feature configuration with default settings.
   factory AiutaConsentFeature.builtIn({
     required String termsOfServiceUrl,
   }) {

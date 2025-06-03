@@ -15,6 +15,7 @@ class AiutaTryOnInputImageValidationFeature {
     required this.strings,
   });
 
+  /// Creates a built-in input image validation feature configuration with default settings.
   factory AiutaTryOnInputImageValidationFeature.builtIn() {
     return AiutaTryOnInputImageValidationFeature(
       strings: AiutaTryOnInputImageValidationStringsBuiltIn(),

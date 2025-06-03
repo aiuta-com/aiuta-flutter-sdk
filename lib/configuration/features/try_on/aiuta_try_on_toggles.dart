@@ -24,6 +24,7 @@ class AiutaTryOnToggles {
     required this.isBackgroundExecutionAllowed,
   });
 
+  /// Creates a built-in try-on toggles configuration with default settings.
   factory AiutaTryOnToggles.builtIn() {
     return AiutaTryOnToggles(
       isBackgroundExecutionAllowed: false,

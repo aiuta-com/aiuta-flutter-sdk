@@ -26,6 +26,7 @@ class AiutaImagePickerPredefinedModelFeature {
     required this.strings,
   });
 
+  /// Creates a built-in predefined model feature configuration with default settings.
   factory AiutaImagePickerPredefinedModelFeature.builtIn() {
     return AiutaImagePickerPredefinedModelFeature(
       icons: AiutaImagePickerPredefinedModelIconsBuiltIn(),

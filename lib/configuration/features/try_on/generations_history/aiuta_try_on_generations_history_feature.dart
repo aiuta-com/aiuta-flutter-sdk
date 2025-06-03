@@ -27,6 +27,7 @@ class AiutaTryOnGenerationsHistoryFeature {
     required this.dataProvider,
   });
 
+  /// Creates a built-in try-on generations history feature configuration with default settings.
   factory AiutaTryOnGenerationsHistoryFeature.builtIn() {
     return AiutaTryOnGenerationsHistoryFeature(
       icons: AiutaTryOnGenerationsHistoryIconsBuiltIn(),

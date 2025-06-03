@@ -15,6 +15,7 @@ class AiutaTryOnWithOtherPhotoFeature {
     required this.icons,
   });
 
+  /// Creates a built-in try-on with other photo feature configuration with default settings.
   factory AiutaTryOnWithOtherPhotoFeature.builtIn() {
     return AiutaTryOnWithOtherPhotoFeature(
       icons: AiutaTryOnWithOtherPhotoIconsBuiltIn(),

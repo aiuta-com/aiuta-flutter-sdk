@@ -48,6 +48,7 @@ class AiutaOnboardingFeature {
     required this.dataProvider,
   });
 
+  /// Creates a built-in onboarding feature configuration with default settings.
   factory AiutaOnboardingFeature.builtIn() {
     return AiutaOnboardingFeature(
       howItWorksPage: AiutaOnboardingHowItWorksPageFeature.builtIn(),

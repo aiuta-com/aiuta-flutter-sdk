@@ -13,6 +13,7 @@ class AiutaSelectionSnackbarColors {
     required this.selectionBackground,
   });
 
+  /// Creates a built-in selection snackbar colors configuration with default settings.
   factory AiutaSelectionSnackbarColors.builtIn() {
     return AiutaSelectionSnackbarColors(
       selectionBackground: "#FF000000",

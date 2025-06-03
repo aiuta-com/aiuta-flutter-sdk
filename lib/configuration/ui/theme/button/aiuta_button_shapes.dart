@@ -18,6 +18,7 @@ class AiutaButtonShapes {
     required this.buttonS,
   });
 
+  /// Creates a built-in button shapes configuration with default settings.
   factory AiutaButtonShapes.builtIn() {
     return AiutaButtonShapes(
       buttonM: 8,

@@ -17,6 +17,7 @@ class AiutaBottomSheetToggles {
     required this.extendDelimitersToTheLeft,
   });
 
+  /// Creates a built-in bottom sheet toggles configuration with default settings.
   factory AiutaBottomSheetToggles.builtIn() {
     return AiutaBottomSheetToggles(
       extendDelimitersToTheRight: false,

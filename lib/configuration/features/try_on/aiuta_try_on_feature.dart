@@ -85,6 +85,7 @@ class AiutaTryOnFeature {
     required this.styles,
   });
 
+  /// Creates a built-in try-on feature configuration with default settings.
   factory AiutaTryOnFeature.builtIn({
     required AiutaTryOnCartHandler cartHandler,
   }) {

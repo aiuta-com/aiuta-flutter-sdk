@@ -26,6 +26,7 @@ class AiutaTryOnFeedbackFeature {
     required this.strings,
   });
 
+  /// Creates a built-in try-on feedback feature configuration with default settings.
   factory AiutaTryOnFeedbackFeature.builtIn() {
     return AiutaTryOnFeedbackFeature(
       icons: AiutaTryOnFeedbackIconsBuiltIn(),

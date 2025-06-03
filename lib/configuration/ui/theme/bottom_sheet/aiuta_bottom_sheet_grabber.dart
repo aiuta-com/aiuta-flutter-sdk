@@ -21,6 +21,7 @@ class AiutaBottomSheetGrabber {
     required this.topPadding,
   });
 
+  /// Creates a built-in bottom sheet grabber configuration with default settings.
   factory AiutaBottomSheetGrabber.builtIn() {
     return AiutaBottomSheetGrabber(
       width: 36,

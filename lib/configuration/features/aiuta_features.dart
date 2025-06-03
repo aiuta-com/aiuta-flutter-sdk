@@ -83,6 +83,7 @@ class AiutaFeatures {
     this.wishlist,
   });
 
+  /// Creates a built-in features configuration with default settings.
   factory AiutaFeatures.builtIn({
     required String termsOfServiceUrl,
     required AiutaTryOnCartHandler cartHandler,
