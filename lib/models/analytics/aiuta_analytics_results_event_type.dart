@@ -1,8 +1,5 @@
 /// Events of interaction with the results of the try-on.
 enum AiutaAnalyticsResultsEventType {
-  /// The user has shared the generated image.
-  resultShared,
-
   /// The user has added the product to the wishlist.
   productAddToWishlist,
 

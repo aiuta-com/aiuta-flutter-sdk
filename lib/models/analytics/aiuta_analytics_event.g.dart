@@ -287,7 +287,6 @@ Map<String, dynamic> _$AiutaAnalyticsResultsEventToJson(
     };
 
 const _$AiutaAnalyticsResultsEventTypeEnumMap = {
-  AiutaAnalyticsResultsEventType.resultShared: 'resultShared',
   AiutaAnalyticsResultsEventType.productAddToWishlist: 'productAddToWishlist',
   AiutaAnalyticsResultsEventType.productAddToCart: 'productAddToCart',
   AiutaAnalyticsResultsEventType.pickOtherPhoto: 'pickOtherPhoto',
@@ -338,7 +337,6 @@ Map<String, dynamic> _$AiutaAnalyticsHistoryEventToJson(
     };
 
 const _$AiutaAnalyticsHistoryEventTypeEnumMap = {
-  AiutaAnalyticsHistoryEventType.generatedImageShared: 'generatedImageShared',
   AiutaAnalyticsHistoryEventType.generatedImageDeleted: 'generatedImageDeleted',
 };
 
