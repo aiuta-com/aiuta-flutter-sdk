@@ -323,6 +323,18 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
   /// Additional message in case of try on progress
   final String? errorMessage;
 
+  /// Duration in seconds for uploading the photo, if available.
+  final double? uploadDuration;
+
+  /// Duration in seconds for the try-on processing, if available.
+  final double? tryOnDuration;
+
+  /// Duration in seconds for downloading the result, if available.
+  final double? downloadDuration;
+
+  /// Total duration in seconds for the entire try-on process, if available.
+  final double? totalDuration;
+
   /// Creates a try-on event.
   AiutaAnalyticsTryOnEvent({
     required this.event,
@@ -330,6 +342,10 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
     required this.productId,
     this.errorType,
     this.errorMessage,
+    this.uploadDuration,
+    this.tryOnDuration,
+    this.downloadDuration,
+    this.totalDuration,
   }) : super(
           type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
