@@ -57,6 +57,7 @@ class AiutaConfiguration {
     required AiutaAuth auth,
     required String termsOfServiceUrl,
     required AiutaTryOnCartHandler cartHandler,
+    AiutaAnalytics? analytics,
   }) {
     return AiutaConfiguration(
       auth: auth,
@@ -65,6 +66,7 @@ class AiutaConfiguration {
         termsOfServiceUrl: termsOfServiceUrl,
         cartHandler: cartHandler,
       ),
+      analytics: analytics,
       debugSettings: AiutaDebugSettings.builtIn(),
     );
   }

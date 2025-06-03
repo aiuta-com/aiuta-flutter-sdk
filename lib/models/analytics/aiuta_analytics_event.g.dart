@@ -6,6 +6,97 @@ part of 'aiuta_analytics_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+AiutaAnalyticsConfigureEvent _$AiutaAnalyticsConfigureEventFromJson(
+        Map<String, dynamic> json) =>
+    AiutaAnalyticsConfigureEvent(
+      authType: $enumDecode(_$AiutaAuthTypeEnumMap, json['authType']),
+      consentType:
+          $enumDecodeNullable(_$AiutaConsentTypeEnumMap, json['consentType']),
+      welcomeScreenFeatureEnabled: json['welcomeScreenFeatureEnabled'] as bool,
+      onboardingFeatureEnabled: json['onboardingFeatureEnabled'] as bool,
+      onboardingBestResultsPageFeatureEnabled:
+          json['onboardingBestResultsPageFeatureEnabled'] as bool,
+      imagePickerCameraFeatureEnabled:
+          json['imagePickerCameraFeatureEnabled'] as bool,
+      imagePickerPredefinedModelFeatureEnabled:
+          json['imagePickerPredefinedModelFeatureEnabled'] as bool,
+      imagePickerUploadsHistoryFeatureEnabled:
+          json['imagePickerUploadsHistoryFeatureEnabled'] as bool,
+      tryOnFitDisclaimerFeatureEnabled:
+          json['tryOnFitDisclaimerFeatureEnabled'] as bool,
+      tryOnFeedbackFeatureEnabled: json['tryOnFeedbackFeatureEnabled'] as bool,
+      tryOnFeedbackOtherFeatureEnabled:
+          json['tryOnFeedbackOtherFeatureEnabled'] as bool,
+      tryOnGenerationsHistoryFeatureEnabled:
+          json['tryOnGenerationsHistoryFeatureEnabled'] as bool,
+      tryOnMultiItemFeatureEnabled:
+          json['tryOnMultiItemFeatureEnabled'] as bool,
+      tryOnWithOtherPhotoFeatureEnabled:
+          json['tryOnWithOtherPhotoFeatureEnabled'] as bool,
+      shareFeatureEnabled: json['shareFeatureEnabled'] as bool,
+      shareWatermarkFeatureEnabled:
+          json['shareWatermarkFeatureEnabled'] as bool,
+      wishlistFeatureEnabled: json['wishlistFeatureEnabled'] as bool,
+      pageId:
+          $enumDecodeNullable(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
+      productId: json['productId'] as String?,
+    );
+
+Map<String, dynamic> _$AiutaAnalyticsConfigureEventToJson(
+        AiutaAnalyticsConfigureEvent instance) =>
+    <String, dynamic>{
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId],
+      'productId': instance.productId,
+      'authType': _$AiutaAuthTypeEnumMap[instance.authType]!,
+      'consentType': _$AiutaConsentTypeEnumMap[instance.consentType],
+      'welcomeScreenFeatureEnabled': instance.welcomeScreenFeatureEnabled,
+      'onboardingFeatureEnabled': instance.onboardingFeatureEnabled,
+      'onboardingBestResultsPageFeatureEnabled':
+          instance.onboardingBestResultsPageFeatureEnabled,
+      'imagePickerCameraFeatureEnabled':
+          instance.imagePickerCameraFeatureEnabled,
+      'imagePickerPredefinedModelFeatureEnabled':
+          instance.imagePickerPredefinedModelFeatureEnabled,
+      'imagePickerUploadsHistoryFeatureEnabled':
+          instance.imagePickerUploadsHistoryFeatureEnabled,
+      'tryOnFitDisclaimerFeatureEnabled':
+          instance.tryOnFitDisclaimerFeatureEnabled,
+      'tryOnFeedbackFeatureEnabled': instance.tryOnFeedbackFeatureEnabled,
+      'tryOnFeedbackOtherFeatureEnabled':
+          instance.tryOnFeedbackOtherFeatureEnabled,
+      'tryOnGenerationsHistoryFeatureEnabled':
+          instance.tryOnGenerationsHistoryFeatureEnabled,
+      'tryOnMultiItemFeatureEnabled': instance.tryOnMultiItemFeatureEnabled,
+      'tryOnWithOtherPhotoFeatureEnabled':
+          instance.tryOnWithOtherPhotoFeatureEnabled,
+      'shareFeatureEnabled': instance.shareFeatureEnabled,
+      'shareWatermarkFeatureEnabled': instance.shareWatermarkFeatureEnabled,
+      'wishlistFeatureEnabled': instance.wishlistFeatureEnabled,
+    };
+
+const _$AiutaAuthTypeEnumMap = {
+  AiutaAuthType.apiKey: 'apiKey',
+  AiutaAuthType.jwt: 'jwt',
+};
+
+const _$AiutaConsentTypeEnumMap = {
+  AiutaConsentType.implicitWithoutCheckbox: 'implicitWithoutCheckbox',
+  AiutaConsentType.implicitWithCheckbox: 'implicitWithCheckbox',
+  AiutaConsentType.explicitRequired: 'explicitRequired',
+  AiutaConsentType.explicitOptional: 'explicitOptional',
+};
+
+const _$AiutaAnalyticsPageIdEnumMap = {
+  AiutaAnalyticsPageId.welcome: 'welcome',
+  AiutaAnalyticsPageId.howItWorks: 'howItWorks',
+  AiutaAnalyticsPageId.bestResults: 'bestResults',
+  AiutaAnalyticsPageId.consent: 'consent',
+  AiutaAnalyticsPageId.imagePicker: 'imagePicker',
+  AiutaAnalyticsPageId.loading: 'loading',
+  AiutaAnalyticsPageId.results: 'results',
+  AiutaAnalyticsPageId.history: 'history',
+};
+
 AiutaAnalyticsPageEvent _$AiutaAnalyticsPageEventFromJson(
         Map<String, dynamic> json) =>
     AiutaAnalyticsPageEvent(
@@ -19,17 +110,6 @@ Map<String, dynamic> _$AiutaAnalyticsPageEventToJson(
       'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
     };
-
-const _$AiutaAnalyticsPageIdEnumMap = {
-  AiutaAnalyticsPageId.welcome: 'welcome',
-  AiutaAnalyticsPageId.howItWorks: 'howItWorks',
-  AiutaAnalyticsPageId.bestResults: 'bestResults',
-  AiutaAnalyticsPageId.consent: 'consent',
-  AiutaAnalyticsPageId.imagePicker: 'imagePicker',
-  AiutaAnalyticsPageId.loading: 'loading',
-  AiutaAnalyticsPageId.results: 'results',
-  AiutaAnalyticsPageId.history: 'history',
-};
 
 AiutaAnalyticsOnboardingEvent _$AiutaAnalyticsOnboardingEventFromJson(
         Map<String, dynamic> json) =>

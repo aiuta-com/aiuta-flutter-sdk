@@ -1,27 +1,30 @@
 /// Enum for the different types of events that can be logged in Aiuta.
 enum AiutaAnalyticsEventType {
+  /// Events related to SDK configuration.
+  configure,
+
   /// User navigates to a new page.
-  pageEvent,
+  page,
 
   /// Events during onboarding.
-  onboardingEvent,
+  onboarding,
 
   /// User interacts with the image picker.
   /// This includes selecting an uploaded image, taking a photo, choosing gallery image, etc.
-  pickerEvent,
+  picker,
 
   /// User exits the Aiuta SDK.
-  exitEvent,
+  exit,
 
   /// Events related to try-on process.
-  tryOnEvent,
+  tryOn,
 
   /// Events related to the results page.
-  resultsEvent,
+  results,
 
   /// Feedback events.
-  feedbackEvent,
+  feedback,
 
   /// Interactions with the generation history.
-  historyEvent
+  history,
 }
