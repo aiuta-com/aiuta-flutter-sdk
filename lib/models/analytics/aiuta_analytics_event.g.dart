@@ -6,6 +6,120 @@ part of 'aiuta_analytics_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+AiutaAnalyticsConfigureEvent _$AiutaAnalyticsConfigureEventFromJson(
+        Map<String, dynamic> json) =>
+    AiutaAnalyticsConfigureEvent(
+      authType: $enumDecode(_$AiutaAnalyticsAuthTypeEnumMap, json['authType']),
+      consentType: $enumDecodeNullable(
+          _$AiutaAnalyticsConsentTypeEnumMap, json['consentType']),
+      welcomeScreenFeatureEnabled: json['welcomeScreenFeatureEnabled'] as bool,
+      onboardingFeatureEnabled: json['onboardingFeatureEnabled'] as bool,
+      onboardingBestResultsPageFeatureEnabled:
+          json['onboardingBestResultsPageFeatureEnabled'] as bool,
+      imagePickerCameraFeatureEnabled:
+          json['imagePickerCameraFeatureEnabled'] as bool,
+      imagePickerPredefinedModelFeatureEnabled:
+          json['imagePickerPredefinedModelFeatureEnabled'] as bool,
+      imagePickerUploadsHistoryFeatureEnabled:
+          json['imagePickerUploadsHistoryFeatureEnabled'] as bool,
+      tryOnFitDisclaimerFeatureEnabled:
+          json['tryOnFitDisclaimerFeatureEnabled'] as bool,
+      tryOnFeedbackFeatureEnabled: json['tryOnFeedbackFeatureEnabled'] as bool,
+      tryOnFeedbackOtherFeatureEnabled:
+          json['tryOnFeedbackOtherFeatureEnabled'] as bool,
+      tryOnGenerationsHistoryFeatureEnabled:
+          json['tryOnGenerationsHistoryFeatureEnabled'] as bool,
+      tryOnMultiItemFeatureEnabled:
+          json['tryOnMultiItemFeatureEnabled'] as bool,
+      tryOnWithOtherPhotoFeatureEnabled:
+          json['tryOnWithOtherPhotoFeatureEnabled'] as bool,
+      shareFeatureEnabled: json['shareFeatureEnabled'] as bool,
+      shareWatermarkFeatureEnabled:
+          json['shareWatermarkFeatureEnabled'] as bool,
+      wishlistFeatureEnabled: json['wishlistFeatureEnabled'] as bool,
+      pageId:
+          $enumDecodeNullable(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
+      productId: json['productId'] as String?,
+    );
+
+Map<String, dynamic> _$AiutaAnalyticsConfigureEventToJson(
+        AiutaAnalyticsConfigureEvent instance) =>
+    <String, dynamic>{
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId],
+      'productId': instance.productId,
+      'authType': _$AiutaAnalyticsAuthTypeEnumMap[instance.authType]!,
+      'consentType': _$AiutaAnalyticsConsentTypeEnumMap[instance.consentType],
+      'welcomeScreenFeatureEnabled': instance.welcomeScreenFeatureEnabled,
+      'onboardingFeatureEnabled': instance.onboardingFeatureEnabled,
+      'onboardingBestResultsPageFeatureEnabled':
+          instance.onboardingBestResultsPageFeatureEnabled,
+      'imagePickerCameraFeatureEnabled':
+          instance.imagePickerCameraFeatureEnabled,
+      'imagePickerPredefinedModelFeatureEnabled':
+          instance.imagePickerPredefinedModelFeatureEnabled,
+      'imagePickerUploadsHistoryFeatureEnabled':
+          instance.imagePickerUploadsHistoryFeatureEnabled,
+      'tryOnFitDisclaimerFeatureEnabled':
+          instance.tryOnFitDisclaimerFeatureEnabled,
+      'tryOnFeedbackFeatureEnabled': instance.tryOnFeedbackFeatureEnabled,
+      'tryOnFeedbackOtherFeatureEnabled':
+          instance.tryOnFeedbackOtherFeatureEnabled,
+      'tryOnGenerationsHistoryFeatureEnabled':
+          instance.tryOnGenerationsHistoryFeatureEnabled,
+      'tryOnMultiItemFeatureEnabled': instance.tryOnMultiItemFeatureEnabled,
+      'tryOnWithOtherPhotoFeatureEnabled':
+          instance.tryOnWithOtherPhotoFeatureEnabled,
+      'shareFeatureEnabled': instance.shareFeatureEnabled,
+      'shareWatermarkFeatureEnabled': instance.shareWatermarkFeatureEnabled,
+      'wishlistFeatureEnabled': instance.wishlistFeatureEnabled,
+    };
+
+const _$AiutaAnalyticsAuthTypeEnumMap = {
+  AiutaAnalyticsAuthType.apiKey: 'apiKey',
+  AiutaAnalyticsAuthType.jwt: 'jwt',
+};
+
+const _$AiutaAnalyticsConsentTypeEnumMap = {
+  AiutaAnalyticsConsentType.embeddedIntoOnboarding: 'embeddedIntoOnboarding',
+  AiutaAnalyticsConsentType.standaloneOnboardingPage:
+      'standaloneOnboardingPage',
+  AiutaAnalyticsConsentType.standaloneImagePickerPage:
+      'standaloneImagePickerPage',
+};
+
+const _$AiutaAnalyticsPageIdEnumMap = {
+  AiutaAnalyticsPageId.welcome: 'welcome',
+  AiutaAnalyticsPageId.howItWorks: 'howItWorks',
+  AiutaAnalyticsPageId.bestResults: 'bestResults',
+  AiutaAnalyticsPageId.consent: 'consent',
+  AiutaAnalyticsPageId.imagePicker: 'imagePicker',
+  AiutaAnalyticsPageId.loading: 'loading',
+  AiutaAnalyticsPageId.results: 'results',
+  AiutaAnalyticsPageId.history: 'history',
+};
+
+AiutaAnalyticsSessionEvent _$AiutaAnalyticsSessionEventFromJson(
+        Map<String, dynamic> json) =>
+    AiutaAnalyticsSessionEvent(
+      flow: $enumDecode(_$AiutaAnalyticsFlowTypeEnumMap, json['flow']),
+      pageId:
+          $enumDecodeNullable(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
+      productId: json['productId'] as String?,
+    );
+
+Map<String, dynamic> _$AiutaAnalyticsSessionEventToJson(
+        AiutaAnalyticsSessionEvent instance) =>
+    <String, dynamic>{
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId],
+      'productId': instance.productId,
+      'flow': _$AiutaAnalyticsFlowTypeEnumMap[instance.flow]!,
+    };
+
+const _$AiutaAnalyticsFlowTypeEnumMap = {
+  AiutaAnalyticsFlowType.tryOn: 'tryOn',
+  AiutaAnalyticsFlowType.history: 'history',
+};
+
 AiutaAnalyticsPageEvent _$AiutaAnalyticsPageEventFromJson(
         Map<String, dynamic> json) =>
     AiutaAnalyticsPageEvent(
@@ -19,17 +133,6 @@ Map<String, dynamic> _$AiutaAnalyticsPageEventToJson(
       'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
     };
-
-const _$AiutaAnalyticsPageIdEnumMap = {
-  AiutaAnalyticsPageId.welcome: 'welcome',
-  AiutaAnalyticsPageId.howItWorks: 'howItWorks',
-  AiutaAnalyticsPageId.bestResults: 'bestResults',
-  AiutaAnalyticsPageId.consent: 'consent',
-  AiutaAnalyticsPageId.imagePicker: 'imagePicker',
-  AiutaAnalyticsPageId.loading: 'loading',
-  AiutaAnalyticsPageId.results: 'results',
-  AiutaAnalyticsPageId.history: 'history',
-};
 
 AiutaAnalyticsOnboardingEvent _$AiutaAnalyticsOnboardingEventFromJson(
         Map<String, dynamic> json) =>
@@ -111,6 +214,12 @@ AiutaAnalyticsTryOnEvent _$AiutaAnalyticsTryOnEventFromJson(
       errorType: $enumDecodeNullable(
           _$AiutaAnalyticsTryOnEventErrorTypeEnumMap, json['errorType']),
       errorMessage: json['errorMessage'] as String?,
+      abortReason: $enumDecodeNullable(
+          _$AiutaAnalyticsTryOnAbortedReasonTypeEnumMap, json['abortReason']),
+      uploadDuration: (json['uploadDuration'] as num?)?.toDouble(),
+      tryOnDuration: (json['tryOnDuration'] as num?)?.toDouble(),
+      downloadDuration: (json['downloadDuration'] as num?)?.toDouble(),
+      totalDuration: (json['totalDuration'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$AiutaAnalyticsTryOnEventToJson(
@@ -122,6 +231,12 @@ Map<String, dynamic> _$AiutaAnalyticsTryOnEventToJson(
       'errorType':
           _$AiutaAnalyticsTryOnEventErrorTypeEnumMap[instance.errorType],
       'errorMessage': instance.errorMessage,
+      'abortReason':
+          _$AiutaAnalyticsTryOnAbortedReasonTypeEnumMap[instance.abortReason],
+      'uploadDuration': instance.uploadDuration,
+      'tryOnDuration': instance.tryOnDuration,
+      'downloadDuration': instance.downloadDuration,
+      'totalDuration': instance.totalDuration,
     };
 
 const _$AiutaAnalyticsTryOnEventTypeEnumMap = {
@@ -141,13 +256,17 @@ const _$AiutaAnalyticsTryOnEventErrorTypeEnumMap = {
   AiutaAnalyticsTryOnEventErrorType.startOperationFailed:
       'startOperationFailed',
   AiutaAnalyticsTryOnEventErrorType.operationFailed: 'operationFailed',
-  AiutaAnalyticsTryOnEventErrorType.operationAborted: 'operationAborted',
   AiutaAnalyticsTryOnEventErrorType.operationTimeout: 'operationTimeout',
   AiutaAnalyticsTryOnEventErrorType.operationEmptyResults:
       'operationEmptyResults',
   AiutaAnalyticsTryOnEventErrorType.downloadResultFailed:
       'downloadResultFailed',
   AiutaAnalyticsTryOnEventErrorType.internalSdkError: 'internalSdkError',
+};
+
+const _$AiutaAnalyticsTryOnAbortedReasonTypeEnumMap = {
+  AiutaAnalyticsTryOnAbortedReasonType.operationAborted: 'operationAborted',
+  AiutaAnalyticsTryOnAbortedReasonType.userCancelled: 'userCancelled',
 };
 
 AiutaAnalyticsResultsEvent _$AiutaAnalyticsResultsEventFromJson(
@@ -168,7 +287,6 @@ Map<String, dynamic> _$AiutaAnalyticsResultsEventToJson(
     };
 
 const _$AiutaAnalyticsResultsEventTypeEnumMap = {
-  AiutaAnalyticsResultsEventType.resultShared: 'resultShared',
   AiutaAnalyticsResultsEventType.productAddToWishlist: 'productAddToWishlist',
   AiutaAnalyticsResultsEventType.productAddToCart: 'productAddToCart',
   AiutaAnalyticsResultsEventType.pickOtherPhoto: 'pickOtherPhoto',
@@ -219,6 +337,32 @@ Map<String, dynamic> _$AiutaAnalyticsHistoryEventToJson(
     };
 
 const _$AiutaAnalyticsHistoryEventTypeEnumMap = {
-  AiutaAnalyticsHistoryEventType.generatedImageShared: 'generatedImageShared',
   AiutaAnalyticsHistoryEventType.generatedImageDeleted: 'generatedImageDeleted',
+};
+
+AiutaAnalyticsShareEvent _$AiutaAnalyticsShareEventFromJson(
+        Map<String, dynamic> json) =>
+    AiutaAnalyticsShareEvent(
+      event: $enumDecode(_$AiutaAnalyticsShareEventTypeEnumMap, json['event']),
+      targetId: json['targetId'] as String?,
+      pageId:
+          $enumDecodeNullable(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
+      productId: json['productId'] as String?,
+    );
+
+Map<String, dynamic> _$AiutaAnalyticsShareEventToJson(
+        AiutaAnalyticsShareEvent instance) =>
+    <String, dynamic>{
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId],
+      'productId': instance.productId,
+      'event': _$AiutaAnalyticsShareEventTypeEnumMap[instance.event]!,
+      'targetId': instance.targetId,
+    };
+
+const _$AiutaAnalyticsShareEventTypeEnumMap = {
+  AiutaAnalyticsShareEventType.initiated: 'initiated',
+  AiutaAnalyticsShareEventType.succeeded: 'succeeded',
+  AiutaAnalyticsShareEventType.canceled: 'canceled',
+  AiutaAnalyticsShareEventType.failed: 'failed',
+  AiutaAnalyticsShareEventType.screenshot: 'screenshot',
 };

@@ -1,10 +1,15 @@
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_auth_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_consent_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_flow_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_onboarding_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_page_id.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_feedback_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_history_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_picker_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_results_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_share_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_aborted_reason_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_event_error_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_event_type.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -17,44 +22,165 @@ sealed class AiutaAnalyticsEvent {
   final AiutaAnalyticsEventType type;
 
   /// Id of the page.
-  final AiutaAnalyticsPageId pageId;
+  final AiutaAnalyticsPageId? pageId;
 
   /// Id of the product that the user interacts with.
   /// Matches the id of either the product which is passed to the SDK by starting try-on
-  final String productId;
+  final String? productId;
 
   /// Creates an analytic event.
   AiutaAnalyticsEvent({
     required this.type,
-    required this.pageId,
-    required this.productId,
+    this.pageId,
+    this.productId,
   });
 
   // Json staff
   factory AiutaAnalyticsEvent.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as String) {
-      case 'pageEvent':
+      case 'configure':
+        return AiutaAnalyticsConfigureEvent.fromJson(json);
+      case 'session':
+        return AiutaAnalyticsSessionEvent.fromJson(json);
+      case 'page':
         return AiutaAnalyticsPageEvent.fromJson(json);
-      case 'onboardingEvent':
+      case 'onboarding':
         return AiutaAnalyticsOnboardingEvent.fromJson(json);
-      case 'pickerEvent':
+      case 'picker':
         return AiutaAnalyticsPickerEvent.fromJson(json);
-      case 'exitEvent':
+      case 'exit':
         return AiutaAnalyticsExitEvent.fromJson(json);
-      case 'tryOnEvent':
+      case 'tryOn':
         return AiutaAnalyticsTryOnEvent.fromJson(json);
-      case 'resultsEvent':
+      case 'results':
         return AiutaAnalyticsResultsEvent.fromJson(json);
-      case 'feedbackEvent':
+      case 'feedback':
         return AiutaAnalyticsFeedbackEvent.fromJson(json);
-      case 'historyEvent':
+      case 'history':
         return AiutaAnalyticsHistoryEvent.fromJson(json);
+      case 'share':
+        return AiutaAnalyticsShareEvent.fromJson(json);
       default:
         throw Exception('Unknown analytic type');
     }
   }
 
   Map<String, dynamic> toJson();
+}
+
+/// This event is sent when the SDK is configured.
+/// It contains information about enabled features and authentication type.
+@JsonSerializable()
+class AiutaAnalyticsConfigureEvent extends AiutaAnalyticsEvent {
+  /// Type of authentication used in the SDK.
+  final AiutaAnalyticsAuthType authType;
+
+  /// Type of consent flow used in the SDK.
+  final AiutaAnalyticsConsentType? consentType;
+
+  /// Whether welcome screen feature is enabled.
+  final bool welcomeScreenFeatureEnabled;
+
+  /// Whether onboarding feature is enabled.
+  final bool onboardingFeatureEnabled;
+
+  /// Whether onboarding best results page feature is enabled.
+  final bool onboardingBestResultsPageFeatureEnabled;
+
+  /// Whether image picker camera feature is enabled.
+  final bool imagePickerCameraFeatureEnabled;
+
+  /// Whether image picker predefined model feature is enabled.
+  final bool imagePickerPredefinedModelFeatureEnabled;
+
+  /// Whether image picker uploads history feature is enabled.
+  final bool imagePickerUploadsHistoryFeatureEnabled;
+
+  /// Whether try-on fit disclaimer feature is enabled.
+  final bool tryOnFitDisclaimerFeatureEnabled;
+
+  /// Whether try-on feedback feature is enabled.
+  final bool tryOnFeedbackFeatureEnabled;
+
+  /// Whether try-on feedback other feature is enabled.
+  final bool tryOnFeedbackOtherFeatureEnabled;
+
+  /// Whether try-on generations history feature is enabled.
+  final bool tryOnGenerationsHistoryFeatureEnabled;
+
+  /// Whether try-on multi item feature is enabled.
+  final bool tryOnMultiItemFeatureEnabled;
+
+  /// Whether try-on with other photo feature is enabled.
+  final bool tryOnWithOtherPhotoFeatureEnabled;
+
+  /// Whether share feature is enabled.
+  final bool shareFeatureEnabled;
+
+  /// Whether share watermark feature is enabled.
+  final bool shareWatermarkFeatureEnabled;
+
+  /// Whether wishlist feature is enabled.
+  final bool wishlistFeatureEnabled;
+
+  /// Creates a configure event.
+  AiutaAnalyticsConfigureEvent({
+    required this.authType,
+    this.consentType,
+    required this.welcomeScreenFeatureEnabled,
+    required this.onboardingFeatureEnabled,
+    required this.onboardingBestResultsPageFeatureEnabled,
+    required this.imagePickerCameraFeatureEnabled,
+    required this.imagePickerPredefinedModelFeatureEnabled,
+    required this.imagePickerUploadsHistoryFeatureEnabled,
+    required this.tryOnFitDisclaimerFeatureEnabled,
+    required this.tryOnFeedbackFeatureEnabled,
+    required this.tryOnFeedbackOtherFeatureEnabled,
+    required this.tryOnGenerationsHistoryFeatureEnabled,
+    required this.tryOnMultiItemFeatureEnabled,
+    required this.tryOnWithOtherPhotoFeatureEnabled,
+    required this.shareFeatureEnabled,
+    required this.shareWatermarkFeatureEnabled,
+    required this.wishlistFeatureEnabled,
+    AiutaAnalyticsPageId? pageId,
+    String? productId,
+  }) : super(
+          type: AiutaAnalyticsEventType.configure,
+          pageId: null,
+          productId: null,
+        );
+
+  // Internal json staff
+  factory AiutaAnalyticsConfigureEvent.fromJson(Map<String, dynamic> json) =>
+      _$AiutaAnalyticsConfigureEventFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$AiutaAnalyticsConfigureEventToJson(this);
+}
+
+/// This event is sent when a session is started.
+@JsonSerializable()
+class AiutaAnalyticsSessionEvent extends AiutaAnalyticsEvent {
+  /// Type of flow in the SDK.
+  final AiutaAnalyticsFlowType flow;
+
+  /// Creates a session event.
+  AiutaAnalyticsSessionEvent({
+    required this.flow,
+    AiutaAnalyticsPageId? pageId,
+    String? productId,
+  }) : super(
+          type: AiutaAnalyticsEventType.session,
+          pageId: pageId,
+          productId: productId,
+        );
+
+  // Internal json staff
+  factory AiutaAnalyticsSessionEvent.fromJson(Map<String, dynamic> json) =>
+      _$AiutaAnalyticsSessionEventFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$AiutaAnalyticsSessionEventToJson(this);
 }
 
 /// Event that represents a page view.
@@ -72,7 +198,7 @@ class AiutaAnalyticsPageEvent extends AiutaAnalyticsEvent {
     required this.pageId,
     required this.productId,
   }) : super(
-          type: AiutaAnalyticsEventType.pageEvent,
+          type: AiutaAnalyticsEventType.page,
           pageId: pageId,
           productId: productId,
         );
@@ -106,7 +232,7 @@ class AiutaAnalyticsOnboardingEvent extends AiutaAnalyticsEvent {
     required this.productId,
     this.consentIds,
   }) : super(
-          type: AiutaAnalyticsEventType.onboardingEvent,
+          type: AiutaAnalyticsEventType.onboarding,
           pageId: pageId,
           productId: productId,
         );
@@ -139,7 +265,7 @@ class AiutaAnalyticsPickerEvent extends AiutaAnalyticsEvent {
     required this.pageId,
     required this.productId,
   }) : super(
-          type: AiutaAnalyticsEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
           productId: productId,
         );
@@ -167,7 +293,7 @@ class AiutaAnalyticsExitEvent extends AiutaAnalyticsEvent {
     required this.pageId,
     required this.productId,
   }) : super(
-          type: AiutaAnalyticsEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
           productId: productId,
         );
@@ -198,6 +324,21 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
   /// Additional message in case of try on progress
   final String? errorMessage;
 
+  /// Additional message in case of try on progress
+  final AiutaAnalyticsTryOnAbortedReasonType? abortReason;
+
+  /// Duration in seconds for uploading the photo, if available.
+  final double? uploadDuration;
+
+  /// Duration in seconds for the try-on processing, if available.
+  final double? tryOnDuration;
+
+  /// Duration in seconds for downloading the result, if available.
+  final double? downloadDuration;
+
+  /// Total duration in seconds for the entire try-on process, if available.
+  final double? totalDuration;
+
   /// Creates a try-on event.
   AiutaAnalyticsTryOnEvent({
     required this.event,
@@ -205,8 +346,13 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
     required this.productId,
     this.errorType,
     this.errorMessage,
+    this.abortReason,
+    this.uploadDuration,
+    this.tryOnDuration,
+    this.downloadDuration,
+    this.totalDuration,
   }) : super(
-          type: AiutaAnalyticsEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
           productId: productId,
         );
@@ -238,7 +384,7 @@ class AiutaAnalyticsResultsEvent extends AiutaAnalyticsEvent {
     required this.pageId,
     required this.productId,
   }) : super(
-          type: AiutaAnalyticsEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
           productId: productId,
         );
@@ -279,7 +425,7 @@ class AiutaAnalyticsFeedbackEvent extends AiutaAnalyticsEvent {
     this.negativeFeedbackOptionIndex,
     this.negativeFeedbackText,
   }) : super(
-          type: AiutaAnalyticsEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
           productId: productId,
         );
@@ -310,7 +456,7 @@ class AiutaAnalyticsHistoryEvent extends AiutaAnalyticsEvent {
     required this.pageId,
     required this.productId,
   }) : super(
-          type: AiutaAnalyticsEventType.pickerEvent,
+          type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
           productId: productId,
         );
@@ -321,4 +467,33 @@ class AiutaAnalyticsHistoryEvent extends AiutaAnalyticsEvent {
 
   @override
   Map<String, dynamic> toJson() => _$AiutaAnalyticsHistoryEventToJson(this);
+}
+
+/// This event is sent when a user shares content.
+@JsonSerializable()
+class AiutaAnalyticsShareEvent extends AiutaAnalyticsEvent {
+  /// Type of share event.
+  final AiutaAnalyticsShareEventType event;
+
+  /// ID of the target platform where content is shared.
+  final String? targetId;
+
+  /// Creates a share event.
+  AiutaAnalyticsShareEvent({
+    required this.event,
+    this.targetId,
+    AiutaAnalyticsPageId? pageId,
+    String? productId,
+  }) : super(
+          type: AiutaAnalyticsEventType.share,
+          pageId: pageId,
+          productId: productId,
+        );
+
+  // Internal json staff
+  factory AiutaAnalyticsShareEvent.fromJson(Map<String, dynamic> json) =>
+      _$AiutaAnalyticsShareEventFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$AiutaAnalyticsShareEventToJson(this);
 }
