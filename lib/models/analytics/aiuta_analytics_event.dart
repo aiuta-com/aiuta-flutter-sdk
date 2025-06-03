@@ -1,4 +1,7 @@
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_auth_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_consent_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_event_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_flow_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_onboarding_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_page_id.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_feedback_event_type.dart';
@@ -7,8 +10,6 @@ import 'package:aiuta_flutter/models/analytics/aiuta_analytics_picker_event_type
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_results_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_event_error_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_tryon_event_type.dart';
-import 'package:aiuta_flutter/models/analytics/aiuta_auth_type.dart';
-import 'package:aiuta_flutter/models/consent/aiuta_consent_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_analytics_event.g.dart';
@@ -37,6 +38,8 @@ sealed class AiutaAnalyticsEvent {
     switch (json['type'] as String) {
       case 'configure':
         return AiutaAnalyticsConfigureEvent.fromJson(json);
+      case 'session':
+        return AiutaAnalyticsSessionEvent.fromJson(json);
       case 'page':
         return AiutaAnalyticsPageEvent.fromJson(json);
       case 'onboarding':
@@ -66,10 +69,10 @@ sealed class AiutaAnalyticsEvent {
 @JsonSerializable()
 class AiutaAnalyticsConfigureEvent extends AiutaAnalyticsEvent {
   /// Type of authentication used in the SDK.
-  final AiutaAuthType authType;
+  final AiutaAnalyticsAuthType authType;
 
   /// Type of consent flow used in the SDK.
-  final AiutaConsentType? consentType;
+  final AiutaAnalyticsConsentType? consentType;
 
   /// Whether welcome screen feature is enabled.
   final bool welcomeScreenFeatureEnabled;
@@ -149,6 +152,31 @@ class AiutaAnalyticsConfigureEvent extends AiutaAnalyticsEvent {
 
   @override
   Map<String, dynamic> toJson() => _$AiutaAnalyticsConfigureEventToJson(this);
+}
+
+/// This event is sent when a session is started.
+@JsonSerializable()
+class AiutaAnalyticsSessionEvent extends AiutaAnalyticsEvent {
+  /// Type of flow in the SDK.
+  final AiutaAnalyticsFlowType flow;
+
+  /// Creates a session event.
+  AiutaAnalyticsSessionEvent({
+    required this.flow,
+    AiutaAnalyticsPageId? pageId,
+    String? productId,
+  }) : super(
+          type: AiutaAnalyticsEventType.session,
+          pageId: pageId,
+          productId: productId,
+        );
+
+  // Internal json staff
+  factory AiutaAnalyticsSessionEvent.fromJson(Map<String, dynamic> json) =>
+      _$AiutaAnalyticsSessionEventFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$AiutaAnalyticsSessionEventToJson(this);
 }
 
 /// Event that represents a page view.

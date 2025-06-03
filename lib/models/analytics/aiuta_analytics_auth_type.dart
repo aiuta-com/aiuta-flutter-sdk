@@ -1,5 +1,5 @@
 /// Authentication type used in the SDK.
-enum AiutaAuthType {
+enum AiutaAnalyticsAuthType {
   /// API key authentication.
   apiKey,
 

@@ -9,9 +9,9 @@ part of 'aiuta_analytics_event.dart';
 AiutaAnalyticsConfigureEvent _$AiutaAnalyticsConfigureEventFromJson(
         Map<String, dynamic> json) =>
     AiutaAnalyticsConfigureEvent(
-      authType: $enumDecode(_$AiutaAuthTypeEnumMap, json['authType']),
-      consentType:
-          $enumDecodeNullable(_$AiutaConsentTypeEnumMap, json['consentType']),
+      authType: $enumDecode(_$AiutaAnalyticsAuthTypeEnumMap, json['authType']),
+      consentType: $enumDecodeNullable(
+          _$AiutaAnalyticsConsentTypeEnumMap, json['consentType']),
       welcomeScreenFeatureEnabled: json['welcomeScreenFeatureEnabled'] as bool,
       onboardingFeatureEnabled: json['onboardingFeatureEnabled'] as bool,
       onboardingBestResultsPageFeatureEnabled:
@@ -47,8 +47,8 @@ Map<String, dynamic> _$AiutaAnalyticsConfigureEventToJson(
     <String, dynamic>{
       'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId],
       'productId': instance.productId,
-      'authType': _$AiutaAuthTypeEnumMap[instance.authType]!,
-      'consentType': _$AiutaConsentTypeEnumMap[instance.consentType],
+      'authType': _$AiutaAnalyticsAuthTypeEnumMap[instance.authType]!,
+      'consentType': _$AiutaAnalyticsConsentTypeEnumMap[instance.consentType],
       'welcomeScreenFeatureEnabled': instance.welcomeScreenFeatureEnabled,
       'onboardingFeatureEnabled': instance.onboardingFeatureEnabled,
       'onboardingBestResultsPageFeatureEnabled':
@@ -74,16 +74,17 @@ Map<String, dynamic> _$AiutaAnalyticsConfigureEventToJson(
       'wishlistFeatureEnabled': instance.wishlistFeatureEnabled,
     };
 
-const _$AiutaAuthTypeEnumMap = {
-  AiutaAuthType.apiKey: 'apiKey',
-  AiutaAuthType.jwt: 'jwt',
+const _$AiutaAnalyticsAuthTypeEnumMap = {
+  AiutaAnalyticsAuthType.apiKey: 'apiKey',
+  AiutaAnalyticsAuthType.jwt: 'jwt',
 };
 
-const _$AiutaConsentTypeEnumMap = {
-  AiutaConsentType.implicitWithoutCheckbox: 'implicitWithoutCheckbox',
-  AiutaConsentType.implicitWithCheckbox: 'implicitWithCheckbox',
-  AiutaConsentType.explicitRequired: 'explicitRequired',
-  AiutaConsentType.explicitOptional: 'explicitOptional',
+const _$AiutaAnalyticsConsentTypeEnumMap = {
+  AiutaAnalyticsConsentType.embeddedIntoOnboarding: 'embeddedIntoOnboarding',
+  AiutaAnalyticsConsentType.standaloneOnboardingPage:
+      'standaloneOnboardingPage',
+  AiutaAnalyticsConsentType.standaloneImagePickerPage:
+      'standaloneImagePickerPage',
 };
 
 const _$AiutaAnalyticsPageIdEnumMap = {
@@ -95,6 +96,28 @@ const _$AiutaAnalyticsPageIdEnumMap = {
   AiutaAnalyticsPageId.loading: 'loading',
   AiutaAnalyticsPageId.results: 'results',
   AiutaAnalyticsPageId.history: 'history',
+};
+
+AiutaAnalyticsSessionEvent _$AiutaAnalyticsSessionEventFromJson(
+        Map<String, dynamic> json) =>
+    AiutaAnalyticsSessionEvent(
+      flow: $enumDecode(_$AiutaAnalyticsFlowTypeEnumMap, json['flow']),
+      pageId:
+          $enumDecodeNullable(_$AiutaAnalyticsPageIdEnumMap, json['pageId']),
+      productId: json['productId'] as String?,
+    );
+
+Map<String, dynamic> _$AiutaAnalyticsSessionEventToJson(
+        AiutaAnalyticsSessionEvent instance) =>
+    <String, dynamic>{
+      'pageId': _$AiutaAnalyticsPageIdEnumMap[instance.pageId],
+      'productId': instance.productId,
+      'flow': _$AiutaAnalyticsFlowTypeEnumMap[instance.flow]!,
+    };
+
+const _$AiutaAnalyticsFlowTypeEnumMap = {
+  AiutaAnalyticsFlowType.tryOn: 'tryOn',
+  AiutaAnalyticsFlowType.history: 'history',
 };
 
 AiutaAnalyticsPageEvent _$AiutaAnalyticsPageEventFromJson(

@@ -3,6 +3,9 @@ enum AiutaAnalyticsEventType {
   /// Events related to SDK configuration.
   configure,
 
+  /// Events related to session management.
+  session,
+
   /// User navigates to a new page.
   page,
 
