@@ -1,14 +1,14 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.share.watermark
 
-import android.content.res.AssetManager
 import com.aiuta.fashionsdk.configuration.features.share.watermark.AiutaShareWatermarkFeature
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.share.watermark.images.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.share.watermark.FlutterAiutaShareWatermarkFeature
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.AiutaResourceMapperScope
 
 fun FlutterAiutaShareWatermarkFeature.toNative(
-    assetManager: AssetManager
+    resourceScope: AiutaResourceMapperScope,
 ): AiutaShareWatermarkFeature {
     return AiutaShareWatermarkFeature(
-        images = images.toNative(assetManager)
+        images = images.toNative(resourceScope)
     )
 }

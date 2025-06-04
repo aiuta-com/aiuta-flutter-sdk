@@ -1,6 +1,5 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features
 
-import android.content.res.AssetManager
 import androidx.compose.ui.text.font.FontFamily
 import com.aiuta.fashionsdk.configuration.features.AiutaFeatures
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.FlutterAiutaFeatures
@@ -11,33 +10,34 @@ import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.picker
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.tryon.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.share.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.wishlist.toNative
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.AiutaResourceMapperScope
 
 fun FlutterAiutaFeatures.toNative(
-    assetManager: AssetManager,
+    resourceScope: AiutaResourceMapperScope,
     fontFamily: FontFamily?,
 ): AiutaFeatures {
     return AiutaFeatures(
         welcomeScreen = welcomeScreen?.toNative(
-            assetManager = assetManager,
+            resourceScope = resourceScope,
             fontFamily = fontFamily,
         ),
         onboarding = onboarding?.toNative(
-            assetManager = assetManager,
+            resourceScope = resourceScope,
         ),
         consent = consent?.toNative(
-            assetManager = assetManager,
+            resourceScope = resourceScope,
         ),
         imagePicker = imagePicker.toNative(
-            assetManager = assetManager,
+            resourceScope = resourceScope,
         ),
         tryOn = tryOn.toNative(
-            assetManager = assetManager,
+            resourceScope = resourceScope,
         ),
         share = share?.toNative(
-            assetManager = assetManager,
+            resourceScope = resourceScope,
         ),
         wishlist = wishlist?.toNative(
-            assetManager = assetManager,
+            resourceScope = resourceScope,
         )
     )
 }

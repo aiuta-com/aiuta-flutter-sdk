@@ -1,6 +1,5 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme
 
-import android.content.res.AssetManager
 import androidx.compose.ui.text.font.FontFamily
 import com.aiuta.fashionsdk.configuration.ui.theme.AiutaTheme
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.color.toNative
@@ -13,10 +12,11 @@ import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.sheet.
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.selection.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.productbar.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.powerbar.toNative
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.AiutaResourceMapperScope
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.FlutterAiutaTheme
 
 fun FlutterAiutaTheme.toNative(
-    assetManager: AssetManager,
+    resourceScope: AiutaResourceMapperScope,
     fontFamily: FontFamily?,
 ): AiutaTheme {
     return AiutaTheme(
@@ -25,27 +25,27 @@ fun FlutterAiutaTheme.toNative(
             fontFamily = fontFamily,
         ),
         image = image.toNative(
-            assetManager = assetManager,
+            resourceScope = resourceScope,
         ),
         button = button.toNative(
             fontFamily = fontFamily
         ),
         pageBar = pageBar.toNative(
-            assetManager = assetManager,
+            resourceScope = resourceScope,
             fontFamily = fontFamily
         ),
         bottomSheet = bottomSheet.toNative(
             fontFamily = fontFamily
         ),
         selectionSnackbar = selectionSnackbar.toNative(
-            assetManager = assetManager,
+            resourceScope = resourceScope,
         ),
         productBar = productBar.toNative(
-            assetManager = assetManager,
+            resourceScope = resourceScope,
             fontFamily = fontFamily
         ),
         errorSnackbar = errorSnackbar.toNative(
-            assetManager = assetManager
+            resourceScope = resourceScope
         ),
         powerBar = powerBar.toNative()
     )

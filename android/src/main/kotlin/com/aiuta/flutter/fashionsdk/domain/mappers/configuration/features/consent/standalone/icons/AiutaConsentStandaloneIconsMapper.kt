@@ -1,17 +1,21 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.consent.standalone.icons
 
-import android.content.res.AssetManager
 import com.aiuta.fashionsdk.configuration.features.consent.standalone.icons.AiutaConsentStandaloneFeatureIcons
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.consent.standalone.icons.FlutterAiutaConsentStandaloneIcons
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.consent.standalone.icons.FlutterAiutaConsentStandaloneIconsCustom
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.AiutaResourceMapperScope
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.createNativeIcon
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.withResourceHandling
 
 fun FlutterAiutaConsentStandaloneIcons.toNative(
-    assetManager: AssetManager
+    resourceScope: AiutaResourceMapperScope,
 ): AiutaConsentStandaloneFeatureIcons {
     return when (this) {
-        is FlutterAiutaConsentStandaloneIconsCustom -> object : AiutaConsentStandaloneFeatureIcons {
-            override val consentTitle24 = this@toNative.consentTitle24?.toNative(assetManager)
+        is FlutterAiutaConsentStandaloneIconsCustom -> resourceScope.withResourceHandling(null) {
+            object : AiutaConsentStandaloneFeatureIcons {
+                override val consentTitle24 =
+                    this@toNative.consentTitle24?.let { createNativeIcon(it) }
+            }
         }
     }
 }

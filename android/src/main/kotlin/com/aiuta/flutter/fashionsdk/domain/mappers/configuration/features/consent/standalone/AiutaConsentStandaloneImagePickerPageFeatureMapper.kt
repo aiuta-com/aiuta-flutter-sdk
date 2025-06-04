@@ -1,6 +1,5 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.consent.standalone
 
-import android.content.res.AssetManager
 import com.aiuta.fashionsdk.configuration.features.consent.AiutaConsentStandaloneImagePickerPageFeature
 import com.aiuta.fashionsdk.configuration.features.consent.standalone.dataprovider.AiutaConsentStandaloneFeatureDataProviderBuiltIn
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.FlutterDataActionHandler
@@ -11,13 +10,14 @@ import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.consen
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterAiutaBaseDataProviderBuiltIn
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterAiutaBaseDataProviderCustom
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.consent.FlutterAiutaConsentStandaloneImagePickerPageFeature
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.AiutaResourceMapperScope
 
 fun FlutterAiutaConsentStandaloneImagePickerPageFeature.toNativeStandaloneImagePicker(
-    assetManager: AssetManager
+    resourceScope: AiutaResourceMapperScope,
 ): AiutaConsentStandaloneImagePickerPageFeature {
     return AiutaConsentStandaloneImagePickerPageFeature(
         strings = strings.toNative(),
-        icons = icons.toNative(assetManager),
+        icons = icons.toNative(resourceScope),
         styles = styles.toNative(),
         data = data.toNative(),
         dataProvider = when (dataProvider) {

@@ -7,6 +7,7 @@ import com.aiuta.flutter.fashionsdk.domain.assets.AssetsResolver
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.debug.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.toNative
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.createAiutaResourceMapperScope
 
 object AiutaNativeConfigurationHolder {
     private var aiutaConfiguration: AiutaConfiguration? = null
@@ -31,12 +32,19 @@ object AiutaNativeConfigurationHolder {
         aiutaConfiguration = aiutaConfiguration {
             aiuta = AiutaHolder.getAiuta()
             debugSettings = flutterConfiguration.debugSettings.toNative()
-            features = flutterConfiguration.features.toNative(
+
+            val resourceScope = createAiutaResourceMapperScope(
                 assetManager = assetManager,
+                logger = aiuta?.logger,
+                unavailableResourcesPolicy = flutterConfiguration.debugSettings.unavailableResourcesPolicy
+            )
+
+            features = flutterConfiguration.features.toNative(
+                resourceScope = resourceScope,
                 fontFamily = fontFamily,
             )
             userInterface = flutterConfiguration.userInterface.toNative(
-                assetManager = assetManager,
+                resourceScope = resourceScope,
                 fontFamily = fontFamily,
             )
         }
