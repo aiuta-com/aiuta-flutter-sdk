@@ -1,22 +1,27 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.tryon.feedback.icons
 
-import android.content.res.AssetManager
 import com.aiuta.fashionsdk.configuration.defaults.icons.features.tryon.feedback.DefaultAiutaTryOnFeedbackFeatureIcons
 import com.aiuta.fashionsdk.configuration.features.tryon.feedback.icons.AiutaTryOnFeedbackFeatureIcons
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.feedback.icons.FlutterAiutaTryOnFeedbackIcons
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.feedback.icons.FlutterAiutaTryOnFeedbackIconsBuiltIn
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.feedback.icons.FlutterAiutaTryOnFeedbackIconsCustom
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.AiutaResourceMapperScope
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.createNativeIcon
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.withResourceHandling
 
 fun FlutterAiutaTryOnFeedbackIcons.toNative(
-    assetManager: AssetManager
+    resourceScope: AiutaResourceMapperScope,
 ): AiutaTryOnFeedbackFeatureIcons {
+    val defaultIcons = lazy { DefaultAiutaTryOnFeedbackFeatureIcons() }
+
     return when (this) {
-        is FlutterAiutaTryOnFeedbackIconsBuiltIn -> DefaultAiutaTryOnFeedbackFeatureIcons()
-        is FlutterAiutaTryOnFeedbackIconsCustom -> object : AiutaTryOnFeedbackFeatureIcons {
-            override val like36 = this@toNative.like36.toNative(assetManager)
-            override val dislike36 = this@toNative.dislike36.toNative(assetManager)
-            override val gratitude40 = this@toNative.gratitude40.toNative(assetManager)
+        is FlutterAiutaTryOnFeedbackIconsBuiltIn -> defaultIcons.value
+        is FlutterAiutaTryOnFeedbackIconsCustom -> resourceScope.withResourceHandling(defaultIcons) {
+            object : AiutaTryOnFeedbackFeatureIcons {
+                override val like36 = createNativeIcon(this@toNative.like36)
+                override val dislike36 = createNativeIcon(this@toNative.dislike36)
+                override val gratitude40 = createNativeIcon(this@toNative.gratitude40)
+            }
         }
     }
 }

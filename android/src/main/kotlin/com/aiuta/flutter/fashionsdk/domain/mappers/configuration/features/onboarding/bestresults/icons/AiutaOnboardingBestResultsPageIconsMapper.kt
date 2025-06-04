@@ -1,18 +1,21 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.onboarding.bestresults.icons
 
-import android.content.res.AssetManager
 import com.aiuta.fashionsdk.configuration.features.onboarding.bestresult.icons.AiutaOnboardingBestResultsPageFeatureIcons
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.bestresult.icons.FlutterAiutaOnboardingBestResultsPageIcons
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.bestresult.icons.FlutterAiutaOnboardingBestResultsPageIconsCustom
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.AiutaResourceMapperScope
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.createNativeIcon
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.withResourceHandling
 
 fun FlutterAiutaOnboardingBestResultsPageIcons.toNative(
-    assetManager: AssetManager
+    resourceScope: AiutaResourceMapperScope,
 ): AiutaOnboardingBestResultsPageFeatureIcons {
     return when (this) {
-        is FlutterAiutaOnboardingBestResultsPageIconsCustom -> object : AiutaOnboardingBestResultsPageFeatureIcons {
-            override val onboardingBestResultsGood24 = this@toNative.onboardingBestResultsGood24.toNative(assetManager)
-            override val onboardingBestResultsBad24 = this@toNative.onboardingBestResultsBad24.toNative(assetManager)
+        is FlutterAiutaOnboardingBestResultsPageIconsCustom -> resourceScope.withResourceHandling(null) {
+            object : AiutaOnboardingBestResultsPageFeatureIcons {
+                override val onboardingBestResultsGood24 = createNativeIcon(this@toNative.onboardingBestResultsGood24)
+                override val onboardingBestResultsBad24 = createNativeIcon(this@toNative.onboardingBestResultsBad24)
+            }
         }
     }
 }

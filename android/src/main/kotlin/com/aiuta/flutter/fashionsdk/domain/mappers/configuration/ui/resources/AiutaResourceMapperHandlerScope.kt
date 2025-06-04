@@ -1,29 +1,33 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources
 
-import android.content.res.AssetManager
 import com.aiuta.fashionsdk.compose.resources.drawable.AiutaAndroidDrawable
 import com.aiuta.fashionsdk.compose.resources.drawable.AiutaIcon
 import com.aiuta.flutter.fashionsdk.domain.assets.AssetsResolver
 import com.aiuta.flutter.fashionsdk.domain.models.resources.FlutterAiutaIcon
 import com.aiuta.flutter.fashionsdk.domain.models.resources.FlutterAiutaRenderMode
 
-internal fun FlutterAiutaIcon.toNative(assetManager: AssetManager): AiutaIcon {
-    return AiutaIcon(
-        iconResource = AiutaAndroidDrawable(
-            resource = AssetsResolver.resolveDrawable(
-                assetManager = assetManager,
-                path = path
-            )
-        ),
-        shouldDrawAsIs = renderMode == FlutterAiutaRenderMode.ORIGINAL
-    )
-}
+interface AiutaResourceMapperHandlerScope : AiutaResourceMapperScope
 
-internal fun String.toNativeImage(assetManager: AssetManager): AiutaAndroidDrawable {
+
+// Extensions
+// Images
+internal fun AiutaResourceMapperHandlerScope.createNativeImage(
+    resourcePath: String,
+): AiutaAndroidDrawable {
     return AiutaAndroidDrawable(
         resource = AssetsResolver.resolveDrawable(
             assetManager = assetManager,
-            path = this
+            path = resourcePath
         ),
+    )
+}
+
+// Icons
+internal fun AiutaResourceMapperHandlerScope.createNativeIcon(
+    flutterIcon: FlutterAiutaIcon,
+): AiutaIcon {
+    return AiutaIcon(
+        iconResource = createNativeImage(resourcePath = flutterIcon.path),
+        shouldDrawAsIs = flutterIcon.renderMode == FlutterAiutaRenderMode.ORIGINAL
     )
 }
