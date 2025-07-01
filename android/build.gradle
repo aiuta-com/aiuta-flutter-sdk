@@ -75,18 +75,18 @@ dependencies {
     implementation("com.google.android.material:material:$materialVersion")
 
     // Compose
-    def activityComposeVersion = "1.9.0"
+    def composeBomVersion = "2025.06.01"
+    implementation(platform("androidx.compose:compose-bom:$composeBomVersion"))
+    implementation("androidx.compose.foundation:foundation")
+
+    def activityComposeVersion = "1.10.1"
     implementation("androidx.activity:activity-compose:$activityComposeVersion")
 
     // Appcompat
-    def appcompatVersion = "1.7.0"
+    def appcompatVersion = "1.7.1"
     implementation("androidx.appcompat:appcompat:$appcompatVersion")
 
-    // Coil
-    def coilVersion = "2.7.0"
-    implementation("io.coil-kt:coil-compose:$coilVersion")
-
     // Serialization
-    def kotlinxSerializationVersion = "1.7.3"
+    def kotlinxSerializationVersion = "1.9.0"
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion")
 }
