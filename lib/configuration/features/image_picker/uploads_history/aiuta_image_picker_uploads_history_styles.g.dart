@@ -10,19 +10,20 @@ AiutaImagePickerUploadsHistoryStyles
     _$AiutaImagePickerUploadsHistoryStylesFromJson(Map<String, dynamic> json) =>
         AiutaImagePickerUploadsHistoryStyles(
           changePhotoButtonStyle: $enumDecode(
-              _$AiutaImagePickerUploadsHistoryButtonStyleEnumMap,
-              json['changePhotoButtonStyle']),
+              _$AiutaComponentStyleEnumMap, json['changePhotoButtonStyle']),
         );
 
 Map<String, dynamic> _$AiutaImagePickerUploadsHistoryStylesToJson(
         AiutaImagePickerUploadsHistoryStyles instance) =>
     <String, dynamic>{
       'changePhotoButtonStyle':
-          _$AiutaImagePickerUploadsHistoryButtonStyleEnumMap[
-              instance.changePhotoButtonStyle]!,
+          _$AiutaComponentStyleEnumMap[instance.changePhotoButtonStyle]!,
     };
 
-const _$AiutaImagePickerUploadsHistoryButtonStyleEnumMap = {
-  AiutaImagePickerUploadsHistoryButtonStyle.primary: 'primary',
-  AiutaImagePickerUploadsHistoryButtonStyle.blurred: 'blurred',
+const _$AiutaComponentStyleEnumMap = {
+  AiutaComponentStyle.brand: 'brand',
+  AiutaComponentStyle.contrast: 'contrast',
+  AiutaComponentStyle.contrastInverted: 'contrastInverted',
+  AiutaComponentStyle.blurred: 'blurred',
+  AiutaComponentStyle.blurredWithOutline: 'blurredWithOutline',
 };
