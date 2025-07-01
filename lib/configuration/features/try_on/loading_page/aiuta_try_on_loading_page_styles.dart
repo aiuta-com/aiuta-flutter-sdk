@@ -1,20 +1,7 @@
+import 'package:aiuta_flutter/configuration/features/base/aiuta_component_style.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_try_on_loading_page_styles.g.dart';
-
-/// Enum representing the style of the loading page status view.
-enum AiutaTryOnLoadingPageStyle {
-  /// Loading status style with a primary color background
-  /// and onDark color text.
-  primary,
-
-  /// Loading status style with a blur effect and a primary color text.
-  blurred,
-
-  /// Loading status style with a blur effect and a primary color text and
-  /// an outline (border) around the component.
-  blurredWithOutline,
-}
 
 /// Styles for the loading page feature.
 @JsonSerializable()
@@ -25,7 +12,7 @@ class AiutaTryOnLoadingPageStyles {
   final List<String>? loadingStatusBackgroundGradient;
 
   /// Style for the loading status.
-  final AiutaTryOnLoadingPageStyle loadingStatusStyle;
+  final AiutaComponentStyle loadingStatusStyle;
 
   /// Creates an [AiutaTryOnLoadingPageStyles] with the optional
   /// [loadingStatusBackgroundGradient] and required
@@ -38,7 +25,7 @@ class AiutaTryOnLoadingPageStyles {
   /// Creates a built-in loading page styles configuration with default settings.
   factory AiutaTryOnLoadingPageStyles.builtIn() {
     return AiutaTryOnLoadingPageStyles(
-      loadingStatusStyle: AiutaTryOnLoadingPageStyle.blurred,
+      loadingStatusStyle: AiutaComponentStyle.blurred,
     );
   }
 

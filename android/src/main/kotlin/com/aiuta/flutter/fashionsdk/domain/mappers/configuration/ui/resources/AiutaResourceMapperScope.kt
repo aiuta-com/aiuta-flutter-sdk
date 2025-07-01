@@ -25,7 +25,12 @@ internal fun createAiutaResourceMapperScope(
         override val logger: AiutaLogger? = logger
         override val unavailableResourcesPolicy: FlutterAiutaValidationPolicy = unavailableResourcesPolicy
         override val handlerScope: AiutaResourceMapperHandlerScope by lazy {
-            object : AiutaResourceMapperHandlerScope by this {}
+            object : AiutaResourceMapperHandlerScope {
+                override val assetManager: AssetManager = assetManager
+                override val logger: AiutaLogger? = logger
+                override val unavailableResourcesPolicy: FlutterAiutaValidationPolicy = unavailableResourcesPolicy
+                override val handlerScope: AiutaResourceMapperHandlerScope = this
+            }
         }
     }
 }
