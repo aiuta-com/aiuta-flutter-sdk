@@ -2,13 +2,11 @@ package com.aiuta.flutter.fashionsdk.ui.main
 
 import android.app.Activity
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
-import androidx.compose.ui.unit.dp
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
@@ -28,10 +26,12 @@ class AiutaBottomSheetDialog(
                 AiutaNativeConfigurationHolder.getNativeConfiguration()
             }
 
+            val sheetShape = configuration.userInterface.theme.bottomSheet.shapes.bottomSheetShape
+
             AiutaTryOnFlow(
                 modifier = Modifier
                     .fillMaxSize()
-                    .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
+                    .clip(shape = sheetShape)
                     .nestedScroll(rememberNestedScrollInteropConnection()),
                 aiutaConfiguration = configuration,
                 productForGeneration = product,
