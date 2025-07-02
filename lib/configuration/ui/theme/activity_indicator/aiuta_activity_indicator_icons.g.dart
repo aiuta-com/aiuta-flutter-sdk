@@ -1,18 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'aiuta_try_on_loading_page_icons.dart';
+part of 'aiuta_activity_indicator_icons.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaTryOnLoadingPageIconsBuiltIn _$AiutaTryOnLoadingPageIconsBuiltInFromJson(
+AiutaActivityIndicatorIconsBuiltIn _$AiutaActivityIndicatorIconsBuiltInFromJson(
         Map<String, dynamic> json) =>
-    AiutaTryOnLoadingPageIconsBuiltIn()
+    AiutaActivityIndicatorIconsBuiltIn()
       ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
-Map<String, dynamic> _$AiutaTryOnLoadingPageIconsBuiltInToJson(
-        AiutaTryOnLoadingPageIconsBuiltIn instance) =>
+Map<String, dynamic> _$AiutaActivityIndicatorIconsBuiltInToJson(
+        AiutaActivityIndicatorIconsBuiltIn instance) =>
     <String, dynamic>{
       'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
     };
@@ -22,14 +22,14 @@ const _$AiutaCustomizationTypeEnumMap = {
   AiutaCustomizationType.custom: 'custom',
 };
 
-AiutaTryOnLoadingPageIconsCustom _$AiutaTryOnLoadingPageIconsCustomFromJson(
+AiutaActivityIndicatorIconsCustom _$AiutaActivityIndicatorIconsCustomFromJson(
         Map<String, dynamic> json) =>
-    AiutaTryOnLoadingPageIconsCustom(
+    AiutaActivityIndicatorIconsCustom(
       loading14: AiutaIcon.fromJson(json['loading14'] as Map<String, dynamic>),
     )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
-Map<String, dynamic> _$AiutaTryOnLoadingPageIconsCustomToJson(
-        AiutaTryOnLoadingPageIconsCustom instance) =>
+Map<String, dynamic> _$AiutaActivityIndicatorIconsCustomToJson(
+        AiutaActivityIndicatorIconsCustom instance) =>
     <String, dynamic>{
       'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'loading14': instance.loading14,
