@@ -12,7 +12,7 @@ class AiutaActivityIndicatorColors {
     required this.overlay,
   });
 
-  /// Creates a built-in error snackbar colors configuration with default settings.
+  /// Creates a built-in activity indicator colors configuration with default settings.
   factory AiutaActivityIndicatorColors.builtIn() {
     return AiutaActivityIndicatorColors(
       overlay: "#00000000",

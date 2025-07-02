@@ -30,7 +30,7 @@ sealed class AiutaActivityIndicatorIcons {
 /// A built-in implementation of the `AiutaActivityIndicatorIcons`.
 @JsonSerializable()
 class AiutaActivityIndicatorIconsBuiltIn extends AiutaActivityIndicatorIcons {
-  /// Creates an instance of the built-in try-on loading page icons.
+  /// Creates an instance of the built-in activity indicator theme.
   AiutaActivityIndicatorIconsBuiltIn() : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
@@ -49,7 +49,7 @@ class AiutaActivityIndicatorIconsCustom extends AiutaActivityIndicatorIcons {
   /// Icon for the loading page.
   final AiutaIcon loading14;
 
-  /// Creates an [AiutaActivityIndicatorIcons] with the optional [loading14] icon,
+  /// Creates an [AiutaActivityIndicatorIcons] with [loading14] icon,
   /// that will spin to indicate the loading activity.
   AiutaActivityIndicatorIconsCustom({
     required this.loading14,
