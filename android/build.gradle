@@ -39,7 +39,7 @@ android {
         compose true
     }
 
-    compileSdk = 34
+    compileSdk = 35
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -63,7 +63,7 @@ android {
 dependencies {
     // Aiuta
     // TODO Migrate to 4.2.1
-    def aiutaVersion = "4.2.0-SNAPSHOT"
+    def aiutaVersion = "4.2.1-SNAPSHOT"
     implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
     implementation("com.aiuta:fashionsdk-analytics")
     implementation("com.aiuta:fashionsdk-tryon-compose")
