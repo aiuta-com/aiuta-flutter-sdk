@@ -5,9 +5,14 @@
     </style>
 
     <style name="AiutaBottomSheetDialogTheme"
-        parent="Theme.Design.Light.BottomSheetDialog">
+        parent="Theme.MaterialComponents.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AiutaBottomSheetStyle</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
+
+        <item name="enableEdgeToEdge">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="paddingTopSystemWindowInsets">true</item>
     </style>
 
     <style name="AiutaBottomSheetStyle"

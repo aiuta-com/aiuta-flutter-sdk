@@ -25,6 +25,10 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsCompat.Type.systemBars
 import androidx.lifecycle.lifecycleScope
 import com.aiuta.fashionsdk.analytics.analytics
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
@@ -143,6 +147,21 @@ abstract class BaseAiutaBottomSheetDialog(
     private fun composeView(content: @Composable () -> Unit): View {
         return ComposeView(context).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            ViewCompat.setOnApplyWindowInsetsListener(this) { insetView, windowInsets ->
+                // Ignore top inset to avoid inner duplication of statusBar padding
+                WindowInsetsCompat.Builder(windowInsets)
+                    .setInsets(
+                        systemBars(),
+                        Insets.of(
+                            windowInsets.getInsets(systemBars()).left,
+                            0,
+                            windowInsets.getInsets(systemBars()).right,
+                            windowInsets.getInsets(systemBars()).bottom
+                        )
+                    )
+                    .build()
+            }
+
             setContent {
                 CompositionLocalProvider(
                     LocalActivityResultRegistryOwner provides this@BaseAiutaBottomSheetDialog
