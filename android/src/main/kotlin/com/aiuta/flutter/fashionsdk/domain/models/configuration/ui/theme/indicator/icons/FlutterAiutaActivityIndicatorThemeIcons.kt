@@ -1,4 +1,4 @@
-package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.loading.icons
+package com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.indicator.icons
 
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterCustomizationType
 import com.aiuta.flutter.fashionsdk.domain.models.resources.FlutterAiutaIcon
@@ -10,15 +10,15 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable
 @JsonClassDiscriminator("type")
-sealed interface FlutterAiutaTryOnLoadingPageIcons
+sealed interface FlutterAiutaActivityIndicatorThemeIcons
 
 @Serializable
 @SerialName(FlutterCustomizationType.TYPE_BUILT_IN)
-object FlutterAiutaTryOnLoadingPageIconsBuiltIn : FlutterAiutaTryOnLoadingPageIcons
+object FlutterAiutaActivityIndicatorThemeIconsBuiltIn : FlutterAiutaActivityIndicatorThemeIcons
 
 @Serializable
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
-data class FlutterAiutaTryOnLoadingPageIconsCustom(
+data class FlutterAiutaActivityIndicatorThemeIconsCustom(
     @SerialName("loading14")
-    val loading14: FlutterAiutaIcon? = null
-) : FlutterAiutaTryOnLoadingPageIcons
+    val loading14: FlutterAiutaIcon
+) : FlutterAiutaActivityIndicatorThemeIcons

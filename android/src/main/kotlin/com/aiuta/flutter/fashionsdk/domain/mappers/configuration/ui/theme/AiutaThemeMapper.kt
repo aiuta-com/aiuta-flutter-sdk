@@ -13,6 +13,7 @@ import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.select
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.productbar.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.powerbar.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.AiutaResourceMapperScope
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.theme.indicator.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.FlutterAiutaTheme
 
 fun FlutterAiutaTheme.toNative(
@@ -36,6 +37,9 @@ fun FlutterAiutaTheme.toNative(
         ),
         bottomSheet = bottomSheet.toNative(
             fontFamily = fontFamily
+        ),
+        activityIndicator = activityIndicator.toNative(
+            resourceScope = resourceScope,
         ),
         selectionSnackbar = selectionSnackbar.toNative(
             resourceScope = resourceScope,

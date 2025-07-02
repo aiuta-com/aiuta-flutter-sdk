@@ -1,3 +1,4 @@
+import 'package:aiuta_flutter/configuration/ui/theme/activity_indicator/aiuta_activity_indicator_theme.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/bottom_sheet/aiuta_bottom_sheet_theme.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/button/aiuta_button_theme.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/colors/aiuta_color_theme.dart';
@@ -40,6 +41,9 @@ class AiutaTheme {
   /// details, image picker, etc.
   final AiutaBottomSheetTheme bottomSheet;
 
+  /// Configuration for the activity indicator.
+  final AiutaActivityIndicatorTheme activityIndicator;
+
   /// Configuration for the selection snackbar that is embeds inside the
   /// pages with the lists of some items (like the generations history),
   /// allows to select multiple items and perform actions on them.
@@ -81,6 +85,7 @@ class AiutaTheme {
     required this.button,
     required this.pageBar,
     required this.bottomSheet,
+    required this.activityIndicator,
     required this.selectionSnackbar,
     required this.errorSnackbar,
     required this.productBar,
@@ -97,6 +102,7 @@ class AiutaTheme {
       button: AiutaButtonTheme.builtIn(),
       pageBar: AiutaPageBarTheme.builtIn(),
       bottomSheet: AiutaBottomSheetTheme.builtIn(),
+      activityIndicator: AiutaActivityIndicatorTheme.builtIn(),
       selectionSnackbar: AiutaSelectionSnackbarTheme.builtIn(),
       errorSnackbar: AiutaErrorSnackbarTheme.builtIn(),
       productBar: AiutaProductBarTheme.builtIn(),

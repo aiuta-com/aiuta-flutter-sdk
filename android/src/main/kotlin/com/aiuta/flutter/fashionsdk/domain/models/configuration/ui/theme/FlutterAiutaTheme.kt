@@ -5,6 +5,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.button.
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.color.FlutterAiutaColorTheme
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.error.FlutterAiutaErrorSnackbarTheme
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.image.FlutterAiutaImageTheme
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.indicator.FlutterAiutaActivityIndicatorTheme
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.label.FlutterAiutaLabelTheme
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.pagebar.FlutterAiutaPageBarTheme
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.powerbar.FlutterAiutaPowerBarTheme
@@ -36,6 +37,9 @@ data class FlutterAiutaTheme(
 
     @SerialName("bottomSheet")
     val bottomSheet: FlutterAiutaBottomSheetTheme,
+
+    @SerialName("activityIndicator")
+    val activityIndicator: FlutterAiutaActivityIndicatorTheme,
 
     @SerialName("selectionSnackbar")
     val selectionSnackbar: FlutterAiutaSelectionSnackbarTheme,
