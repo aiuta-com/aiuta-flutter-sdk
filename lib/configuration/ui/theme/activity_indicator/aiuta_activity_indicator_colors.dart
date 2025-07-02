@@ -15,7 +15,7 @@ class AiutaActivityIndicatorColors {
   /// Creates a built-in activity indicator colors configuration with default settings.
   factory AiutaActivityIndicatorColors.builtIn() {
     return AiutaActivityIndicatorColors(
-      overlay: "#00000000",
+      overlay: "#99000000",
     );
   }
 
