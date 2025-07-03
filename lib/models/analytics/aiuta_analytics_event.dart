@@ -24,15 +24,15 @@ sealed class AiutaAnalyticsEvent {
   /// Id of the page.
   final AiutaAnalyticsPageId? pageId;
 
-  /// Id of the product that the user interacts with.
-  /// Matches the id of either the product which is passed to the SDK by starting try-on
-  final String? productId;
+  /// Ids of the products that the user interacts with.
+  /// Matches the ids of either the products which is passed to the SDK by starting try-on
+  final List<String> productIds;
 
   /// Creates an analytic event.
   AiutaAnalyticsEvent({
     required this.type,
+    required this.productIds,
     this.pageId,
-    this.productId,
   });
 
   // Json staff
@@ -142,12 +142,10 @@ class AiutaAnalyticsConfigureEvent extends AiutaAnalyticsEvent {
     required this.shareFeatureEnabled,
     required this.shareWatermarkFeatureEnabled,
     required this.wishlistFeatureEnabled,
-    AiutaAnalyticsPageId? pageId,
-    String? productId,
   }) : super(
           type: AiutaAnalyticsEventType.configure,
           pageId: null,
-          productId: null,
+          productIds: [],
         );
 
   // Internal json staff
@@ -167,12 +165,12 @@ class AiutaAnalyticsSessionEvent extends AiutaAnalyticsEvent {
   /// Creates a session event.
   AiutaAnalyticsSessionEvent({
     required this.flow,
+    required List<String> productIds,
     AiutaAnalyticsPageId? pageId,
-    String? productId,
   }) : super(
           type: AiutaAnalyticsEventType.session,
           pageId: pageId,
-          productId: productId,
+          productIds: productIds,
         );
 
   // Internal json staff
@@ -190,17 +188,14 @@ class AiutaAnalyticsPageEvent extends AiutaAnalyticsEvent {
   /// Id of the page.
   final AiutaAnalyticsPageId pageId;
 
-  /// Id of the product that the user interacts with.
-  final String productId;
-
   /// Creates a page view event.
   AiutaAnalyticsPageEvent({
     required this.pageId,
-    required this.productId,
+    required List<String> productIds,
   }) : super(
           type: AiutaAnalyticsEventType.page,
           pageId: pageId,
-          productId: productId,
+          productIds: productIds,
         );
 
   // Internal json staff
@@ -220,21 +215,18 @@ class AiutaAnalyticsOnboardingEvent extends AiutaAnalyticsEvent {
   /// Id of the page.
   final AiutaAnalyticsPageId pageId;
 
-  /// Id of the product that the user interacts with.
-  final String productId;
-
   final List<String>? consentIds;
 
   /// Creates an onboarding event.
   AiutaAnalyticsOnboardingEvent({
     required this.event,
     required this.pageId,
-    required this.productId,
+    required List<String> productIds,
     this.consentIds,
   }) : super(
           type: AiutaAnalyticsEventType.onboarding,
           pageId: pageId,
-          productId: productId,
+          productIds: productIds,
         );
 
   // Internal json staff
@@ -256,18 +248,15 @@ class AiutaAnalyticsPickerEvent extends AiutaAnalyticsEvent {
   /// For this event, the pageId is either AiutaAnalyticPageId.imagePicker or AiutaAnalyticPageId.results.
   final AiutaAnalyticsPageId pageId;
 
-  /// Id of the product that the user interacts with.
-  final String productId;
-
   /// Creates a picker event.
   AiutaAnalyticsPickerEvent({
     required this.event,
     required this.pageId,
-    required this.productId,
+    required List<String> productIds,
   }) : super(
           type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
-          productId: productId,
+          productIds: productIds,
         );
 
   // Internal json staff
@@ -285,17 +274,14 @@ class AiutaAnalyticsExitEvent extends AiutaAnalyticsEvent {
   /// Id of the page where the exit event is triggered.
   final AiutaAnalyticsPageId pageId;
 
-  /// Id of the product that the user interacts with.
-  final String productId;
-
   /// Creates an exit event.
   AiutaAnalyticsExitEvent({
     required this.pageId,
-    required this.productId,
+    required List<String> productIds,
   }) : super(
           type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
-          productId: productId,
+          productIds: productIds,
         );
 
   // Internal json staff
@@ -314,9 +300,6 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
 
   /// Id of the page.
   final AiutaAnalyticsPageId pageId;
-
-  /// Id of the product that the user interacts with.
-  final String productId;
 
   /// Type of the error if the try-on fails.
   final AiutaAnalyticsTryOnEventErrorType? errorType;
@@ -343,7 +326,7 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
   AiutaAnalyticsTryOnEvent({
     required this.event,
     required this.pageId,
-    required this.productId,
+    required List<String> productIds,
     this.errorType,
     this.errorMessage,
     this.abortReason,
@@ -354,7 +337,7 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
   }) : super(
           type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
-          productId: productId,
+          productIds: productIds,
         );
 
   // Internal json staff
@@ -374,19 +357,15 @@ class AiutaAnalyticsResultsEvent extends AiutaAnalyticsEvent {
   /// Id of the page.
   final AiutaAnalyticsPageId pageId;
 
-  /// Id of the product that the user interacts with.
-  /// Matches the id of either the product which is passed to the SDK by starting try-on
-  final String productId;
-
   /// Creates a results event.
   AiutaAnalyticsResultsEvent({
     required this.event,
     required this.pageId,
-    required this.productId,
+    required List<String> productIds,
   }) : super(
           type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
-          productId: productId,
+          productIds: productIds,
         );
 
   // Internal json staff
@@ -414,20 +393,17 @@ class AiutaAnalyticsFeedbackEvent extends AiutaAnalyticsEvent {
   /// Id of the page.
   final AiutaAnalyticsPageId pageId;
 
-  /// Id of the product that the user interacts with.
-  final String productId;
-
   /// Creates a feedback event.
   AiutaAnalyticsFeedbackEvent({
     required this.event,
     required this.pageId,
-    required this.productId,
+    required List<String> productIds,
     this.negativeFeedbackOptionIndex,
     this.negativeFeedbackText,
   }) : super(
           type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
-          productId: productId,
+          productIds: productIds,
         );
 
   // Internal json staff
@@ -447,18 +423,15 @@ class AiutaAnalyticsHistoryEvent extends AiutaAnalyticsEvent {
   /// Id of the page.
   final AiutaAnalyticsPageId pageId;
 
-  /// Id of the product that the user interacts with.
-  final String productId;
-
   /// Creates a history event.
   AiutaAnalyticsHistoryEvent({
     required this.event,
     required this.pageId,
-    required this.productId,
+    required List<String> productIds,
   }) : super(
           type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
-          productId: productId,
+          productIds: productIds,
         );
 
   // Internal json staff
@@ -481,13 +454,13 @@ class AiutaAnalyticsShareEvent extends AiutaAnalyticsEvent {
   /// Creates a share event.
   AiutaAnalyticsShareEvent({
     required this.event,
+    required List<String> productIds,
     this.targetId,
     AiutaAnalyticsPageId? pageId,
-    String? productId,
   }) : super(
           type: AiutaAnalyticsEventType.share,
           pageId: pageId,
-          productId: productId,
+          productIds: productIds,
         );
 
   // Internal json staff
