@@ -8,11 +8,15 @@ import androidx.activity.result.contract.ActivityResultContracts.RequestMultiple
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
+import androidx.lifecycle.lifecycleScope
+import com.aiuta.fashionsdk.analytics.AiutaAnalytics
+import com.aiuta.fashionsdk.analytics.analytics
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.CONFIGURATION_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticHandler
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.handleDataActionKey
 import com.aiuta.flutter.fashionsdk.domain.listeners.flutterDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.flutterHandlers
@@ -32,6 +36,8 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 /** AiutaPlugin */
 class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOwner {
@@ -201,6 +207,11 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             flutterAiutaConfiguration = flutterAiutaConfiguration,
         )
 
+        // Start observing analytics
+        observeAnalytic(
+            aiutaAnalytic = AiutaHolder.getAiuta().analytics
+        )
+
         // Init Aiuta Configuration
         AiutaNativeConfigurationHolder.setNativeConfiguration(
             assetManager = activity.assets,
@@ -218,6 +229,12 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
         // Execute block
         block(configuration)
+    }
+
+    private fun observeAnalytic(aiutaAnalytic: AiutaAnalytics) {
+        aiutaAnalytic.analyticFlow
+            .onEach { event -> AiutaAnalyticHandler.sendAnalytic(event) }
+            .launchIn(lifecycleScope)
     }
 
     private companion object {

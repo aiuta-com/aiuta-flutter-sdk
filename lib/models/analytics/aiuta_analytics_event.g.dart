@@ -250,6 +250,7 @@ Map<String, dynamic> _$AiutaAnalyticsTryOnEventToJson(
     };
 
 const _$AiutaAnalyticsTryOnEventTypeEnumMap = {
+  AiutaAnalyticsTryOnEventType.initiated: 'initiated',
   AiutaAnalyticsTryOnEventType.photoUploaded: 'photoUploaded',
   AiutaAnalyticsTryOnEventType.tryOnStarted: 'tryOnStarted',
   AiutaAnalyticsTryOnEventType.tryOnFinished: 'tryOnFinished',

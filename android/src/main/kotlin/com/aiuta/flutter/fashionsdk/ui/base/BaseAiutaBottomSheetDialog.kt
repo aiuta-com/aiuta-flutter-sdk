@@ -49,7 +49,6 @@ abstract class BaseAiutaBottomSheetDialog(
     ActivityResultRegistryOwner {
 
     protected val aiuta by lazy { AiutaHolder.getAiuta() }
-    private val aiutaAnalytic by lazy { aiuta.analytics }
 
     // For launcher picker
     override val activityResultRegistry: ActivityResultRegistry =
@@ -135,7 +134,6 @@ abstract class BaseAiutaBottomSheetDialog(
 
         // Start observing
         observeActivityResult()
-        observeAnalytic()
         observeUIHandler()
     }
 
@@ -195,12 +193,6 @@ abstract class BaseAiutaBottomSheetDialog(
                     dismiss()
                 }
             }
-            .launchIn(lifecycleScope)
-    }
-
-    private fun observeAnalytic() {
-        aiutaAnalytic.analyticFlow
-            .onEach { event -> AiutaAnalyticHandler.sendAnalytic(event) }
             .launchIn(lifecycleScope)
     }
 }
