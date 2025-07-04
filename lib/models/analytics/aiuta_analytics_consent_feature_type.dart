@@ -1,5 +1,5 @@
 /// Consent type used in the SDK.
-enum AiutaAnalyticsConsentType {
+enum AiutaAnalyticsConsentFeatureType {
   /// Consent embedded into onboarding flow.
   embeddedIntoOnboarding,
 
