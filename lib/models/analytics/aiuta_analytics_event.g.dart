@@ -10,8 +10,9 @@ AiutaAnalyticsConfigureEvent _$AiutaAnalyticsConfigureEventFromJson(
         Map<String, dynamic> json) =>
     AiutaAnalyticsConfigureEvent(
       authType: $enumDecode(_$AiutaAnalyticsAuthTypeEnumMap, json['authType']),
-      consentType: $enumDecodeNullable(
-          _$AiutaAnalyticsConsentTypeEnumMap, json['consentType']),
+      consentFeatureType: $enumDecodeNullable(
+          _$AiutaAnalyticsConsentFeatureTypeEnumMap,
+          json['consentFeatureType']),
       welcomeScreenFeatureEnabled: json['welcomeScreenFeatureEnabled'] as bool,
       onboardingFeatureEnabled: json['onboardingFeatureEnabled'] as bool,
       onboardingBestResultsPageFeatureEnabled:
@@ -43,7 +44,8 @@ Map<String, dynamic> _$AiutaAnalyticsConfigureEventToJson(
         AiutaAnalyticsConfigureEvent instance) =>
     <String, dynamic>{
       'authType': _$AiutaAnalyticsAuthTypeEnumMap[instance.authType]!,
-      'consentType': _$AiutaAnalyticsConsentTypeEnumMap[instance.consentType],
+      'consentFeatureType': _$AiutaAnalyticsConsentFeatureTypeEnumMap[
+          instance.consentFeatureType],
       'welcomeScreenFeatureEnabled': instance.welcomeScreenFeatureEnabled,
       'onboardingFeatureEnabled': instance.onboardingFeatureEnabled,
       'onboardingBestResultsPageFeatureEnabled':
@@ -74,11 +76,12 @@ const _$AiutaAnalyticsAuthTypeEnumMap = {
   AiutaAnalyticsAuthType.jwt: 'jwt',
 };
 
-const _$AiutaAnalyticsConsentTypeEnumMap = {
-  AiutaAnalyticsConsentType.embeddedIntoOnboarding: 'embeddedIntoOnboarding',
-  AiutaAnalyticsConsentType.standaloneOnboardingPage:
+const _$AiutaAnalyticsConsentFeatureTypeEnumMap = {
+  AiutaAnalyticsConsentFeatureType.embeddedIntoOnboarding:
+      'embeddedIntoOnboarding',
+  AiutaAnalyticsConsentFeatureType.standaloneOnboardingPage:
       'standaloneOnboardingPage',
-  AiutaAnalyticsConsentType.standaloneImagePickerPage:
+  AiutaAnalyticsConsentFeatureType.standaloneImagePickerPage:
       'standaloneImagePickerPage',
 };
 
@@ -247,6 +250,7 @@ Map<String, dynamic> _$AiutaAnalyticsTryOnEventToJson(
     };
 
 const _$AiutaAnalyticsTryOnEventTypeEnumMap = {
+  AiutaAnalyticsTryOnEventType.initiated: 'initiated',
   AiutaAnalyticsTryOnEventType.photoUploaded: 'photoUploaded',
   AiutaAnalyticsTryOnEventType.tryOnStarted: 'tryOnStarted',
   AiutaAnalyticsTryOnEventType.tryOnFinished: 'tryOnFinished',

@@ -15,11 +15,9 @@ import kotlinx.coroutines.flow.onEach
 abstract class BaseAiutaActivity : ComponentActivity() {
 
     protected val aiuta by lazy { AiutaHolder.getAiuta() }
-    private val aiutaAnalytic by lazy { aiuta.analytics }
 
     init {
         // Start observing
-        observeAnalytic()
         observeUIHandler()
     }
 
@@ -40,12 +38,6 @@ abstract class BaseAiutaActivity : ComponentActivity() {
                     finish()
                 }
             }
-            .launchIn(lifecycleScope)
-    }
-
-    private fun observeAnalytic() {
-        aiutaAnalytic.analyticFlow
-            .onEach { event -> AiutaAnalyticHandler.sendAnalytic(event) }
             .launchIn(lifecycleScope)
     }
 }

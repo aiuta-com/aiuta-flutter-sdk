@@ -1,5 +1,5 @@
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_auth_type.dart';
-import 'package:aiuta_flutter/models/analytics/aiuta_analytics_consent_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_consent_feature_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_flow_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_onboarding_event_type.dart';
@@ -76,7 +76,7 @@ class AiutaAnalyticsConfigureEvent extends AiutaAnalyticsEvent {
   final AiutaAnalyticsAuthType authType;
 
   /// Type of consent flow used in the SDK.
-  final AiutaAnalyticsConsentType? consentType;
+  final AiutaAnalyticsConsentFeatureType? consentFeatureType;
 
   /// Whether welcome screen feature is enabled.
   final bool welcomeScreenFeatureEnabled;
@@ -126,7 +126,7 @@ class AiutaAnalyticsConfigureEvent extends AiutaAnalyticsEvent {
   /// Creates a configure event.
   AiutaAnalyticsConfigureEvent({
     required this.authType,
-    this.consentType,
+    this.consentFeatureType,
     required this.welcomeScreenFeatureEnabled,
     required this.onboardingFeatureEnabled,
     required this.onboardingBestResultsPageFeatureEnabled,
