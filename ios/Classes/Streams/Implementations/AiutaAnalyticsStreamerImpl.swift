@@ -17,7 +17,7 @@ import Flutter
 
 final class AiutaAnalyticsStreamerImpl: AiutaStreamHandlerImpl, AiutaAnalyticsStreamer {
     init(with messenger: FlutterBinaryMessenger) {
-        super.init(with: messenger, name: "aiutaAnalyticHandler")
+        super.init(with: messenger, name: "aiutaAnalyticsHandler")
     }
 
     func eventOccurred(_ event: Aiuta.Event) {

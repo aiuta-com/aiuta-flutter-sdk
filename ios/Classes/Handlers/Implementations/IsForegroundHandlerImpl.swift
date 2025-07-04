@@ -18,7 +18,14 @@ import Flutter
 final class IsForegroundHandlerImpl: AiutaCallHandler {
     let method = "isForeground"
 
-    var result: Any? { Aiuta.isForeground }
+    @MainActor
+    var result: Any? {
+        if #available(iOS 13.0.0, *) {
+            return Aiuta.isForeground
+        } else {
+            return false
+        }
+    }
 
     func handle(_ call: FlutterMethodCall) throws {}
 }

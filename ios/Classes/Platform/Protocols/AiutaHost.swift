@@ -15,17 +15,33 @@
 import AiutaSdk
 
 protocol AiutaHost {
-    var delegate: AiutaSdkDelegate { get }
+    @available(iOS 13.0.0, *)
+    var jwtProvider: Aiuta.Auth.JwtProvider { get }
 
     @available(iOS 13.0.0, *)
-    var controller: AiutaDataController { get }
-
-    var dataProvider: AiutaDataProvider { get }
+    var handlers: AiutaHandlers { get }
 
     @available(iOS 13.0.0, *)
-    var jwtProvider: AiutaJwtProvider { get }
+    var dataProviders: AiutaDataProviders { get }
 
     var jwtResult: AiutaCompleter<String>? { get }
-    
+    var isOnboardingCompleted: Bool { get set }
+    var obtainedConsentsIds: Aiuta.Observable<[String]> { get set }
+    var uploaded: Aiuta.Observable<[Aiuta.Image.Input]> { get set }
+    var generated: Aiuta.Observable<[Aiuta.Image.Generated]> { get set }
+    var wishlistProductIds: Aiuta.Observable<[String]> { get set }
+
     func handle(error: AiutaPlugin.FlutterError)
 }
+
+typealias AiutaDataProviders =
+    Aiuta.Configuration.Features.Onboarding.DataProvider &
+    Aiuta.Configuration.Features.Consent.Standalone.DataProvider &
+    Aiuta.Configuration.Features.ImagePicker.UploadsHistory.DataProvider &
+    Aiuta.Configuration.Features.TryOn.GenerationsHistory.DataProvider &
+    Aiuta.Configuration.Features.Wishlist.DataProvider &
+    Aiuta.Configuration.Features.Share.AdditionalTextProvider.DataProvider
+
+typealias AiutaHandlers =
+    Aiuta.Configuration.Features.TryOn.Cart.Handler &
+    Aiuta.Analytics.Handler

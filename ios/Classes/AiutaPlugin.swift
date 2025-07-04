@@ -14,11 +14,11 @@
 
 import Flutter
 
-public class AiutaPlugin: NSObject, FlutterPlugin {
+public final class AiutaPlugin: NSObject {
     let methodChannelName = "aiutasdk"
-    let compatibleSdkVersion = "3.4.3"
+    let compatibleSdkVersion = "4.2.1"
     let channel: FlutterMethodChannel
-    let basket: AiutaBasket
+
     let host: AiutaHost
     let handlers: [AiutaCallHandler]
     let streamers: [AiutaStreamHandler]
@@ -29,10 +29,8 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
             binaryMessenger: messenger
         )
 
-        basket = AiutaBasketImpl()
-
         streamers = [
-            AiutaActionsStreamerImpl(with: messenger, basket: basket),
+            AiutaActionsStreamerImpl(with: messenger),
             AiutaDataActionsStreamerImpl(with: messenger),
             AiutaAnalyticsStreamerImpl(with: messenger),
             AiutaJwtStreamerImpl(with: messenger),
@@ -44,15 +42,22 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
             TestAvailabilityHandlerImpl(with: compatibleSdkVersion),
             IsForegroundHandlerImpl(),
             ConfigureHandlerImpl(with: host),
-            StartAiutaFlowHandlerImpl(with: host, basket: basket),
+            StartAiutaFlowHandlerImpl(with: host),
             StartHistoryFlowHandlerImpl(with: host),
             ResolveJwtAuthHandlerImpl(with: host),
             ErrorHandlerImpl(with: host),
-            UpdateUserConsentHandlerImpl(with: host.dataProvider),
-            UpdateUploadedImagesHandlerImpl(with: host.dataProvider),
-            UpdateGeneratedImagesHandlerImpl(with: host.dataProvider),
-            UpdateActiveAiutaProductHandlerImpl(with: host.dataProvider, basket: basket),
+            UpdateUserConsentHandlerImpl(with: host),
+            UpdateUploadedImagesHandlerImpl(with: host),
+            UpdateGeneratedImagesHandlerImpl(with: host),
+            UpdateActiveAiutaProductHandlerImpl(with: host),
         ]
+    }
+}
+
+extension AiutaPlugin: FlutterPlugin {
+    public static func register(with registrar: FlutterPluginRegistrar) {
+        let plugin = AiutaPlugin(with: registrar.messenger())
+        registrar.addMethodCallDelegate(plugin, channel: plugin.channel)
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -66,12 +71,5 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
     public func detachFromEngine(for registrar: FlutterPluginRegistrar) {
         streamers.forEach { $0.onDetach() }
         channel.setMethodCallHandler(nil)
-    }
-}
-
-extension AiutaPlugin {
-    public static func register(with registrar: FlutterPluginRegistrar) {
-        let plugin = AiutaPlugin(with: registrar.messenger())
-        registrar.addMethodCallDelegate(plugin, channel: plugin.channel)
     }
 }

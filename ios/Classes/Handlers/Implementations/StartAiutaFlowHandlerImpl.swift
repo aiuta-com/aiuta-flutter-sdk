@@ -15,32 +15,20 @@
 import AiutaSdk
 import Flutter
 
-final class StartAiutaFlowHandlerImpl: AiutaViewFinder, AiutaCallHandler {
+final class StartAiutaFlowHandlerImpl: AiutaCallHandler {
     let method = "startAiutaFlow"
-    let basket: AiutaBasket
+    let key = "product"
     let host: AiutaHost
 
-    init(with host: AiutaHost, basket: AiutaBasket) {
-        self.basket = basket
+    init(with host: AiutaHost) {
         self.host = host
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        guard #available(iOS 13.0.0, *) else { throw AiutaPlugin.WrapperError.unsupportedPlatform }
-        guard let currentViewController else { throw AiutaPlugin.WrapperError.invalidViewState }
-        let product: AiutaPlugin.Product = try call.decodeArgument(AiutaPlugin.Product.key)
-
-        basket.removeAll()
-        basket.putProduct(product)
-        host.dataProvider.setProduct(
-            product.buildProduct(),
-            isInWishlist: product.inWishlist
-        )
-
-        Aiuta.tryOn(
-            sku: product.buildProduct(),
-            in: currentViewController,
-            delegate: host.delegate
-        )
+        guard #available(iOS 13.0.0, *) else {
+            throw AiutaPlugin.WrapperError.unsupportedPlatform
+        }
+        let product: Aiuta.Product = try call.decodeArgument(key)
+        Task { await Aiuta.tryOn(product: product) }
     }
 }

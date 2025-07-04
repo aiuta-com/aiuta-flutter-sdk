@@ -18,12 +18,12 @@ extension AiutaPlugin {
     enum Actions {
         struct AddToCartAction: Encodable {
             let type: Method = .addToCartClick
-            let product: Product
+            let productId: String
         }
 
         struct AddToWishlistAction: Encodable {
             let type: Method = .addToWishlistClick
-            let product: Product
+            let productId: String
         }
 
         struct RequestJwtAction: Encodable {
@@ -33,33 +33,32 @@ extension AiutaPlugin {
 
         struct ObtainUserConsentAction: Encodable {
             let type: Method = .obtainUserConsent
-            let supplementaryConsents: [Aiuta.Consent]
+            let consentIds: [String]
         }
 
         struct AddUploadedImagesAction: Encodable {
             let type: Method = .addUploadedImages
-            let uploadedImages: [Aiuta.Image]
+            let uploadedImages: [Aiuta.Image.Input]
         }
 
         struct DeleteUploadedImagesAction: Encodable {
             let type: Method = .deleteUploadedImages
-            let uploadedImages: [Aiuta.Image]
+            let uploadedImages: [Aiuta.Image.Input]
         }
 
         struct SelectUploadedImageAction: Encodable {
             let type: Method = .selectUploadedImage
-            let uploadedImage: Aiuta.Image
+            let uploadedImage: Aiuta.Image.Input
         }
 
         struct AddGeneratedImagesAction: Encodable {
             let type: Method = .addGeneratedImages
-            let productId: String
-            let generatedImages: [Aiuta.Image]
+            let generatedImages: [Aiuta.Image.Generated]
         }
 
         struct DeleteGeneratedImagesAction: Encodable {
             let type: Method = .deleteGeneratedImages
-            let generatedImages: [Aiuta.Image]
+            let generatedImages: [Aiuta.Image.Generated]
         }
     }
 }
@@ -70,6 +69,6 @@ extension AiutaPlugin.Actions {
              obtainUserConsent,
              addUploadedImages, deleteUploadedImages, selectUploadedImage,
              addGeneratedImages, deleteGeneratedImages,
-             requestJwt = "requestJWT"
+             requestJwt
     }
 }
