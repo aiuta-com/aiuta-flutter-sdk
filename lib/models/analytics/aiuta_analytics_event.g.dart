@@ -30,8 +30,6 @@ AiutaAnalyticsConfigureEvent _$AiutaAnalyticsConfigureEventFromJson(
           json['tryOnFeedbackOtherFeatureEnabled'] as bool,
       tryOnGenerationsHistoryFeatureEnabled:
           json['tryOnGenerationsHistoryFeatureEnabled'] as bool,
-      tryOnMultiItemFeatureEnabled:
-          json['tryOnMultiItemFeatureEnabled'] as bool,
       tryOnWithOtherPhotoFeatureEnabled:
           json['tryOnWithOtherPhotoFeatureEnabled'] as bool,
       shareFeatureEnabled: json['shareFeatureEnabled'] as bool,
@@ -63,7 +61,6 @@ Map<String, dynamic> _$AiutaAnalyticsConfigureEventToJson(
           instance.tryOnFeedbackOtherFeatureEnabled,
       'tryOnGenerationsHistoryFeatureEnabled':
           instance.tryOnGenerationsHistoryFeatureEnabled,
-      'tryOnMultiItemFeatureEnabled': instance.tryOnMultiItemFeatureEnabled,
       'tryOnWithOtherPhotoFeatureEnabled':
           instance.tryOnWithOtherPhotoFeatureEnabled,
       'shareFeatureEnabled': instance.shareFeatureEnabled,

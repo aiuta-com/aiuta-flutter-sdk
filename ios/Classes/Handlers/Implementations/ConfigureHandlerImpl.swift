@@ -15,8 +15,9 @@
 import AiutaSdk
 import Flutter
 
-final class ConfigureHandlerImpl: AiutaViewFinder, AiutaCallHandler {
+final class ConfigureHandlerImpl: AiutaCallHandler {
     let method = "configure"
+    let key = "configuration"
     let host: AiutaHost
 
     init(with host: AiutaHost) {
@@ -24,20 +25,11 @@ final class ConfigureHandlerImpl: AiutaViewFinder, AiutaCallHandler {
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        guard #available(iOS 13.0.0, *) else { throw AiutaPlugin.WrapperError.unsupportedPlatform }
-        guard currentViewController != nil else { throw AiutaPlugin.WrapperError.invalidViewState }
-        let configuration: AiutaPlugin.Configuration = try call.decodeArgument(AiutaPlugin.Configuration.key)
-
-        Aiuta.setup(
-            auth: try configuration.buildAuth(host.jwtProvider),
-            configuration: configuration.buildConfiguration(),
-            controller: configuration.dataProvider != nil ? host.controller : nil
-        )
-
-        if let dataProvider = configuration.dataProvider {
-            host.dataProvider.isUserConsentObtained = dataProvider.isUserConsentObtained
-            host.dataProvider.uploadedImages = dataProvider.uploadedImages
-            host.dataProvider.generatedImages = dataProvider.generatedImages
+        guard #available(iOS 13.0.0, *) else {
+            throw AiutaPlugin.WrapperError.unsupportedPlatform
         }
+        let dto: AiutaPlugin.Configuration = try call.decodeArgument(key)
+        let configuration = dto.buildConfiguration(with: host)
+        Task { @MainActor in Aiuta.setup(configuration: configuration) }
     }
 }

@@ -12,10 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
+import AiutaSdk
+import Flutter
 
-protocol AiutaBasket {
-    func putProduct(_ product: AiutaPlugin.Product)
-    func getProduct(_ skuId: String) -> AiutaPlugin.Product?
-    func removeAll()
+final class UpdateWishlistHandlerImpl: AiutaCallHandler {
+    let method = "updateWishlistProductIds"
+    let argument = "wishlistProductIds"
+    var host: AiutaHost
+
+    init(with host: AiutaHost) {
+        self.host = host
+    }
+
+    func handle(_ call: FlutterMethodCall) throws {
+        host.wishlistProductIds.value = try call.decodeArgument(argument)
+    }
 }

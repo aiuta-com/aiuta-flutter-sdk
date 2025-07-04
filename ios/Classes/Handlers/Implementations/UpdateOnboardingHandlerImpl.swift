@@ -12,8 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
+import AiutaSdk
+import Flutter
 
-protocol AiutaViewFinder {
-    var currentViewController: UIViewController? { get }
+final class UpdateOnboardingHandlerImpl: AiutaCallHandler {
+    let method = "updateIsOnboardingCompleted"
+    let argument = "isOnboardingCompleted"
+    var host: AiutaHost
+
+    init(with host: AiutaHost) {
+        self.host = host
+    }
+
+    func handle(_ call: FlutterMethodCall) throws {
+        host.isOnboardingCompleted = try call.decodeArgument(argument)
+    }
 }

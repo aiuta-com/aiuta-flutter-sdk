@@ -16,7 +16,7 @@ import Flutter
 
 final class AiutaJwtStreamerImpl: AiutaStreamHandlerImpl, AiutaJwtStreamer {
     init(with messenger: FlutterBinaryMessenger) {
-        super.init(with: messenger, name: "aiutaJWTAuthHandler")
+        super.init(with: messenger, name: "aiutaAuthActionsHandler")
     }
 
     func requestJwt(_ params: String) {

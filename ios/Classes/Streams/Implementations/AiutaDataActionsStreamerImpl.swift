@@ -20,27 +20,35 @@ final class AiutaDataActionsStreamerImpl: AiutaStreamHandlerImpl, AiutaDataActio
         super.init(with: messenger, name: "aiutaDataActionsHandler")
     }
 
-    func obtainUserConsent(_ supplementary: [AiutaSdk.Aiuta.Consent]) {
-        send(AiutaPlugin.Actions.ObtainUserConsentAction(supplementaryConsents: supplementary))
+    func completeOnboarding() {
+        send(AiutaPlugin.Actions.CompleteOnboardingAction())
     }
 
-    func addUploadedImages(_ images: [Aiuta.Image]) {
+    func obtainUserConsent(_ consentIds: [String]) {
+        send(AiutaPlugin.Actions.ObtainUserConsentAction(consentIds: consentIds))
+    }
+
+    func addUploadedImages(_ images: [Aiuta.Image.Input]) {
         send(AiutaPlugin.Actions.AddUploadedImagesAction(uploadedImages: images))
     }
 
-    func deleteUploadedImages(_ images: [Aiuta.Image]) {
+    func deleteUploadedImages(_ images: [Aiuta.Image.Input]) {
         send(AiutaPlugin.Actions.DeleteUploadedImagesAction(uploadedImages: images))
     }
 
-    func selectUploadedImage(_ image: Aiuta.Image) {
+    func selectUploadedImage(_ image: Aiuta.Image.Input) {
         send(AiutaPlugin.Actions.SelectUploadedImageAction(uploadedImage: image))
     }
 
-    func addGeneratedImages(_ images: [Aiuta.Image], for productId: String) {
-        send(AiutaPlugin.Actions.AddGeneratedImagesAction(productId: productId, generatedImages: images))
+    func addGeneratedImages(_ images: [Aiuta.Image.Generated]) {
+        send(AiutaPlugin.Actions.AddGeneratedImagesAction(generatedImages: images))
     }
 
-    func deleteGeneratedImages(_ images: [Aiuta.Image]) {
+    func deleteGeneratedImages(_ images: [Aiuta.Image.Generated]) {
         send(AiutaPlugin.Actions.DeleteGeneratedImagesAction(generatedImages: images))
+    }
+
+    func getShareText(_ productIds: [String]) {
+        send(AiutaPlugin.Actions.GetShareTextAction(productIds: productIds))
     }
 }

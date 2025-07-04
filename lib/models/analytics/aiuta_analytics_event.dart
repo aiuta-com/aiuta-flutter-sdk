@@ -108,9 +108,6 @@ class AiutaAnalyticsConfigureEvent extends AiutaAnalyticsEvent {
   /// Whether try-on generations history feature is enabled.
   final bool tryOnGenerationsHistoryFeatureEnabled;
 
-  /// Whether try-on multi item feature is enabled.
-  final bool tryOnMultiItemFeatureEnabled;
-
   /// Whether try-on with other photo feature is enabled.
   final bool tryOnWithOtherPhotoFeatureEnabled;
 
@@ -137,7 +134,6 @@ class AiutaAnalyticsConfigureEvent extends AiutaAnalyticsEvent {
     required this.tryOnFeedbackFeatureEnabled,
     required this.tryOnFeedbackOtherFeatureEnabled,
     required this.tryOnGenerationsHistoryFeatureEnabled,
-    required this.tryOnMultiItemFeatureEnabled,
     required this.tryOnWithOtherPhotoFeatureEnabled,
     required this.shareFeatureEnabled,
     required this.shareWatermarkFeatureEnabled,

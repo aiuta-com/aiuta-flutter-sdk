@@ -15,16 +15,16 @@
 import AiutaSdk
 import Flutter
 
-final class UpdateUserConsentHandlerImpl: AiutaCallHandler {
-    let method = "updateUserConsent"
-    let consentKey = "isUserConsentObtained"
-    let dataProvider: AiutaDataProvider
+final class NotifyActionSuccessHandlerImpl: AiutaCallHandler {
+    let method = "notifyDataActionSucceeded"
+    let key = "success"
+    let host: AiutaHost
 
-    init(with dataProvider: AiutaDataProvider) {
-        self.dataProvider = dataProvider
+    init(with host: AiutaHost) {
+        self.host = host
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        dataProvider.isUserConsentObtained = try call.getArgument(consentKey)
+        host.handle(success: try call.decodeArgument(key))
     }
 }

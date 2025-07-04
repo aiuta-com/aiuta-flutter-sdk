@@ -34,7 +34,10 @@ final class AiutaCompleter<T> {
         }
     }
 
+    var id: String
+
     init(timeout: AsyncDelayTime = .oneMinute) {
+        id = UUID().uuidString
         delay(timeout) { [weak self] in
             self?.failure(ErrorType.timedOut)
         }

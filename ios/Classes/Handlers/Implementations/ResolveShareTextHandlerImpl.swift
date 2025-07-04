@@ -15,8 +15,9 @@
 import AiutaSdk
 import Flutter
 
-final class ErrorHandlerImpl: AiutaCallHandler {
-    let method = "notifyAboutError"
+final class ResolveShareTextHandlerImpl: AiutaCallHandler {
+    let method = "resolveShareText"
+    let argument = "text"
     let host: AiutaHost
 
     init(with host: AiutaHost) {
@@ -24,6 +25,11 @@ final class ErrorHandlerImpl: AiutaCallHandler {
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        host.handle(error: try call.decodeArgument(AiutaPlugin.FlutterError.key))
+        do {
+            let text: String = try call.getArgument(argument)
+            host.shareTextResult?.success(text)
+        } catch {
+            host.shareTextResult?.failure(error)
+        }
     }
 }

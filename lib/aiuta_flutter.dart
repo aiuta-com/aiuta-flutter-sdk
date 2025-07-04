@@ -30,7 +30,7 @@ class Aiuta {
   /// this will always completes with false if the iOS version is lower than 13.0.
   ///
   /// On Android this future will always completes with true
-  /// as it can be compiled with unsupported toolchains.
+  /// as it can not be compiled with unsupported toolchains.
   ///
   /// Other platforms will return false.
   ///
