@@ -1,5 +1,8 @@
 /// This represents the type of event that is sent when a user waits for the try-on process to finish.
 enum AiutaAnalyticsTryOnEventType {
+  /// Start processing photo
+  initiated,
+
   /// Chosen photo is uploaded to the server.
   /// May be omitted if the photo selected by the user was previously uploaded.
   photoUploaded,
