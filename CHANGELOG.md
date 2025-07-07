@@ -1,5 +1,10 @@
-# 1.0.21 - In progress
+# 4.2.0 - In progress
 
+* New configuration system
+* Extended analytics
+* Generation history with product ids
+* New consent management system
+* Predefined try-on models
 
 # 1.0.20
 

@@ -31,7 +31,7 @@ class AiutaUserInterfaceConfiguration {
   /// Creates a built-in user interface configuration with default settings.
   factory AiutaUserInterfaceConfiguration.builtIn() {
     return AiutaUserInterfaceConfiguration(
-      presentationStyle: AiutaPresentationStyle.fullScreen,
+      presentationStyle: AiutaPresentationStyle.pageSheet,
       swipeToDismiss: AiutaSwipeToDismissPolicy.protectTheNecessaryPages,
       theme: AiutaTheme.builtIn(),
     );

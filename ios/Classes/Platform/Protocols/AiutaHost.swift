@@ -15,17 +15,24 @@
 import AiutaSdk
 
 protocol AiutaHost {
-    var delegate: AiutaSdkDelegate { get }
+    @available(iOS 13.0.0, *)
+    var jwtProvider: Aiuta.Auth.JwtProvider { get }
 
     @available(iOS 13.0.0, *)
-    var controller: AiutaDataController { get }
-
-    var dataProvider: AiutaDataProvider { get }
+    var handlers: Aiuta.Configuration.Handlers { get }
 
     @available(iOS 13.0.0, *)
-    var jwtProvider: AiutaJwtProvider { get }
+    var dataProviders: Aiuta.Configuration.DataProviders { get }
 
     var jwtResult: AiutaCompleter<String>? { get }
+    var shareTextResult: AiutaCompleter<String>? { get }
     
-    func handle(error: AiutaPlugin.FlutterError)
+    var isOnboardingCompleted: Bool { get set }
+    var obtainedConsentsIds: Aiuta.Observable<[String]> { get set }
+    var uploaded: Aiuta.Observable<[Aiuta.Image.Input]> { get set }
+    var generated: Aiuta.Observable<[Aiuta.Image.Generated]> { get set }
+    var wishlistProductIds: Aiuta.Observable<[String]> { get set }
+
+    func handle(success: AiutaPlugin.Actions.Notification)
+    func handle(error: AiutaPlugin.Actions.Notification)
 }

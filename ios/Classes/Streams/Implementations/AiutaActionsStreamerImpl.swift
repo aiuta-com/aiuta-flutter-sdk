@@ -15,20 +15,15 @@
 import Flutter
 
 final class AiutaActionsStreamerImpl: AiutaStreamHandlerImpl, AiutaActionsStreamer {
-    let basket: AiutaBasket
-
-    init(with messenger: FlutterBinaryMessenger, basket: AiutaBasket) {
-        self.basket = basket
+    init(with messenger: FlutterBinaryMessenger) {
         super.init(with: messenger, name: "aiutaActionsHandler")
     }
 
-    func addToCart(_ skuId: String) {
-        guard let product = basket.getProduct(skuId) else { return }
-        send(AiutaPlugin.Actions.AddToCartAction(product: product))
+    func addToCart(productId: String) {
+        send(AiutaPlugin.Actions.AddToCartAction(productId: productId))
     }
 
-    func addToWishlist(_ skuId: String) {
-        guard let product = basket.getProduct(skuId) else { return }
-        send(AiutaPlugin.Actions.AddToWishlistAction(product: product))
+    func set(productId: String, isInWishlist: Bool) {
+        send(AiutaPlugin.Actions.SetInWishlistAction(productId: productId, isInWishlist: isInWishlist))
     }
 }

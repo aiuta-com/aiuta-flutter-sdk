@@ -32,8 +32,8 @@ class _MyAppState extends State<MyApp> {
       analytics: AiutaAnalytics(
         handler: AiutaAnalyticsHandler(
           onAnalyticsEvent: (event) {
-            // Handle analytics events
-            debugPrint("Analytics event: ${event.toJson()}");
+            // Handle analytics event
+            debugPrint("$event: ${event.toJson()}");
           },
         ),
       ),

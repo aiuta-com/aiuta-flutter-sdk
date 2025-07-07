@@ -18,13 +18,13 @@ import Flutter
 final class UpdateGeneratedImagesHandlerImpl: AiutaCallHandler {
     let method = "updateGeneratedImages"
     let argument = "generatedImages"
-    let dataProvider: AiutaDataProvider
+    var host: AiutaHost
 
-    init(with dataProvider: AiutaDataProvider) {
-        self.dataProvider = dataProvider
+    init(with host: AiutaHost) {
+        self.host = host
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        dataProvider.generatedImages = try call.decodeArgument(argument)
+        host.generated.value = try call.decodeArgument(argument)
     }
 }

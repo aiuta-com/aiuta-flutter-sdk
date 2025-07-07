@@ -12,16 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
+import AiutaSdk
+import Flutter
 
-extension AiutaViewFinder {
-    var currentViewController: UIViewController? {
-        if var topController = UIApplication.shared.keyWindow?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
-            }
-            return topController
+final class CheckAvailabilityHandlerImpl: AiutaCallHandler {
+    let method = "testAvailability"
+    let compatibleSdkVersion: String
+
+    init(with compatibleSdkVersion: String) {
+        self.compatibleSdkVersion = compatibleSdkVersion
+    }
+
+    func handle(_ call: FlutterMethodCall) throws {
+        guard Aiuta.sdkVersion == compatibleSdkVersion else {
+            throw AiutaPlugin.WrapperError.invalidSdkVersion(compatibleSdkVersion, Aiuta.sdkVersion)
         }
-        return nil
+        guard #available(iOS 13.0.0, *) else { throw AiutaPlugin.WrapperError.unsupportedPlatform }
     }
 }

@@ -15,19 +15,16 @@
 import AiutaSdk
 import Flutter
 
-final class TestAvailabilityHandlerImpl: AiutaViewFinder, AiutaCallHandler {
-    let method = "testAvailability"
-    let compatibleSdkVersion: String
+final class NotifyActionErrorHandlerImpl: AiutaCallHandler {
+    let method = "notifyDataActionErrorThrown"
+    let key = "error"
+    let host: AiutaHost
 
-    init(with compatibleSdkVersion: String) {
-        self.compatibleSdkVersion = compatibleSdkVersion
+    init(with host: AiutaHost) {
+        self.host = host
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        guard Aiuta.sdkVersion == compatibleSdkVersion else {
-            throw AiutaPlugin.WrapperError.invalidSdkVersion(compatibleSdkVersion, Aiuta.sdkVersion)
-        }
-        guard #available(iOS 13.0.0, *) else { throw AiutaPlugin.WrapperError.unsupportedPlatform }
-        guard currentViewController != nil else { throw AiutaPlugin.WrapperError.invalidViewState }
+        host.handle(error: try call.decodeArgument(key))
     }
 }

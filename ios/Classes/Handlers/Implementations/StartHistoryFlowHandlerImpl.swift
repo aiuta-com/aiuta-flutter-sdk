@@ -15,7 +15,7 @@
 import AiutaSdk
 import Flutter
 
-final class StartHistoryFlowHandlerImpl: AiutaViewFinder, AiutaCallHandler {
+final class StartHistoryFlowHandlerImpl: AiutaCallHandler {
     let method = "startHistoryFlow"
     let host: AiutaHost
 
@@ -25,11 +25,6 @@ final class StartHistoryFlowHandlerImpl: AiutaViewFinder, AiutaCallHandler {
 
     func handle(_ call: FlutterMethodCall) throws {
         guard #available(iOS 13.0.0, *) else { throw AiutaPlugin.WrapperError.unsupportedPlatform }
-        guard let currentViewController else { throw AiutaPlugin.WrapperError.invalidViewState }
-
-        Aiuta.showHistory(
-            in: currentViewController,
-            delegate: host.delegate
-        )
+        Task { await Aiuta.showHistory() }
     }
 }

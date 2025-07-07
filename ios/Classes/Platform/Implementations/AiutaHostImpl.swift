@@ -15,24 +15,32 @@
 import AiutaSdk
 
 final class AiutaHostImpl: AiutaHost {
-    var delegate: AiutaSdkDelegate { self }
-
     @available(iOS 13.0.0, *)
-    var controller: AiutaDataController { self }
-
-    var dataProvider: AiutaDataProvider { self }
-
-    @available(iOS 13.0.0, *)
-    var jwtProvider: AiutaJwtProvider { self }
+    var jwtProvider: Aiuta.Auth.JwtProvider { self }
 
     var jwtResult: AiutaCompleter<String>? {
         didSet { oldValue?.cancel() }
     }
 
+    var shareTextResult: AiutaCompleter<String>? {
+        didSet { oldValue?.cancel() }
+    }
+
+    @available(iOS 13.0.0, *)
+    var handlers: Aiuta.Configuration.Handlers { self }
+
+    @available(iOS 13.0.0, *)
+    var dataProviders: Aiuta.Configuration.DataProviders { self }
+
+    var isOnboardingCompleted = false
+    var obtainedConsentsIds = Aiuta.Observable<[String]>([])
+    var uploaded = Aiuta.Observable<[Aiuta.Image.Input]>([])
+    var generated = Aiuta.Observable<[Aiuta.Image.Generated]>([])
+    var wishlistProductIds = Aiuta.Observable<[String]>([])
+
     var deleteUploadedResults = [AiutaCompleter<Void>]()
     var deleteGeneratedResults = [AiutaCompleter<Void>]()
 
-    private var sdkDataProvider: AiutaDataProvider?
     private let jwtStreamer: AiutaJwtStreamer?
     private let actionsStreamer: AiutaActionsStreamer?
     private let dataActionsStreamer: AiutaDataActionsStreamer?
@@ -45,19 +53,31 @@ final class AiutaHostImpl: AiutaHost {
         dataActionsStreamer = streamers.getHandler()
     }
 
-    func handle(error: AiutaPlugin.FlutterError) {
-        switch error.errorType {
-            case .failedDeleteUploadedImages:
+    func handle(success: AiutaPlugin.Actions.Notification) {
+        switch success.type {
+            case .deleteUploadedImages:
+                deleteUploadedResults.popLast()?.success()
+            case .deleteGeneratedImages:
+                deleteGeneratedResults.popLast()?.success()
+            default: break
+        }
+    }
+
+    func handle(error: AiutaPlugin.Actions.Notification) {
+        switch error.type {
+            case .deleteUploadedImages:
                 deleteUploadedResults.popLast()?.failure(error)
-            case .failedDeleteGeneratedImages:
+            case .deleteGeneratedImages:
                 deleteGeneratedResults.popLast()?.failure(error)
+            default: break
         }
     }
 }
 
 @available(iOS 13.0.0, *)
-extension AiutaHostImpl: AiutaJwtProvider {
-    @MainActor public func getJwt(requestParams params: [String: String]) async throws -> String {
+@MainActor
+extension AiutaHostImpl: Aiuta.Auth.JwtProvider {
+    public func getJwt(requestParams params: [String: String]) async throws -> String {
         guard let data = try? JSONEncoder().encode(params),
               let request = String(data: data, encoding: .utf8) else {
             throw AiutaCompleter<String>.ErrorType.failed
@@ -69,82 +89,62 @@ extension AiutaHostImpl: AiutaJwtProvider {
     }
 }
 
-extension AiutaHostImpl: AiutaSdkDelegate {
-    public func aiuta(addToWishlist skuId: String) {
-        actionsStreamer?.addToWishlist(skuId)
+@available(iOS 13.0.0, *)
+@MainActor extension AiutaHostImpl: Aiuta.Configuration.Handlers {
+    func addToCart(productId: String) async {
+        actionsStreamer?.addToCart(productId: productId)
     }
 
-    public func aiuta(addToCart skuId: String) {
-        actionsStreamer?.addToCart(skuId)
-    }
-
-    public func aiuta(showSku skuId: String) {}
-
-    public func aiuta(eventOccurred event: Aiuta.Event) {
+    func onAnalyticsEvent(_ event: AiutaSdk.Aiuta.Event) async {
         analyticsStreamer?.eventOccurred(event)
     }
 }
 
 @available(iOS 13.0.0, *)
-extension AiutaHostImpl: AiutaDataController {
-    func setData(provider: AiutaDataProvider) {
-        sdkDataProvider = provider
+@MainActor extension AiutaHostImpl: Aiuta.Configuration.DataProviders {
+    func completeOnboarding() async {
+        dataActionsStreamer?.completeOnboarding()
     }
 
-    @MainActor func obtainUserConsent(supplementary: [AiutaSdk.Aiuta.Consent]) async throws {
-        dataActionsStreamer?.obtainUserConsent(supplementary)
+    func obtain(consentsIds: [String]) async {
+        dataActionsStreamer?.obtainUserConsent(consentsIds)
     }
 
-    @MainActor func addUploaded(images: [Aiuta.Image]) async throws {
+    func add(uploaded images: [Aiuta.Image.Input]) async throws {
         dataActionsStreamer?.addUploadedImages(images)
     }
 
-    @MainActor func selectUploaded(image: Aiuta.Image) async throws {
+    func select(uploaded image: Aiuta.Image.Input) async throws {
         dataActionsStreamer?.selectUploadedImage(image)
     }
 
-    @MainActor func deleteUploaded(images: [Aiuta.Image]) async throws {
+    func delete(uploaded images: [Aiuta.Image.Input]) async throws {
         let completer = AiutaCompleter<Void>()
         deleteUploadedResults.insert(completer, at: 0)
         dataActionsStreamer?.deleteUploadedImages(images)
         try await completer.result
     }
 
-    @MainActor func addGenerated(images: [Aiuta.Image], for productId: String) async throws {
-        dataActionsStreamer?.addGeneratedImages(images, for: productId)
+    func add(generated images: [Aiuta.Image.Generated]) async throws {
+        dataActionsStreamer?.addGeneratedImages(images)
     }
 
-    @MainActor func deleteGenerated(images: [Aiuta.Image]) async throws {
+    func delete(generated images: [Aiuta.Image.Generated]) async throws {
         let completer = AiutaCompleter<Void>()
         deleteGeneratedResults.insert(completer, at: 0)
         dataActionsStreamer?.deleteGeneratedImages(images)
         try await completer.result
     }
-}
 
-extension AiutaHostImpl: AiutaDataProvider {
-    var isUserConsentObtained: Bool {
-        get { sdkDataProvider?.isUserConsentObtained ?? false }
-        set { sdkDataProvider?.isUserConsentObtained = newValue }
+    func setProductInWishlist(productId: String, inWishlist: Bool) async {
+        actionsStreamer?.set(productId: productId, isInWishlist: inWishlist)
     }
 
-    var uploadedImages: [Aiuta.Image] {
-        get { sdkDataProvider?.uploadedImages ?? [] }
-        set {
-            deleteUploadedResults.popLast()?.success()
-            sdkDataProvider?.uploadedImages = newValue
-        }
-    }
-
-    var generatedImages: [Aiuta.Image] {
-        get { sdkDataProvider?.generatedImages ?? [] }
-        set {
-            deleteGeneratedResults.popLast()?.success()
-            sdkDataProvider?.generatedImages = newValue
-        }
-    }
-
-    func setProduct(_ product: Aiuta.Product, isInWishlist: Bool) {
-        sdkDataProvider?.setProduct(product, isInWishlist: isInWishlist)
+    func getShareText(productIds: [String]) async throws -> String? {
+        let completer = AiutaCompleter<String>()
+        shareTextResult = completer
+        dataActionsStreamer?.getShareText(productIds)
+        let result = try await completer.result
+        return result.isEmpty ? nil : result
     }
 }
