@@ -1,4 +1,7 @@
-# 4.2.1 - In progress
+# 4.2.2 - In progress
+
+
+# 4.2.1
 
 * Update android layer to v4.2.1 of Aiuta
 
