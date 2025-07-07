@@ -1,4 +1,7 @@
-# 4.2.0 - In progress
+# 4.2.1 - In progress
+
+
+# 4.2.0
 
 * New configuration system
 * Extended analytics
