@@ -62,7 +62,8 @@ android {
 
 dependencies {
     // Aiuta
-    def aiutaVersion = "4.2.1"
+    // TODO Migrate to stable with update
+    def aiutaVersion = "4.2.2-SNAPSHOT"
     implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
     implementation("com.aiuta:fashionsdk-analytics")
     implementation("com.aiuta:fashionsdk-tryon-compose")

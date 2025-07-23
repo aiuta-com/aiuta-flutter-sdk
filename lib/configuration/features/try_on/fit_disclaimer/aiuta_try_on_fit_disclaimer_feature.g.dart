@@ -13,6 +13,8 @@ AiutaTryOnFitDisclaimerFeature _$AiutaTryOnFitDisclaimerFeatureFromJson(
           json['icons'] as Map<String, dynamic>),
       strings: AiutaTryOnFitDisclaimerStrings.fromJson(
           json['strings'] as Map<String, dynamic>),
+      typography: AiutaTryOnFitDisclaimerTypography.fromJson(
+          json['typography'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AiutaTryOnFitDisclaimerFeatureToJson(
@@ -20,4 +22,5 @@ Map<String, dynamic> _$AiutaTryOnFitDisclaimerFeatureToJson(
     <String, dynamic>{
       'icons': instance.icons,
       'strings': instance.strings,
+      'typography': instance.typography,
     };
