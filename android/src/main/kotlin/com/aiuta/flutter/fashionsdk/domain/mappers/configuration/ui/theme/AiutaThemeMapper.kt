@@ -35,9 +35,7 @@ fun FlutterAiutaTheme.toNative(
             resourceScope = resourceScope,
             fontFamily = fontFamily
         ),
-        bottomSheet = bottomSheet.toNative(
-            fontFamily = fontFamily
-        ),
+        bottomSheet = bottomSheet.toNative(),
         activityIndicator = activityIndicator.toNative(
             resourceScope = resourceScope,
         ),
