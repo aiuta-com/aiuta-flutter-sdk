@@ -1,4 +1,3 @@
-import 'package:aiuta_flutter/configuration/ui/theme/power_bar/aiuta_power_bar_colors.dart';
 import 'package:aiuta_flutter/configuration/ui/theme/power_bar/aiuta_power_bar_strings.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -20,20 +19,15 @@ class AiutaPowerBarTheme {
   /// Strings used in the `powered by` bar.
   final AiutaPowerBarStrings strings;
 
-  /// Colors used in the `powered by` bar.
-  final AiutaPowerBarColors colors;
-
   /// Creates an [AiutaPowerBarTheme] with [strings] and [colors].
   AiutaPowerBarTheme({
     required this.strings,
-    required this.colors,
   });
 
   /// Creates a built-in power bar theme configuration with default settings.
   factory AiutaPowerBarTheme.builtIn() {
     return AiutaPowerBarTheme(
       strings: AiutaPowerBarStringsBuiltIn(),
-      colors: AiutaPowerBarColors.builtIn(),
     );
   }
 
