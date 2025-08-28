@@ -37,9 +37,6 @@ class AiutaColorTheme {
   /// Color for the borders of the components.
   final String border;
 
-  /// Color for the blur outlines and checkmark borders.
-  final String outline;
-
   /// Create an [AiutaColorTheme] with [scheme] that should match the provided colors:
   /// [brand] - Main accent color of the app,
   /// [primary] - Color for the main text,
@@ -50,7 +47,6 @@ class AiutaColorTheme {
   /// [screen] - Zero elevation background color,
   /// [neutral] - Neutral background color,
   /// [border] - Color for the borders of the components,
-  /// [outline] - Color for the blur outlines and checkmark borders,
   AiutaColorTheme({
     required this.scheme,
     required this.brand,
@@ -62,7 +58,6 @@ class AiutaColorTheme {
     required this.screen,
     required this.neutral,
     required this.border,
-    required this.outline,
   });
 
   /// Creates a built-in color theme configuration with default settings.
@@ -78,7 +73,6 @@ class AiutaColorTheme {
       screen: "#FFFFFFFF",
       neutral: "#FFF2F2F7",
       border: "#FFE5E5EA",
-      outline: "#FFC7C7CC",
     );
   }
 

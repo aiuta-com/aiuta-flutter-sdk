@@ -17,6 +17,5 @@ fun FlutterAiutaColorTheme.toNative(): AiutaColorTheme {
         override val screen: Color = this@toNative.screen.toColor()
         override val neutral: Color = this@toNative.neutral.toColor()
         override val border: Color = this@toNative.border.toColor()
-        override val outline: Color = this@toNative.outline.toColor()
     }
 }

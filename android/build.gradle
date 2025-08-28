@@ -39,7 +39,7 @@ android {
         compose true
     }
 
-    compileSdk = 35
+    compileSdk = 36
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -62,7 +62,7 @@ android {
 
 dependencies {
     // Aiuta
-    def aiutaVersion = "4.2.2"
+    def aiutaVersion = "4.2.3-SNAPSHOT"
     implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
     implementation("com.aiuta:fashionsdk-analytics")
     implementation("com.aiuta:fashionsdk-tryon-compose")
@@ -74,7 +74,7 @@ dependencies {
     implementation("com.google.android.material:material:$materialVersion")
 
     // Compose
-    def composeBomVersion = "2025.06.01"
+    def composeBomVersion = "2025.08.00"
     implementation(platform("androidx.compose:compose-bom:$composeBomVersion"))
     implementation("androidx.compose.foundation:foundation")
 

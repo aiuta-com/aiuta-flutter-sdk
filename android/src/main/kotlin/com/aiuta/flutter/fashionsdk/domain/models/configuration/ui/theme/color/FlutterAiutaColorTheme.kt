@@ -34,7 +34,4 @@ data class FlutterAiutaColorTheme(
 
     @SerialName("border")
     val border: String,
-
-    @SerialName("outline")
-    val outline: String
 )

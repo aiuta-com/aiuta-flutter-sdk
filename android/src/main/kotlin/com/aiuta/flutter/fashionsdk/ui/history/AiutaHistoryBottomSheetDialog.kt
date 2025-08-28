@@ -25,11 +25,13 @@ class AiutaHistoryBottomSheetDialog(
             val configuration = remember {
                 AiutaNativeConfigurationHolder.getNativeConfiguration()
             }
+            val sheetShape = configuration.userInterface.theme.bottomSheet.shapes.bottomSheetShape
+
 
             HistoryFlow(
                 modifier = Modifier
                     .fillMaxSize()
-                    .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
+                    .clip(shape = sheetShape)
                     .nestedScroll(rememberNestedScrollInteropConnection()),
                 aiutaConfiguration = configuration,
             )

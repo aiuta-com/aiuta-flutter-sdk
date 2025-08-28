@@ -18,7 +18,6 @@ AiutaColorTheme _$AiutaColorThemeFromJson(Map<String, dynamic> json) =>
       screen: json['screen'] as String,
       neutral: json['neutral'] as String,
       border: json['border'] as String,
-      outline: json['outline'] as String,
     );
 
 Map<String, dynamic> _$AiutaColorThemeToJson(AiutaColorTheme instance) =>
@@ -33,7 +32,6 @@ Map<String, dynamic> _$AiutaColorThemeToJson(AiutaColorTheme instance) =>
       'screen': instance.screen,
       'neutral': instance.neutral,
       'border': instance.border,
-      'outline': instance.outline,
     };
 
 const _$AiutaColorSchemeEnumMap = {

@@ -9,8 +9,6 @@ part of 'aiuta_bottom_sheet_theme.dart';
 AiutaBottomSheetTheme _$AiutaBottomSheetThemeFromJson(
         Map<String, dynamic> json) =>
     AiutaBottomSheetTheme(
-      typography: AiutaBottomSheetTypography.fromJson(
-          json['typography'] as Map<String, dynamic>),
       shapes: AiutaBottomSheetShapes.fromJson(
           json['shapes'] as Map<String, dynamic>),
       grabber: AiutaBottomSheetGrabber.fromJson(
@@ -22,7 +20,6 @@ AiutaBottomSheetTheme _$AiutaBottomSheetThemeFromJson(
 Map<String, dynamic> _$AiutaBottomSheetThemeToJson(
         AiutaBottomSheetTheme instance) =>
     <String, dynamic>{
-      'typography': instance.typography,
       'shapes': instance.shapes,
       'grabber': instance.grabber,
       'toggles': instance.toggles,
