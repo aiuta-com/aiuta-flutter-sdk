@@ -19,7 +19,6 @@ import androidx.activity.result.contract.ActivityResultContracts.StartActivityFo
 import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult.Companion.ACTION_INTENT_SENDER_REQUEST
 import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult.Companion.EXTRA_INTENT_SENDER_REQUEST
 import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult.Companion.EXTRA_SEND_INTENT_EXCEPTION
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.ComposeView
@@ -31,9 +30,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type.systemBars
 import androidx.lifecycle.lifecycleScope
-import com.aiuta.fashionsdk.analytics.analytics
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
-import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticHandler
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.ui.AiutaUIHandler
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -141,25 +138,12 @@ abstract class BaseAiutaBottomSheetDialog(
     protected fun setContent(content: @Composable () -> Unit) {
         val view = composeView(content)
         setContentView(view)
+        applyComposeInsets()
     }
 
     private fun composeView(content: @Composable () -> Unit): View {
         return ComposeView(context).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-            ViewCompat.setOnApplyWindowInsetsListener(this) { insetView, windowInsets ->
-                // Ignore top inset to avoid inner duplication of statusBar padding
-                WindowInsetsCompat.Builder(windowInsets)
-                    .setInsets(
-                        systemBars(),
-                        Insets.of(
-                            windowInsets.getInsets(systemBars()).left,
-                            0,
-                            windowInsets.getInsets(systemBars()).right,
-                            windowInsets.getInsets(systemBars()).bottom
-                        )
-                    )
-                    .build()
-            }
 
             setContent {
                 CompositionLocalProvider(
@@ -170,6 +154,37 @@ abstract class BaseAiutaBottomSheetDialog(
                 }
             }
         }
+    }
+
+    private fun applyComposeInsets() {
+        val bottomSheet = findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+        bottomSheet?.let {
+            ViewCompat.setOnApplyWindowInsetsListener(bottomSheet) { view, windowInsets ->
+                val systemBars = windowInsets.getInsets(systemBars())
+
+                // Make external padding with system bar insets
+                view.setPadding(
+                    view.paddingLeft,
+                    systemBars.top,
+                    view.paddingRight,
+                    view.paddingBottom
+                )
+
+                // Make internal top padding 0, because we already have it as external
+                WindowInsetsCompat.Builder(windowInsets)
+                    .setInsets(
+                        systemBars(),
+                        Insets.of(
+                            systemBars.left,
+                            0,
+                            systemBars.right,
+                            systemBars.bottom
+                        )
+                    )
+                    .build()
+            }
+        }
+
     }
 
     private fun observeActivityResult() {
