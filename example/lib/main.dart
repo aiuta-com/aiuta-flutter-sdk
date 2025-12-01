@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
                       onPressed: () {
                         _aiuta.startTryonFlow(
                           product: AiutaProduct(
-                            id: Env.SKU_ID,
+                            id: Env.SKU_ID_1,
                             title: "YOUR title",
                             imageUrls: [
                               "YOUR image 1",
@@ -85,6 +85,39 @@ class _MyAppState extends State<MyApp> {
                         );
                       },
                       child: const Text('Start Aiuta'),
+                    ),
+                    TextButton(
+                      style: ButtonStyle(
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.blue),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
+                            const TextStyle(fontSize: 20)),
+                      ),
+                      onPressed: () {
+                        _aiuta.startOutfitTryonFlow(
+                          products: [
+                            AiutaProduct(
+                              id: Env.SKU_ID_1,
+                              title: "YOUR title 1",
+                              imageUrls: [
+                                "YOUR image 1",
+                                "YOUR image 2",
+                              ],
+                              brand: "YOUR brand",
+                            ),
+                            AiutaProduct(
+                              id: Env.SKU_ID_2,
+                              title: "YOUR title 2",
+                              imageUrls: [
+                                "YOUR image 3",
+                                "YOUR image 4",
+                              ],
+                              brand: "YOUR brand",
+                            ),
+                          ],
+                        );
+                      },
+                      child: const Text('Start Aiuta with outfit'),
                     ),
                     TextButton(
                       style: ButtonStyle(

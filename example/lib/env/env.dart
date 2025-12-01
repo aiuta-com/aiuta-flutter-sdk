@@ -28,10 +28,15 @@ abstract class Env {
   )
   static const String SUBSCRIPTION_ID = _Env.SUBSCRIPTION_ID;
   @EnviedField(
-    varName: 'SAMPLES_SKU_ID',
+    varName: 'SAMPLES_SKU_ID_1',
     defaultValue: "YOUR_SKU_ID_HERE",
   )
-  static const String SKU_ID = _Env.SKU_ID;
+  static const String SKU_ID_1= _Env.SKU_ID_1;
+  @EnviedField(
+    varName: 'SAMPLES_SKU_ID_2',
+    defaultValue: "YOUR_SKU_ID_HERE",
+  )
+  static const String SKU_ID_2= _Env.SKU_ID_2;
   @EnviedField(
     varName: 'SAMPLES_SKU_CATALOG_NAME',
     defaultValue: "YOUR_SKU_CATALOG_NAME_HERE",
