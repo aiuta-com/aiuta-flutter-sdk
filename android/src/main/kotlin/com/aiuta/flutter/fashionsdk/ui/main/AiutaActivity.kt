@@ -17,15 +17,17 @@ class AiutaActivity : BaseAiutaActivity() {
         super.onCreate(savedInstanceState)
 
         setBaseContent {
-            val product = remember { AiutaFlutterConfigurationHolder.getNativeProduct() }
             val configuration = remember {
                 AiutaNativeConfigurationHolder.getNativeConfiguration()
+            }
+            val productConfiguration = remember {
+                AiutaFlutterConfigurationHolder.getNativeProductConfiguration()
             }
 
             AiutaTryOnFlow(
                 modifier = Modifier.fillMaxSize(),
                 aiutaConfiguration = configuration,
-                productForGeneration = product,
+                productConfiguration = productConfiguration,
             )
         }
     }

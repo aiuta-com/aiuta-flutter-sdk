@@ -58,6 +58,14 @@ class Aiuta {
     );
   }
 
+  /// Starts the virtual try-on flow with the given list of [products] for outfit try-on.
+  Future<void> startOutfitTryonFlow({required List<AiutaProduct> products}) {
+    return _platform.startOutfitAiutaFlow(
+      products: products,
+      configuration: configuration,
+    );
+  }
+
   /// Provide the user with a history of their virtual try-on generations.
   Future<void> startHistoryFlow() {
     return _platform.startHistoryFlow(

@@ -14,6 +14,7 @@ import com.aiuta.fashionsdk.analytics.analytics
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.CONFIGURATION_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCT_KEY
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCTS_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticHandler
@@ -24,6 +25,7 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResul
 import com.aiuta.flutter.fashionsdk.domain.listeners.state.AiutaSDKStateListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.FlutterAiutaConfiguration
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.meta.FlutterAiutaPresentationStyle
+import com.aiuta.flutter.fashionsdk.domain.models.flow.AiutaFlowType
 import com.aiuta.flutter.fashionsdk.ui.history.AiutaHistoryActivity
 import com.aiuta.flutter.fashionsdk.ui.history.AiutaHistoryBottomSheetDialog
 import com.aiuta.flutter.fashionsdk.ui.main.AiutaActivity
@@ -73,7 +75,30 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             // Main flow
             "startAiutaFlow" -> {
                 activity?.let { localActivity ->
-                    call.aiutaScope { configuration ->
+                    call.aiutaScope(AiutaFlowType.SINGLE_TRY_ON) { configuration ->
+                        if (configuration.userInterface.presentationStyle == FlutterAiutaPresentationStyle.FULL_SCREEN) {
+                            localActivity.startActivity(
+                                Intent(
+                                    localActivity,
+                                    AiutaActivity::class.java
+                                )
+                            )
+                        } else {
+                            val bottomSheet = AiutaBottomSheetDialog(
+                                activity = localActivity,
+                                activityResultListener = activityResultListener,
+                                theme = R.style.AiutaBottomSheetDialogTheme
+                            )
+                            bottomSheet.show()
+                        }
+                    }
+                    result.success(null)
+                }
+            }
+
+            "startOutfitAiutaFlow" -> {
+                activity?.let { localActivity ->
+                    call.aiutaScope(AiutaFlowType.MULTI_TRY_ON) { configuration ->
                         if (configuration.userInterface.presentationStyle == FlutterAiutaPresentationStyle.FULL_SCREEN) {
                             localActivity.startActivity(
                                 Intent(
@@ -96,7 +121,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
             "startHistoryFlow" -> {
                 activity?.let { localActivity ->
-                    call.aiutaScope { configuration ->
+                    call.aiutaScope(AiutaFlowType.HISTORY) { configuration ->
                         if (configuration.userInterface.presentationStyle == FlutterAiutaPresentationStyle.FULL_SCREEN) {
                             localActivity.startActivity(
                                 Intent(
@@ -219,10 +244,15 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
     }
 
     private inline fun MethodCall.aiutaScope(
+        type: AiutaFlowType,
         block: (configuration: FlutterAiutaConfiguration) -> Unit,
     ) {
         // Init product
-        AiutaFlutterConfigurationHolder.setProduct(argument<String>(PRODUCT_KEY))
+        when (type) {
+            AiutaFlowType.SINGLE_TRY_ON -> AiutaFlutterConfigurationHolder.setProduct(argument<String>(PRODUCT_KEY))
+            AiutaFlowType.MULTI_TRY_ON -> AiutaFlutterConfigurationHolder.setProducts(argument<String>(PRODUCTS_KEY))
+            AiutaFlowType.HISTORY -> Unit
+        }
 
         // Extract platform configuration
         val configuration = AiutaFlutterConfigurationHolder.getFlutterConfiguration()
