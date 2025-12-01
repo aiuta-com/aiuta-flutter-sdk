@@ -39,11 +39,11 @@ class AddToCartAction extends AiutaAction {
 
 @JsonSerializable()
 class AddToWishlistAction extends AiutaAction {
-  final String productId;
+  final List<String> productIds;
   final bool isInWishlist;
 
   AddToWishlistAction({
-    required this.productId,
+    required this.productIds,
     required this.isInWishlist,
   }) : super(AiutaActionType.addToWishlistClick);
 

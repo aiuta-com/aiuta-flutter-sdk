@@ -157,7 +157,7 @@ void _observeAiutaActions(AiutaConfiguration configuration) {
 
           if (dataProvider is AiutaWishlistDataProviderCustom) {
             dataProvider.setProductInWishlist(
-              action.productId,
+              action.productIds,
               action.isInWishlist,
             );
           }

@@ -8,6 +8,9 @@ data class FlutterAiutaImageShapes(
     @SerialName("imageL")
     val imageL: Double,
 
+    @SerialName("imageM")
+    val imageM: Double,
+
     @SerialName("imageS")
     val imageS: Double,
 )

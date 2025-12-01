@@ -11,6 +11,7 @@ fun FlutterAiutaTryOnStrings.toNative(): AiutaTryOnFeatureStrings {
         is FlutterAiutaTryOnStringsCustom -> object : AiutaTryOnFeatureStrings {
             override val tryOnPageTitle = this@toNative.tryOnPageTitle
             override val tryOn = this@toNative.tryOn
+            override val outfitTitle = this@toNative.outfitTitle
         }
     }
 }

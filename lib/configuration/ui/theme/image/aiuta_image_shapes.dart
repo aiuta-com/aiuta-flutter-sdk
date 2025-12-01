@@ -8,13 +8,17 @@ class AiutaImageShapes {
   /// Large image shape.
   final double imageL;
 
+  /// Medium image shape.
+  final double imageM;
+
   /// Small image shape.
   final double imageS;
 
-  /// Creates an [AiutaImageShapes] with the specified [imageL]
+  /// Creates an [AiutaImageShapes] with the specified [imageL], [imageM]
   /// and [imageS] corner radius for the shapes.
   AiutaImageShapes({
     required this.imageL,
+    required this.imageM,
     required this.imageS,
   });
 
@@ -22,7 +26,8 @@ class AiutaImageShapes {
   factory AiutaImageShapes.builtIn() {
     return AiutaImageShapes(
       imageL: 24,
-      imageS: 16,
+      imageM: 16,
+      imageS: 8,
     );
   }
 
