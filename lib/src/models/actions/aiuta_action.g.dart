@@ -24,7 +24,9 @@ const _$AiutaActionTypeEnumMap = {
 
 AddToWishlistAction _$AddToWishlistActionFromJson(Map<String, dynamic> json) =>
     AddToWishlistAction(
-      productId: json['productId'] as String,
+      productIds: (json['productIds'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       isInWishlist: json['isInWishlist'] as bool,
     )..type = $enumDecode(_$AiutaActionTypeEnumMap, json['type']);
 
@@ -32,6 +34,6 @@ Map<String, dynamic> _$AddToWishlistActionToJson(
         AddToWishlistAction instance) =>
     <String, dynamic>{
       'type': _$AiutaActionTypeEnumMap[instance.type]!,
-      'productId': instance.productId,
+      'productIds': instance.productIds,
       'isInWishlist': instance.isInWishlist,
     };

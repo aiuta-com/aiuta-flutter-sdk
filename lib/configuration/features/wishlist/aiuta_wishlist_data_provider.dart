@@ -37,13 +37,14 @@ class AiutaWishlistDataProviderCustom extends AiutaWishlistDataProvider {
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final ValueListenable<List<String>> wishlistProductIds;
 
-  /// Callback to set the [inWishlist] state for a product with [productId].
+  /// Callback to set the [inWishlist] state for products with [productIds].
   ///
   /// SDK will call this function when the user tap on the wishlist button
   /// with the opposite state of [inWishlist] based on the current list in the
   /// [wishlistProductIds].
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final void Function(String productId, bool inWishlist) setProductInWishlist;
+  final void Function(List<String> productIds, bool inWishlist)
+      setProductInWishlist;
 
   /// Creates an [AiutaWishlistDataProvider] with the listenable [wishlistProductIds]
   /// indicating the products IDs in the wishlist and the callback

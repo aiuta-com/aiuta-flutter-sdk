@@ -63,6 +63,15 @@ abstract class AiutaPlatform extends PlatformInterface {
     );
   }
 
+  Future<void> startOutfitAiutaFlow({
+    required List<AiutaProduct> products,
+    required AiutaConfiguration configuration,
+  }) {
+    throw UnimplementedError(
+      'startOutfitAiutaFlow() has not been implemented.',
+    );
+  }
+
   Future<void> startHistoryFlow({
     required AiutaConfiguration configuration,
   }) {

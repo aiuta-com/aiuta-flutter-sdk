@@ -53,11 +53,16 @@ class AiutaTryOnStringsCustom extends AiutaTryOnStrings {
   /// Text for the Try-On button.
   final String tryOn;
 
+  /// Title for the outfit Try-On.
+  final String outfitTitle;
+
   /// Creates an [AiutaTryOnStringsCustom] with the required [tryOnPageTitle] for the
-  /// page and [tryOn] text for the button to start the Try-On process.
+  /// page, [tryOn] text for the button to start the Try-On process, and [outfitTitle]
+  /// for the outfit Try-On title.
   AiutaTryOnStringsCustom({
     required this.tryOnPageTitle,
     required this.tryOn,
+    required this.outfitTitle,
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff

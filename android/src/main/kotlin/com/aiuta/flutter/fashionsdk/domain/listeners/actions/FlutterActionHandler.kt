@@ -1,11 +1,13 @@
 package com.aiuta.flutter.fashionsdk.domain.listeners.actions
 
 import com.aiuta.fashionsdk.configuration.features.tryon.cart.handler.AiutaTryOnCartFeatureHandler
+import com.aiuta.fashionsdk.configuration.features.tryon.cart.outfit.handler.AiutaTryOnCartOutfitFeatureHandler
 import com.aiuta.fashionsdk.configuration.features.wishlist.dataprovider.AiutaWishlistFeatureDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseHandler
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.data.FlutterDataActionKey
 import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAddToCartAction
+import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAddToCartOutfitAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAddToWishListAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAiutaAction
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.wishlist.dataprovider.WishlistDataActionKey
@@ -19,6 +21,7 @@ import kotlinx.serialization.json.Json
 object FlutterActionHandler :
     BaseDataProvider(),
     AiutaTryOnCartFeatureHandler,
+    AiutaTryOnCartOutfitFeatureHandler,
     AiutaWishlistFeatureDataProvider {
 
     override val handlerKeyChannel: String = "aiutaActionsHandler"
@@ -37,9 +40,17 @@ object FlutterActionHandler :
         sendEvent(Json.encodeToString<FlutterAiutaAction>(action))
     }
 
-    override fun setProductInWishlist(productId: String, inWishlist: Boolean) {
+    override fun addToCartOutfit(productIds: List<String>) {
+        val action = FlutterAddToCartOutfitAction(
+            productIds = productIds
+        )
+
+        sendEvent(Json.encodeToString<FlutterAiutaAction>(action))
+    }
+
+    override fun setProductInWishlist(productIds: List<String>, inWishlist: Boolean) {
         val action = FlutterAddToWishListAction(
-            productId = productId,
+            productIds = productIds,
             isInWishlist = inWishlist,
         )
 

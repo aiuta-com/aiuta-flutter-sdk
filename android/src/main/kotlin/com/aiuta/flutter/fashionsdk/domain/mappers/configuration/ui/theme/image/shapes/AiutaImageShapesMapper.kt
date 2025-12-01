@@ -7,6 +7,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.theme.image.s
 fun FlutterAiutaImageShapes.toNative(): AiutaImageThemeShapes {
     return object : AiutaImageThemeShapes() {
         override val imageL = this@toNative.imageL.dp
+        override val imageM = this@toNative.imageM.dp
         override val imageS = this@toNative.imageS.dp
     }
 }

@@ -1,27 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'aiuta_try_on_cart_feature.dart';
+part of 'aiuta_try_on_cart_outfit_feature.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaTryOnCartFeature _$AiutaTryOnCartFeatureFromJson(
+AiutaTryOnCartOutfitFeature _$AiutaTryOnCartOutfitFeatureFromJson(
         Map<String, dynamic> json) =>
-    AiutaTryOnCartFeature(
-      outfit: json['outfit'] == null
-          ? null
-          : AiutaTryOnCartOutfitFeature.fromJson(
-              json['outfit'] as Map<String, dynamic>),
-      strings: AiutaTryOnCartStrings.fromJson(
+    AiutaTryOnCartOutfitFeature(
+      strings: AiutaTryOnCartOutfitStrings.fromJson(
           json['strings'] as Map<String, dynamic>),
       handler: toNull(json['handler']),
     );
 
-Map<String, dynamic> _$AiutaTryOnCartFeatureToJson(
-    AiutaTryOnCartFeature instance) {
+Map<String, dynamic> _$AiutaTryOnCartOutfitFeatureToJson(
+    AiutaTryOnCartOutfitFeature instance) {
   final val = <String, dynamic>{
-    'outfit': instance.outfit,
     'strings': instance.strings,
   };
 

@@ -62,7 +62,7 @@ android {
 
 dependencies {
     // Aiuta
-    def aiutaVersion = "4.2.3"
+    def aiutaVersion = "4.3.0-SNAPSHOT"
     implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
     implementation("com.aiuta:fashionsdk-analytics")
     implementation("com.aiuta:fashionsdk-tryon-compose")

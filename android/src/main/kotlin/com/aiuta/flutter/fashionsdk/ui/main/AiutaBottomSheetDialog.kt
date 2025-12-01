@@ -21,9 +21,11 @@ class AiutaBottomSheetDialog(
 
     init {
         setContent {
-            val product = remember { AiutaFlutterConfigurationHolder.getNativeProduct() }
             val configuration = remember {
                 AiutaNativeConfigurationHolder.getNativeConfiguration()
+            }
+            val productConfiguration = remember {
+                AiutaFlutterConfigurationHolder.getNativeProductConfiguration()
             }
 
             val sheetShape = configuration.userInterface.theme.bottomSheet.shapes.bottomSheetShape
@@ -34,7 +36,7 @@ class AiutaBottomSheetDialog(
                     .clip(shape = sheetShape)
                     .nestedScroll(rememberNestedScrollInteropConnection()),
                 aiutaConfiguration = configuration,
-                productForGeneration = product,
+                productConfiguration = productConfiguration,
             )
         }
     }

@@ -75,6 +75,20 @@ class MethodChannelAiuta extends AiutaPlatform {
   }
 
   @override
+  Future<void> startOutfitAiutaFlow({
+    required List<AiutaProduct> products,
+    required AiutaConfiguration configuration,
+  }) {
+    return methodChannel.invokeMethod(
+      'startOutfitAiutaFlow',
+      {
+        "products": jsonEncode(products),
+        "configuration": jsonEncode(configuration),
+      },
+    );
+  }
+
+  @override
   Future<void> startHistoryFlow({
     required AiutaConfiguration configuration,
   }) {

@@ -12,14 +12,15 @@ sealed class FlutterAiutaAction {
     companion object {
         const val ACTION_ADD_TO_WISHLIST_CLICK = "addToWishlistClick"
         const val ACTION_ADD_TO_CART_CLICK = "addToCartClick"
+        const val ACTION_ADD_TO_CART_OUTFIT_CLICK = "addToCartOutfit"
     }
 }
 
 @Serializable
 @SerialName(FlutterAiutaAction.ACTION_ADD_TO_WISHLIST_CLICK)
 class FlutterAddToWishListAction(
-    @SerialName("productId")
-    val productId: String,
+    @SerialName("productIds")
+    val productIds: List<String>,
     @SerialName("isInWishlist")
     val isInWishlist: Boolean,
 ): FlutterAiutaAction()
@@ -29,4 +30,11 @@ class FlutterAddToWishListAction(
 class FlutterAddToCartAction(
     @SerialName("productId")
     val productId: String
+): FlutterAiutaAction()
+
+@Serializable
+@SerialName(FlutterAiutaAction.ACTION_ADD_TO_CART_OUTFIT_CLICK)
+class FlutterAddToCartOutfitAction(
+    @SerialName("productId")
+    val productIds: List<String>
 ): FlutterAiutaAction()
