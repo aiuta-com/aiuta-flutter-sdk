@@ -13,8 +13,8 @@ import com.aiuta.fashionsdk.analytics.AiutaAnalytics
 import com.aiuta.fashionsdk.analytics.analytics
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.CONFIGURATION_KEY
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCTS_KEY
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaNativeConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticHandler
@@ -172,10 +172,10 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         mainChannel.setMethodCallHandler(null)
-        for ((key, value) in eventChannelMap) {
-            value.setStreamHandler(null)
-            eventChannelMap.remove(key)
+        eventChannelMap.values.forEach { channel ->
+            channel.setStreamHandler(null)
         }
+        eventChannelMap.clear()
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
