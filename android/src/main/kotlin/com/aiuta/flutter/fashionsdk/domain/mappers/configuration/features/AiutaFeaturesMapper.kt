@@ -39,6 +39,8 @@ fun FlutterAiutaFeatures.toNative(
         ),
         wishlist = wishlist?.toNative(
             resourceScope = resourceScope,
-        )
+        ),
+        // SizeFit not support on Flutter
+        sizeFit = null,
     )
 }
