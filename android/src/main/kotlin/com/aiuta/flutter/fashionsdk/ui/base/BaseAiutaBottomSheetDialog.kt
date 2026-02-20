@@ -29,7 +29,10 @@ import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type.systemBars
+import androidx.lifecycle.ViewModelStoreOwner
+import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.ui.AiutaUIHandler
@@ -44,7 +47,11 @@ abstract class BaseAiutaBottomSheetDialog(
     private val activityResultListener: AiutaOnActivityResultListener,
     theme: Int,
 ) : BottomSheetDialog(activity, theme),
-    ActivityResultRegistryOwner {
+    ActivityResultRegistryOwner,
+    ViewModelStoreOwner {
+
+    private val dialogViewModelStore = ViewModelStore()
+    override val viewModelStore: ViewModelStore get() = dialogViewModelStore
 
     protected val aiuta by lazy { AiutaHolder.getAiuta() }
 
@@ -144,6 +151,7 @@ abstract class BaseAiutaBottomSheetDialog(
     private fun composeView(content: @Composable () -> Unit): View {
         return ComposeView(context).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setViewTreeViewModelStoreOwner(this@BaseAiutaBottomSheetDialog)
 
             setContent {
                 CompositionLocalProvider(
@@ -185,6 +193,11 @@ abstract class BaseAiutaBottomSheetDialog(
             }
         }
 
+    }
+
+    override fun dismiss() {
+        super.dismiss()
+        dialogViewModelStore.clear()
     }
 
     private fun observeActivityResult() {
