@@ -2041,6 +2041,7 @@ extension AiutaPlugin.Configuration.TryOnFeature {
     struct FitDisclaimerFeature: Decodable {
         let icons: FitDisclaimerIcons
         let strings: FitDisclaimerStrings
+        let typography: FitDisclaimerTypography
     }
 }
 
@@ -2104,6 +2105,36 @@ extension AiutaPlugin.Configuration.TryOnFeature.FitDisclaimerFeature {
             let fitDisclaimerTitle: String
             let fitDisclaimerDescription: String
             let fitDisclaimerCloseButton: String
+        }
+    }
+    
+    enum FitDisclaimerTypography: Decodable {
+        case builtIn
+        case custom(Custom)
+
+        enum CodingKeys: String, CodingKey {
+            case type
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let type = try container.decode(String.self, forKey: .type)
+
+            switch type {
+                case "builtIn":
+                    self = .builtIn
+                case "custom":
+                    let custom = try Custom(from: decoder)
+                    self = .custom(custom)
+                default:
+                    throw DecodingError.dataCorrupted(
+                        DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Unknown label typography type: \(type)")
+                    )
+            }
+        }
+
+        struct Custom: Decodable {
+            let disclaimer: AiutaPlugin.TextStyle
         }
     }
 }
