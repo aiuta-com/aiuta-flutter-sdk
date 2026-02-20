@@ -1,5 +1,7 @@
-# 4.2.2 - In progress
+# 4.3.3 - In progress
 
+* Update android layer to v4.3.3 of Aiuta
+* Update ios layer to v4.2.4 of Aiuta
 
 # 4.2.1
 
