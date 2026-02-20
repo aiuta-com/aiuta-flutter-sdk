@@ -1342,13 +1342,13 @@ extension AiutaPlugin.Configuration.TryOnFeature.FitDisclaimerFeature {
         }
     }
 
-//    struct TypographyProvider: Aiuta.Configuration.Features.TryOn.FitDisclaimer.Typography.Provider {
-//        let disclaimer: Aiuta.Configuration.TextStyle
-//
-//        init(_ custom: AiutaPlugin.Configuration.TryOnFeature.FitDisclaimerFeature.Typography.Custom, fonts: [AiutaPlugin.Font]) {
-//            disclaimer = custom.disclaimer.textStyle(with: fonts)
-//        }
-//    }
+    struct TypographyProvider: Aiuta.Configuration.Features.TryOn.FitDisclaimer.Typography.Provider {
+        let disclaimer: Aiuta.Configuration.TextStyle
+
+        init(_ custom: AiutaPlugin.Configuration.TryOnFeature.FitDisclaimerFeature.FitDisclaimerTypography.Custom, fonts: [AiutaPlugin.Font]) {
+            disclaimer = custom.disclaimer.textStyle(with: fonts)
+        }
+    }
 
     struct IconsProvider: Aiuta.Configuration.Features.TryOn.FitDisclaimer.Icons.Provider {
         let info20: UIImage?
@@ -1368,13 +1368,12 @@ extension AiutaPlugin.Configuration.TryOnFeature.FitDisclaimerFeature {
         }
 
         let typographyValue: Aiuta.Configuration.Features.TryOn.FitDisclaimer.Typography
-        typographyValue = .default
-//        switch typography {
-//            case .builtIn:
-//                typographyValue = .default
-//            case let .custom(custom):
-//                typographyValue = .provider(TypographyProvider(custom, fonts: fonts))
-//        }
+        switch typography {
+            case .builtIn:
+                typographyValue = .default
+            case let .custom(custom):
+                typographyValue = .provider(TypographyProvider(custom, fonts: fonts))
+        }
 
         let iconsValue: Aiuta.Configuration.Features.TryOn.FitDisclaimer.Icons
         switch icons {
