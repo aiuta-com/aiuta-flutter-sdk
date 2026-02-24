@@ -19,7 +19,8 @@ sealed class AiutaImagePickerProtectionDisclaimerIcons {
       case 'custom':
         return AiutaImagePickerProtectionDisclaimerIconsCustom.fromJson(json);
       default:
-        throw Exception('Unknown image picker protection disclaimer icons type');
+        throw Exception(
+            'Unknown image picker protection disclaimer icons type');
     }
   }
 
