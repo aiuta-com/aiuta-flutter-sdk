@@ -29,5 +29,8 @@ data class FlutterAiutaLabelTypographyCustom(
     val regular: FlutterAiutaTextStyle,
 
     @SerialName("subtle")
-    val subtle: FlutterAiutaTextStyle
+    val subtle: FlutterAiutaTextStyle,
+
+    @SerialName("footnote")
+    val footnote: FlutterAiutaTextStyle
 ) : FlutterAiutaLabelTypography

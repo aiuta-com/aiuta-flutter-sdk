@@ -32,7 +32,6 @@ fun FlutterAiutaFeatures.toNative(
         ),
         tryOn = tryOn.toNative(
             resourceScope = resourceScope,
-            fontFamily = fontFamily,
         ),
         share = share?.toNative(
             resourceScope = resourceScope,

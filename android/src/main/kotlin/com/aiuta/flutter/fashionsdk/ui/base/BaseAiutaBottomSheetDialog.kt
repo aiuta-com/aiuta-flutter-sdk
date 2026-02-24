@@ -196,7 +196,9 @@ abstract class BaseAiutaBottomSheetDialog(
     }
 
     override fun dismiss() {
-        super.dismiss()
+        if (window?.decorView?.isAttachedToWindow == true) {
+            super.dismiss()
+        }
         dialogViewModelStore.clear()
     }
 

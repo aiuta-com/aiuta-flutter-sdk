@@ -29,6 +29,8 @@ AiutaLabelTypographyCustom _$AiutaLabelTypographyCustomFromJson(
       titleM: AiutaTextStyle.fromJson(json['titleM'] as Map<String, dynamic>),
       regular: AiutaTextStyle.fromJson(json['regular'] as Map<String, dynamic>),
       subtle: AiutaTextStyle.fromJson(json['subtle'] as Map<String, dynamic>),
+      footnote:
+          AiutaTextStyle.fromJson(json['footnote'] as Map<String, dynamic>),
     )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaLabelTypographyCustomToJson(
@@ -39,4 +41,5 @@ Map<String, dynamic> _$AiutaLabelTypographyCustomToJson(
       'titleM': instance.titleM,
       'regular': instance.regular,
       'subtle': instance.subtle,
+      'footnote': instance.footnote,
     };
