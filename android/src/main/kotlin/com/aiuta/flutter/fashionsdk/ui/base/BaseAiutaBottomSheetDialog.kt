@@ -28,9 +28,8 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsCompat.Type.systemBars
-import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
@@ -145,6 +144,8 @@ abstract class BaseAiutaBottomSheetDialog(
     protected fun setContent(content: @Composable () -> Unit) {
         val view = composeView(content)
         setContentView(view)
+
+        // Apply insets immediately after setContentView - view hierarchy is ready
         applyComposeInsets()
     }
 
@@ -165,34 +166,73 @@ abstract class BaseAiutaBottomSheetDialog(
     }
 
     private fun applyComposeInsets() {
+        // Find the coordinator layout - it's the parent of bottom sheet
+        val coordinator = window?.decorView?.findViewById<View>(
+            com.google.android.material.R.id.coordinator,
+        )
+        val container = findViewById<View>(com.google.android.material.R.id.container)
         val bottomSheet = findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
-        bottomSheet?.let {
-            ViewCompat.setOnApplyWindowInsetsListener(bottomSheet) { view, windowInsets ->
-                val systemBars = windowInsets.getInsets(systemBars())
 
-                // Make external padding with system bar insets
-                view.setPadding(
-                    view.paddingLeft,
-                    systemBars.top,
-                    view.paddingRight,
-                    view.paddingBottom
-                )
-
-                // Make internal top padding 0, because we already have it as external
-                WindowInsetsCompat.Builder(windowInsets)
-                    .setInsets(
-                        systemBars(),
-                        Insets.of(
-                            systemBars.left,
-                            0,
-                            systemBars.right,
-                            systemBars.bottom
-                        )
-                    )
-                    .build()
+        // Apply listener to coordinator first to intercept insets early
+        coordinator?.let { coordView ->
+            ViewCompat.setOnApplyWindowInsetsListener(coordView) { _, insets ->
+                // Pass through without modification - let child views handle
+                insets
             }
         }
 
+        // Apply insets to container - modify here before it reaches Compose
+        container?.let { containerView ->
+            ViewCompat.setOnApplyWindowInsetsListener(containerView) { v, windowInsets ->
+                insetsLister(v, windowInsets)
+            }
+        }
+
+        // Also set on bottom sheet itself - apply padding and pass modified insets
+        bottomSheet?.let { view ->
+            ViewCompat.setOnApplyWindowInsetsListener(view) { v, windowInsets ->
+                insetsLister(v, windowInsets)
+            }
+        }
+
+        // Request initial insets dispatch
+        coordinator?.requestApplyInsets()
+            ?: container?.requestApplyInsets()
+            ?: bottomSheet?.requestApplyInsets()
+    }
+
+    private fun insetsLister(
+        view: View,
+        windowInsets: WindowInsetsCompat,
+    ): WindowInsetsCompat {
+        val systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+        val ime = windowInsets.getInsets(WindowInsetsCompat.Type.ime())
+
+        // Apply top padding to prevent going under camera/status bar
+        view.setPadding(
+            systemBars.left,
+            systemBars.top,
+            systemBars.right,
+            0, // Don't apply bottom padding
+        )
+
+        // Build new insets - consume top (set to 0) for Compose
+        return WindowInsetsCompat
+            .Builder(windowInsets)
+            .setInsets(
+                WindowInsetsCompat.Type.systemBars(),
+                Insets.of(
+                    0, // Left consumed by padding
+                    0, // Top consumed by padding - prevents double padding in Compose
+                    0, // Right consumed by padding
+                    systemBars.bottom, // Keep bottom for Compose
+                ),
+            )
+            .setInsets(
+                WindowInsetsCompat.Type.ime(),
+                ime,
+            )
+            .build()
     }
 
     override fun dismiss() {
