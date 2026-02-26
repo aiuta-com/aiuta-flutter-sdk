@@ -61,12 +61,16 @@ class AiutaLabelTypographyCustom extends AiutaLabelTypography {
   /// Subtle text style.
   final AiutaTextStyle subtle;
 
+  /// Subtle text style.
+  final AiutaTextStyle footnote;
+
   /// Creates an [AiutaLabelTypographyCustom] with the given text styles.
   AiutaLabelTypographyCustom({
     required this.titleL,
     required this.titleM,
     required this.regular,
     required this.subtle,
+    required this.footnote,
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff

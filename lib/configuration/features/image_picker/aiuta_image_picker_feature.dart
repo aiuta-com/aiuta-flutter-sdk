@@ -3,6 +3,7 @@ import 'package:aiuta_flutter/configuration/features/image_picker/aiuta_image_pi
 import 'package:aiuta_flutter/configuration/features/image_picker/camera/aiuta_image_picker_camera_feature.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/photo_gallery/aiuta_image_picker_photo_gallery_feature.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/predefined_model/aiuta_image_picker_predefined_model_feature.dart';
+import 'package:aiuta_flutter/configuration/features/image_picker/protection_disclaimer/aiuta_image_picker_protection_disclaimer_feature.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/uploads_history/aiuta_image_picker_uploads_history_feature.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -21,6 +22,9 @@ class AiutaImagePickerFeature {
 
   /// Predefined models feature configuration (optional).
   final AiutaImagePickerPredefinedModelFeature? predefinedModels;
+
+  /// Protection disclaimer feature configuration (optional).
+  final AiutaImagePickerProtectionDisclaimerFeature? protectionDisclaimer;
 
   /// Uploads history feature configuration (optional).
   final AiutaImagePickerUploadsHistoryFeature? uploadsHistory;
@@ -41,6 +45,7 @@ class AiutaImagePickerFeature {
     this.camera,
     required this.photoGallery,
     this.predefinedModels,
+    this.protectionDisclaimer,
     this.uploadsHistory,
     required this.images,
     required this.strings,

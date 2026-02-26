@@ -19,6 +19,10 @@ AiutaImagePickerFeature _$AiutaImagePickerFeatureFromJson(
           ? null
           : AiutaImagePickerPredefinedModelFeature.fromJson(
               json['predefinedModels'] as Map<String, dynamic>),
+      protectionDisclaimer: json['protectionDisclaimer'] == null
+          ? null
+          : AiutaImagePickerProtectionDisclaimerFeature.fromJson(
+              json['protectionDisclaimer'] as Map<String, dynamic>),
       uploadsHistory: json['uploadsHistory'] == null
           ? null
           : AiutaImagePickerUploadsHistoryFeature.fromJson(
@@ -35,6 +39,7 @@ Map<String, dynamic> _$AiutaImagePickerFeatureToJson(
       'camera': instance.camera,
       'photoGallery': instance.photoGallery,
       'predefinedModels': instance.predefinedModels,
+      'protectionDisclaimer': instance.protectionDisclaimer,
       'uploadsHistory': instance.uploadsHistory,
       'images': instance.images,
       'strings': instance.strings,

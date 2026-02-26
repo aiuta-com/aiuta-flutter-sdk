@@ -6,6 +6,7 @@ import com.aiuta.fashionsdk.configuration.features.wishlist.dataprovider.AiutaWi
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.BaseHandler
 import com.aiuta.flutter.fashionsdk.domain.listeners.base.data.FlutterDataActionKey
+import com.aiuta.flutter.fashionsdk.domain.listeners.ui.AiutaUIHandler
 import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAddToCartAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAddToCartOutfitAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.FlutterAddToWishListAction
@@ -38,6 +39,8 @@ object FlutterActionHandler :
         )
 
         sendEvent(Json.encodeToString<FlutterAiutaAction>(action))
+
+        AiutaUIHandler.closeClick()
     }
 
     override fun addToCartOutfit(productIds: List<String>) {
@@ -46,6 +49,8 @@ object FlutterActionHandler :
         )
 
         sendEvent(Json.encodeToString<FlutterAiutaAction>(action))
+
+        AiutaUIHandler.closeClick()
     }
 
     override fun setProductInWishlist(productIds: List<String>, inWishlist: Boolean) {

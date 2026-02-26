@@ -1,6 +1,5 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.tryon
 
-import androidx.compose.ui.text.font.FontFamily
 import com.aiuta.fashionsdk.configuration.features.tryon.AiutaTryOnFeature
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.tryon.loading.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.tryon.validation.toNative
@@ -18,16 +17,12 @@ import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.Ai
 
 fun FlutterAiutaTryOnFeature.toNative(
     resourceScope: AiutaResourceMapperScope,
-    fontFamily: FontFamily?,
 ): AiutaTryOnFeature {
     return AiutaTryOnFeature(
         loadingPage = loadingPage.toNative(resourceScope),
         inputImageValidation = inputImageValidation.toNative(),
         cart = cart.toNative(),
-        fitDisclaimer = fitDisclaimer?.toNative(
-            resourceScope = resourceScope,
-            fontFamily = fontFamily
-        ),
+        fitDisclaimer = fitDisclaimer?.toNative(resourceScope),
         feedback = feedback?.toNative(resourceScope),
         generationsHistory = generationsHistory?.toNative(resourceScope),
         otherPhoto = otherPhoto?.toNative(resourceScope),
