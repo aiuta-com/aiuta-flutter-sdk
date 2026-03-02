@@ -14,7 +14,7 @@ fun FlutterAiutaConsentStandaloneOnboardingPageFeature.toNativeStandaloneOnboard
 ): AiutaConsentStandaloneOnboardingPageFeature {
     return AiutaConsentStandaloneOnboardingPageFeature(
         strings = strings.toNative(),
-        icons = icons.toNative(resourceScope),
+        icons = icons?.toNative(resourceScope),
         styles = styles.toNative(),
         data = data.toNative(),
         dataProvider = FlutterDataActionHandler,

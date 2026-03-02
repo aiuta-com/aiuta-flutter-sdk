@@ -17,7 +17,7 @@ fun FlutterAiutaConsentStandaloneImagePickerPageFeature.toNativeStandaloneImageP
 ): AiutaConsentStandaloneImagePickerPageFeature {
     return AiutaConsentStandaloneImagePickerPageFeature(
         strings = strings.toNative(),
-        icons = icons.toNative(resourceScope),
+        icons = icons?.toNative(resourceScope),
         styles = styles.toNative(),
         data = data.toNative(),
         dataProvider = when (dataProvider) {

@@ -79,7 +79,7 @@ class AiutaConsentStandaloneOnboardingPageFeature extends AiutaConsentFeature {
   final AiutaConsentStandaloneStrings strings;
 
   /// Icons used in the consent feature.
-  final AiutaConsentStandaloneIcons icons;
+  final AiutaConsentStandaloneIcons? icons;
 
   /// Styles used in the consent feature.
   final AiutaConsentStandaloneStyles styles;
@@ -98,10 +98,10 @@ class AiutaConsentStandaloneOnboardingPageFeature extends AiutaConsentFeature {
   /// and [dataProvider] to control the consent feature.
   AiutaConsentStandaloneOnboardingPageFeature({
     required this.strings,
-    required this.icons,
     required this.styles,
     required this.data,
     required this.dataProvider,
+    this.icons,
   }) : super(AiutaConsentMode.standaloneOnboardingPage);
 
   // Internal json staff
@@ -123,7 +123,7 @@ class AiutaConsentStandaloneImagePickerPageFeature extends AiutaConsentFeature {
   final AiutaConsentStandaloneStrings strings;
 
   /// Icons used in the consent feature.
-  final AiutaConsentStandaloneIcons icons;
+  final AiutaConsentStandaloneIcons? icons;
 
   /// Styles used in the consent feature.
   final AiutaConsentStandaloneStyles styles;
@@ -142,10 +142,10 @@ class AiutaConsentStandaloneImagePickerPageFeature extends AiutaConsentFeature {
   /// and [dataProvider] to control the consent feature.
   AiutaConsentStandaloneImagePickerPageFeature({
     required this.strings,
-    required this.icons,
     required this.styles,
     required this.data,
     required this.dataProvider,
+    this.icons,
   }) : super(AiutaConsentMode.standaloneImagePickerPage);
 
   // Internal json staff

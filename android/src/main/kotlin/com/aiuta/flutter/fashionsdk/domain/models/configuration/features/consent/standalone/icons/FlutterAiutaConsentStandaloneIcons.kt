@@ -16,5 +16,5 @@ sealed interface FlutterAiutaConsentStandaloneIcons
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 data class FlutterAiutaConsentStandaloneIconsCustom(
     @SerialName("consentTitle24")
-    val consentTitle24: FlutterAiutaIcon? = null
+    val consentTitle24: FlutterAiutaIcon
 ) : FlutterAiutaConsentStandaloneIcons
