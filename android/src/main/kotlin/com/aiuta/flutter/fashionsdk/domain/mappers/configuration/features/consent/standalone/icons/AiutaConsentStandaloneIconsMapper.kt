@@ -13,8 +13,7 @@ fun FlutterAiutaConsentStandaloneIcons.toNative(
     return when (this) {
         is FlutterAiutaConsentStandaloneIconsCustom -> resourceScope.withResourceHandling(null) {
             object : AiutaConsentStandaloneFeatureIcons {
-                override val consentTitle24 =
-                    this@toNative.consentTitle24?.let { createNativeIcon(it) }
+                override val consentTitle24 = createNativeIcon(this@toNative.consentTitle24)
             }
         }
     }

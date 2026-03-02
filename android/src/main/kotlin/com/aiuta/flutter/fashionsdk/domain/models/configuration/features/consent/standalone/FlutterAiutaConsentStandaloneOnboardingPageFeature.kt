@@ -14,7 +14,7 @@ data class FlutterAiutaConsentStandaloneOnboardingPageFeature(
     val strings: FlutterAiutaConsentStandaloneStrings,
 
     @SerialName("icons")
-    val icons: FlutterAiutaConsentStandaloneIcons,
+    val icons: FlutterAiutaConsentStandaloneIcons? = null,
 
     @SerialName("styles")
     val styles: FlutterAiutaConsentStandaloneStyles,

@@ -33,14 +33,16 @@ AiutaConsentStandaloneOnboardingPageFeature
         AiutaConsentStandaloneOnboardingPageFeature(
           strings: AiutaConsentStandaloneStrings.fromJson(
               json['strings'] as Map<String, dynamic>),
-          icons: AiutaConsentStandaloneIcons.fromJson(
-              json['icons'] as Map<String, dynamic>),
           styles: AiutaConsentStandaloneStyles.fromJson(
               json['styles'] as Map<String, dynamic>),
           data: AiutaConsentStandaloneData.fromJson(
               json['data'] as Map<String, dynamic>),
           dataProvider: AiutaConsentStandaloneDataProvider.fromJson(
               json['dataProvider'] as Map<String, dynamic>),
+          icons: json['icons'] == null
+              ? null
+              : AiutaConsentStandaloneIcons.fromJson(
+                  json['icons'] as Map<String, dynamic>),
         )..mode = $enumDecode(_$AiutaConsentModeEnumMap, json['mode']);
 
 Map<String, dynamic> _$AiutaConsentStandaloneOnboardingPageFeatureToJson(
@@ -60,14 +62,16 @@ AiutaConsentStandaloneImagePickerPageFeature
         AiutaConsentStandaloneImagePickerPageFeature(
           strings: AiutaConsentStandaloneStrings.fromJson(
               json['strings'] as Map<String, dynamic>),
-          icons: AiutaConsentStandaloneIcons.fromJson(
-              json['icons'] as Map<String, dynamic>),
           styles: AiutaConsentStandaloneStyles.fromJson(
               json['styles'] as Map<String, dynamic>),
           data: AiutaConsentStandaloneData.fromJson(
               json['data'] as Map<String, dynamic>),
           dataProvider: AiutaConsentStandaloneDataProvider.fromJson(
               json['dataProvider'] as Map<String, dynamic>),
+          icons: json['icons'] == null
+              ? null
+              : AiutaConsentStandaloneIcons.fromJson(
+                  json['icons'] as Map<String, dynamic>),
         )..mode = $enumDecode(_$AiutaConsentModeEnumMap, json['mode']);
 
 Map<String, dynamic> _$AiutaConsentStandaloneImagePickerPageFeatureToJson(

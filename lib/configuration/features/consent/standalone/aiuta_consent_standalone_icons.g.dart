@@ -6,22 +6,6 @@ part of 'aiuta_consent_standalone_icons.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaConsentStandaloneIconsBuiltIn _$AiutaConsentStandaloneIconsBuiltInFromJson(
-        Map<String, dynamic> json) =>
-    AiutaConsentStandaloneIconsBuiltIn()
-      ..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
-
-Map<String, dynamic> _$AiutaConsentStandaloneIconsBuiltInToJson(
-        AiutaConsentStandaloneIconsBuiltIn instance) =>
-    <String, dynamic>{
-      'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
-    };
-
-const _$AiutaCustomizationTypeEnumMap = {
-  AiutaCustomizationType.builtIn: 'builtIn',
-  AiutaCustomizationType.custom: 'custom',
-};
-
 AiutaConsentStandaloneIconsCustom _$AiutaConsentStandaloneIconsCustomFromJson(
         Map<String, dynamic> json) =>
     AiutaConsentStandaloneIconsCustom(
@@ -35,3 +19,8 @@ Map<String, dynamic> _$AiutaConsentStandaloneIconsCustomToJson(
       'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
       'consentTitle24': instance.consentTitle24,
     };
+
+const _$AiutaCustomizationTypeEnumMap = {
+  AiutaCustomizationType.builtIn: 'builtIn',
+  AiutaCustomizationType.custom: 'custom',
+};

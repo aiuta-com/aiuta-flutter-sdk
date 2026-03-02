@@ -15,8 +15,6 @@ sealed class AiutaConsentStandaloneIcons {
   // Internal json staff
   factory AiutaConsentStandaloneIcons.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as String) {
-      case 'builtIn':
-        return AiutaConsentStandaloneIconsBuiltIn.fromJson(json);
       case 'custom':
         return AiutaConsentStandaloneIconsCustom.fromJson(json);
       default:
@@ -25,24 +23,6 @@ sealed class AiutaConsentStandaloneIcons {
   }
 
   Map<String, dynamic> toJson();
-}
-
-/// A built-in implementation of the `AiutaConsentStandaloneIcons`.
-///
-/// This class represents the default, built-in icons for the consent standalone feature.
-@JsonSerializable()
-class AiutaConsentStandaloneIconsBuiltIn extends AiutaConsentStandaloneIcons {
-  /// Creates an instance of the built-in consent standalone icons.
-  AiutaConsentStandaloneIconsBuiltIn() : super(AiutaCustomizationType.builtIn);
-
-  // Internal json staff
-  factory AiutaConsentStandaloneIconsBuiltIn.fromJson(
-          Map<String, dynamic> json) =>
-      _$AiutaConsentStandaloneIconsBuiltInFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() =>
-      _$AiutaConsentStandaloneIconsBuiltInToJson(this);
 }
 
 /// A custom implementation of the `AiutaConsentStandaloneIcons`.
