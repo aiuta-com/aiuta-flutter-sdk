@@ -11,6 +11,8 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.lifecycleScope
 import com.aiuta.fashionsdk.analytics.AiutaAnalytics
 import com.aiuta.fashionsdk.analytics.analytics
+import com.aiuta.fashionsdk.logger.AiutaLogger
+import com.aiuta.fashionsdk.logger.d
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.CONFIGURATION_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCTS_KEY
@@ -38,6 +40,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -48,6 +51,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
     private val eventChannelMap: MutableMap<String, EventChannel> = mutableMapOf()
     private var activity: Activity? = null
+    private var analyticJob: Job? = null
 
     private val lifecycleRegistry = LifecycleRegistry(this)
     override val lifecycle: Lifecycle = lifecycleRegistry
@@ -234,7 +238,8 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
         // Start observing analytics
         observeAnalytic(
-            aiutaAnalytic = AiutaHolder.getAiuta().analytics
+            aiutaAnalytic = AiutaHolder.getAiuta().analytics,
+            logger = AiutaHolder.getAiuta().logger,
         )
 
         // Init Aiuta Configuration
@@ -261,9 +266,16 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         block(configuration)
     }
 
-    private fun observeAnalytic(aiutaAnalytic: AiutaAnalytics) {
-        aiutaAnalytic.analyticFlow
-            .onEach { event -> AiutaAnalyticHandler.sendAnalytic(event) }
+    private fun observeAnalytic(
+        aiutaAnalytic: AiutaAnalytics,
+        logger: AiutaLogger?
+    ) {
+        analyticJob?.cancel()
+        analyticJob = aiutaAnalytic.analyticFlow
+            .onEach { event ->
+                logger?.d("AiutaPlugin: receive new native analytic event - ${event.serialize()}")
+                AiutaAnalyticHandler.sendAnalytic(event)
+            }
             .launchIn(lifecycleScope)
     }
 
