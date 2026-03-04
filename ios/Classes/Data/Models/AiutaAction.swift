@@ -41,29 +41,34 @@ extension AiutaPlugin {
             let consentIds: [String]
         }
 
+        struct AddToCartOutfitAction: Encodable {
+            let type: Method = .addToCartOutfitClick
+            let productIds: [String]
+        }
+
         struct AddUploadedImagesAction: Encodable {
             let type: Method = .addUploadedImages
-            let uploadedImages: [Aiuta.Image.Input]
+            let uploadedImages: [Aiuta.InputImage]
         }
 
         struct DeleteUploadedImagesAction: Encodable {
             let type: Method = .deleteUploadedImages
-            let uploadedImages: [Aiuta.Image.Input]
+            let uploadedImages: [Aiuta.InputImage]
         }
 
         struct SelectUploadedImageAction: Encodable {
             let type: Method = .selectUploadedImage
-            let uploadedImage: Aiuta.Image.Input
+            let uploadedImage: Aiuta.InputImage
         }
 
         struct AddGeneratedImagesAction: Encodable {
             let type: Method = .addGeneratedImages
-            let generatedImages: [Aiuta.Image.Generated]
+            let generatedImages: [Aiuta.GeneratedImage]
         }
 
         struct DeleteGeneratedImagesAction: Encodable {
             let type: Method = .deleteGeneratedImages
-            let generatedImages: [Aiuta.Image.Generated]
+            let generatedImages: [Aiuta.GeneratedImage]
         }
         
         struct GetShareTextAction: Encodable {
@@ -75,7 +80,7 @@ extension AiutaPlugin {
 
 extension AiutaPlugin.Actions {
     enum Method: String, Codable {
-        case addToCartClick, addToWishlistClick
+        case addToCartClick, addToCartOutfitClick, addToWishlistClick
         case requestJwt
         case completeOnboarding,
              obtainUserConsentsIds,

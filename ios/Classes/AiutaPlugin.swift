@@ -16,7 +16,7 @@ import Flutter
 
 public final class AiutaPlugin: NSObject {
     let methodChannelName = "aiutasdk"
-    let compatibleSdkVersion = "4.2.3"
+    let compatibleSdkVersion = "4.4.0"
     let channel: FlutterMethodChannel
 
     let host: AiutaHost

@@ -28,23 +28,23 @@ final class AiutaDataActionsStreamerImpl: AiutaStreamHandlerImpl, AiutaDataActio
         send(AiutaPlugin.Actions.ObtainUserConsentAction(consentIds: consentIds))
     }
 
-    func addUploadedImages(_ images: [Aiuta.Image.Input]) {
+    func addUploadedImages(_ images: [Aiuta.InputImage]) {
         send(AiutaPlugin.Actions.AddUploadedImagesAction(uploadedImages: images))
     }
 
-    func deleteUploadedImages(_ images: [Aiuta.Image.Input]) {
+    func deleteUploadedImages(_ images: [Aiuta.InputImage]) {
         send(AiutaPlugin.Actions.DeleteUploadedImagesAction(uploadedImages: images))
     }
 
-    func selectUploadedImage(_ image: Aiuta.Image.Input) {
+    func selectUploadedImage(_ image: Aiuta.InputImage) {
         send(AiutaPlugin.Actions.SelectUploadedImageAction(uploadedImage: image))
     }
 
-    func addGeneratedImages(_ images: [Aiuta.Image.Generated]) {
+    func addGeneratedImages(_ images: [Aiuta.GeneratedImage]) {
         send(AiutaPlugin.Actions.AddGeneratedImagesAction(generatedImages: images))
     }
 
-    func deleteGeneratedImages(_ images: [Aiuta.Image.Generated]) {
+    func deleteGeneratedImages(_ images: [Aiuta.GeneratedImage]) {
         send(AiutaPlugin.Actions.DeleteGeneratedImagesAction(generatedImages: images))
     }
 

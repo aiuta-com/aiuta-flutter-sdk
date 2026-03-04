@@ -24,8 +24,8 @@ final class CheckAvailabilityHandlerImpl: AiutaCallHandler {
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        guard Aiuta.sdkVersion == compatibleSdkVersion else {
-            throw AiutaPlugin.WrapperError.invalidSdkVersion(compatibleSdkVersion, Aiuta.sdkVersion)
+        guard Aiuta.version == compatibleSdkVersion else {
+            throw AiutaPlugin.WrapperError.invalidSdkVersion(compatibleSdkVersion, Aiuta.version)
         }
         guard #available(iOS 13.0.0, *) else { throw AiutaPlugin.WrapperError.unsupportedPlatform }
     }
