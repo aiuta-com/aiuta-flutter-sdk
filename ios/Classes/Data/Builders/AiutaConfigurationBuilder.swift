@@ -16,6 +16,11 @@ import AiutaSdk
 import Flutter
 import UIKit
 
+private let defaultLocalization = LocalizationPack()
+private let defaultTypography = TypographyPack()
+private let defaultIcons = IconsPack.builtin
+private let defaultImages = ImagesPack.builtin
+
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration {
     func buildConfiguration(with host: AiutaHost) -> Aiuta.Configuration {
@@ -98,9 +103,14 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.LabelTheme {
     func build(with fonts: [AiutaPlugin.Font]) -> Aiuta.Configuration.UserInterface.LabelTheme {
         switch typography {
             case .builtIn:
-                let defaultStyle = Aiuta.TextStyle(size: 14, weight: .regular)
                 return Aiuta.Configuration.UserInterface.LabelTheme(
-                    typography: .init(titleL: defaultStyle, titleM: defaultStyle, regular: defaultStyle, subtle: defaultStyle, footnote: defaultStyle)
+                    typography: .init(
+                        titleL: defaultTypography.titleL,
+                        titleM: defaultTypography.titleM,
+                        regular: defaultTypography.regular,
+                        subtle: defaultTypography.subtle,
+                        footnote: defaultTypography.footnote
+                    )
                 )
             case let .custom(theme):
                 return Aiuta.Configuration.UserInterface.LabelTheme(
@@ -122,7 +132,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.ImageTheme {
         let iconsValue: Aiuta.Configuration.UserInterface.ImageTheme.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(imageError36: emptyStub)
+                iconsValue = .init(imageError36: defaultIcons.imageError36)
             case let .custom(icons):
                 iconsValue = .init(imageError36: icons.imageError36.uiImage())
         }
@@ -144,8 +154,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.ButtonTheme {
         let typographyValue: Aiuta.Configuration.UserInterface.ButtonTheme.Typography
         switch typography {
             case .builtIn:
-                let defaultStyle = Aiuta.TextStyle(size: 14, weight: .medium)
-                typographyValue = .init(buttonM: defaultStyle, buttonS: defaultStyle)
+                typographyValue = .init(buttonM: defaultTypography.buttonM, buttonS: defaultTypography.buttonS)
             case let .custom(theme):
                 typographyValue = .init(
                     buttonM: theme.buttonM.textStyle(with: fonts),
@@ -170,7 +179,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.PageBarTheme {
         let typographyValue: Aiuta.Configuration.UserInterface.PageBarTheme.Typography
         switch typography {
             case .builtIn:
-                typographyValue = .init(pageTitle: Aiuta.TextStyle(size: 16, weight: .semibold))
+                typographyValue = .init(pageTitle: defaultTypography.pageTitle)
             case let .custom(custom):
                 typographyValue = .init(pageTitle: custom.pageTitle.textStyle(with: fonts))
         }
@@ -178,7 +187,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.PageBarTheme {
         let iconsValue: Aiuta.Configuration.UserInterface.PageBarTheme.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(back24: emptyStub, close24: emptyStub)
+                iconsValue = .init(back24: defaultIcons.back24, close24: defaultIcons.close24)
             case let .custom(custom):
                 iconsValue = .init(back24: custom.back24.uiImage(), close24: custom.close24.uiImage())
         }
@@ -194,9 +203,8 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.PageBarTheme {
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration.UserInterface.Theme.BottomSheetTheme {
     func build() -> Aiuta.Configuration.UserInterface.BottomSheetTheme {
-        // Dart no longer sends typography — provide a default
         let typographyValue = Aiuta.Configuration.UserInterface.BottomSheetTheme.Typography(
-            iconButton: Aiuta.TextStyle(size: 14, weight: .medium)
+            iconButton: defaultTypography.iconButton
         )
 
         return Aiuta.Configuration.UserInterface.BottomSheetTheme(
@@ -240,7 +248,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.SelectionSnackbarTheme {
         let stringsValue: Aiuta.Configuration.UserInterface.SelectionSnackbarTheme.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(select: "", cancel: "", selectAll: "", unselectAll: "")
+                stringsValue = .init(select: defaultLocalization.select, cancel: defaultLocalization.cancel, selectAll: defaultLocalization.selectAll, unselectAll: defaultLocalization.unselectAll)
             case let .custom(custom):
                 stringsValue = .init(select: custom.select, cancel: custom.cancel, selectAll: custom.selectAll, unselectAll: custom.unselectAll)
         }
@@ -248,7 +256,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.SelectionSnackbarTheme {
         let iconsValue: Aiuta.Configuration.UserInterface.SelectionSnackbarTheme.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(trash24: emptyStub, check20: emptyStub)
+                iconsValue = .init(trash24: defaultIcons.trash24, check20: defaultIcons.check20)
             case let .custom(custom):
                 iconsValue = .init(trash24: custom.trash24.uiImage(), check20: custom.check20.uiImage())
         }
@@ -267,7 +275,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.ErrorSnackbarTheme {
         let stringsValue: Aiuta.Configuration.UserInterface.ErrorSnackbarTheme.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(defaultErrorMessage: "", tryAgainButton: "")
+                stringsValue = .init(defaultErrorMessage: defaultLocalization.defaultErrorMessage, tryAgainButton: defaultLocalization.tryAgainButton)
             case let .custom(custom):
                 stringsValue = .init(defaultErrorMessage: custom.defaultErrorMessage, tryAgainButton: custom.tryAgainButton)
         }
@@ -275,7 +283,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.ErrorSnackbarTheme {
         let iconsValue: Aiuta.Configuration.UserInterface.ErrorSnackbarTheme.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(error36: emptyStub)
+                iconsValue = .init(error36: defaultIcons.error36)
             case let .custom(custom):
                 iconsValue = .init(error36: custom.error36.uiImage())
         }
@@ -294,8 +302,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.ProductBarTheme {
         let typographyValue: Aiuta.Configuration.UserInterface.ProductBarTheme.Typography
         switch typography {
             case .builtIn:
-                let defaultStyle = Aiuta.TextStyle(size: 14, weight: .regular)
-                typographyValue = .init(product: defaultStyle, brand: defaultStyle)
+                typographyValue = .init(product: defaultTypography.product, brand: defaultTypography.brand)
             case let .custom(custom):
                 typographyValue = .init(
                     product: custom.product.textStyle(with: fonts),
@@ -306,7 +313,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.ProductBarTheme {
         let iconsValue: Aiuta.Configuration.UserInterface.ProductBarTheme.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(arrow16: emptyStub)
+                iconsValue = .init(arrow16: defaultIcons.arrow16)
             case let .custom(custom):
                 iconsValue = .init(arrow16: custom.arrow16.uiImage())
         }
@@ -316,7 +323,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.ProductBarTheme {
             let pricesTypographyValue: Aiuta.Configuration.UserInterface.ProductBarTheme.Prices.Typography
             switch pricesConfig.typography {
                 case .builtIn:
-                    pricesTypographyValue = .init(price: Aiuta.TextStyle(size: 14, weight: .regular))
+                    pricesTypographyValue = .init(price: defaultTypography.price)
                 case let .custom(custom):
                     pricesTypographyValue = .init(price: custom.price.textStyle(with: fonts))
             }
@@ -344,7 +351,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.PowerBarTheme {
         let stringsValue: Aiuta.Configuration.UserInterface.PowerBarTheme.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(poweredByAiuta: "")
+                stringsValue = .init(poweredByAiuta: defaultLocalization.poweredByAiuta)
             case let .custom(custom):
                 stringsValue = .init(poweredByAiuta: custom.poweredByAiuta)
         }
@@ -379,14 +386,14 @@ extension AiutaPlugin.Configuration.Features {
 
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration.WelcomeScreenFeature {
-    func build(with fonts: [AiutaPlugin.Font]) -> Aiuta.Configuration.Features.WelcomeScreen {
-        let stringsValue: Aiuta.Configuration.Features.WelcomeScreen.Strings
-        switch strings {
-            case .builtIn:
-                stringsValue = .init(welcomeTitle: "", welcomeDescription: "", welcomeButtonStart: "")
-            case let .custom(custom):
-                stringsValue = .init(welcomeTitle: custom.welcomeTitle, welcomeDescription: custom.welcomeDescription, welcomeButtonStart: custom.welcomeButtonStart)
-        }
+    func build(with fonts: [AiutaPlugin.Font]) -> Aiuta.Configuration.Features.WelcomeScreen? {
+        guard case let .custom(customStrings) = strings else { return nil }
+
+        let stringsValue = Aiuta.Configuration.Features.WelcomeScreen.Strings(
+            welcomeTitle: customStrings.welcomeTitle,
+            welcomeDescription: customStrings.welcomeDescription,
+            welcomeButtonStart: customStrings.welcomeButtonStart
+        )
 
         let typographyValue: Aiuta.Configuration.Features.WelcomeScreen.Typography
         switch typography {
@@ -417,7 +424,7 @@ extension AiutaPlugin.Configuration.OnboardingFeature {
         let stringsValue: Aiuta.Configuration.Features.Onboarding.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(onboardingButtonNext: "", onboardingButtonStart: "")
+                stringsValue = .init(onboardingButtonNext: defaultLocalization.onboardingButtonNext, onboardingButtonStart: defaultLocalization.onboardingButtonStart)
             case let .custom(custom):
                 stringsValue = .init(onboardingButtonNext: custom.onboardingButtonNext, onboardingButtonStart: custom.onboardingButtonStart)
         }
@@ -451,7 +458,7 @@ extension AiutaPlugin.Configuration.OnboardingFeature.HowItWorksPageFeature {
         let imagesValue: Aiuta.Configuration.Features.Onboarding.HowItWorks.Images
         switch images {
             case .builtIn:
-                imagesValue = .init(onboardingHowItWorksItems: [])
+                imagesValue = .init(onboardingHowItWorksItems: defaultImages.onboardingHowItWorksItems)
             case let .custom(custom):
                 imagesValue = .init(onboardingHowItWorksItems: custom.onboardingHowItWorksItems.map { item in
                     Aiuta.Configuration.Features.Onboarding.HowItWorks.Images.Item(
@@ -464,7 +471,7 @@ extension AiutaPlugin.Configuration.OnboardingFeature.HowItWorksPageFeature {
         let stringsValue: Aiuta.Configuration.Features.Onboarding.HowItWorks.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(onboardingHowItWorksPageTitle: nil, onboardingHowItWorksTitle: "", onboardingHowItWorksDescription: "")
+                stringsValue = .init(onboardingHowItWorksPageTitle: nil, onboardingHowItWorksTitle: defaultLocalization.onboardingHowItWorksTitle, onboardingHowItWorksDescription: defaultLocalization.onboardingHowItWorksDescription)
             case let .custom(custom):
                 stringsValue = .init(
                     onboardingHowItWorksPageTitle: custom.onboardingHowItWorksPageTitle,
@@ -482,18 +489,14 @@ extension AiutaPlugin.Configuration.OnboardingFeature.HowItWorksPageFeature {
 
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration.OnboardingFeature.BestResultsPageFeature {
-    func build() -> Aiuta.Configuration.Features.Onboarding.BestResults {
-        let stringsValue: Aiuta.Configuration.Features.Onboarding.BestResults.Strings
-        switch strings {
-            case .builtIn:
-                stringsValue = .init(onboardingBestResultsPageTitle: nil, onboardingBestResultsTitle: "", onboardingBestResultsDescription: "")
-            case let .custom(custom):
-                stringsValue = .init(
-                    onboardingBestResultsPageTitle: custom.onboardingBestResultsPageTitle,
-                    onboardingBestResultsTitle: custom.onboardingBestResultsTitle,
-                    onboardingBestResultsDescription: custom.onboardingBestResultsDescription
-                )
-        }
+    func build() -> Aiuta.Configuration.Features.Onboarding.BestResults? {
+        guard case let .custom(customStrings) = strings else { return nil }
+
+        let stringsValue = Aiuta.Configuration.Features.Onboarding.BestResults.Strings(
+            onboardingBestResultsPageTitle: customStrings.onboardingBestResultsPageTitle,
+            onboardingBestResultsTitle: customStrings.onboardingBestResultsTitle,
+            onboardingBestResultsDescription: customStrings.onboardingBestResultsDescription
+        )
 
         return Aiuta.Configuration.Features.Onboarding.BestResults(
             images: .init(
@@ -617,7 +620,7 @@ extension AiutaPlugin.Configuration.ImagePickerFeature {
         let imagesValue: Aiuta.Configuration.Features.ImagePicker.Images
         switch images {
             case .builtIn:
-                imagesValue = .init(imagePickerExamples: [])
+                imagesValue = .init(imagePickerExamples: defaultImages.imagePickerExamples)
             case let .custom(custom):
                 imagesValue = .init(imagePickerExamples: custom.examples.map { $0.uiImage() })
         }
@@ -625,7 +628,7 @@ extension AiutaPlugin.Configuration.ImagePickerFeature {
         let stringsValue: Aiuta.Configuration.Features.ImagePicker.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(imagePickerTitle: "", imagePickerDescription: "", imagePickerButtonUploadPhoto: "")
+                stringsValue = .init(imagePickerTitle: defaultLocalization.imagePickerTitle, imagePickerDescription: defaultLocalization.imagePickerDescription, imagePickerButtonUploadPhoto: defaultLocalization.imagePickerButtonUploadPhoto)
             case let .custom(custom):
                 stringsValue = .init(
                     imagePickerTitle: custom.imagePickerTitleEmpty,
@@ -654,7 +657,7 @@ extension AiutaPlugin.Configuration.ImagePickerFeature.CameraFeature {
         let iconsValue: Aiuta.Configuration.Features.ImagePicker.Camera.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(camera24: emptyStub)
+                iconsValue = .init(camera24: defaultIcons.camera24)
             case let .custom(custom):
                 iconsValue = .init(camera24: custom.camera24.uiImage())
         }
@@ -662,7 +665,7 @@ extension AiutaPlugin.Configuration.ImagePickerFeature.CameraFeature {
         let stringsValue: Aiuta.Configuration.Features.ImagePicker.Camera.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(cameraButtonTakePhoto: "", cameraPermissionTitle: "", cameraPermissionDescription: "", cameraPermissionButtonOpenSettings: "")
+                stringsValue = .init(cameraButtonTakePhoto: defaultLocalization.cameraButtonTakePhoto, cameraPermissionTitle: defaultLocalization.cameraPermissionTitle, cameraPermissionDescription: defaultLocalization.cameraPermissionDescription, cameraPermissionButtonOpenSettings: defaultLocalization.cameraPermissionButtonOpenSettings)
             case let .custom(custom):
                 stringsValue = .init(
                     cameraButtonTakePhoto: custom.cameraButtonTakePhoto,
@@ -685,7 +688,7 @@ extension AiutaPlugin.Configuration.ImagePickerFeature.PhotoGalleryFeature {
         let iconsValue: Aiuta.Configuration.Features.ImagePicker.Gallery.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(gallery24: emptyStub)
+                iconsValue = .init(gallery24: defaultIcons.gallery24)
             case let .custom(custom):
                 iconsValue = .init(gallery24: custom.gallery24.uiImage())
         }
@@ -693,7 +696,7 @@ extension AiutaPlugin.Configuration.ImagePickerFeature.PhotoGalleryFeature {
         let stringsValue: Aiuta.Configuration.Features.ImagePicker.Gallery.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(galleryButtonSelectPhoto: "")
+                stringsValue = .init(galleryButtonSelectPhoto: defaultLocalization.galleryButtonSelectPhoto)
             case let .custom(custom):
                 stringsValue = .init(galleryButtonSelectPhoto: custom.galleryButtonSelectPhoto)
         }
@@ -719,7 +722,7 @@ extension AiutaPlugin.Configuration.ImagePickerFeature.PredefinedModelFeature {
         let iconsValue: Aiuta.Configuration.Features.ImagePicker.PredefinedModels.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(selectModels24: emptyStub)
+                iconsValue = .init(selectModels24: defaultIcons.selectModels24)
             case let .custom(custom):
                 iconsValue = .init(selectModels24: custom.selectModels24.uiImage())
         }
@@ -727,7 +730,7 @@ extension AiutaPlugin.Configuration.ImagePickerFeature.PredefinedModelFeature {
         let stringsValue: Aiuta.Configuration.Features.ImagePicker.PredefinedModels.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(predefinedModelsTitle: "", predefinedModelsOr: "", predefinedModelsEmptyListError: "", predefinedModelsCategories: [:])
+                stringsValue = .init(predefinedModelsTitle: defaultLocalization.predefinedModelsTitle, predefinedModelsOr: defaultLocalization.predefinedModelsOr, predefinedModelsEmptyListError: defaultLocalization.predefinedModelsEmptyListError, predefinedModelsCategories: defaultLocalization.predefinedModelsCategories)
             case let .custom(custom):
                 stringsValue = .init(
                     predefinedModelsTitle: custom.predefinedModelsTitle,
@@ -747,26 +750,13 @@ extension AiutaPlugin.Configuration.ImagePickerFeature.PredefinedModelFeature {
 
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration.ImagePickerFeature.ProtectionDisclaimerFeature {
-    func build() -> Aiuta.Configuration.Features.ImagePicker.ProtectionDisclaimer {
-        let iconsValue: Aiuta.Configuration.Features.ImagePicker.ProtectionDisclaimer.Icons
-        switch icons {
-            case .builtIn:
-                iconsValue = .init(protection16: emptyStub)
-            case let .custom(custom):
-                iconsValue = .init(protection16: custom.protection16.uiImage())
-        }
-
-        let stringsValue: Aiuta.Configuration.Features.ImagePicker.ProtectionDisclaimer.Strings
-        switch strings {
-            case .builtIn:
-                stringsValue = .init(protectionDisclaimer: "")
-            case let .custom(custom):
-                stringsValue = .init(protectionDisclaimer: custom.protectionDisclaimer)
-        }
+    func build() -> Aiuta.Configuration.Features.ImagePicker.ProtectionDisclaimer? {
+        guard case let .custom(customStrings) = strings else { return nil }
+        guard case let .custom(customIcons) = icons else { return nil }
 
         return Aiuta.Configuration.Features.ImagePicker.ProtectionDisclaimer(
-            icons: iconsValue,
-            strings: stringsValue
+            icons: .init(protection16: customIcons.protection16.uiImage()),
+            strings: .init(protectionDisclaimer: customStrings.protectionDisclaimer)
         )
     }
 }
@@ -777,7 +767,7 @@ extension AiutaPlugin.Configuration.ImagePickerFeature.UploadsHistoryFeature {
         let stringsValue: Aiuta.Configuration.Features.ImagePicker.UploadsHistory.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(uploadsHistoryButtonNewPhoto: "", uploadsHistoryTitle: "", uploadsHistoryButtonChangePhoto: "")
+                stringsValue = .init(uploadsHistoryButtonNewPhoto: defaultLocalization.uploadsHistoryButtonNewPhoto, uploadsHistoryTitle: defaultLocalization.uploadsHistoryTitle, uploadsHistoryButtonChangePhoto: defaultLocalization.uploadsHistoryButtonChangePhoto)
             case let .custom(custom):
                 stringsValue = .init(
                     uploadsHistoryButtonNewPhoto: custom.uploadsHistoryButtonNewPhoto,
@@ -816,7 +806,7 @@ extension AiutaPlugin.Configuration.TryOnFeature {
         let stringsValue: Aiuta.Configuration.Features.TryOn.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(tryOnPageTitle: "", tryOn: "")
+                stringsValue = .init(tryOnPageTitle: defaultLocalization.tryOnPageTitle, tryOn: defaultLocalization.tryOn)
             case let .custom(custom):
                 stringsValue = .init(tryOnPageTitle: custom.tryOnPageTitle, tryOn: custom.tryOn)
         }
@@ -824,7 +814,7 @@ extension AiutaPlugin.Configuration.TryOnFeature {
         let iconsValue: Aiuta.Configuration.Features.TryOn.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(magic20: emptyStub)
+                iconsValue = .init(magic20: defaultIcons.magic20)
             case let .custom(custom):
                 iconsValue = .init(magic20: custom.tryOn20.uiImage())
         }
@@ -866,7 +856,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.LoadingPageFeature {
         let stringsValue: Aiuta.Configuration.Features.TryOn.LoadingPage.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(tryOnLoadingStatusUploadingImage: "", tryOnLoadingStatusScanningBody: "", tryOnLoadingStatusGeneratingOutfit: "")
+                stringsValue = .init(tryOnLoadingStatusUploadingImage: defaultLocalization.tryOnLoadingStatusUploadingImage, tryOnLoadingStatusScanningBody: defaultLocalization.tryOnLoadingStatusScanningBody, tryOnLoadingStatusGeneratingOutfit: defaultLocalization.tryOnLoadingStatusGeneratingOutfit)
             case let .custom(custom):
                 stringsValue = .init(
                     tryOnLoadingStatusUploadingImage: custom.tryOnLoadingStatusUploadingImage,
@@ -891,7 +881,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.InputImageValidationFeature {
         let stringsValue: Aiuta.Configuration.Features.TryOn.InputValidation.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(invalidInputImageDescription: "", invalidInputImageChangePhotoButton: "")
+                stringsValue = .init(invalidInputImageDescription: defaultLocalization.invalidInputImageDescription, invalidInputImageChangePhotoButton: defaultLocalization.invalidInputImageChangePhotoButton)
             case let .custom(custom):
                 stringsValue = .init(
                     invalidInputImageDescription: custom.invalidInputImageDescription,
@@ -909,7 +899,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.CartFeature {
         let stringsValue: Aiuta.Configuration.Features.TryOn.Cart.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(addToCart: "")
+                stringsValue = .init(addToCart: defaultLocalization.addToCart)
             case let .custom(custom):
                 stringsValue = .init(addToCart: custom.addToCart)
         }
@@ -931,17 +921,11 @@ extension AiutaPlugin.Configuration.TryOnFeature.CartFeature {
 
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration.TryOnFeature.CartOutfitFeature {
-    func build(with host: AiutaHost) -> Aiuta.Configuration.Features.TryOn.Cart.Outfit {
-        let stringsValue: Aiuta.Configuration.Features.TryOn.Cart.Outfit.Strings
-        switch strings {
-            case .builtIn:
-                stringsValue = .init(addToCartOutfit: "")
-            case let .custom(custom):
-                stringsValue = .init(addToCartOutfit: custom.addToCartOutfit)
-        }
+    func build(with host: AiutaHost) -> Aiuta.Configuration.Features.TryOn.Cart.Outfit? {
+        guard case let .custom(customStrings) = strings else { return nil }
 
         return Aiuta.Configuration.Features.TryOn.Cart.Outfit(
-            strings: stringsValue,
+            strings: .init(addToCartOutfit: customStrings.addToCartOutfit),
             handler: host as! Aiuta.Configuration.Features.TryOn.Cart.Outfit.Handler
         )
     }
@@ -953,7 +937,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.FitDisclaimerFeature {
         let stringsValue: Aiuta.Configuration.Features.TryOn.FitDisclaimer.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(fitDisclaimerTitle: "", fitDisclaimerDescription: "", fitDisclaimerCloseButton: "")
+                stringsValue = .init(fitDisclaimerTitle: defaultLocalization.fitDisclaimerTitle, fitDisclaimerDescription: defaultLocalization.fitDisclaimerDescription, fitDisclaimerCloseButton: defaultLocalization.fitDisclaimerCloseButton)
             case let .custom(custom):
                 stringsValue = .init(
                     fitDisclaimerTitle: custom.fitDisclaimerTitle,
@@ -984,7 +968,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.FeedbackFeature {
         let stringsValue: Aiuta.Configuration.Features.TryOn.Feedback.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(feedbackTitle: "", feedbackOptions: [], feedbackButtonSkip: "", feedbackButtonSend: "", feedbackGratitudeText: "")
+                stringsValue = .init(feedbackTitle: defaultLocalization.feedbackTitle, feedbackOptions: defaultLocalization.feedbackOptions, feedbackButtonSkip: defaultLocalization.feedbackButtonSkip, feedbackButtonSend: defaultLocalization.feedbackButtonSend, feedbackGratitudeText: defaultLocalization.feedbackGratitudeText)
             case let .custom(custom):
                 stringsValue = .init(
                     feedbackTitle: custom.feedbackTitle,
@@ -998,7 +982,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.FeedbackFeature {
         let iconsValue: Aiuta.Configuration.Features.TryOn.Feedback.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(like36: emptyStub, dislike36: emptyStub, gratitude40: emptyStub)
+                iconsValue = .init(like36: defaultIcons.like36, dislike36: defaultIcons.dislike36, gratitude40: UIImage())
             case let .custom(custom):
                 iconsValue = .init(
                     like36: custom.like36.uiImage(),
@@ -1022,7 +1006,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.FeedbackFeature.FeedbackOtherFe
         let stringsValue: Aiuta.Configuration.Features.TryOn.Feedback.Other.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(feedbackOptionOther: "", otherFeedbackTitle: "", otherFeedbackButtonSend: "", otherFeedbackButtonCancel: "")
+                stringsValue = .init(feedbackOptionOther: defaultLocalization.feedbackOptionOther, otherFeedbackTitle: defaultLocalization.otherFeedbackTitle, otherFeedbackButtonSend: defaultLocalization.otherFeedbackButtonSend, otherFeedbackButtonCancel: defaultLocalization.otherFeedbackButtonCancel)
             case let .custom(custom):
                 stringsValue = .init(
                     feedbackOptionOther: custom.feedbackOptionOther,
@@ -1042,7 +1026,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.GenerationsHistoryFeature {
         let stringsValue: Aiuta.Configuration.Features.TryOn.GenerationsHistory.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(generationsHistoryPageTitle: "")
+                stringsValue = .init(generationsHistoryPageTitle: defaultLocalization.generationsHistoryPageTitle)
             case let .custom(custom):
                 stringsValue = .init(generationsHistoryPageTitle: custom.generationsHistoryPageTitle)
         }
@@ -1050,7 +1034,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.GenerationsHistoryFeature {
         let iconsValue: Aiuta.Configuration.Features.TryOn.GenerationsHistory.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(history24: emptyStub)
+                iconsValue = .init(history24: defaultIcons.history24)
             case let .custom(custom):
                 iconsValue = .init(history24: custom.history24.uiImage())
         }
@@ -1077,7 +1061,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.OtherPhotoFeature {
         let iconsValue: Aiuta.Configuration.Features.TryOn.ContinueWithOtherPhoto.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(changePhoto24: emptyStub)
+                iconsValue = .init(changePhoto24: defaultIcons.changePhoto24)
             case let .custom(custom):
                 iconsValue = .init(changePhoto24: custom.changePhoto24.uiImage())
         }
@@ -1094,7 +1078,7 @@ extension AiutaPlugin.Configuration.ShareFeature {
         let iconsValue: Aiuta.Configuration.Features.Share.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(share24: emptyStub)
+                iconsValue = .init(share24: defaultIcons.share24)
             case let .custom(custom):
                 iconsValue = .init(share24: custom.share24.uiImage())
         }
@@ -1102,7 +1086,7 @@ extension AiutaPlugin.Configuration.ShareFeature {
         let stringsValue: Aiuta.Configuration.Features.Share.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(shareButton: "")
+                stringsValue = .init(shareButton: defaultLocalization.shareButton)
             case let .custom(custom):
                 stringsValue = .init(shareButton: custom.shareButton)
         }
@@ -1137,26 +1121,13 @@ extension AiutaPlugin.Configuration.ShareFeature.WatermarkFeature {
 
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration.WishlistFeature {
-    func build(with host: AiutaHost, fonts: [AiutaPlugin.Font]) -> Aiuta.Configuration.Features.Wishlist {
-        let stringsValue: Aiuta.Configuration.Features.Wishlist.Strings
-        switch strings {
-            case .builtIn:
-                stringsValue = .init(wishlistButtonAdd: "")
-            case let .custom(custom):
-                stringsValue = .init(wishlistButtonAdd: custom.wishlistButtonAdd)
-        }
-
-        let iconsValue: Aiuta.Configuration.Features.Wishlist.Icons
-        switch icons {
-            case .builtIn:
-                iconsValue = .init(wishlist24: emptyStub, wishlistFill24: emptyStub)
-            case let .custom(custom):
-                iconsValue = .init(wishlist24: custom.wishlist24.uiImage(), wishlistFill24: custom.wishlistFill24.uiImage())
-        }
+    func build(with host: AiutaHost, fonts: [AiutaPlugin.Font]) -> Aiuta.Configuration.Features.Wishlist? {
+        guard case let .custom(customStrings) = strings else { return nil }
+        guard case let .custom(customIcons) = icons else { return nil }
 
         return Aiuta.Configuration.Features.Wishlist(
-            icons: iconsValue,
-            strings: stringsValue,
+            icons: .init(wishlist24: customIcons.wishlist24.uiImage(), wishlistFill24: customIcons.wishlistFill24.uiImage()),
+            strings: .init(wishlistButtonAdd: customStrings.wishlistButtonAdd),
             dataProvider: host as! Aiuta.Configuration.Features.Wishlist.DataProvider
         )
     }
