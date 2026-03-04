@@ -48,6 +48,7 @@ public final class AiutaPlugin: NSObject {
             
             // Flows
             StartAiutaFlowHandlerImpl(with: host),
+            StartOutfitAiutaFlowHandlerImpl(with: host),
             StartHistoryFlowHandlerImpl(with: host),
 
             // Resolvers
