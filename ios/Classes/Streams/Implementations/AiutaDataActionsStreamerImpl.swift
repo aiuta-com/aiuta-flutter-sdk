@@ -40,8 +40,8 @@ final class AiutaDataActionsStreamerImpl: AiutaStreamHandlerImpl, AiutaDataActio
         send(AiutaPlugin.Actions.SelectUploadedImageAction(uploadedImage: image))
     }
 
-    func addGeneratedImages(_ images: [Aiuta.GeneratedImage]) {
-        send(AiutaPlugin.Actions.AddGeneratedImagesAction(generatedImages: images))
+    func addGeneratedImages(_ images: [Aiuta.GeneratedImage], productIds: [String]) {
+        send(AiutaPlugin.Actions.AddGeneratedImagesAction(productIds: productIds, generatedImages: images))
     }
 
     func deleteGeneratedImages(_ images: [Aiuta.GeneratedImage]) {

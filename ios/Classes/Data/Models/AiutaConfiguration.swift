@@ -1056,7 +1056,7 @@ extension AiutaPlugin.Configuration.ShareFeature {
 extension AiutaPlugin.Configuration.ShareFeature.WatermarkFeature {
     // Images - only custom variant exists
     struct Images: Decodable {
-        let logo: String
+        let watermark: String
     }
 }
 
@@ -1720,10 +1720,10 @@ extension AiutaPlugin.Configuration.ImagePickerFeature {
         }
 
         struct Custom: Decodable {
-            let predefinedModelsTitle: String
-            let predefinedModelsOr: String
-            let predefinedModelsEmptyListError: String
-            let predefinedModelsCategories: [String: String]
+            let predefinedModelPageTitle: String
+            let predefinedModelOr: String
+            let predefinedModelErrorEmptyModelsList: String
+            let predefinedModelCategories: [String: String]
         }
     }
 }
@@ -2316,7 +2316,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.FeedbackFeature.FeedbackOtherFe
         }
 
         struct Custom: Decodable {
-            let feedbackOptionOther: String
+            let otherFeedbackOptionOther: String
             let otherFeedbackTitle: String
             let otherFeedbackButtonSend: String
             let otherFeedbackButtonCancel: String

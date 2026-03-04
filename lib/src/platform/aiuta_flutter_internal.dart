@@ -165,6 +165,10 @@ void _observeAiutaActions(AiutaConfiguration configuration) {
         case AddToCartAction():
           configuration.features.tryOn.cart.handler.addToCart(action.productId);
           break;
+        case AddToCartOutfitAction():
+          configuration.features.tryOn.cart.outfit?.handler
+              .addToCartOutfit(action.productIds);
+          break;
       }
     },
   );

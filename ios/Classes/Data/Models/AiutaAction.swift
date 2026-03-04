@@ -23,7 +23,7 @@ extension AiutaPlugin {
 
         struct SetInWishlistAction: Encodable {
             let type: Method = .addToWishlistClick
-            let productId: String
+            let productIds: [String]
             let isInWishlist: Bool
         }
 
@@ -31,13 +31,15 @@ extension AiutaPlugin {
             let type: Method = .requestJwt
             let params: String
         }
-        
+
         struct CompleteOnboardingAction: Encodable {
             let type: Method = .completeOnboarding
+            let id = UUID().uuidString
         }
 
         struct ObtainUserConsentAction: Encodable {
             let type: Method = .obtainUserConsentsIds
+            let id = UUID().uuidString
             let consentIds: [String]
         }
 
@@ -48,31 +50,38 @@ extension AiutaPlugin {
 
         struct AddUploadedImagesAction: Encodable {
             let type: Method = .addUploadedImages
+            let id = UUID().uuidString
             let uploadedImages: [Aiuta.InputImage]
         }
 
         struct DeleteUploadedImagesAction: Encodable {
             let type: Method = .deleteUploadedImages
+            let id = UUID().uuidString
             let uploadedImages: [Aiuta.InputImage]
         }
 
         struct SelectUploadedImageAction: Encodable {
             let type: Method = .selectUploadedImage
+            let id = UUID().uuidString
             let uploadedImage: Aiuta.InputImage
         }
 
         struct AddGeneratedImagesAction: Encodable {
             let type: Method = .addGeneratedImages
+            let id = UUID().uuidString
+            let productIds: [String]
             let generatedImages: [Aiuta.GeneratedImage]
         }
 
         struct DeleteGeneratedImagesAction: Encodable {
             let type: Method = .deleteGeneratedImages
+            let id = UUID().uuidString
             let generatedImages: [Aiuta.GeneratedImage]
         }
-        
+
         struct GetShareTextAction: Encodable {
             let type: Method = .getShareText
+            let id = UUID().uuidString
             let productIds: [String]
         }
     }
@@ -97,5 +106,10 @@ extension AiutaPlugin.Actions {
     struct Notification: Decodable, Error {
         let id: String
         let type: Method
+
+        enum CodingKeys: String, CodingKey {
+            case id = "actionId"
+            case type = "actionType"
+        }
     }
 }

@@ -17,5 +17,5 @@ import Foundation
 protocol AiutaActionsStreamer {
     func addToCart(productId: String)
     func addToCartOutfit(productIds: [String])
-    func set(productId: String, isInWishlist: Bool)
+    func set(productIds: [String], isInWishlist: Bool)
 }

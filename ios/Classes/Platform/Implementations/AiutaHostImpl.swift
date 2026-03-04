@@ -153,7 +153,8 @@ extension AiutaHostImpl: Aiuta.Auth.JwtProvider {
 @available(iOS 13.0.0, *)
 @MainActor extension AiutaHostImpl: Aiuta.Configuration.Features.TryOn.GenerationsHistory.DataProvider {
     func add(generated images: [Aiuta.GeneratedImage]) async throws {
-        dataActionsStreamer?.addGeneratedImages(images)
+        let productIds = Array(Set(images.flatMap { $0.productIds }))
+        dataActionsStreamer?.addGeneratedImages(images, productIds: productIds)
     }
 
     func delete(generated images: [Aiuta.GeneratedImage]) async throws {
@@ -169,9 +170,7 @@ extension AiutaHostImpl: Aiuta.Auth.JwtProvider {
 @available(iOS 13.0.0, *)
 @MainActor extension AiutaHostImpl: Aiuta.Configuration.Features.Wishlist.DataProvider {
     func setProductInWishlist(productIds: [String], inWishlist: Bool) async {
-        for productId in productIds {
-            actionsStreamer?.set(productId: productId, isInWishlist: inWishlist)
-        }
+        actionsStreamer?.set(productIds: productIds, isInWishlist: inWishlist)
     }
 }
 

@@ -25,6 +25,6 @@ final class UpdateOnboardingHandlerImpl: AiutaCallHandler {
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        host.isOnboardingCompleted = try call.decodeArgument(argument)
+        host.isOnboardingCompleted = try call.getArgument(argument)
     }
 }

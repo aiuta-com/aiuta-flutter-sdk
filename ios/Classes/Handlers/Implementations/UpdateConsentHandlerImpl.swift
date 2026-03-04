@@ -25,6 +25,6 @@ final class UpdateUserConsentHandlerImpl: AiutaCallHandler {
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        host.obtainedConsentsIds.value = try call.getArgument(consentKey)
+        host.obtainedConsentsIds.value = try call.decodeArgument(consentKey)
     }
 }

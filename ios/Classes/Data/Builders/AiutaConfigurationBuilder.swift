@@ -733,10 +733,10 @@ extension AiutaPlugin.Configuration.ImagePickerFeature.PredefinedModelFeature {
                 stringsValue = .init(predefinedModelsTitle: defaultLocalization.predefinedModelsTitle, predefinedModelsOr: defaultLocalization.predefinedModelsOr, predefinedModelsEmptyListError: defaultLocalization.predefinedModelsEmptyListError, predefinedModelsCategories: defaultLocalization.predefinedModelsCategories)
             case let .custom(custom):
                 stringsValue = .init(
-                    predefinedModelsTitle: custom.predefinedModelsTitle,
-                    predefinedModelsOr: custom.predefinedModelsOr,
-                    predefinedModelsEmptyListError: custom.predefinedModelsEmptyListError,
-                    predefinedModelsCategories: custom.predefinedModelsCategories
+                    predefinedModelsTitle: custom.predefinedModelPageTitle,
+                    predefinedModelsOr: custom.predefinedModelOr,
+                    predefinedModelsEmptyListError: custom.predefinedModelErrorEmptyModelsList,
+                    predefinedModelsCategories: custom.predefinedModelCategories
                 )
         }
 
@@ -1009,7 +1009,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.FeedbackFeature.FeedbackOtherFe
                 stringsValue = .init(feedbackOptionOther: defaultLocalization.feedbackOptionOther, otherFeedbackTitle: defaultLocalization.otherFeedbackTitle, otherFeedbackButtonSend: defaultLocalization.otherFeedbackButtonSend, otherFeedbackButtonCancel: defaultLocalization.otherFeedbackButtonCancel)
             case let .custom(custom):
                 stringsValue = .init(
-                    feedbackOptionOther: custom.feedbackOptionOther,
+                    feedbackOptionOther: custom.otherFeedbackOptionOther,
                     otherFeedbackTitle: custom.otherFeedbackTitle,
                     otherFeedbackButtonSend: custom.otherFeedbackButtonSend,
                     otherFeedbackButtonCancel: custom.otherFeedbackButtonCancel
@@ -1113,7 +1113,7 @@ extension AiutaPlugin.Configuration.ShareFeature {
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration.ShareFeature.WatermarkFeature {
     func build() -> Aiuta.Configuration.Features.Share.Watermark {
-        Aiuta.Configuration.Features.Share.Watermark(images: .init(watermark: images.logo.uiImage()))
+        Aiuta.Configuration.Features.Share.Watermark(images: .init(watermark: images.watermark.uiImage()))
     }
 }
 

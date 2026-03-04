@@ -12,6 +12,8 @@ sealed class AiutaAction {
     switch (json['type'] as String) {
       case 'addToCartClick':
         return AddToCartAction.fromJson(json);
+      case 'addToCartOutfitClick':
+        return AddToCartOutfitAction.fromJson(json);
       case 'addToWishlistClick':
         return AddToWishlistAction.fromJson(json);
       default:
@@ -35,6 +37,21 @@ class AddToCartAction extends AiutaAction {
 
   @override
   Map<String, dynamic> toJson() => _$AddToCartActionToJson(this);
+}
+
+@JsonSerializable()
+class AddToCartOutfitAction extends AiutaAction {
+  final List<String> productIds;
+
+  AddToCartOutfitAction({
+    required this.productIds,
+  }) : super(AiutaActionType.addToCartOutfitClick);
+
+  factory AddToCartOutfitAction.fromJson(Map<String, dynamic> json) =>
+      _$AddToCartOutfitActionFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$AddToCartOutfitActionToJson(this);
 }
 
 @JsonSerializable()
