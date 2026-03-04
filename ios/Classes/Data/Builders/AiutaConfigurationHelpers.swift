@@ -16,14 +16,12 @@ import AiutaSdk
 import Flutter
 import UIKit
 
-var unavailableResourcesPolicy: Aiuta.Configuration.ValidationPolicy = .ignore
-
 extension AiutaPlugin.TextStyle {
-    func textStyle(with fonts: [AiutaPlugin.Font]) -> Aiuta.Configuration.TextStyle {
+    func textStyle(with fonts: [AiutaPlugin.Font]) -> Aiuta.TextStyle {
         let font = lookupFont(fonts.first(where: { $0.family == fontFamily && $0.weight == fontWeight })) ??
             UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight.uiFontWeight)
 
-        return Aiuta.Configuration.TextStyle(
+        return Aiuta.TextStyle(
             font: font,
             size: CGFloat(fontSize),
             weight: fontWeight.uiFontWeight,
@@ -148,10 +146,7 @@ func lookupImage(_ path: String) -> UIImage {
 
     let key = FlutterDartProject.lookupKey(forAsset: path)
     guard let image = UIImage(named: key, in: Bundle.main, compatibleWith: nil) else {
-        switch unavailableResourcesPolicy {
-            case .ignore: return emptyStub
-            default: return redStub
-        }
+        return emptyStub
     }
 
     return image

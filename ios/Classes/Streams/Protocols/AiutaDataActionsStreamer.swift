@@ -17,10 +17,10 @@ import AiutaSdk
 protocol AiutaDataActionsStreamer {
     func completeOnboarding()
     func obtainUserConsent(_ consentIds: [String])
-    func addUploadedImages(_ images: [Aiuta.Image.Input])
-    func deleteUploadedImages(_ images: [Aiuta.Image.Input])
-    func selectUploadedImage(_ image: Aiuta.Image.Input)
-    func addGeneratedImages(_ images: [Aiuta.Image.Generated])
-    func deleteGeneratedImages(_ images: [Aiuta.Image.Generated])
+    func addUploadedImages(_ images: [Aiuta.InputImage])
+    func deleteUploadedImages(_ images: [Aiuta.InputImage])
+    func selectUploadedImage(_ image: Aiuta.InputImage)
+    func addGeneratedImages(_ images: [Aiuta.GeneratedImage], productIds: [String])
+    func deleteGeneratedImages(_ images: [Aiuta.GeneratedImage])
     func getShareText(_ productIds: [String])
 }

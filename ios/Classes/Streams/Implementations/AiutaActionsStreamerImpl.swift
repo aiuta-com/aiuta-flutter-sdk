@@ -23,7 +23,11 @@ final class AiutaActionsStreamerImpl: AiutaStreamHandlerImpl, AiutaActionsStream
         send(AiutaPlugin.Actions.AddToCartAction(productId: productId))
     }
 
-    func set(productId: String, isInWishlist: Bool) {
-        send(AiutaPlugin.Actions.SetInWishlistAction(productId: productId, isInWishlist: isInWishlist))
+    func addToCartOutfit(productIds: [String]) {
+        send(AiutaPlugin.Actions.AddToCartOutfitAction(productIds: productIds))
+    }
+
+    func set(productIds: [String], isInWishlist: Bool) {
+        send(AiutaPlugin.Actions.SetInWishlistAction(productIds: productIds, isInWishlist: isInWishlist))
     }
 }

@@ -128,7 +128,7 @@ extension AiutaPlugin.Configuration {
 
         let isLoggingEnabled: Bool
         let emptyStringsPolicy: ValidationPolicy
-        let unavailableResourcesPolicy: ValidationPolicy
+        let unavailableResourcesPolicy: ValidationPolicy?
         let infoPlistDescriptionsPolicy: ValidationPolicy
         let listSizePolicy: ValidationPolicy
     }
@@ -168,7 +168,6 @@ extension AiutaPlugin.Configuration.UserInterface.Theme {
         let screen: String
         let neutral: String
         let border: String
-        let outline: String
     }
 
     struct LabelTheme: Decodable {
@@ -192,7 +191,6 @@ extension AiutaPlugin.Configuration.UserInterface.Theme {
     }
 
     struct BottomSheetTheme: Decodable {
-        let typography: Typography
         let shapes: Shapes
         let grabber: Grabber
         let toggles: Toggles
@@ -225,7 +223,6 @@ extension AiutaPlugin.Configuration.UserInterface.Theme {
 
     struct PowerBarTheme: Decodable {
         let strings: Strings
-        let colors: Colors
     }
 }
 
@@ -260,6 +257,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.LabelTheme {
             let titleM: AiutaPlugin.TextStyle
             let regular: AiutaPlugin.TextStyle
             let subtle: AiutaPlugin.TextStyle
+            let footnote: AiutaPlugin.TextStyle
         }
     }
 }
@@ -267,6 +265,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.LabelTheme {
 extension AiutaPlugin.Configuration.UserInterface.Theme.ImageTheme {
     struct Shapes: Decodable {
         let imageL: Double
+        let imageM: Double
         let imageS: Double
     }
 
@@ -407,37 +406,6 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.PageBarTheme {
 }
 
 extension AiutaPlugin.Configuration.UserInterface.Theme.BottomSheetTheme {
-    enum Typography: Decodable {
-        case builtIn
-        case custom(Custom)
-
-        enum CodingKeys: String, CodingKey {
-            case type
-        }
-
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            let type = try container.decode(String.self, forKey: .type)
-
-            switch type {
-                case "builtIn":
-                    self = .builtIn
-                case "custom":
-                    let custom = try Custom(from: decoder)
-                    self = .custom(custom)
-                default:
-                    throw DecodingError.dataCorrupted(
-                        DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Unknown bottom sheet typography type: \(type)")
-                    )
-            }
-        }
-
-        struct Custom: Decodable {
-            let iconButton: AiutaPlugin.TextStyle
-            let chipsButton: AiutaPlugin.TextStyle
-        }
-    }
-
     struct Shapes: Decodable {
         let bottomSheet: Double
         let chipsButton: Double
@@ -772,14 +740,6 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.PowerBarTheme {
             let poweredByAiuta: String
         }
     }
-
-    struct Colors: Decodable {
-        let aiuta: ColorsScheme
-    }
-
-    enum ColorsScheme: String, Decodable {
-        case standard, primary
-    }
 }
 
 // Basic placeholder structures for complex nested features
@@ -836,6 +796,7 @@ extension AiutaPlugin.Configuration {
         let photoGallery: PhotoGalleryFeature
         let predefinedModels: PredefinedModelFeature?
         let uploadsHistory: UploadsHistoryFeature?
+        let protectionDisclaimer: ProtectionDisclaimerFeature?
         let images: Images
         let strings: Strings
     }
@@ -1095,7 +1056,7 @@ extension AiutaPlugin.Configuration.ShareFeature {
 extension AiutaPlugin.Configuration.ShareFeature.WatermarkFeature {
     // Images - only custom variant exists
     struct Images: Decodable {
-        let logo: String
+        let watermark: String
     }
 }
 
@@ -1314,7 +1275,7 @@ extension AiutaPlugin.Configuration.ConsentFeature {
     // Standalone onboarding page variant (complex)
     struct StandalonePageFeature: Decodable {
         let strings: StandaloneStrings
-        let icons: StandaloneIcons
+        let icons: StandaloneIcons?
         let styles: StandaloneStyles
         let data: StandaloneData
         let dataProvider: StandaloneDataProvider
@@ -1759,10 +1720,10 @@ extension AiutaPlugin.Configuration.ImagePickerFeature {
         }
 
         struct Custom: Decodable {
-            let predefinedModelsTitle: String
-            let predefinedModelsOr: String
-            let predefinedModelsEmptyListError: String
-            let predefinedModelsCategories: [String: String]
+            let predefinedModelPageTitle: String
+            let predefinedModelOr: String
+            let predefinedModelErrorEmptyModelsList: String
+            let predefinedModelCategories: [String: String]
         }
     }
 }
@@ -1832,6 +1793,74 @@ extension AiutaPlugin.Configuration.ImagePickerFeature {
                         DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Unknown uploads history data provider type: \(type)")
                     )
             }
+        }
+    }
+}
+
+// ProtectionDisclaimer sub-feature components
+extension AiutaPlugin.Configuration.ImagePickerFeature {
+    struct ProtectionDisclaimerFeature: Decodable {
+        let icons: ProtectionDisclaimerIcons
+        let strings: ProtectionDisclaimerStrings
+    }
+
+    enum ProtectionDisclaimerIcons: Decodable {
+        case builtIn
+        case custom(Custom)
+
+        enum CodingKeys: String, CodingKey {
+            case type
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let type = try container.decode(String.self, forKey: .type)
+
+            switch type {
+                case "builtIn":
+                    self = .builtIn
+                case "custom":
+                    let custom = try Custom(from: decoder)
+                    self = .custom(custom)
+                default:
+                    throw DecodingError.dataCorrupted(
+                        DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Unknown protection disclaimer icons type: \(type)")
+                    )
+            }
+        }
+
+        struct Custom: Decodable {
+            let protection16: AiutaPlugin.Icon
+        }
+    }
+
+    enum ProtectionDisclaimerStrings: Decodable {
+        case builtIn
+        case custom(Custom)
+
+        enum CodingKeys: String, CodingKey {
+            case type
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let type = try container.decode(String.self, forKey: .type)
+
+            switch type {
+                case "builtIn":
+                    self = .builtIn
+                case "custom":
+                    let custom = try Custom(from: decoder)
+                    self = .custom(custom)
+                default:
+                    throw DecodingError.dataCorrupted(
+                        DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Unknown protection disclaimer strings type: \(type)")
+                    )
+            }
+        }
+
+        struct Custom: Decodable {
+            let protectionDisclaimer: String
         }
     }
 }
@@ -1998,6 +2027,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.InputImageValidationFeature {
 // Sub-feature 3: CartFeature (required) - 2 components
 extension AiutaPlugin.Configuration.TryOnFeature {
     struct CartFeature: Decodable {
+        let outfit: CartOutfitFeature?
         let strings: CartStrings
         // handler is excluded from JSON as it's a function reference
     }
@@ -2030,8 +2060,46 @@ extension AiutaPlugin.Configuration.TryOnFeature.CartFeature {
         }
 
         struct Custom: Decodable {
-            let addToCartTitle: String
             let addToCart: String
+        }
+    }
+}
+
+// CartOutfitFeature - optional outfit sub-feature of CartFeature
+extension AiutaPlugin.Configuration.TryOnFeature {
+    struct CartOutfitFeature: Decodable {
+        let strings: CartOutfitStrings
+    }
+}
+
+extension AiutaPlugin.Configuration.TryOnFeature.CartOutfitFeature {
+    enum CartOutfitStrings: Decodable {
+        case builtIn
+        case custom(Custom)
+
+        enum CodingKeys: String, CodingKey {
+            case type
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let type = try container.decode(String.self, forKey: .type)
+
+            switch type {
+                case "builtIn":
+                    self = .builtIn
+                case "custom":
+                    let custom = try Custom(from: decoder)
+                    self = .custom(custom)
+                default:
+                    throw DecodingError.dataCorrupted(
+                        DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Unknown cart outfit strings type: \(type)")
+                    )
+            }
+        }
+
+        struct Custom: Decodable {
+            let addToCartOutfit: String
         }
     }
 }
@@ -2104,7 +2172,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.FitDisclaimerFeature {
         struct Custom: Decodable {
             let fitDisclaimerTitle: String
             let fitDisclaimerDescription: String
-            let fitDisclaimerCloseButton: String
+            let fitDisclaimerButtonClose: String
         }
     }
     
@@ -2248,7 +2316,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.FeedbackFeature.FeedbackOtherFe
         }
 
         struct Custom: Decodable {
-            let feedbackOptionOther: String
+            let otherFeedbackOptionOther: String
             let otherFeedbackTitle: String
             let otherFeedbackButtonSend: String
             let otherFeedbackButtonCancel: String

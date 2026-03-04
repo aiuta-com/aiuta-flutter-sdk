@@ -12,10 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
+import AiutaSdk
+import Flutter
 
-protocol AiutaActionsStreamer {
-    func addToCart(productId: String)
-    func addToCartOutfit(productIds: [String])
-    func set(productIds: [String], isInWishlist: Bool)
+final class StartOutfitAiutaFlowHandlerImpl: AiutaCallHandler {
+    let method = "startOutfitAiutaFlow"
+    let key = "products"
+    let host: AiutaHost
+
+    init(with host: AiutaHost) {
+        self.host = host
+    }
+
+    func handle(_ call: FlutterMethodCall) throws {
+        guard #available(iOS 13.0.0, *) else {
+            throw AiutaPlugin.WrapperError.unsupportedPlatform
+        }
+        let products: [Aiuta.Product] = try call.decodeArgument(key)
+        Task { await Aiuta.tryOn(products: products) }
+    }
 }

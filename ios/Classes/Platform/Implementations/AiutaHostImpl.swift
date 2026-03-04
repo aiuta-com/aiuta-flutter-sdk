@@ -26,16 +26,10 @@ final class AiutaHostImpl: AiutaHost {
         didSet { oldValue?.cancel() }
     }
 
-    @available(iOS 13.0.0, *)
-    var handlers: Aiuta.Configuration.Handlers { self }
-
-    @available(iOS 13.0.0, *)
-    var dataProviders: Aiuta.Configuration.DataProviders { self }
-
     var isOnboardingCompleted = false
     var obtainedConsentsIds = Aiuta.Observable<[String]>([])
-    var uploaded = Aiuta.Observable<[Aiuta.Image.Input]>([])
-    var generated = Aiuta.Observable<[Aiuta.Image.Generated]>([])
+    var uploaded = Aiuta.Observable<[Aiuta.InputImage]>([])
+    var generated = Aiuta.Observable<[Aiuta.GeneratedImage]>([])
     var wishlistProductIds = Aiuta.Observable<[String]>([])
 
     var deleteUploadedResults = [AiutaCompleter<Void>]()
@@ -89,57 +83,101 @@ extension AiutaHostImpl: Aiuta.Auth.JwtProvider {
     }
 }
 
+// MARK: - Cart Handler
+
 @available(iOS 13.0.0, *)
-@MainActor extension AiutaHostImpl: Aiuta.Configuration.Handlers {
+@MainActor extension AiutaHostImpl: Aiuta.Configuration.Features.TryOn.Cart.Handler {
     func addToCart(productId: String) async {
         actionsStreamer?.addToCart(productId: productId)
     }
+}
 
-    func onAnalyticsEvent(_ event: AiutaSdk.Aiuta.Event) async {
+// MARK: - Cart Outfit Handler
+
+@available(iOS 13.0.0, *)
+@MainActor extension AiutaHostImpl: Aiuta.Configuration.Features.TryOn.Cart.Outfit.Handler {
+    func addToCartOutfit(productIds: [String]) {
+        actionsStreamer?.addToCartOutfit(productIds: productIds)
+    }
+}
+
+// MARK: - Analytics Handler
+
+@available(iOS 13.0.0, *)
+@MainActor extension AiutaHostImpl: Aiuta.Analytics.Handler {
+    public func onAnalyticsEvent(_ event: Aiuta.Event) async {
         analyticsStreamer?.eventOccurred(event)
     }
 }
 
+// MARK: - Onboarding DataProvider
+
 @available(iOS 13.0.0, *)
-@MainActor extension AiutaHostImpl: Aiuta.Configuration.DataProviders {
+@MainActor extension AiutaHostImpl: Aiuta.Configuration.Features.Onboarding.DataProvider {
     func completeOnboarding() async {
         dataActionsStreamer?.completeOnboarding()
     }
+}
 
+// MARK: - Consent DataProvider
+
+@available(iOS 13.0.0, *)
+@MainActor extension AiutaHostImpl: Aiuta.Configuration.Features.Consent.Standalone.DataProvider {
     func obtain(consentsIds: [String]) async {
         dataActionsStreamer?.obtainUserConsent(consentsIds)
     }
+}
 
-    func add(uploaded images: [Aiuta.Image.Input]) async throws {
+// MARK: - ImagePicker UploadsHistory DataProvider
+
+@available(iOS 13.0.0, *)
+@MainActor extension AiutaHostImpl: Aiuta.Configuration.Features.ImagePicker.UploadsHistory.DataProvider {
+    func add(uploaded images: [Aiuta.InputImage]) async throws {
         dataActionsStreamer?.addUploadedImages(images)
     }
 
-    func select(uploaded image: Aiuta.Image.Input) async throws {
+    func select(uploaded image: Aiuta.InputImage) async throws {
         dataActionsStreamer?.selectUploadedImage(image)
     }
 
-    func delete(uploaded images: [Aiuta.Image.Input]) async throws {
+    func delete(uploaded images: [Aiuta.InputImage]) async throws {
         let completer = AiutaCompleter<Void>()
         deleteUploadedResults.insert(completer, at: 0)
         dataActionsStreamer?.deleteUploadedImages(images)
         try await completer.result
     }
+}
 
-    func add(generated images: [Aiuta.Image.Generated]) async throws {
-        dataActionsStreamer?.addGeneratedImages(images)
+// MARK: - TryOn GenerationsHistory DataProvider
+
+@available(iOS 13.0.0, *)
+@MainActor extension AiutaHostImpl: Aiuta.Configuration.Features.TryOn.GenerationsHistory.DataProvider {
+    func add(generated images: [Aiuta.GeneratedImage]) async throws {
+        let productIds = Array(Set(images.flatMap { $0.productIds }))
+        dataActionsStreamer?.addGeneratedImages(images, productIds: productIds)
     }
 
-    func delete(generated images: [Aiuta.Image.Generated]) async throws {
+    func delete(generated images: [Aiuta.GeneratedImage]) async throws {
         let completer = AiutaCompleter<Void>()
         deleteGeneratedResults.insert(completer, at: 0)
         dataActionsStreamer?.deleteGeneratedImages(images)
         try await completer.result
     }
+}
 
-    func setProductInWishlist(productId: String, inWishlist: Bool) async {
-        actionsStreamer?.set(productId: productId, isInWishlist: inWishlist)
+// MARK: - Wishlist DataProvider
+
+@available(iOS 13.0.0, *)
+@MainActor extension AiutaHostImpl: Aiuta.Configuration.Features.Wishlist.DataProvider {
+    func setProductInWishlist(productIds: [String], inWishlist: Bool) async {
+        actionsStreamer?.set(productIds: productIds, isInWishlist: inWishlist)
     }
+}
 
+// MARK: - Share DataProvider
+
+@available(iOS 13.0.0, *)
+@MainActor extension AiutaHostImpl: Aiuta.Configuration.Features.Share.DataProvider {
     func getShareText(productIds: [String]) async throws -> String? {
         let completer = AiutaCompleter<String>()
         shareTextResult = completer

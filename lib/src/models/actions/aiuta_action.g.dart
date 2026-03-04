@@ -19,8 +19,24 @@ Map<String, dynamic> _$AddToCartActionToJson(AddToCartAction instance) =>
 
 const _$AiutaActionTypeEnumMap = {
   AiutaActionType.addToCartClick: 'addToCartClick',
+  AiutaActionType.addToCartOutfitClick: 'addToCartOutfitClick',
   AiutaActionType.addToWishlistClick: 'addToWishlistClick',
 };
+
+AddToCartOutfitAction _$AddToCartOutfitActionFromJson(
+        Map<String, dynamic> json) =>
+    AddToCartOutfitAction(
+      productIds: (json['productIds'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+    )..type = $enumDecode(_$AiutaActionTypeEnumMap, json['type']);
+
+Map<String, dynamic> _$AddToCartOutfitActionToJson(
+        AddToCartOutfitAction instance) =>
+    <String, dynamic>{
+      'type': _$AiutaActionTypeEnumMap[instance.type]!,
+      'productIds': instance.productIds,
+    };
 
 AddToWishlistAction _$AddToWishlistActionFromJson(Map<String, dynamic> json) =>
     AddToWishlistAction(

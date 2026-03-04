@@ -16,7 +16,7 @@ import AiutaSdk
 import Flutter
 
 final class ResolveJwtAuthHandlerImpl: AiutaCallHandler {
-    let method = "resolveJWTAuth"
+    let method = "resolveJwt"
     let jwtKey = "jwt"
     let host: AiutaHost
 
