@@ -275,7 +275,7 @@ class AiutaAnalyticsExitEvent extends AiutaAnalyticsEvent {
     required this.pageId,
     required List<String> productIds,
   }) : super(
-          type: AiutaAnalyticsEventType.picker,
+          type: AiutaAnalyticsEventType.exit,
           pageId: pageId,
           productIds: productIds,
         );
@@ -331,7 +331,7 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
     this.downloadDuration,
     this.totalDuration,
   }) : super(
-          type: AiutaAnalyticsEventType.picker,
+          type: AiutaAnalyticsEventType.tryOn,
           pageId: pageId,
           productIds: productIds,
         );
@@ -359,7 +359,7 @@ class AiutaAnalyticsResultsEvent extends AiutaAnalyticsEvent {
     required this.pageId,
     required List<String> productIds,
   }) : super(
-          type: AiutaAnalyticsEventType.picker,
+          type: AiutaAnalyticsEventType.results,
           pageId: pageId,
           productIds: productIds,
         );
@@ -397,7 +397,7 @@ class AiutaAnalyticsFeedbackEvent extends AiutaAnalyticsEvent {
     this.negativeFeedbackOptionIndex,
     this.negativeFeedbackText,
   }) : super(
-          type: AiutaAnalyticsEventType.picker,
+          type: AiutaAnalyticsEventType.feedback,
           pageId: pageId,
           productIds: productIds,
         );
@@ -425,7 +425,7 @@ class AiutaAnalyticsHistoryEvent extends AiutaAnalyticsEvent {
     required this.pageId,
     required List<String> productIds,
   }) : super(
-          type: AiutaAnalyticsEventType.picker,
+          type: AiutaAnalyticsEventType.history,
           pageId: pageId,
           productIds: productIds,
         );

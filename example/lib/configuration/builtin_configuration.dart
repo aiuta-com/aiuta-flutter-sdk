@@ -19,7 +19,7 @@ AiutaConfiguration buildBuiltInConfiguration({
     analytics: AiutaAnalytics(
       handler: AiutaAnalyticsHandler(
         onAnalyticsEvent: (event) {
-          debugPrint("[Analytics] ${event.type}: ${event.toJson()}");
+          debugPrint('[Aiuta Analytics] (${event.runtimeType}) ${event.type}: ${event.toJson()}');
         },
       ),
     ),

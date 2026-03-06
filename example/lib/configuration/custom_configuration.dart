@@ -265,7 +265,7 @@ AiutaConfiguration buildCustomConfiguration({
     analytics: AiutaAnalytics(
       handler: AiutaAnalyticsHandler(
         onAnalyticsEvent: (event) {
-          debugPrint('[Aiuta Analytics] ${event.type}: ${event.toJson()}');
+          debugPrint('[Aiuta Analytics] (${event.runtimeType}) ${event.type}: ${event.toJson()}');
         },
       ),
     ),
@@ -426,7 +426,7 @@ AiutaConfiguration buildCustomConfiguration({
             uploadsHistoryButtonChangePhoto: 'Change Photo',
           ),
           styles: AiutaImagePickerUploadsHistoryStyles(
-            changePhotoButtonStyle: AiutaComponentStyle.brand,
+            changePhotoButtonStyle: AiutaComponentStyle.blurredWithOutline,
           ),
           dataProvider: AiutaImagePickerUploadsHistoryDataProviderCustom(
             uploadedImages: uploadsHistoryData.uploadedImages,
@@ -458,7 +458,7 @@ AiutaConfiguration buildCustomConfiguration({
               '#8816213E',
               '#0016213E',
             ],
-            loadingStatusStyle: AiutaComponentStyle.brand,
+            loadingStatusStyle: AiutaComponentStyle.blurredWithOutline,
           ),
         ),
         inputImageValidation: AiutaTryOnInputImageValidationFeature(
