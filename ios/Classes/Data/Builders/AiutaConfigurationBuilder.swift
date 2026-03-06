@@ -203,12 +203,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.PageBarTheme {
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration.UserInterface.Theme.BottomSheetTheme {
     func build() -> Aiuta.Configuration.UserInterface.BottomSheetTheme {
-        let typographyValue = Aiuta.Configuration.UserInterface.BottomSheetTheme.Typography(
-            iconButton: defaultTypography.iconButton
-        )
-
         return Aiuta.Configuration.UserInterface.BottomSheetTheme(
-            typography: typographyValue,
             shapes: .init(bottomSheet: .continuous(radius: shapes.bottomSheet)),
             grabber: .init(
                 width: CGFloat(grabber.width),
@@ -846,7 +841,7 @@ extension AiutaPlugin.Configuration.TryOnFeature {
             strings: stringsValue,
             toggles: .init(
                 allowsBackgroundExecution: toggles.isBackgroundExecutionAllowed,
-                tryGeneratePersonSegmentation: false
+                tryGeneratePersonSegmentation: toggles.tryGeneratePersonSegmentation
             )
         )
     }

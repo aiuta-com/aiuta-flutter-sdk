@@ -1869,6 +1869,7 @@ extension AiutaPlugin.Configuration.ImagePickerFeature {
 extension AiutaPlugin.Configuration.TryOnFeature {
     struct Toggles: Decodable {
         let isBackgroundExecutionAllowed: Bool
+        let tryGeneratePersonSegmentation: Bool
     }
 
     enum Icons: Decodable {

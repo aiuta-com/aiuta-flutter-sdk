@@ -17,11 +17,18 @@ class AiutaTryOnToggles {
   /// Note: That the try-on will be completed on the server side in any case.
   final bool isBackgroundExecutionAllowed;
 
+  /// Whether to generate a person segmentation (glowing outline effect)
+  /// on the loading animation screen while waiting for the try-on result.
+  ///
+  /// iOS only. Has no effect on Android.
+  final bool tryGeneratePersonSegmentation;
+
   /// Creates an [AiutaTryOnToggles] with the required [isBackgroundExecutionAllowed]
   /// to configure if the try-on feature can be executed in the background after
   /// the user closes the SDK while the try-on is being generated.
   AiutaTryOnToggles({
     required this.isBackgroundExecutionAllowed,
+    this.tryGeneratePersonSegmentation = true,
   });
 
   /// Creates a built-in try-on toggles configuration with default settings.
