@@ -31,6 +31,11 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
+  aiuta_sdk_local = File.expand_path('../../../ios/Packages/AiutaSdk', File.dirname(__FILE__))
+  if File.exist?(aiuta_sdk_local)
+    pod 'AiutaSdk', :path => aiuta_sdk_local
+  end
+
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   target 'RunnerTests' do
     inherit! :search_paths

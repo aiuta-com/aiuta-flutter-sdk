@@ -20,23 +20,7 @@ final class AiutaAnalyticsStreamerImpl: AiutaStreamHandlerImpl, AiutaAnalyticsSt
         super.init(with: messenger, name: "aiutaAnalyticsHandler")
     }
 
-    private static let eventRemapping: [String: String] = [
-        "\"consentsGiven\"": "\"consentGiven\"",
-    ]
-
-    private static let unsupportedValues: [String] = [
-        "\"sizeFit\"", "\"sizeFitSurvey\"", "\"sizeFitResults\"",
-    ]
-
     func eventOccurred(_ event: Aiuta.Event) {
-        guard let data = try? JSONEncoder().encode(event),
-              var jsonString = String(data: data, encoding: .utf8) else { return }
-        for unsupported in Self.unsupportedValues {
-            if jsonString.contains(unsupported) { return }
-        }
-        for (nativeValue, flutterValue) in Self.eventRemapping {
-            jsonString = jsonString.replacingOccurrences(of: nativeValue, with: flutterValue)
-        }
-        sendRaw(jsonString)
+        send(event)
     }
 }

@@ -72,6 +72,11 @@ import 'package:aiuta_flutter/configuration/features/try_on/other_photo/aiuta_tr
 import 'package:aiuta_flutter/configuration/features/wishlist/aiuta_wishlist_data_provider.dart';
 import 'package:aiuta_flutter/configuration/features/wishlist/aiuta_wishlist_feature.dart';
 import 'package:aiuta_flutter/configuration/features/wishlist/aiuta_wishlist_icons.dart';
+import 'package:aiuta_flutter/configuration/features/welcome_screen/aiuta_welcome_screen_feature.dart';
+import 'package:aiuta_flutter/configuration/features/welcome_screen/aiuta_welcome_screen_icons.dart';
+import 'package:aiuta_flutter/configuration/features/welcome_screen/aiuta_welcome_screen_images.dart';
+import 'package:aiuta_flutter/configuration/features/welcome_screen/aiuta_welcome_screen_strings.dart';
+import 'package:aiuta_flutter/configuration/features/welcome_screen/aiuta_welcome_screen_typography.dart';
 import 'package:aiuta_flutter/configuration/features/wishlist/aiuta_wishlist_strings.dart';
 import 'package:aiuta_flutter/configuration/ui/aiuta_user_interface.dart';
 import 'package:aiuta_flutter/configuration/ui/policies/aiuta_presentation_style.dart';
@@ -278,6 +283,35 @@ AiutaConfiguration buildCustomConfiguration({
     // Features — all enabled, all custom strings & data providers
     // -----------------------------------------------------------------------
     features: AiutaFeatures(
+      // --- Welcome Screen ---
+      welcomeScreen: AiutaWelcomeScreenFeature(
+        images: AiutaWelcomeScreenImagesCustom(
+          welcomeBackground: 'welcome_bg',
+        ),
+        icons: AiutaWelcomeScreenIconsCustom(
+          welcome82: AiutaIcon(path: 'welcome'),
+        ),
+        strings: AiutaWelcomeScreenStringsCustom(
+          welcomeTitle: 'Virtual Try-On',
+          welcomeDescription:
+              'See how clothes look on you without leaving home. '
+              'Upload a photo and try on any item instantly.',
+          welcomeButtonStart: 'Let\'s Go!',
+        ),
+        typography: AiutaWelcomeScreenTypographyCustom(
+          welcomeTitle: _textStyle(
+            fontSize: 28,
+            fontWeight: AiutaFontWeight.bold,
+            letterSpacing: -0.5,
+          ),
+          welcomeDescription: _textStyle(
+            fontSize: 16,
+            fontWeight: AiutaFontWeight.normal,
+            lineHeight: 24,
+          ),
+        ),
+      ),
+
       // --- Onboarding ---
       onboarding: AiutaOnboardingFeature(
         howItWorksPage: AiutaOnboardingHowItWorksPageFeature(
