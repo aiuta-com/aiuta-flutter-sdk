@@ -53,6 +53,8 @@ import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_ca
 import 'package:aiuta_flutter/configuration/features/try_on/feedback/aiuta_try_on_feedback_feature.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/feedback/aiuta_try_on_feedback_icons.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/feedback/aiuta_try_on_feedback_strings.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/feedback/other/aiuta_try_on_feedback_other_feature.dart';
+import 'package:aiuta_flutter/configuration/features/try_on/feedback/other/aiuta_try_on_feedback_other_strings.dart';
 import 'package:aiuta_flutter/models/icons/aiuta_icon.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/fit_disclaimer/aiuta_try_on_fit_disclaimer_feature.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/fit_disclaimer/aiuta_try_on_fit_disclaimer_icons.dart';
@@ -491,6 +493,14 @@ AiutaConfiguration buildCustomConfiguration({
           typography: AiutaTryOnFitDisclaimerTypographyBuiltIn(),
         ),
         feedback: AiutaTryOnFeedbackFeature(
+          otherFeedback: AiutaTryOnFeedbackOtherFeature(
+            strings: AiutaTryOnFeedbackOtherStringsCustom(
+              otherFeedbackTitle: 'Tell us more',
+              otherFeedbackButtonSend: 'Send',
+              otherFeedbackButtonCancel: 'Cancel',
+              otherFeedbackOptionOther: 'Other',
+            ),
+          ),
           icons: AiutaTryOnFeedbackIconsBuiltIn(),
           strings: AiutaTryOnFeedbackStringsCustom(
             feedbackOptions: [

@@ -867,7 +867,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.LoadingPageFeature {
         return Aiuta.Configuration.Features.TryOn.LoadingPage(
             strings: stringsValue,
             styles: .init(
-                backgroundGradient: styles.loadingStatusBackgroundGradient?.compactMap { Aiuta.Color(validHex: $0) } ?? [],
+                backgroundGradient: styles.loadingStatusBackgroundGradient?.compactMap { Aiuta.Color(validHex: $0) },
                 statusStyle: styles.loadingStatusStyle.sdkStyle()
             )
         )
@@ -981,7 +981,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.FeedbackFeature {
         let iconsValue: Aiuta.Configuration.Features.TryOn.Feedback.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(like36: defaultIcons.like36, dislike36: defaultIcons.dislike36, gratitude40: UIImage())
+                iconsValue = .init(like36: defaultIcons.like36, dislike36: defaultIcons.dislike36, gratitude40: nil)
             case let .custom(custom):
                 iconsValue = .init(
                     like36: custom.like36.uiImage(),
