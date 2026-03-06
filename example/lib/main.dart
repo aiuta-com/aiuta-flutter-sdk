@@ -1,10 +1,7 @@
 import 'package:aiuta_flutter/aiuta_flutter.dart';
-import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
-import 'package:aiuta_flutter/configuration/analytics/aiuta_analytics.dart';
-import 'package:aiuta_flutter/configuration/analytics/aiuta_analytics_handler.dart';
-import 'package:aiuta_flutter/configuration/auth/aiuta_auth.dart';
-import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_cart_handler.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
+import 'package:aiutasdk_example/configuration/builtin_configuration.dart';
+import 'package:aiutasdk_example/configuration/custom_configuration.dart';
 import 'package:aiutasdk_example/env/env.dart';
 import 'package:flutter/material.dart';
 
@@ -20,25 +17,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _aiuta = Aiuta(
-    configuration: AiutaConfiguration.builtIn(
-      auth: AiutaApiKeyAuth(apiKey: Env.API_KEY),
-      termsOfServiceUrl: "https://your-domain.com/you-tos",
-      cartHandler: AiutaTryOnCartHandler(
-        addToCart: (productId) {
-          // Handle adding product to cart
-        },
-      ),
-      analytics: AiutaAnalytics(
-        handler: AiutaAnalyticsHandler(
-          onAnalyticsEvent: (event) {
-            // Handle analytics event
-            debugPrint("$event: ${event.toJson()}");
-          },
-        ),
-      ),
-    ),
-  );
+  bool _useCustomConfig = false;
+
+  late final _builtInConfig = buildBuiltInConfiguration(apiKey: Env.API_KEY);
+  late final _customConfig = buildCustomConfiguration(apiKey: Env.API_KEY);
+
+  Aiuta _rebuildAiuta() => Aiuta(
+        configuration: _useCustomConfig ? _customConfig : _builtInConfig,
+      );
+
+  late Aiuta _aiuta = _rebuildAiuta();
 
   bool _isAiutaAvailable = false;
 
@@ -57,18 +45,47 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Aiuta SDK example app'),
+          title: Text(
+            _useCustomConfig ? 'Aiuta SDK (Custom)' : 'Aiuta SDK (Built-in)',
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: Switch(
+                value: _useCustomConfig,
+                onChanged: (value) {
+                  setState(() {
+                    _useCustomConfig = value;
+                    _aiuta = _rebuildAiuta();
+                  });
+                },
+              ),
+            ),
+          ],
         ),
         body: Center(
           child: _isAiutaAvailable
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: Text(
+                        _useCustomConfig
+                            ? 'Custom theme: indigo palette,\nsquare shapes, in-memory providers'
+                            : 'Default theme: built-in UI,\nbuilt-in data providers',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
                     TextButton(
                       style: ButtonStyle(
                         foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.blue),
-                        textStyle: MaterialStateProperty.all<TextStyle>(
+                            WidgetStateProperty.all<Color>(Colors.blue),
+                        textStyle: WidgetStateProperty.all<TextStyle>(
                             const TextStyle(fontSize: 20)),
                       ),
                       onPressed: () {
@@ -89,8 +106,8 @@ class _MyAppState extends State<MyApp> {
                     TextButton(
                       style: ButtonStyle(
                         foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.blue),
-                        textStyle: MaterialStateProperty.all<TextStyle>(
+                            WidgetStateProperty.all<Color>(Colors.blue),
+                        textStyle: WidgetStateProperty.all<TextStyle>(
                             const TextStyle(fontSize: 20)),
                       ),
                       onPressed: () {
@@ -122,8 +139,8 @@ class _MyAppState extends State<MyApp> {
                     TextButton(
                       style: ButtonStyle(
                         foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.blue),
-                        textStyle: MaterialStateProperty.all<TextStyle>(
+                            WidgetStateProperty.all<Color>(Colors.blue),
+                        textStyle: WidgetStateProperty.all<TextStyle>(
                             const TextStyle(fontSize: 20)),
                       ),
                       onPressed: () {
