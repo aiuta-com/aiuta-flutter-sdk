@@ -43,10 +43,6 @@ class AiutaStreamHandlerImpl: NSObject, FlutterStreamHandler, AiutaStreamHandler
         eventSink(event)
     }
 
-    func sendRaw(_ string: String) {
-        eventSink?(string)
-    }
-
     func onDetach() {
         channel.setStreamHandler(nil)
         eventSink = nil

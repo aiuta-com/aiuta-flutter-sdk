@@ -203,12 +203,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.PageBarTheme {
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration.UserInterface.Theme.BottomSheetTheme {
     func build() -> Aiuta.Configuration.UserInterface.BottomSheetTheme {
-        let typographyValue = Aiuta.Configuration.UserInterface.BottomSheetTheme.Typography(
-            iconButton: defaultTypography.iconButton
-        )
-
         return Aiuta.Configuration.UserInterface.BottomSheetTheme(
-            typography: typographyValue,
             shapes: .init(bottomSheet: .continuous(radius: shapes.bottomSheet)),
             grabber: .init(
                 width: CGFloat(grabber.width),
@@ -752,10 +747,14 @@ extension AiutaPlugin.Configuration.ImagePickerFeature.PredefinedModelFeature {
 extension AiutaPlugin.Configuration.ImagePickerFeature.ProtectionDisclaimerFeature {
     func build() -> Aiuta.Configuration.Features.ImagePicker.ProtectionDisclaimer? {
         guard case let .custom(customStrings) = strings else { return nil }
+
         guard case let .custom(customIcons) = icons else { return nil }
 
+        let iconsValue: Aiuta.Configuration.Features.ImagePicker.ProtectionDisclaimer.Icons
+        iconsValue = .init(protection16: customIcons.protection16.uiImage())
+
         return Aiuta.Configuration.Features.ImagePicker.ProtectionDisclaimer(
-            icons: .init(protection16: customIcons.protection16.uiImage()),
+            icons: iconsValue,
             strings: .init(protectionDisclaimer: customStrings.protectionDisclaimer)
         )
     }
@@ -842,7 +841,7 @@ extension AiutaPlugin.Configuration.TryOnFeature {
             strings: stringsValue,
             toggles: .init(
                 allowsBackgroundExecution: toggles.isBackgroundExecutionAllowed,
-                tryGeneratePersonSegmentation: false
+                tryGeneratePersonSegmentation: toggles.tryGeneratePersonSegmentation
             )
         )
     }
@@ -868,7 +867,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.LoadingPageFeature {
         return Aiuta.Configuration.Features.TryOn.LoadingPage(
             strings: stringsValue,
             styles: .init(
-                backgroundGradient: styles.loadingStatusBackgroundGradient?.compactMap { Aiuta.Color(validHex: $0) } ?? [],
+                backgroundGradient: styles.loadingStatusBackgroundGradient?.compactMap { Aiuta.Color(validHex: $0) },
                 statusStyle: styles.loadingStatusStyle.sdkStyle()
             )
         )
@@ -982,7 +981,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.FeedbackFeature {
         let iconsValue: Aiuta.Configuration.Features.TryOn.Feedback.Icons
         switch icons {
             case .builtIn:
-                iconsValue = .init(like36: defaultIcons.like36, dislike36: defaultIcons.dislike36, gratitude40: UIImage())
+                iconsValue = .init(like36: defaultIcons.like36, dislike36: defaultIcons.dislike36, gratitude40: nil)
             case let .custom(custom):
                 iconsValue = .init(
                     like36: custom.like36.uiImage(),
@@ -1123,10 +1122,19 @@ extension AiutaPlugin.Configuration.ShareFeature.WatermarkFeature {
 extension AiutaPlugin.Configuration.WishlistFeature {
     func build(with host: AiutaHost, fonts: [AiutaPlugin.Font]) -> Aiuta.Configuration.Features.Wishlist? {
         guard case let .custom(customStrings) = strings else { return nil }
-        guard case let .custom(customIcons) = icons else { return nil }
+
+        let iconsValue: Aiuta.Configuration.Features.Wishlist.Icons
+        switch icons {
+            case .builtIn:
+                guard let wishlist24 = defaultIcons.wishlist24,
+                      let wishlistFill24 = defaultIcons.wishlistFill24 else { return nil }
+                iconsValue = .init(wishlist24: wishlist24, wishlistFill24: wishlistFill24)
+            case let .custom(custom):
+                iconsValue = .init(wishlist24: custom.wishlist24.uiImage(), wishlistFill24: custom.wishlistFill24.uiImage())
+        }
 
         return Aiuta.Configuration.Features.Wishlist(
-            icons: .init(wishlist24: customIcons.wishlist24.uiImage(), wishlistFill24: customIcons.wishlistFill24.uiImage()),
+            icons: iconsValue,
             strings: .init(wishlistButtonAdd: customStrings.wishlistButtonAdd),
             dataProvider: host as! Aiuta.Configuration.Features.Wishlist.DataProvider
         )

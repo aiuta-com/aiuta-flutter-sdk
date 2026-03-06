@@ -12,16 +12,16 @@ class AiutaInputImage {
   /// URL of the image.
   final String url;
 
-  /// Type of the image.
-  final AiutaOwnerType type;
+  /// Type of the image owner.
+  final AiutaOwnerType ownerType;
 
   /// Creates an [AiutaInputImage] with the given unique [id] and [url] path,
-  /// [type] of the image defines the way how the image should be stored and
+  /// [ownerType] of the image defines the way how the image should be stored and
   /// removed from the users' history.
   AiutaInputImage({
     required this.id,
     required this.url,
-    required this.type,
+    required this.ownerType,
   });
 
   // Internal json staff

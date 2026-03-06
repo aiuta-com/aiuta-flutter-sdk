@@ -12,18 +12,18 @@ class AiutaGeneratedImage {
   /// URL of the image.
   final String url;
 
-  /// Type of the image.
-  final AiutaOwnerType type;
+  /// Type of the image owner.
+  final AiutaOwnerType ownerType;
 
   /// List of product IDs associated with this generated image.
   final List<String> productIds;
 
   /// Creates an [AiutaGeneratedImage] with the given unique [id],
-  /// [url], [type], and associated [productIds].
+  /// [url], [ownerType], and associated [productIds].
   AiutaGeneratedImage({
     required this.id,
     required this.url,
-    required this.type,
+    required this.ownerType,
     required this.productIds,
   });
 
