@@ -84,8 +84,8 @@ class _MyAppState extends State<MyApp> {
                     TextButton(
                       style: ButtonStyle(
                         foregroundColor:
-                            WidgetStateProperty.all<Color>(Colors.blue),
-                        textStyle: WidgetStateProperty.all<TextStyle>(
+                            MaterialStateProperty.all<Color>(Colors.blue),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
                             const TextStyle(fontSize: 20)),
                       ),
                       onPressed: () {
@@ -106,8 +106,8 @@ class _MyAppState extends State<MyApp> {
                     TextButton(
                       style: ButtonStyle(
                         foregroundColor:
-                            WidgetStateProperty.all<Color>(Colors.blue),
-                        textStyle: WidgetStateProperty.all<TextStyle>(
+                            MaterialStateProperty.all<Color>(Colors.blue),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
                             const TextStyle(fontSize: 20)),
                       ),
                       onPressed: () {
@@ -139,8 +139,8 @@ class _MyAppState extends State<MyApp> {
                     TextButton(
                       style: ButtonStyle(
                         foregroundColor:
-                            WidgetStateProperty.all<Color>(Colors.blue),
-                        textStyle: WidgetStateProperty.all<TextStyle>(
+                            MaterialStateProperty.all<Color>(Colors.blue),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
                             const TextStyle(fontSize: 20)),
                       ),
                       onPressed: () {
