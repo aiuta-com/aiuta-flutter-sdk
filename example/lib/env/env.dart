@@ -11,7 +11,6 @@ part 'env.g.dart';
  * SAMPLES_API_KEY=YOUR_API_KEY_HERE
  * SAMPLES_SUBSCRIPTION_ID=YOUR_SUBSCRIPTION_ID_HERE
  * SAMPLES_SKU_ID=YOUR_SKU_ID_HERE
- * SAMPLES_SKU_CATALOG_NAME=YOUR_SKU_CATALOG_NAME_HERE
  *
  * And then build Env class with `dart run build_runner build` command inside /example folder
  */
@@ -37,9 +36,4 @@ abstract class Env {
     defaultValue: "YOUR_SKU_ID_HERE",
   )
   static const String SKU_ID_2 = _Env.SKU_ID_2;
-  @EnviedField(
-    varName: 'SAMPLES_SKU_CATALOG_NAME',
-    defaultValue: "YOUR_SKU_CATALOG_NAME_HERE",
-  )
-  static const String SKU_CATALOG_NAME = _Env.SKU_CATALOG_NAME;
 }

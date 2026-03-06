@@ -10,14 +10,14 @@ AiutaInputImage _$AiutaInputImageFromJson(Map<String, dynamic> json) =>
     AiutaInputImage(
       id: json['id'] as String,
       url: json['url'] as String,
-      type: $enumDecode(_$AiutaOwnerTypeEnumMap, json['type']),
+      ownerType: $enumDecode(_$AiutaOwnerTypeEnumMap, json['ownerType']),
     );
 
 Map<String, dynamic> _$AiutaInputImageToJson(AiutaInputImage instance) =>
     <String, dynamic>{
       'id': instance.id,
       'url': instance.url,
-      'type': _$AiutaOwnerTypeEnumMap[instance.type]!,
+      'ownerType': _$AiutaOwnerTypeEnumMap[instance.ownerType]!,
     };
 
 const _$AiutaOwnerTypeEnumMap = {

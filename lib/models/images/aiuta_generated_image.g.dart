@@ -10,7 +10,7 @@ AiutaGeneratedImage _$AiutaGeneratedImageFromJson(Map<String, dynamic> json) =>
     AiutaGeneratedImage(
       id: json['id'] as String,
       url: json['url'] as String,
-      type: $enumDecode(_$AiutaOwnerTypeEnumMap, json['type']),
+      ownerType: $enumDecode(_$AiutaOwnerTypeEnumMap, json['ownerType']),
       productIds: (json['productIds'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -21,7 +21,7 @@ Map<String, dynamic> _$AiutaGeneratedImageToJson(
     <String, dynamic>{
       'id': instance.id,
       'url': instance.url,
-      'type': _$AiutaOwnerTypeEnumMap[instance.type]!,
+      'ownerType': _$AiutaOwnerTypeEnumMap[instance.ownerType]!,
       'productIds': instance.productIds,
     };
 
