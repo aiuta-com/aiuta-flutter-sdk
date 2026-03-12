@@ -2,26 +2,36 @@ part of '../../aiuta_flutter.dart';
 
 AiutaPlatform get _platform => AiutaPlatform.instance;
 
-void _configure(AiutaConfiguration configuration) {
-  _observeAiutaAuthActions(configuration);
-  _observeAiutaActions(configuration);
-  _observeAiutaDataActions(configuration);
-  _observeAiutaAnalytics(configuration);
+AiutaDisposer? _activeDisposer;
+
+void _configure(AiutaConfiguration configuration, AiutaDisposer disposer) {
+  _activeDisposer?.cleanup();
+  _activeDisposer = disposer;
+  _observeAiutaAuthActions(configuration, disposer);
+  _observeAiutaActions(configuration, disposer);
+  _observeAiutaDataActions(configuration, disposer);
+  _observeAiutaAnalytics(configuration, disposer);
   _platform.configure(configuration: configuration);
-  _listenDataProviderChanges(configuration);
+  _listenDataProviderChanges(configuration, disposer);
 }
 
 // Listeners
 
-void _listenDataProviderChanges(AiutaConfiguration configuration) {
-  _listenOnboardingChanges(configuration);
-  _listenConsentChanges(configuration);
-  _listenUploadsHistoryChanges(configuration);
-  _listenGenerationsHistoryChanges(configuration);
-  _listenWishlistChanges(configuration);
+void _listenDataProviderChanges(
+  AiutaConfiguration configuration,
+  AiutaDisposer disposer,
+) {
+  _listenOnboardingChanges(configuration, disposer);
+  _listenConsentChanges(configuration, disposer);
+  _listenUploadsHistoryChanges(configuration, disposer);
+  _listenGenerationsHistoryChanges(configuration, disposer);
+  _listenWishlistChanges(configuration, disposer);
 }
 
-void _listenOnboardingChanges(AiutaConfiguration configuration) {
+void _listenOnboardingChanges(
+  AiutaConfiguration configuration,
+  AiutaDisposer disposer,
+) {
   final onboardingDataProvider =
       configuration.features.onboarding?.dataProvider;
   if (onboardingDataProvider is AiutaOnboardingDataProviderCustom) {
@@ -33,10 +43,17 @@ void _listenOnboardingChanges(AiutaConfiguration configuration) {
     onboardingListener();
     onboardingDataProvider.isOnboardingCompleted
         .addListener(onboardingListener);
+    disposer.registerValueListener(
+      onboardingDataProvider.isOnboardingCompleted,
+      onboardingListener,
+    );
   }
 }
 
-void _listenConsentChanges(AiutaConfiguration configuration) {
+void _listenConsentChanges(
+  AiutaConfiguration configuration,
+  AiutaDisposer disposer,
+) {
   final consentFeature = configuration.features.consent;
   switch (consentFeature) {
     case AiutaConsentStandaloneOnboardingPageFeature():
@@ -49,6 +66,10 @@ void _listenConsentChanges(AiutaConfiguration configuration) {
         };
         consentListener();
         consentDataProvider.obtainedConsentsIds.addListener(consentListener);
+        disposer.registerValueListener(
+          consentDataProvider.obtainedConsentsIds,
+          consentListener,
+        );
       }
       break;
     case AiutaConsentStandaloneImagePickerPageFeature():
@@ -61,6 +82,10 @@ void _listenConsentChanges(AiutaConfiguration configuration) {
         };
         consentListener();
         consentDataProvider.obtainedConsentsIds.addListener(consentListener);
+        disposer.registerValueListener(
+          consentDataProvider.obtainedConsentsIds,
+          consentListener,
+        );
       }
       break;
     default:
@@ -68,7 +93,10 @@ void _listenConsentChanges(AiutaConfiguration configuration) {
   }
 }
 
-void _listenUploadsHistoryChanges(AiutaConfiguration configuration) {
+void _listenUploadsHistoryChanges(
+  AiutaConfiguration configuration,
+  AiutaDisposer disposer,
+) {
   final uploadsHistoryDataProvider =
       configuration.features.imagePicker.uploadsHistory?.dataProvider;
   if (uploadsHistoryDataProvider
@@ -80,10 +108,17 @@ void _listenUploadsHistoryChanges(AiutaConfiguration configuration) {
     uploadedImagesListener();
     uploadsHistoryDataProvider.uploadedImages
         .addListener(uploadedImagesListener);
+    disposer.registerValueListener(
+      uploadsHistoryDataProvider.uploadedImages,
+      uploadedImagesListener,
+    );
   }
 }
 
-void _listenGenerationsHistoryChanges(AiutaConfiguration configuration) {
+void _listenGenerationsHistoryChanges(
+  AiutaConfiguration configuration,
+  AiutaDisposer disposer,
+) {
   final generationsHistoryDataProvider =
       configuration.features.tryOn.generationsHistory?.dataProvider;
   if (generationsHistoryDataProvider
@@ -96,10 +131,17 @@ void _listenGenerationsHistoryChanges(AiutaConfiguration configuration) {
     generatedImagesListener();
     generationsHistoryDataProvider.generatedImages
         .addListener(generatedImagesListener);
+    disposer.registerValueListener(
+      generationsHistoryDataProvider.generatedImages,
+      generatedImagesListener,
+    );
   }
 }
 
-void _listenWishlistChanges(AiutaConfiguration configuration) {
+void _listenWishlistChanges(
+  AiutaConfiguration configuration,
+  AiutaDisposer disposer,
+) {
   final wishlistDataProvider = configuration.features.wishlist?.dataProvider;
 
   if (wishlistDataProvider is AiutaWishlistDataProviderCustom) {
@@ -111,206 +153,234 @@ void _listenWishlistChanges(AiutaConfiguration configuration) {
 
     wishlistListener();
     wishlistDataProvider.wishlistProductIds.addListener(wishlistListener);
+    disposer.registerValueListener(
+      wishlistDataProvider.wishlistProductIds,
+      wishlistListener,
+    );
   }
 }
 
 // Observe data providers callbacks
 
-void _observeAiutaAuthActions(AiutaConfiguration configuration) {
-  _platform.observeAiutaAuthActions().listen(
-    (authAction) async {
-      switch (authAction) {
-        case RequestJwtAction():
-          var auth = configuration.auth;
-          switch (auth) {
-            case AiutaJwtAuth():
-              try {
-                var jwt = await auth.getJwt(
-                  jsonDecode(authAction.params),
-                );
-                _platform.resolveJwt(
-                  token: jwt,
-                );
-              } catch (e) {
-                _platform.resolveJwt(
-                  token: "",
-                );
-              }
-              break;
-            case AiutaApiKeyAuth():
-              throw Exception(
-                "Native tried to get JWT, while flutter get different type of auth",
-              );
-          }
-          break;
-      }
-    },
-  );
-}
-
-void _observeAiutaActions(AiutaConfiguration configuration) {
-  _platform.observeAiutaActions().listen(
-    (action) async {
-      switch (action) {
-        case AddToWishlistAction():
-          final dataProvider = configuration.features.wishlist?.dataProvider;
-
-          if (dataProvider is AiutaWishlistDataProviderCustom) {
-            dataProvider.setProductInWishlist(
-              action.productIds,
-              action.isInWishlist,
-            );
-          }
-          break;
-        case AddToCartAction():
-          configuration.features.tryOn.cart.handler.addToCart(action.productId);
-          break;
-        case AddToCartOutfitAction():
-          configuration.features.tryOn.cart.outfit?.handler
-              .addToCartOutfit(action.productIds);
-          break;
-      }
-    },
-  );
-}
-
-void _observeAiutaDataActions(AiutaConfiguration configuration) {
-  _platform.observeAiutaDataActions().listen(
-    (action) async {
-      switch (action) {
-        // Onboarding
-        case CompleteOnboardingAction():
-          final dataProvider = configuration.features.onboarding?.dataProvider;
-
-          if (dataProvider is AiutaOnboardingDataProviderCustom) {
-            _handleDataActionCompletion(
-              action: action,
-              impl: () async => dataProvider.completeOnboarding(),
-            );
-          }
-          break;
-        // Consent
-        case ObtainUserConsentsIdsAction():
-          final consentFeature = configuration.features.consent;
-          switch (consentFeature) {
-            case AiutaConsentStandaloneOnboardingPageFeature():
-              final dataProvider = consentFeature.dataProvider;
-
-              if (dataProvider is AiutaConsentStandaloneDataProviderCustom) {
-                _handleDataActionCompletion(
-                  action: action,
-                  impl: () async =>
-                      dataProvider.obtainConsentsIds(action.consentIds),
-                );
-              }
-              break;
-            case AiutaConsentStandaloneImagePickerPageFeature():
-              final dataProvider = consentFeature.dataProvider;
-
-              if (dataProvider is AiutaConsentStandaloneDataProviderCustom) {
-                _handleDataActionCompletion(
-                  action: action,
-                  impl: () async =>
-                      dataProvider.obtainConsentsIds(action.consentIds),
-                );
-              }
-              break;
-            default:
-              break;
-          }
-          break;
-        // Uploads history
-        case AddUploadedImagesAction():
-          final dataProvider =
-              configuration.features.imagePicker.uploadsHistory?.dataProvider;
-
-          if (dataProvider
-              is AiutaImagePickerUploadsHistoryDataProviderCustom) {
-            _handleDataActionCompletion(
-              action: action,
-              impl: () async =>
-                  dataProvider.addUploadedImages(action.uploadedImages),
-            );
-          }
-          break;
-        case SelectUploadedImageAction():
-          final dataProvider =
-              configuration.features.imagePicker.uploadsHistory?.dataProvider;
-
-          if (dataProvider
-              is AiutaImagePickerUploadsHistoryDataProviderCustom) {
-            _handleDataActionCompletion(
-              action: action,
-              impl: () async =>
-                  dataProvider.selectUploadedImage(action.uploadedImage),
-            );
-          }
-          break;
-        case DeleteUploadedImagesAction():
-          final dataProvider =
-              configuration.features.imagePicker.uploadsHistory?.dataProvider;
-
-          if (dataProvider
-              is AiutaImagePickerUploadsHistoryDataProviderCustom) {
-            _handleDataActionCompletion(
-              action: action,
-              impl: () async =>
-                  dataProvider.deleteUploadedImages(action.uploadedImages),
-            );
-          }
-          break;
-        // Generations history
-        case AddGeneratedImagesAction():
-          final dataProvider =
-              configuration.features.tryOn.generationsHistory?.dataProvider;
-
-          if (dataProvider is AiutaTryOnGenerationsHistoryDataProviderCustom) {
-            _handleDataActionCompletion(
-              action: action,
-              impl: () async => dataProvider.addGeneratedImages(
-                action.generatedImages,
-                action.productIds,
-              ),
-            );
-          }
-          break;
-        case DeleteGeneratedImagesAction():
-          final dataProvider =
-              configuration.features.tryOn.generationsHistory?.dataProvider;
-
-          if (dataProvider is AiutaTryOnGenerationsHistoryDataProviderCustom) {
-            _handleDataActionCompletion(
-              action: action,
-              impl: () async => dataProvider.deleteGeneratedImages(
-                action.generatedImages,
-              ),
-            );
-          }
-          break;
-        case GetShareTextAction():
-          final dataProvider = configuration.features.share?.dataProvider;
-          if (dataProvider is AiutaShareDataProviderCustom) {
-            _handleDataActionCompletion(
-                action: action,
-                impl: () async {
-                  final text =
-                      await dataProvider.getShareText(action.productIds);
-                  _platform.resolveShareText(
-                    productIds: action.productIds,
-                    text: text,
+void _observeAiutaAuthActions(
+  AiutaConfiguration configuration,
+  AiutaDisposer disposer,
+) {
+  disposer.registerStreamSubscription(
+    _platform.observeAiutaAuthActions().listen(
+      (authAction) async {
+        switch (authAction) {
+          case RequestJwtAction():
+            var auth = configuration.auth;
+            switch (auth) {
+              case AiutaJwtAuth():
+                try {
+                  var jwt = await auth.getJwt(
+                    jsonDecode(authAction.params),
                   );
-                });
-          }
-          break;
-      }
-    },
+                  _platform.resolveJwt(
+                    token: jwt,
+                  );
+                } catch (e) {
+                  _platform.resolveJwt(
+                    token: "",
+                  );
+                }
+                break;
+              case AiutaApiKeyAuth():
+                throw Exception(
+                  "Native tried to get JWT, while flutter get different type of auth",
+                );
+            }
+            break;
+        }
+      },
+    ),
   );
 }
 
-void _observeAiutaAnalytics(AiutaConfiguration configuration) {
-  _platform.observeAiutaAnalytics().listen((event) async {
-    configuration.analytics?.handler.onAnalyticsEvent(event);
-  });
+void _observeAiutaActions(
+  AiutaConfiguration configuration,
+  AiutaDisposer disposer,
+) {
+  disposer.registerStreamSubscription(
+    _platform.observeAiutaActions().listen(
+      (action) async {
+        switch (action) {
+          case AddToWishlistAction():
+            final dataProvider = configuration.features.wishlist?.dataProvider;
+
+            if (dataProvider is AiutaWishlistDataProviderCustom) {
+              dataProvider.setProductInWishlist(
+                action.productIds,
+                action.isInWishlist,
+              );
+            }
+            break;
+          case AddToCartAction():
+            configuration.features.tryOn.cart.handler
+                .addToCart(action.productId);
+            break;
+          case AddToCartOutfitAction():
+            configuration.features.tryOn.cart.outfit?.handler
+                .addToCartOutfit(action.productIds);
+            break;
+        }
+      },
+    ),
+  );
+}
+
+void _observeAiutaDataActions(
+  AiutaConfiguration configuration,
+  AiutaDisposer disposer,
+) {
+  disposer.registerStreamSubscription(
+    _platform.observeAiutaDataActions().listen(
+      (action) async {
+        switch (action) {
+          // Onboarding
+          case CompleteOnboardingAction():
+            final dataProvider =
+                configuration.features.onboarding?.dataProvider;
+
+            if (dataProvider is AiutaOnboardingDataProviderCustom) {
+              _handleDataActionCompletion(
+                action: action,
+                impl: () async => dataProvider.completeOnboarding(),
+              );
+            }
+            break;
+          // Consent
+          case ObtainUserConsentsIdsAction():
+            final consentFeature = configuration.features.consent;
+            switch (consentFeature) {
+              case AiutaConsentStandaloneOnboardingPageFeature():
+                final dataProvider = consentFeature.dataProvider;
+
+                if (dataProvider is AiutaConsentStandaloneDataProviderCustom) {
+                  _handleDataActionCompletion(
+                    action: action,
+                    impl: () async =>
+                        dataProvider.obtainConsentsIds(action.consentIds),
+                  );
+                }
+                break;
+              case AiutaConsentStandaloneImagePickerPageFeature():
+                final dataProvider = consentFeature.dataProvider;
+
+                if (dataProvider is AiutaConsentStandaloneDataProviderCustom) {
+                  _handleDataActionCompletion(
+                    action: action,
+                    impl: () async =>
+                        dataProvider.obtainConsentsIds(action.consentIds),
+                  );
+                }
+                break;
+              default:
+                break;
+            }
+            break;
+          // Uploads history
+          case AddUploadedImagesAction():
+            final dataProvider =
+                configuration.features.imagePicker.uploadsHistory?.dataProvider;
+
+            if (dataProvider
+                is AiutaImagePickerUploadsHistoryDataProviderCustom) {
+              _handleDataActionCompletion(
+                action: action,
+                impl: () async =>
+                    dataProvider.addUploadedImages(action.uploadedImages),
+              );
+            }
+            break;
+          case SelectUploadedImageAction():
+            final dataProvider =
+                configuration.features.imagePicker.uploadsHistory?.dataProvider;
+
+            if (dataProvider
+                is AiutaImagePickerUploadsHistoryDataProviderCustom) {
+              _handleDataActionCompletion(
+                action: action,
+                impl: () async =>
+                    dataProvider.selectUploadedImage(action.uploadedImage),
+              );
+            }
+            break;
+          case DeleteUploadedImagesAction():
+            final dataProvider =
+                configuration.features.imagePicker.uploadsHistory?.dataProvider;
+
+            if (dataProvider
+                is AiutaImagePickerUploadsHistoryDataProviderCustom) {
+              _handleDataActionCompletion(
+                action: action,
+                impl: () async =>
+                    dataProvider.deleteUploadedImages(action.uploadedImages),
+              );
+            }
+            break;
+          // Generations history
+          case AddGeneratedImagesAction():
+            final dataProvider =
+                configuration.features.tryOn.generationsHistory?.dataProvider;
+
+            if (dataProvider
+                is AiutaTryOnGenerationsHistoryDataProviderCustom) {
+              _handleDataActionCompletion(
+                action: action,
+                impl: () async => dataProvider.addGeneratedImages(
+                  action.generatedImages,
+                  action.productIds,
+                ),
+              );
+            }
+            break;
+          case DeleteGeneratedImagesAction():
+            final dataProvider =
+                configuration.features.tryOn.generationsHistory?.dataProvider;
+
+            if (dataProvider
+                is AiutaTryOnGenerationsHistoryDataProviderCustom) {
+              _handleDataActionCompletion(
+                action: action,
+                impl: () async => dataProvider.deleteGeneratedImages(
+                  action.generatedImages,
+                ),
+              );
+            }
+            break;
+          case GetShareTextAction():
+            final dataProvider = configuration.features.share?.dataProvider;
+            if (dataProvider is AiutaShareDataProviderCustom) {
+              _handleDataActionCompletion(
+                  action: action,
+                  impl: () async {
+                    final text =
+                        await dataProvider.getShareText(action.productIds);
+                    _platform.resolveShareText(
+                      productIds: action.productIds,
+                      text: text,
+                    );
+                  });
+            }
+            break;
+        }
+      },
+    ),
+  );
+}
+
+void _observeAiutaAnalytics(
+  AiutaConfiguration configuration,
+  AiutaDisposer disposer,
+) {
+  disposer.registerStreamSubscription(
+    _platform.observeAiutaAnalytics().listen((event) async {
+      configuration.analytics?.handler.onAnalyticsEvent(event);
+    }),
+  );
 }
 
 // Handle data action completion
