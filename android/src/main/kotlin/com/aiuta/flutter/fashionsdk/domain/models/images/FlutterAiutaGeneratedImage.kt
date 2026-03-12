@@ -10,7 +10,7 @@ class FlutterAiutaGeneratedImage(
     @SerialName("url")
     val url: String,
     @SerialName("ownerType")
-    val type: FlutterAiutaOwnerType,
+    val ownerType: FlutterAiutaOwnerType,
     @SerialName("productIds")
     val productIds: List<String>,
 )

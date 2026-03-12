@@ -10,5 +10,5 @@ class FlutterAiutaInputImage(
     @SerialName("url")
     val url: String,
     @SerialName("ownerType")
-    val type: FlutterAiutaOwnerType,
+    val ownerType: FlutterAiutaOwnerType,
 )

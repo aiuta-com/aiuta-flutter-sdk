@@ -12,7 +12,7 @@ fun FlutterAiutaInputImage.toNative(): AiutaInputImage {
     return AiutaInputImage(
         id = id,
         url = url,
-        type = type.toNative(),
+        ownerType = ownerType.toNative(),
     )
 }
 
@@ -20,7 +20,7 @@ fun AiutaInputImage.toFlutter(): FlutterAiutaInputImage {
     return FlutterAiutaInputImage(
         id = id,
         url = url,
-        type = type.toFlutter(),
+        ownerType = ownerType.toFlutter(),
     )
 }
 
@@ -29,7 +29,7 @@ fun FlutterAiutaGeneratedImage.toNative(): AiutaGeneratedImage {
     return AiutaGeneratedImage(
         id = id,
         url = url,
-        type = type.toNative(),
+        ownerType = ownerType.toNative(),
         productIds = productIds,
     )
 }
@@ -38,7 +38,7 @@ fun AiutaGeneratedImage.toFlutter(): FlutterAiutaGeneratedImage {
     return FlutterAiutaGeneratedImage(
         id = id,
         url = url,
-        type = type.toFlutter(),
+        ownerType = ownerType.toFlutter(),
         productIds = productIds,
     )
 }
