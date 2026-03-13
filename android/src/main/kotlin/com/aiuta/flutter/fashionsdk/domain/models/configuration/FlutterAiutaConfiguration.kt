@@ -2,6 +2,7 @@ package com.aiuta.flutter.fashionsdk.domain.models.configuration
 
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.FlutterAiutaAuthentication
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.debug.FlutterAiutaDebugSettings
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.experimental.FlutterAiutaExperimentalSettings
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.FlutterAiutaFeatures
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.FlutterAiutaUserInterfaceConfiguration
 import kotlinx.serialization.SerialName
@@ -19,5 +20,8 @@ data class FlutterAiutaConfiguration(
     val features: FlutterAiutaFeatures,
 
     @SerialName("debugSettings")
-    val debugSettings: FlutterAiutaDebugSettings
+    val debugSettings: FlutterAiutaDebugSettings,
+
+    @SerialName("experimentalSettings")
+    val experimentalSettings: FlutterAiutaExperimentalSettings,
 )

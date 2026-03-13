@@ -4,6 +4,7 @@ import 'package:aiuta_flutter/configuration/analytics/aiuta_analytics_handler.da
 import 'package:aiuta_flutter/configuration/auth/aiuta_auth.dart';
 import 'package:aiuta_flutter/configuration/debug/aiuta_debug_settings.dart';
 import 'package:aiuta_flutter/configuration/debug/aiuta_validation_policy.dart';
+import 'package:aiuta_flutter/configuration/experimental/aiuta_experimental_settings.dart';
 import 'package:aiuta_flutter/configuration/features/aiuta_features.dart';
 import 'package:aiuta_flutter/configuration/features/base/aiuta_component_style.dart';
 import 'package:aiuta_flutter/configuration/features/consent/aiuta_consent_feature.dart';
@@ -259,6 +260,10 @@ AiutaConfiguration buildCustomConfiguration({
       unavailableResourcesPolicy: AiutaValidationPolicy.warning,
       infoPlistDescriptionsPolicy: AiutaValidationPolicy.warning,
       listSizePolicy: AiutaValidationPolicy.warning,
+    ),
+
+    experimentalSettings: AiutaExperimentalSettings(
+      shouldOpenLinksInCustomTab: true,
     ),
 
     // -----------------------------------------------------------------------

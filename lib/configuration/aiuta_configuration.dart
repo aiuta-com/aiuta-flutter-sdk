@@ -1,6 +1,7 @@
 import 'package:aiuta_flutter/configuration/analytics/aiuta_analytics.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_auth.dart';
 import 'package:aiuta_flutter/configuration/debug/aiuta_debug_settings.dart';
+import 'package:aiuta_flutter/configuration/experimental/aiuta_experimental_settings.dart';
 import 'package:aiuta_flutter/configuration/features/aiuta_features.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_cart_handler.dart';
 import 'package:aiuta_flutter/configuration/ui/aiuta_user_interface.dart';
@@ -39,6 +40,10 @@ class AiutaConfiguration {
   /// It contains the logging settings and validation policies for various parameters.
   final AiutaDebugSettings debugSettings;
 
+  /// Opt-in settings for experimental or non-default behavior.
+  /// Use with caution — these settings may change or be removed in future releases.
+  final AiutaExperimentalSettings experimentalSettings;
+
   /// Creates an [AiutaConfiguration] with [auth] to authenticate Aiuta to use
   /// digital try-on API with your credentials, [userInterface] to configure
   /// the user interface behavior, themes, and colors, [features] to configure
@@ -51,6 +56,7 @@ class AiutaConfiguration {
     required this.features,
     this.analytics,
     required this.debugSettings,
+    required this.experimentalSettings,
   });
 
   /// Creates a built-in configuration with default settings.
@@ -69,6 +75,7 @@ class AiutaConfiguration {
       ),
       analytics: analytics,
       debugSettings: AiutaDebugSettings.builtIn(),
+      experimentalSettings: AiutaExperimentalSettings.builtIn(),
     );
   }
 
