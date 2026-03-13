@@ -18,6 +18,8 @@ AiutaConfiguration _$AiutaConfigurationFromJson(Map<String, dynamic> json) =>
           : AiutaAnalytics.fromJson(json['analytics'] as Map<String, dynamic>),
       debugSettings: AiutaDebugSettings.fromJson(
           json['debugSettings'] as Map<String, dynamic>),
+      experimentalSettings: AiutaExperimentalSettings.fromJson(
+          json['experimentalSettings'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AiutaConfigurationToJson(AiutaConfiguration instance) =>
@@ -27,4 +29,5 @@ Map<String, dynamic> _$AiutaConfigurationToJson(AiutaConfiguration instance) =>
       'features': instance.features,
       'analytics': instance.analytics,
       'debugSettings': instance.debugSettings,
+      'experimentalSettings': instance.experimentalSettings,
     };
