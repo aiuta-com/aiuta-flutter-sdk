@@ -9,7 +9,7 @@ part 'aiuta_experimental_settings.g.dart';
 /// may change or be removed in future releases.
 @JsonSerializable()
 class AiutaExperimentalSettings {
-  /// When `true`, links opened by the SDK will use Android Custom Tabs
+  /// Android only. When `true`, links opened by the SDK will use Android Custom Tabs
   /// instead of the default system browser intent. This prevents Android
   /// App Links from intercepting URLs and always opens them inside the app.
   /// Defaults to `false`.
