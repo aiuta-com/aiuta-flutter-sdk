@@ -16,6 +16,7 @@ import 'package:aiuta_flutter/src/models/actions/aiuta_auth_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_data_action.dart';
 import 'package:aiuta_flutter/src/models/errors/aiuta_data_action_error.dart';
 import 'package:aiuta_flutter/src/models/success/aiuta_data_action_success.dart';
+import 'package:aiuta_flutter/src/platform/aiuta_disposer.dart';
 import 'package:aiuta_flutter/src/platform/aiuta_platform_interface.dart';
 
 part 'src/platform/aiuta_flutter_internal.dart';
@@ -44,10 +45,20 @@ class Aiuta {
   /// The configuration object that is used to configure the Aiuta SDK.
   final AiutaConfiguration configuration;
 
+  /// Disposer that manages all active subscriptions and listeners
+  /// created during SDK configuration.
+  final AiutaDisposer _disposer = AiutaDisposer();
+
   /// Create a new instance of [Aiuta].
   /// [configuration] is required to setup the Aiuta SDK.
   Aiuta({required this.configuration}) {
-    _configure(configuration);
+    _configure(configuration, _disposer);
+  }
+
+  /// Dispose of the Aiuta SDK instance.
+  /// This will cancel all active subscriptions and remove all listeners.
+  void dispose() {
+    _disposer.cleanup();
   }
 
   /// Starts the virtual try-on flow with the given [product].

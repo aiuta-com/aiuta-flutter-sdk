@@ -25,6 +25,8 @@ final class StartHistoryFlowHandlerImpl: AiutaCallHandler {
 
     func handle(_ call: FlutterMethodCall) throws {
         guard #available(iOS 13.0.0, *) else { throw AiutaPlugin.WrapperError.unsupportedPlatform }
-        Task { await Aiuta.showHistory() }
+        Task { @MainActor in
+            await Aiuta.showHistory()
+        }
     }
 }
