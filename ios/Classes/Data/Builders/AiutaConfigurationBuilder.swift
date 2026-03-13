@@ -204,7 +204,10 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.PageBarTheme {
 extension AiutaPlugin.Configuration.UserInterface.Theme.BottomSheetTheme {
     func build() -> Aiuta.Configuration.UserInterface.BottomSheetTheme {
         return Aiuta.Configuration.UserInterface.BottomSheetTheme(
-            shapes: .init(bottomSheet: .continuous(radius: shapes.bottomSheet)),
+            shapes: .init(
+                bottomSheet: .continuous(radius: shapes.bottomSheet),
+                chipsButton: .continuous(radius: shapes.chipsButton)
+            ),
             grabber: .init(
                 width: CGFloat(grabber.width),
                 height: CGFloat(grabber.height),
@@ -318,7 +321,7 @@ extension AiutaPlugin.Configuration.UserInterface.Theme.ProductBarTheme {
             let pricesTypographyValue: Aiuta.Configuration.UserInterface.ProductBarTheme.Prices.Typography
             switch pricesConfig.typography {
                 case .builtIn:
-                    pricesTypographyValue = .init(price: defaultTypography.price)
+                    pricesTypographyValue = .init(price: defaultTypography.subtle)
                 case let .custom(custom):
                     pricesTypographyValue = .init(price: custom.price.textStyle(with: fonts))
             }
@@ -552,8 +555,7 @@ extension AiutaPlugin.Configuration.ConsentFeature.StandalonePageFeature {
                     consentTitle: "Data Processing Agreement",
                     consentDescriptionHtml: "Please review and accept the terms below to continue.",
                     consentFooterHtml: nil,
-                    consentButtonAccept: "Accept",
-                    consentButtonReject: "Reject"
+                    consentButtonAccept: "Accept"
                 )
             case let .custom(custom):
                 stringsValue = .init(
@@ -561,8 +563,7 @@ extension AiutaPlugin.Configuration.ConsentFeature.StandalonePageFeature {
                     consentTitle: custom.consentTitle,
                     consentDescriptionHtml: custom.consentDescriptionHtml,
                     consentFooterHtml: custom.consentFooterHtml,
-                    consentButtonAccept: custom.consentButtonAccept,
-                    consentButtonReject: custom.consentButtonReject
+                    consentButtonAccept: custom.consentButtonAccept
                 )
         }
 
@@ -805,9 +806,9 @@ extension AiutaPlugin.Configuration.TryOnFeature {
         let stringsValue: Aiuta.Configuration.Features.TryOn.Strings
         switch strings {
             case .builtIn:
-                stringsValue = .init(tryOnPageTitle: defaultLocalization.tryOnPageTitle, tryOn: defaultLocalization.tryOn)
+                stringsValue = .init(tryOnPageTitle: defaultLocalization.tryOnPageTitle, tryOn: defaultLocalization.tryOn, outfitTitle: defaultLocalization.outfitTitle)
             case let .custom(custom):
-                stringsValue = .init(tryOnPageTitle: custom.tryOnPageTitle, tryOn: custom.tryOn)
+                stringsValue = .init(tryOnPageTitle: custom.tryOnPageTitle, tryOn: custom.tryOn, outfitTitle: custom.outfitTitle)
         }
 
         let iconsValue: Aiuta.Configuration.Features.TryOn.Icons
@@ -823,7 +824,7 @@ extension AiutaPlugin.Configuration.TryOnFeature {
             let colors = gradientColors.compactMap { Aiuta.Color(validHex: $0) }
             stylesValue = .init(tryOnButtonGradient: colors)
         } else {
-            stylesValue = .init(tryOnButtonGradient: [])
+            stylesValue = .init(tryOnButtonGradient: nil)
         }
 
         let cartValue = cart.build(with: host)
@@ -920,11 +921,17 @@ extension AiutaPlugin.Configuration.TryOnFeature.CartFeature {
 
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration.TryOnFeature.CartOutfitFeature {
-    func build(with host: AiutaHost) -> Aiuta.Configuration.Features.TryOn.Cart.Outfit? {
-        guard case let .custom(customStrings) = strings else { return nil }
+    func build(with host: AiutaHost) -> Aiuta.Configuration.Features.TryOn.Cart.Outfit {
+        let stringsValue: Aiuta.Configuration.Features.TryOn.Cart.Outfit.Strings
+        switch strings {
+            case .builtIn:
+                stringsValue = .init(addToCartOutfit: defaultLocalization.addToCartOutfit ?? "Shop the look")
+            case let .custom(customStrings):
+                stringsValue = .init(addToCartOutfit: customStrings.addToCartOutfit)
+        }
 
         return Aiuta.Configuration.Features.TryOn.Cart.Outfit(
-            strings: .init(addToCartOutfit: customStrings.addToCartOutfit),
+            strings: stringsValue,
             handler: host as! Aiuta.Configuration.Features.TryOn.Cart.Outfit.Handler
         )
     }
@@ -993,8 +1000,7 @@ extension AiutaPlugin.Configuration.TryOnFeature.FeedbackFeature {
         return Aiuta.Configuration.Features.TryOn.Feedback(
             other: otherFeedback?.build(with: fonts),
             strings: stringsValue,
-            icons: iconsValue,
-            shapes: .init(feedbackButton: .continuous(radius: ui.theme.bottomSheet.shapes.chipsButton))
+            icons: iconsValue
         )
     }
 }

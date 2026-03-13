@@ -29,6 +29,8 @@ final class StartAiutaFlowHandlerImpl: AiutaCallHandler {
             throw AiutaPlugin.WrapperError.unsupportedPlatform
         }
         let product: Aiuta.Product = try call.decodeArgument(key)
-        Task { await Aiuta.tryOn(product: product) }
+        Task { @MainActor in
+            await Aiuta.tryOn(product: product)
+        }
     }
 }

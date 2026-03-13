@@ -1930,6 +1930,7 @@ extension AiutaPlugin.Configuration.TryOnFeature {
         struct Custom: Decodable {
             let tryOnPageTitle: String
             let tryOn: String
+            let outfitTitle: String
         }
     }
 
