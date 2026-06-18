@@ -8,8 +8,14 @@
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": [
+      "matchPackageNames": [
         "/^aiuta[.-]/"
+      ],
+      "enabled": false
+    },
+    {
+      "matchDepNames": [
+        "dev.flutter.flutter-plugin-loader"
       ],
       "enabled": false
     }
