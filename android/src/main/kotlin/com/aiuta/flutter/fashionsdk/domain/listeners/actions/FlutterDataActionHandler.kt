@@ -4,6 +4,7 @@ import com.aiuta.fashionsdk.configuration.features.consent.standalone.dataprovid
 import com.aiuta.fashionsdk.configuration.features.models.images.AiutaGeneratedImage
 import com.aiuta.fashionsdk.configuration.features.models.images.AiutaInputImage
 import com.aiuta.fashionsdk.configuration.features.onboarding.dataprovider.AiutaOnboardingFeatureDataProviderCustom
+import com.aiuta.fashionsdk.configuration.mode.AiutaMode
 import com.aiuta.fashionsdk.configuration.features.picker.history.dataprovider.AiutaImagePickerUploadsHistoryFeatureDataProviderCustom
 import com.aiuta.fashionsdk.configuration.features.share.dataprovider.AiutaShareFeatureDataProviderCustom
 import com.aiuta.fashionsdk.configuration.features.tryon.history.dataprovider.AiutaTryOnGenerationsHistoryFeatureDataProviderCustom
@@ -25,10 +26,14 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboard
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.picker.history.dataprovider.UploadsHistoryDataActionKey.UpdateUploadedImages
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.share.dataprovider.ShareDataActionKey.SolveShareText
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.tryon.history.dataprovider.GenerationsHistoryDataActionKey.UpdateGeneratedImages
+import com.aiuta.flutter.fashionsdk.domain.mappers.mode.flutterModeFromName
+import com.aiuta.flutter.fashionsdk.domain.mappers.mode.toFlutter
+import com.aiuta.flutter.fashionsdk.domain.mappers.mode.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.images.FlutterAiutaGeneratedImage
 import com.aiuta.flutter.fashionsdk.domain.models.images.FlutterAiutaInputImage
 import com.aiuta.flutter.fashionsdk.utils.json
 import io.flutter.plugin.common.MethodCall
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.json.Json
@@ -70,8 +75,9 @@ object FlutterDataActionHandler :
     private val _obtainedConsentsIds: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
     override val obtainedConsentsIds: StateFlow<List<String>> = _obtainedConsentsIds
 
-    private val _isOnboardingCompleted: MutableStateFlow<Boolean> = MutableStateFlow(false)
-    override val isOnboardingCompleted: StateFlow<Boolean> = _isOnboardingCompleted
+    private val _isOnboardingCompleted: MutableStateFlow<Map<AiutaMode, Boolean>> =
+        MutableStateFlow(emptyMap())
+    override val isOnboardingCompleted: Flow<Map<AiutaMode, Boolean>> = _isOnboardingCompleted
 
     override suspend fun addUploadedImages(images: List<AiutaInputImage>) {
         println("addUploadedImages: images - ${images}")
@@ -153,8 +159,8 @@ object FlutterDataActionHandler :
     }
 
 
-    override suspend fun completeOnboarding() {
-        val action = FlutterCompleteOnboardingAction()
+    override suspend fun completeOnboarding(mode: AiutaMode) {
+        val action = FlutterCompleteOnboardingAction(mode = mode.toFlutter())
         sendEvent(Json.encodeToString<FlutterAiutaDataProviderAction>(action))
     }
 
@@ -210,8 +216,13 @@ object FlutterDataActionHandler :
             }
 
             is UpdateOnboardingState -> {
-                val isOnboardingCompleted = call.argument<Boolean>(dataActionKey.PARAM_IS_ONBOARDING_COMPLETED)
-                _isOnboardingCompleted.value = isOnboardingCompleted ?: _isOnboardingCompleted.value
+                val rawOnboardingState = call.argument<String>(dataActionKey.PARAM_IS_ONBOARDING_COMPLETED)
+                rawOnboardingState?.let {
+                    val parsed = json.decodeFromString<Map<String, Boolean>>(it)
+                    _isOnboardingCompleted.value = parsed.mapNotNull { (key, value) ->
+                        flutterModeFromName(key)?.toNative()?.let { mode -> mode to value }
+                    }.toMap()
+                }
             }
         }
     }

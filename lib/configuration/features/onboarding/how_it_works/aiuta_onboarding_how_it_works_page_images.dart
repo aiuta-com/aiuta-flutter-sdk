@@ -1,4 +1,5 @@
 import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
+import 'package:aiuta_flutter/configuration/mode/media/aiuta_media.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_onboarding_how_it_works_page_images.g.dart';
@@ -53,14 +54,14 @@ class AiutaOnboardingHowItWorksPageImagesBuiltIn
 @JsonSerializable()
 class AiutaOnboardingHowItWorksPageImagesCustom
     extends AiutaOnboardingHowItWorksPageImages {
-  /// List of [OnboardingHowItWorksItem] with their photos and previews.
-  /// This list should contain exactly 3 items.
-  final List<OnboardingHowItWorksItem> onboardingHowItWorksItems;
+  /// Media (looping video with a poster image) shown on the How It Works page
+  /// demonstrating the try-on flow.
+  final AiutaMedia onboardingHowItWorksItem;
 
-  /// Creates an [AiutaOnboardingHowItWorksPageImagesCustom] with the given exact 3
-  /// items in the [onboardingHowItWorksItems] with their photos and previews.
+  /// Creates an [AiutaOnboardingHowItWorksPageImagesCustom] with the
+  /// [onboardingHowItWorksItem] media demonstrating the try-on flow.
   AiutaOnboardingHowItWorksPageImagesCustom({
-    required this.onboardingHowItWorksItems,
+    required this.onboardingHowItWorksItem,
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff
@@ -71,34 +72,4 @@ class AiutaOnboardingHowItWorksPageImagesCustom
   @override
   Map<String, dynamic> toJson() =>
       _$AiutaOnboardingHowItWorksPageImagesCustomToJson(this);
-}
-
-/// This class contains the photo and preview of a Try-On example
-/// explaining how the Try-On feature works.
-@JsonSerializable()
-class OnboardingHowItWorksItem {
-  /// Try-On example image for the item.
-  ///
-  /// All images should be the same person in the same pose wearing [itemPreview].
-  /// It's better to generate this images with the Aiuta.
-  final String itemPhoto;
-
-  /// Flatlay image for the item with transparent background.
-  final String itemPreview;
-
-  /// Creates an [OnboardingHowItWorksItem] with the given [itemPhoto] and
-  /// [itemPreview] that should match the [itemPhoto].
-  ///
-  /// All [OnboardingHowItWorksItem] should contain [itemPhoto] of the same person
-  /// in the same pose wearing [itemPreview].
-  OnboardingHowItWorksItem({
-    required this.itemPhoto,
-    required this.itemPreview,
-  });
-
-  // Internal json staff
-  factory OnboardingHowItWorksItem.fromJson(Map<String, dynamic> json) =>
-      _$OnboardingHowItWorksItemFromJson(json);
-
-  Map<String, dynamic> toJson() => _$OnboardingHowItWorksItemToJson(this);
 }

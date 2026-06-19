@@ -10,22 +10,15 @@ AiutaOnboardingBestResultsPageImagesCustom
     _$AiutaOnboardingBestResultsPageImagesCustomFromJson(
             Map<String, dynamic> json) =>
         AiutaOnboardingBestResultsPageImagesCustom(
-          onboardingBestResultsGood:
-              (json['onboardingBestResultsGood'] as List<dynamic>)
-                  .map((e) => e as String)
-                  .toList(),
-          onboardingBestResultsBad:
-              (json['onboardingBestResultsBad'] as List<dynamic>)
-                  .map((e) => e as String)
-                  .toList(),
+          onboardingBestResultsItem: AiutaMedia.fromJson(
+              json['onboardingBestResultsItem'] as Map<String, dynamic>),
         )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaOnboardingBestResultsPageImagesCustomToJson(
         AiutaOnboardingBestResultsPageImagesCustom instance) =>
     <String, dynamic>{
       'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
-      'onboardingBestResultsGood': instance.onboardingBestResultsGood,
-      'onboardingBestResultsBad': instance.onboardingBestResultsBad,
+      'onboardingBestResultsItem': instance.onboardingBestResultsItem,
     };
 
 const _$AiutaCustomizationTypeEnumMap = {

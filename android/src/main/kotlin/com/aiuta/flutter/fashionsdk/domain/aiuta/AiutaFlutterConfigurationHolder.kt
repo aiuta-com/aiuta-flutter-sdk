@@ -1,8 +1,11 @@
 package com.aiuta.flutter.fashionsdk.domain.aiuta
 
+import com.aiuta.fashionsdk.configuration.mode.AiutaMode
 import com.aiuta.fashionsdk.tryon.compose.domain.models.ProductConfiguration
+import com.aiuta.flutter.fashionsdk.domain.mappers.mode.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.product.toNative
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.FlutterAiutaConfiguration
+import com.aiuta.flutter.fashionsdk.domain.models.mode.FlutterAiutaMode
 import com.aiuta.flutter.fashionsdk.domain.models.product.FlutterAiutaProduct
 import com.aiuta.flutter.fashionsdk.utils.json
 
@@ -12,10 +15,13 @@ object AiutaFlutterConfigurationHolder {
     const val PRODUCT_KEY = "product"
     const val PRODUCTS_KEY = "products"
     const val CONFIGURATION_KEY = "configuration"
+    const val MODE_KEY = "mode"
 
     private var products: List<FlutterAiutaProduct>? = null
 
     private var configuration: FlutterAiutaConfiguration? = null
+
+    private var mode: FlutterAiutaMode? = null
 
     // Products
     fun setProduct(rawInput: String?) {
@@ -34,6 +40,17 @@ object AiutaFlutterConfigurationHolder {
             "AiutaFlutterConfigurationHolder: products is not init. Please call setProduct() or setProducts()"
         }.map { it.toNative() }
         return ProductConfiguration(productsList)
+    }
+
+    // Mode
+    fun setMode(rawMode: String?) {
+        mode = rawMode?.let { raw ->
+            FlutterAiutaMode.entries.firstOrNull { it.name == raw }
+        }
+    }
+
+    fun getNativeMode(): AiutaMode {
+        return (mode ?: FlutterAiutaMode.general).toNative()
     }
 
     // Configuration

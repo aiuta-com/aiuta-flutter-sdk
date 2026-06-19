@@ -2,6 +2,7 @@ import 'package:aiuta_flutter/models/analytics/aiuta_analytics_auth_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_consent_feature_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_flow_type.dart';
+import 'package:aiuta_flutter/models/analytics/aiuta_analytics_mode.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_onboarding_event_type.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_page_id.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_feedback_event_type.dart';
@@ -28,11 +29,15 @@ sealed class AiutaAnalyticsEvent {
   /// Matches the ids of either the products which is passed to the SDK by starting try-on
   final List<String> productIds;
 
+  /// Try-on mode of the flow that produced this event.
+  final AiutaAnalyticsMode? mode;
+
   /// Creates an analytic event.
   AiutaAnalyticsEvent({
     required this.type,
     required this.productIds,
     this.pageId,
+    this.mode,
   });
 
   // Json staff
@@ -138,10 +143,12 @@ class AiutaAnalyticsConfigureEvent extends AiutaAnalyticsEvent {
     required this.shareFeatureEnabled,
     required this.shareWatermarkFeatureEnabled,
     required this.wishlistFeatureEnabled,
+    AiutaAnalyticsMode? mode,
   }) : super(
           type: AiutaAnalyticsEventType.configure,
           pageId: null,
           productIds: [],
+          mode: mode,
         );
 
   // Internal json staff
@@ -163,10 +170,12 @@ class AiutaAnalyticsSessionEvent extends AiutaAnalyticsEvent {
     required this.flow,
     required List<String> productIds,
     AiutaAnalyticsPageId? pageId,
+    AiutaAnalyticsMode? mode,
   }) : super(
           type: AiutaAnalyticsEventType.session,
           pageId: pageId,
           productIds: productIds,
+          mode: mode,
         );
 
   // Internal json staff
@@ -188,10 +197,12 @@ class AiutaAnalyticsPageEvent extends AiutaAnalyticsEvent {
   AiutaAnalyticsPageEvent({
     required this.pageId,
     required List<String> productIds,
+    AiutaAnalyticsMode? mode,
   }) : super(
           type: AiutaAnalyticsEventType.page,
           pageId: pageId,
           productIds: productIds,
+          mode: mode,
         );
 
   // Internal json staff
@@ -219,10 +230,12 @@ class AiutaAnalyticsOnboardingEvent extends AiutaAnalyticsEvent {
     required this.pageId,
     required List<String> productIds,
     this.consentIds,
+    AiutaAnalyticsMode? mode,
   }) : super(
           type: AiutaAnalyticsEventType.onboarding,
           pageId: pageId,
           productIds: productIds,
+          mode: mode,
         );
 
   // Internal json staff
@@ -249,10 +262,12 @@ class AiutaAnalyticsPickerEvent extends AiutaAnalyticsEvent {
     required this.event,
     required this.pageId,
     required List<String> productIds,
+    AiutaAnalyticsMode? mode,
   }) : super(
           type: AiutaAnalyticsEventType.picker,
           pageId: pageId,
           productIds: productIds,
+          mode: mode,
         );
 
   // Internal json staff
@@ -274,10 +289,12 @@ class AiutaAnalyticsExitEvent extends AiutaAnalyticsEvent {
   AiutaAnalyticsExitEvent({
     required this.pageId,
     required List<String> productIds,
+    AiutaAnalyticsMode? mode,
   }) : super(
           type: AiutaAnalyticsEventType.exit,
           pageId: pageId,
           productIds: productIds,
+          mode: mode,
         );
 
   // Internal json staff
@@ -330,10 +347,12 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticsEvent {
     this.tryOnDuration,
     this.downloadDuration,
     this.totalDuration,
+    AiutaAnalyticsMode? mode,
   }) : super(
           type: AiutaAnalyticsEventType.tryOn,
           pageId: pageId,
           productIds: productIds,
+          mode: mode,
         );
 
   // Internal json staff
@@ -358,10 +377,12 @@ class AiutaAnalyticsResultsEvent extends AiutaAnalyticsEvent {
     required this.event,
     required this.pageId,
     required List<String> productIds,
+    AiutaAnalyticsMode? mode,
   }) : super(
           type: AiutaAnalyticsEventType.results,
           pageId: pageId,
           productIds: productIds,
+          mode: mode,
         );
 
   // Internal json staff
@@ -396,10 +417,12 @@ class AiutaAnalyticsFeedbackEvent extends AiutaAnalyticsEvent {
     required List<String> productIds,
     this.negativeFeedbackOptionIndex,
     this.negativeFeedbackText,
+    AiutaAnalyticsMode? mode,
   }) : super(
           type: AiutaAnalyticsEventType.feedback,
           pageId: pageId,
           productIds: productIds,
+          mode: mode,
         );
 
   // Internal json staff
@@ -424,10 +447,12 @@ class AiutaAnalyticsHistoryEvent extends AiutaAnalyticsEvent {
     required this.event,
     required this.pageId,
     required List<String> productIds,
+    AiutaAnalyticsMode? mode,
   }) : super(
           type: AiutaAnalyticsEventType.history,
           pageId: pageId,
           productIds: productIds,
+          mode: mode,
         );
 
   // Internal json staff
@@ -453,10 +478,12 @@ class AiutaAnalyticsShareEvent extends AiutaAnalyticsEvent {
     required List<String> productIds,
     this.targetId,
     AiutaAnalyticsPageId? pageId,
+    AiutaAnalyticsMode? mode,
   }) : super(
           type: AiutaAnalyticsEventType.share,
           pageId: pageId,
           productIds: productIds,
+          mode: mode,
         );
 
   // Internal json staff

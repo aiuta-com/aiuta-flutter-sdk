@@ -1,6 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.bestresult.images
 
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterCustomizationType
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.media.FlutterAiutaMedia
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -14,9 +15,6 @@ sealed interface FlutterAiutaOnboardingBestResultsPageImages
 @Serializable
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 class FlutterAiutaOnboardingBestResultsPageImagesCustom(
-    @SerialName("onboardingBestResultsGood")
-    val onboardingBestResultsGoodPaths: List<String>,
-
-    @SerialName("onboardingBestResultsBad")
-    val onboardingBestResultsBadPaths: List<String>
+    @SerialName("onboardingBestResultsItem")
+    val onboardingBestResultsItem: FlutterAiutaMedia
 ) : FlutterAiutaOnboardingBestResultsPageImages

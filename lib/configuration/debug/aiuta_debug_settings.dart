@@ -22,6 +22,10 @@ class AiutaDebugSettings {
   /// Policy for handling list size validation.
   final AiutaValidationPolicy listSizePolicy;
 
+  /// Policy applied when an active mode is missing a value and the SDK falls
+  /// back to the default (general) one.
+  final AiutaValidationPolicy modeFallbackPolicy;
+
   /// Creates an [AiutaDebugSettings] with the [isLoggingEnabled] to enable or
   /// disable logging, [emptyStringsPolicy] to validate if required strings are
   /// not empty, [unavailableResourcesPolicy] to validate if graphics resources
@@ -35,6 +39,7 @@ class AiutaDebugSettings {
     required this.unavailableResourcesPolicy,
     required this.infoPlistDescriptionsPolicy,
     required this.listSizePolicy,
+    this.modeFallbackPolicy = AiutaValidationPolicy.warning,
   });
 
   /// Creates a built-in debug settings configuration with default values.
@@ -45,6 +50,7 @@ class AiutaDebugSettings {
       unavailableResourcesPolicy: AiutaValidationPolicy.warning,
       infoPlistDescriptionsPolicy: AiutaValidationPolicy.warning,
       listSizePolicy: AiutaValidationPolicy.warning,
+      modeFallbackPolicy: AiutaValidationPolicy.warning,
     );
   }
 

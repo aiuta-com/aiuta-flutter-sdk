@@ -23,11 +23,15 @@ class AiutaActivity : BaseAiutaActivity() {
             val productConfiguration = remember {
                 AiutaFlutterConfigurationHolder.getNativeProductConfiguration()
             }
+            val mode = remember {
+                AiutaFlutterConfigurationHolder.getNativeMode()
+            }
 
             AiutaTryOnFlow(
                 modifier = Modifier.fillMaxSize(),
                 aiutaConfiguration = configuration,
                 productConfiguration = productConfiguration,
+                mode = mode,
             )
         }
     }

@@ -1,4 +1,5 @@
 import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
+import 'package:aiuta_flutter/configuration/mode/media/aiuta_media.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_image_picker_images.g.dart';
@@ -47,15 +48,14 @@ class AiutaImagePickerImagesBuiltIn extends AiutaImagePickerImages {
 /// This class allows for custom images to be provided for the image picker feature.
 @JsonSerializable()
 class AiutaImagePickerImagesCustom extends AiutaImagePickerImages {
-  /// List of example images.
-  /// Exactly 2 images are required.
-  final List<String> examples;
+  /// Example media showing what photos/poses will achieve the best results
+  /// for the virtual try-on.
+  final AiutaMedia example;
 
-  /// Creates an [AiutaImagePickerImagesCustom] with the exactly 2 [examples] of
-  /// images showing what photos/poses will achieve the best results for
-  /// the virtual try-on.
+  /// Creates an [AiutaImagePickerImagesCustom] with the [example] media showing
+  /// what photos/poses will achieve the best results for the virtual try-on.
   AiutaImagePickerImagesCustom({
-    required this.examples,
+    required this.example,
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff

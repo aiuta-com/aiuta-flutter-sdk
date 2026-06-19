@@ -18,5 +18,8 @@ data class FlutterAiutaDebugSettings(
     val infoPlistDescriptionsPolicy: FlutterAiutaValidationPolicy,
 
     @SerialName("listSizePolicy")
-    val listSizePolicy: FlutterAiutaValidationPolicy
+    val listSizePolicy: FlutterAiutaValidationPolicy,
+
+    @SerialName("modeFallbackPolicy")
+    val modeFallbackPolicy: FlutterAiutaValidationPolicy = FlutterAiutaValidationPolicy.WARNING
 )

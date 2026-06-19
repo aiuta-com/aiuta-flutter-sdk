@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
+import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
 import 'package:aiuta_flutter/models/analytics/aiuta_analytics_event.dart';
 import 'package:aiuta_flutter/models/images/aiuta_generated_image.dart';
 import 'package:aiuta_flutter/models/images/aiuta_input_image.dart';
@@ -63,12 +64,14 @@ class MethodChannelAiuta extends AiutaPlatform {
   @override
   Future<void> startAiutaFlow({
     required AiutaProduct product,
+    required AiutaMode mode,
     required AiutaConfiguration configuration,
   }) {
     return methodChannel.invokeMethod(
       'startAiutaFlow',
       {
         "product": jsonEncode(product),
+        "mode": mode.name,
         "configuration": jsonEncode(configuration),
       },
     );
@@ -134,12 +137,16 @@ class MethodChannelAiuta extends AiutaPlatform {
 
   @override
   updateIsOnboardingCompleted({
-    required bool isOnboardingCompleted,
+    required Map<AiutaMode, bool> isOnboardingCompleted,
   }) {
     return methodChannel.invokeMethod(
       'updateIsOnboardingCompleted',
       {
-        "isOnboardingCompleted": isOnboardingCompleted,
+        "isOnboardingCompleted": jsonEncode(
+          isOnboardingCompleted.map(
+            (mode, isCompleted) => MapEntry(mode.name, isCompleted),
+          ),
+        ),
       },
     );
   }

@@ -1,4 +1,14 @@
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
+import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
+import 'package:aiuta_flutter/configuration/mode/aiuta_modes.dart';
+import 'package:aiuta_flutter/configuration/mode/media/aiuta_media.dart';
+import 'package:aiuta_flutter/configuration/mode/shoes/aiuta_shoes_mode.dart';
+import 'package:aiuta_flutter/configuration/mode/shoes/onboarding/aiuta_shoes_mode_onboarding_page.dart';
+import 'package:aiuta_flutter/configuration/mode/shoes/onboarding/aiuta_shoes_mode_onboarding_page_strings.dart';
+import 'package:aiuta_flutter/configuration/mode/shoes/picker/aiuta_shoes_mode_image_picker.dart';
+import 'package:aiuta_flutter/configuration/mode/shoes/picker/aiuta_shoes_mode_image_picker_strings.dart';
+import 'package:aiuta_flutter/configuration/mode/shoes/picker/predefined_model/aiuta_shoes_mode_image_picker_predefined_models.dart';
+import 'package:aiuta_flutter/configuration/mode/shoes/picker/predefined_model/aiuta_shoes_mode_image_picker_predefined_models_strings.dart';
 import 'package:aiuta_flutter/configuration/analytics/aiuta_analytics.dart';
 import 'package:aiuta_flutter/configuration/analytics/aiuta_analytics_handler.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_auth.dart';
@@ -6,7 +16,6 @@ import 'package:aiuta_flutter/configuration/debug/aiuta_debug_settings.dart';
 import 'package:aiuta_flutter/configuration/debug/aiuta_validation_policy.dart';
 import 'package:aiuta_flutter/configuration/experimental/aiuta_experimental_settings.dart';
 import 'package:aiuta_flutter/configuration/features/aiuta_features.dart';
-import 'package:aiuta_flutter/configuration/features/base/aiuta_component_style.dart';
 import 'package:aiuta_flutter/configuration/features/consent/aiuta_consent_feature.dart';
 import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_data.dart';
 import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_data_provider.dart';
@@ -31,10 +40,8 @@ import 'package:aiuta_flutter/configuration/features/image_picker/photo_gallery/
 import 'package:aiuta_flutter/configuration/features/image_picker/uploads_history/aiuta_image_picker_uploads_history_data_provider.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/uploads_history/aiuta_image_picker_uploads_history_feature.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/uploads_history/aiuta_image_picker_uploads_history_strings.dart';
-import 'package:aiuta_flutter/configuration/features/image_picker/uploads_history/aiuta_image_picker_uploads_history_styles.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/aiuta_onboarding_data_provider.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/aiuta_onboarding_feature.dart';
-import 'package:aiuta_flutter/configuration/features/onboarding/aiuta_onboarding_shapes.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/aiuta_onboarding_strings.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/how_it_works/aiuta_onboarding_how_it_works_page_feature.dart';
 import 'package:aiuta_flutter/configuration/features/onboarding/how_it_works/aiuta_onboarding_how_it_works_page_images.dart';
@@ -137,10 +144,12 @@ import 'package:flutter/foundation.dart';
 // ---------------------------------------------------------------------------
 
 class InMemoryOnboardingDataProvider {
-  final ValueNotifier<bool> _isCompleted = ValueNotifier(false);
+  final ValueNotifier<Map<AiutaMode, bool>> _isCompleted = ValueNotifier({});
 
-  ValueListenable<bool> get isOnboardingCompleted => _isCompleted;
-  void completeOnboarding() => _isCompleted.value = true;
+  ValueListenable<Map<AiutaMode, bool>> get isOnboardingCompleted =>
+      _isCompleted;
+  void completeOnboarding(AiutaMode mode) =>
+      _isCompleted.value = {..._isCompleted.value, mode: true};
 }
 
 class InMemoryConsentDataProvider {
@@ -267,13 +276,47 @@ AiutaConfiguration buildCustomConfiguration({
     ),
 
     // -----------------------------------------------------------------------
+    // Modes — per-launch overrides for the shoes try-on scenario
+    // -----------------------------------------------------------------------
+    modes: AiutaModes(
+      shoes: AiutaShoesMode(
+        onboardingShoesPage: AiutaShoesModeOnboardingPage(
+          images: AiutaMedia(image: 'welcome_bg'),
+          strings: AiutaShoesModeOnboardingPageStringsCustom(
+            onboardingShoesBestResultsPageTitle: 'For best results',
+            onboardingShoesBestResultsTitle: 'Show your feet',
+            onboardingShoesBestResultsDescription:
+                'Upload a photo where your feet are clearly visible — '
+                'any angle works.',
+          ),
+        ),
+        imagePicker: AiutaShoesModeImagePicker(
+          predefinedModels: AiutaShoesModeImagePickerPredefinedModels(
+            strings: AiutaShoesModeImagePickerPredefinedModelsStringsCustom(
+              predefinedModelShoesPageTitle: 'Select example',
+              predefinedModelShoesCategories: {
+                'female': 'Women',
+                'male': 'Men',
+              },
+            ),
+          ),
+          images: AiutaMedia(image: 'welcome_bg'),
+          strings: AiutaShoesModeImagePickerStringsCustom(
+            imagePickerShoesDescriptionEmpty:
+                'Select a photo where your feet are clearly visible',
+          ),
+        ),
+      ),
+    ),
+
+    // -----------------------------------------------------------------------
     // Analytics
     // -----------------------------------------------------------------------
     analytics: AiutaAnalytics(
       handler: AiutaAnalyticsHandler(
         onAnalyticsEvent: (event) {
-          debugPrint(
-              '[Aiuta Analytics] (${event.runtimeType}) ${event.type}: ${event.toJson()}');
+          debugPrint('[Aiuta Analytics] (${event.runtimeType}) ${event.type} '
+              '[mode: ${event.mode?.name}]: ${event.toJson()}');
         },
       ),
     ),
@@ -294,7 +337,7 @@ AiutaConfiguration buildCustomConfiguration({
       // --- Welcome Screen ---
       welcomeScreen: AiutaWelcomeScreenFeature(
         images: AiutaWelcomeScreenImagesCustom(
-          welcomeBackground: 'welcome_bg',
+          welcomeBackground: AiutaMedia(image: 'welcome_bg'),
         ),
         icons: AiutaWelcomeScreenIconsCustom(
           welcome82: AiutaIcon(path: 'welcome'),
@@ -334,10 +377,6 @@ AiutaConfiguration buildCustomConfiguration({
         strings: AiutaOnboardingStringsCustom(
           onboardingButtonNext: 'Continue',
           onboardingButtonStart: 'Get Started',
-        ),
-        shapes: AiutaOnboardingShapes(
-          onboardingImageL: 4,
-          onboardingImageS: 4,
         ),
         dataProvider: AiutaOnboardingDataProviderCustom(
           isOnboardingCompleted: onboardingData.isOnboardingCompleted,
@@ -409,7 +448,7 @@ AiutaConfiguration buildCustomConfiguration({
           ),
           icons: AiutaImagePickerPredefinedModelIconsBuiltIn(),
           strings: AiutaImagePickerPredefinedModelStringsCustom(
-            predefinedModelPageTitle: 'Select a Model',
+            predefinedModelPageButton: 'Select a Model',
             predefinedModelOr: 'or',
             predefinedModelErrorEmptyModelsList: 'No models available',
             predefinedModelCategories: {
@@ -432,9 +471,6 @@ AiutaConfiguration buildCustomConfiguration({
             uploadsHistoryButtonNewPhoto: '+ New Photo',
             uploadsHistoryTitle: 'Previously Used',
             uploadsHistoryButtonChangePhoto: 'Change Photo',
-          ),
-          styles: AiutaImagePickerUploadsHistoryStyles(
-            changePhotoButtonStyle: AiutaComponentStyle.blurredWithOutline,
           ),
           dataProvider: AiutaImagePickerUploadsHistoryDataProviderCustom(
             uploadedImages: uploadsHistoryData.uploadedImages,
@@ -466,7 +502,6 @@ AiutaConfiguration buildCustomConfiguration({
               '#8816213E',
               '#0016213E',
             ],
-            loadingStatusStyle: AiutaComponentStyle.blurredWithOutline,
           ),
         ),
         inputImageValidation: AiutaTryOnInputImageValidationFeature(
@@ -475,6 +510,21 @@ AiutaConfiguration buildCustomConfiguration({
                 'We could not detect a person in this photo. '
                 'Please use a clear, full-body photo.',
             invalidInputImageChangePhotoButton: 'Choose Another Photo',
+            noPeopleDetectedDescription:
+                'We couldn\'t detect anyone in this photo. '
+                'Please upload a well-lit, full-body photo of an adult.',
+            tooManyPeopleDetectedDescription:
+                'We detected multiple people in this photo. '
+                'Please upload a photo with a single person.',
+            childDetectedDescription:
+                'This photo looks like it might be of a child. '
+                'Please upload a photo of an adult.',
+            insufficientTargetAreaDescription:
+                'The area to try on isn\'t clearly visible. '
+                'Please upload a photo where it is fully in view.',
+            internalRestrictionDescription:
+                'We couldn\'t process this request. '
+                'Please try again using a different photo.',
           ),
         ),
         cart: AiutaTryOnCartFeature(

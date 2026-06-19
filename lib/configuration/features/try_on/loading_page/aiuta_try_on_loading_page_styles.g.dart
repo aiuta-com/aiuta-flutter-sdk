@@ -13,8 +13,6 @@ AiutaTryOnLoadingPageStyles _$AiutaTryOnLoadingPageStylesFromJson(
           (json['loadingStatusBackgroundGradient'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList(),
-      loadingStatusStyle:
-          $enumDecode(_$AiutaComponentStyleEnumMap, json['loadingStatusStyle']),
     );
 
 Map<String, dynamic> _$AiutaTryOnLoadingPageStylesToJson(
@@ -22,14 +20,4 @@ Map<String, dynamic> _$AiutaTryOnLoadingPageStylesToJson(
     <String, dynamic>{
       'loadingStatusBackgroundGradient':
           instance.loadingStatusBackgroundGradient,
-      'loadingStatusStyle':
-          _$AiutaComponentStyleEnumMap[instance.loadingStatusStyle]!,
     };
-
-const _$AiutaComponentStyleEnumMap = {
-  AiutaComponentStyle.brand: 'brand',
-  AiutaComponentStyle.contrast: 'contrast',
-  AiutaComponentStyle.contrastInverted: 'contrastInverted',
-  AiutaComponentStyle.blurred: 'blurred',
-  AiutaComponentStyle.blurredWithOutline: 'blurredWithOutline',
-};

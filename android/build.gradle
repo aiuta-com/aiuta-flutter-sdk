@@ -2,7 +2,7 @@ group = "com.aiuta.flutter.fashionsdk"
 version = "1.0-SNAPSHOT"
 
 buildscript {
-    ext.kotlin_version = "2.2.0"
+    ext.kotlin_version = "2.4.0"
     repositories {
         google()
         mavenCentral()
@@ -26,7 +26,12 @@ allprojects {
 }
 
 apply plugin: "com.android.library"
-apply plugin: "kotlin-android"
+
+// Built-in Kotlin migration (https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors):
+def agpMajor = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0] as int
+if (agpMajor < 9) {
+    apply plugin: "kotlin-android"
+}
 apply plugin: "org.jetbrains.kotlin.plugin.compose"
 apply plugin: 'kotlinx-serialization'
 
@@ -46,10 +51,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     sourceSets {
         main.java.srcDirs += "src/main/kotlin"
         test.java.srcDirs += "src/test/kotlin"
@@ -60,9 +61,16 @@ android {
     }
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
+}
+
 dependencies {
     // Aiuta
-    def aiutaVersion = "4.3.8"
+    // TODO
+    def aiutaVersion = "5.0.0-SNAPSHOT"
     implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
     implementation("com.aiuta:fashionsdk-analytics")
     implementation("com.aiuta:fashionsdk-tryon-compose")
@@ -86,6 +94,6 @@ dependencies {
     implementation("androidx.appcompat:appcompat:$appcompatVersion")
 
     // Serialization
-    def kotlinxSerializationVersion = "1.9.0"
+    def kotlinxSerializationVersion = "1.11.0"
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion")
 }

@@ -53,17 +53,39 @@ class AiutaTryOnInputImageValidationStringsBuiltIn
 @JsonSerializable()
 class AiutaTryOnInputImageValidationStringsCustom
     extends AiutaTryOnInputImageValidationStrings {
-  /// Description for invalid input images.
+  /// Generic description shown when the input image is invalid.
   final String invalidInputImageDescription;
 
   /// Text for the button to change the photo.
   final String invalidInputImageChangePhotoButton;
 
-  /// Creates an [AiutaTryOnInputImageValidationStringsCustom] with the
-  /// [invalidInputImageDescription] and [invalidInputImageChangePhotoButton].
+  /// Shown when no person was detected in the photo.
+  final String noPeopleDetectedDescription;
+
+  /// Shown when too many people were detected in the photo.
+  final String tooManyPeopleDetectedDescription;
+
+  /// Shown when a minor was detected in the photo.
+  final String childDetectedDescription;
+
+  /// Shown when the area to try on is not clearly visible.
+  final String insufficientTargetAreaDescription;
+
+  /// Shown when the result cannot be returned due to internal restrictions.
+  final String internalRestrictionDescription;
+
+  /// Creates an [AiutaTryOnInputImageValidationStringsCustom] with the generic
+  /// [invalidInputImageDescription], the [invalidInputImageChangePhotoButton]
+  /// and the per-reason descriptions returned by the backend for a try-on
+  /// operation.
   AiutaTryOnInputImageValidationStringsCustom({
     required this.invalidInputImageDescription,
     required this.invalidInputImageChangePhotoButton,
+    required this.noPeopleDetectedDescription,
+    required this.tooManyPeopleDetectedDescription,
+    required this.childDetectedDescription,
+    required this.insufficientTargetAreaDescription,
+    required this.internalRestrictionDescription,
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff

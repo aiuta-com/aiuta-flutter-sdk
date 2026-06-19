@@ -27,30 +27,13 @@ AiutaOnboardingHowItWorksPageImagesCustom
     _$AiutaOnboardingHowItWorksPageImagesCustomFromJson(
             Map<String, dynamic> json) =>
         AiutaOnboardingHowItWorksPageImagesCustom(
-          onboardingHowItWorksItems: (json['onboardingHowItWorksItems']
-                  as List<dynamic>)
-              .map((e) =>
-                  OnboardingHowItWorksItem.fromJson(e as Map<String, dynamic>))
-              .toList(),
+          onboardingHowItWorksItem: AiutaMedia.fromJson(
+              json['onboardingHowItWorksItem'] as Map<String, dynamic>),
         )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaOnboardingHowItWorksPageImagesCustomToJson(
         AiutaOnboardingHowItWorksPageImagesCustom instance) =>
     <String, dynamic>{
       'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
-      'onboardingHowItWorksItems': instance.onboardingHowItWorksItems,
-    };
-
-OnboardingHowItWorksItem _$OnboardingHowItWorksItemFromJson(
-        Map<String, dynamic> json) =>
-    OnboardingHowItWorksItem(
-      itemPhoto: json['itemPhoto'] as String,
-      itemPreview: json['itemPreview'] as String,
-    );
-
-Map<String, dynamic> _$OnboardingHowItWorksItemToJson(
-        OnboardingHowItWorksItem instance) =>
-    <String, dynamic>{
-      'itemPhoto': instance.itemPhoto,
-      'itemPreview': instance.itemPreview,
+      'onboardingHowItWorksItem': instance.onboardingHowItWorksItem,
     };

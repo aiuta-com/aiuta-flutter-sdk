@@ -20,14 +20,27 @@ AiutaConfiguration _$AiutaConfigurationFromJson(Map<String, dynamic> json) =>
           json['debugSettings'] as Map<String, dynamic>),
       experimentalSettings: AiutaExperimentalSettings.fromJson(
           json['experimentalSettings'] as Map<String, dynamic>),
+      modes: json['modes'] == null
+          ? null
+          : AiutaModes.fromJson(json['modes'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$AiutaConfigurationToJson(AiutaConfiguration instance) =>
-    <String, dynamic>{
-      'auth': instance.auth,
-      'userInterface': instance.userInterface,
-      'features': instance.features,
-      'analytics': instance.analytics,
-      'debugSettings': instance.debugSettings,
-      'experimentalSettings': instance.experimentalSettings,
-    };
+Map<String, dynamic> _$AiutaConfigurationToJson(AiutaConfiguration instance) {
+  final val = <String, dynamic>{
+    'auth': instance.auth,
+    'userInterface': instance.userInterface,
+    'features': instance.features,
+    'analytics': instance.analytics,
+    'debugSettings': instance.debugSettings,
+    'experimentalSettings': instance.experimentalSettings,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('modes', instance.modes);
+  return val;
+}

@@ -1,4 +1,5 @@
 import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
+import 'package:aiuta_flutter/configuration/mode/media/aiuta_media.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_onboarding_best_results_page_images.g.dart';
@@ -31,19 +32,14 @@ sealed class AiutaOnboardingBestResultsPageImages {
 @JsonSerializable()
 class AiutaOnboardingBestResultsPageImagesCustom
     extends AiutaOnboardingBestResultsPageImages {
-  /// List of good result images.
-  final List<String> onboardingBestResultsGood;
+  /// Media (image with an optional looping video) shown on the Best Results
+  /// page to illustrate good and bad input examples.
+  final AiutaMedia onboardingBestResultsItem;
 
-  /// List of bad result images.
-  final List<String> onboardingBestResultsBad;
-
-  /// Creates an [AiutaOnboardingBestResultsPageImagesCustom] with the example
-  /// of exactly 2 [onboardingBestResultsGood] images showing the samples
-  /// to achieve the best results and exactly 2 [onboardingBestResultsBad]
-  /// images showing bad examples of the input photos.
+  /// Creates an [AiutaOnboardingBestResultsPageImagesCustom] with the
+  /// [onboardingBestResultsItem] media illustrating good and bad input examples.
   AiutaOnboardingBestResultsPageImagesCustom({
-    required this.onboardingBestResultsGood,
-    required this.onboardingBestResultsBad,
+    required this.onboardingBestResultsItem,
   }) : super(AiutaCustomizationType.custom);
 
   // Internal json staff

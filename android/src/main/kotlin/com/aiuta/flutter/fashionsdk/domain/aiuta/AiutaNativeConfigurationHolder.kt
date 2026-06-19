@@ -7,6 +7,7 @@ import com.aiuta.flutter.fashionsdk.domain.assets.AssetsResolver
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.debug.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.experimental.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.toNative
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.mode.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.toNative
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.createAiutaResourceMapperScope
 
@@ -49,6 +50,10 @@ object AiutaNativeConfigurationHolder {
                 resourceScope = resourceScope,
                 fontFamily = fontFamily,
             )
+
+            flutterConfiguration.modes?.let { flutterModes ->
+                modes = flutterModes.toNative(resourceScope = resourceScope)
+            }
         }
     }
 

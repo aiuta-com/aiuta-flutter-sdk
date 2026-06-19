@@ -1,4 +1,5 @@
 import 'package:aiuta_flutter/aiuta_flutter.dart';
+import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiutasdk_example/configuration/builtin_configuration.dart';
 import 'package:aiutasdk_example/configuration/custom_configuration.dart';
@@ -102,6 +103,29 @@ class _MyAppState extends State<MyApp> {
                         );
                       },
                       child: const Text('Start Aiuta'),
+                    ),
+                    TextButton(
+                      style: ButtonStyle(
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.blue),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
+                            const TextStyle(fontSize: 20)),
+                      ),
+                      onPressed: () {
+                        _aiuta.startTryonFlow(
+                          product: AiutaProduct(
+                            id: Env.SKU_ID_1,
+                            title: "YOUR title",
+                            imageUrls: [
+                              "YOUR image 1",
+                              "YOUR image 2",
+                            ],
+                            brand: "YOUR brand",
+                          ),
+                          mode: AiutaMode.shoes,
+                        );
+                      },
+                      child: const Text('Start Aiuta (shoes)'),
                     ),
                     TextButton(
                       style: ButtonStyle(

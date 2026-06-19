@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_auth.dart';
+import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
 import 'package:aiuta_flutter/configuration/features/consent/aiuta_consent_feature.dart';
 import 'package:aiuta_flutter/configuration/features/consent/standalone/aiuta_consent_standalone_data_provider.dart';
 import 'package:aiuta_flutter/configuration/features/image_picker/uploads_history/aiuta_image_picker_uploads_history_data_provider.dart';
@@ -62,9 +63,17 @@ class Aiuta {
   }
 
   /// Starts the virtual try-on flow with the given [product].
-  Future<void> startTryonFlow({required AiutaProduct product}) {
+  ///
+  /// The [mode] selects the try-on scenario at launch time and defaults to
+  /// [AiutaMode.general]. Use [AiutaMode.shoes] together with
+  /// [AiutaConfiguration.modes] to launch the shoes try-on experience.
+  Future<void> startTryonFlow({
+    required AiutaProduct product,
+    AiutaMode mode = AiutaMode.general,
+  }) {
     return _platform.startAiutaFlow(
       product: product,
+      mode: mode,
       configuration: configuration,
     );
   }

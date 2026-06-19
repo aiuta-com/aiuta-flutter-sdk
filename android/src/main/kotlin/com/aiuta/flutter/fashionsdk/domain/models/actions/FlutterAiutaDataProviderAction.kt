@@ -2,6 +2,7 @@ package com.aiuta.flutter.fashionsdk.domain.models.actions
 
 import com.aiuta.flutter.fashionsdk.domain.models.images.FlutterAiutaGeneratedImage
 import com.aiuta.flutter.fashionsdk.domain.models.images.FlutterAiutaInputImage
+import com.aiuta.flutter.fashionsdk.domain.models.mode.FlutterAiutaMode
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -122,4 +123,6 @@ class FlutterGetShareTextAction(
 class FlutterCompleteOnboardingAction(
     @SerialName("id")
     override val id: String = generateDataActionId(),
+    @SerialName("mode")
+    val mode: FlutterAiutaMode,
 ) : FlutterAiutaDataProviderAction()

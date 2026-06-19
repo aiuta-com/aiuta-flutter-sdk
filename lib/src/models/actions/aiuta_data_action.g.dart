@@ -8,7 +8,9 @@ part of 'aiuta_data_action.dart';
 
 CompleteOnboardingAction _$CompleteOnboardingActionFromJson(
         Map<String, dynamic> json) =>
-    CompleteOnboardingAction()
+    CompleteOnboardingAction(
+      mode: $enumDecode(_$AiutaModeEnumMap, json['mode']),
+    )
       ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type'])
       ..id = json['id'] as String;
 
@@ -17,7 +19,13 @@ Map<String, dynamic> _$CompleteOnboardingActionToJson(
     <String, dynamic>{
       'type': _$AiutaDataActionTypeEnumMap[instance.type]!,
       'id': instance.id,
+      'mode': _$AiutaModeEnumMap[instance.mode]!,
     };
+
+const _$AiutaModeEnumMap = {
+  AiutaMode.general: 'general',
+  AiutaMode.shoes: 'shoes',
+};
 
 const _$AiutaDataActionTypeEnumMap = {
   AiutaDataActionType.completeOnboarding: 'completeOnboarding',

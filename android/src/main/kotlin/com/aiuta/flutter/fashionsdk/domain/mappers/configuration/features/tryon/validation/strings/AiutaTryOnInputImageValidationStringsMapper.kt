@@ -11,6 +11,11 @@ fun FlutterAiutaTryOnInputImageValidationStrings.toNative(): AiutaTryOnInputImag
         is FlutterAiutaTryOnInputImageValidationStringsCustom -> object : AiutaTryOnInputImageValidationFeatureStrings {
             override val invalidInputImageDescription = this@toNative.invalidInputImageDescription
             override val invalidInputImageChangePhotoButton = this@toNative.invalidInputImageChangePhotoButton
+            override val noPeopleDetectedDescription = this@toNative.noPeopleDetectedDescription
+            override val tooManyPeopleDetectedDescription = this@toNative.tooManyPeopleDetectedDescription
+            override val childDetectedDescription = this@toNative.childDetectedDescription
+            override val insufficientTargetAreaDescription = this@toNative.insufficientTargetAreaDescription
+            override val internalRestrictionDescription = this@toNative.internalRestrictionDescription
         }
     }
 }

@@ -31,6 +31,15 @@ AiutaTryOnInputImageValidationStringsCustom
               json['invalidInputImageDescription'] as String,
           invalidInputImageChangePhotoButton:
               json['invalidInputImageChangePhotoButton'] as String,
+          noPeopleDetectedDescription:
+              json['noPeopleDetectedDescription'] as String,
+          tooManyPeopleDetectedDescription:
+              json['tooManyPeopleDetectedDescription'] as String,
+          childDetectedDescription: json['childDetectedDescription'] as String,
+          insufficientTargetAreaDescription:
+              json['insufficientTargetAreaDescription'] as String,
+          internalRestrictionDescription:
+              json['internalRestrictionDescription'] as String,
         )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaTryOnInputImageValidationStringsCustomToJson(
@@ -40,4 +49,11 @@ Map<String, dynamic> _$AiutaTryOnInputImageValidationStringsCustomToJson(
       'invalidInputImageDescription': instance.invalidInputImageDescription,
       'invalidInputImageChangePhotoButton':
           instance.invalidInputImageChangePhotoButton,
+      'noPeopleDetectedDescription': instance.noPeopleDetectedDescription,
+      'tooManyPeopleDetectedDescription':
+          instance.tooManyPeopleDetectedDescription,
+      'childDetectedDescription': instance.childDetectedDescription,
+      'insufficientTargetAreaDescription':
+          instance.insufficientTargetAreaDescription,
+      'internalRestrictionDescription': instance.internalRestrictionDescription,
     };

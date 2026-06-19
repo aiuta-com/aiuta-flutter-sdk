@@ -9,7 +9,8 @@ part of 'aiuta_welcome_screen_images.dart';
 AiutaWelcomeScreenImagesCustom _$AiutaWelcomeScreenImagesCustomFromJson(
         Map<String, dynamic> json) =>
     AiutaWelcomeScreenImagesCustom(
-      welcomeBackground: json['welcomeBackground'] as String,
+      welcomeBackground: AiutaMedia.fromJson(
+          json['welcomeBackground'] as Map<String, dynamic>),
     )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaWelcomeScreenImagesCustomToJson(
