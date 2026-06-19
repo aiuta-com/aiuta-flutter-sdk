@@ -86,6 +86,6 @@ dependencies {
     implementation("androidx.appcompat:appcompat:$appcompatVersion")
 
     // Serialization
-    def kotlinxSerializationVersion = "1.9.0"
+    def kotlinxSerializationVersion = "1.11.0"
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion")
 }
