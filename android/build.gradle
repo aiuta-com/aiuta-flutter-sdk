@@ -69,8 +69,7 @@ kotlin {
 
 dependencies {
     // Aiuta
-    // TODO
-    def aiutaVersion = "5.0.0-SNAPSHOT"
+    def aiutaVersion = "5.0.0"
     implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
     implementation("com.aiuta:fashionsdk-analytics")
     implementation("com.aiuta:fashionsdk-tryon-compose")
