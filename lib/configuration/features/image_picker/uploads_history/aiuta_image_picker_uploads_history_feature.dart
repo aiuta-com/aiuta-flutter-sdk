@@ -23,13 +23,9 @@ class AiutaImagePickerUploadsHistoryFeature {
   });
 
   /// Creates a built-in uploads history feature configuration with default settings.
-  factory AiutaImagePickerUploadsHistoryFeature.builtIn({
-    required bool isPredefinedModelAvailable,
-  }) {
+  factory AiutaImagePickerUploadsHistoryFeature.builtIn() {
     return AiutaImagePickerUploadsHistoryFeature(
-      strings: AiutaImagePickerUploadsHistoryStringsBuiltIn(
-        isPredefinedModelAvailable: isPredefinedModelAvailable,
-      ),
+      strings: AiutaImagePickerUploadsHistoryStringsBuiltIn(),
       dataProvider: AiutaImagePickerUploadsHistoryDataProviderBuiltIn(),
     );
   }

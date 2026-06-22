@@ -34,13 +34,9 @@ sealed class AiutaImagePickerUploadsHistoryStrings {
 @JsonSerializable()
 class AiutaImagePickerUploadsHistoryStringsBuiltIn
     extends AiutaImagePickerUploadsHistoryStrings {
-  /// Whether the predefined model is available.
-  final bool isPredefinedModelAvailable;
-
   /// Creates an instance of the built-in uploads history strings.
-  AiutaImagePickerUploadsHistoryStringsBuiltIn({
-    required this.isPredefinedModelAvailable,
-  }) : super(AiutaCustomizationType.builtIn);
+  AiutaImagePickerUploadsHistoryStringsBuiltIn()
+      : super(AiutaCustomizationType.builtIn);
 
   // Internal json staff
   factory AiutaImagePickerUploadsHistoryStringsBuiltIn.fromJson(

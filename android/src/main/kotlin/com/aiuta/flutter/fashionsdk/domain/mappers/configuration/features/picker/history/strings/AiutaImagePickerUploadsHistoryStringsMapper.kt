@@ -7,9 +7,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.picker.
 
 fun FlutterAiutaImagePickerUploadsHistoryStrings.toNative(): AiutaImagePickerUploadsHistoryFeatureStrings {
     return when (this) {
-        is FlutterAiutaImagePickerUploadsHistoryStringsBuiltIn -> AiutaImagePickerUploadsHistoryFeatureStrings.Default(
-            isPredefinedModelAvailable = isPredefinedModelAvailable,
-        )
+        is FlutterAiutaImagePickerUploadsHistoryStringsBuiltIn -> AiutaImagePickerUploadsHistoryFeatureStrings.Default()
         is FlutterAiutaImagePickerUploadsHistoryStringsCustom -> object : AiutaImagePickerUploadsHistoryFeatureStrings {
             override val uploadsHistoryButtonNewPhoto = this@toNative.uploadsHistoryButtonNewPhoto
             override val uploadsHistoryTitle = this@toNative.uploadsHistoryTitle
