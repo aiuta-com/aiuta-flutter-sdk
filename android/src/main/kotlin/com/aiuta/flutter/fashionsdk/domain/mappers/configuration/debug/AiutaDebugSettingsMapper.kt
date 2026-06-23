@@ -8,6 +8,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.debug.FlutterAiu
 fun FlutterAiutaDebugSettings.toNative(): AiutaDebugSettings {
     return AiutaDebugSettings(
         emptyStringsPolicy = emptyStringsPolicy.toNative(),
-        listSizePolicy = listSizePolicy.toNative()
+        listSizePolicy = listSizePolicy.toNative(),
+        modeFallbackPolicy = modeFallbackPolicy.toNative(),
     )
 }

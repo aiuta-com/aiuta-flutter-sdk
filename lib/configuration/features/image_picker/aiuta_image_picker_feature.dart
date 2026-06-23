@@ -57,9 +57,7 @@ class AiutaImagePickerFeature {
       camera: AiutaImagePickerCameraFeature.builtIn(),
       photoGallery: AiutaImagePickerPhotoGalleryFeature.builtIn(),
       predefinedModels: AiutaImagePickerPredefinedModelFeature.builtIn(),
-      uploadsHistory: AiutaImagePickerUploadsHistoryFeature.builtIn(
-        isPredefinedModelAvailable: true,
-      ),
+      uploadsHistory: AiutaImagePickerUploadsHistoryFeature.builtIn(),
       images: AiutaImagePickerImagesBuiltIn(),
       strings: AiutaImagePickerStringsBuiltIn(),
     );

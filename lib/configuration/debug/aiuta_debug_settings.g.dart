@@ -17,6 +17,9 @@ AiutaDebugSettings _$AiutaDebugSettingsFromJson(Map<String, dynamic> json) =>
           _$AiutaValidationPolicyEnumMap, json['infoPlistDescriptionsPolicy']),
       listSizePolicy:
           $enumDecode(_$AiutaValidationPolicyEnumMap, json['listSizePolicy']),
+      modeFallbackPolicy: $enumDecodeNullable(
+              _$AiutaValidationPolicyEnumMap, json['modeFallbackPolicy']) ??
+          AiutaValidationPolicy.warning,
     );
 
 Map<String, dynamic> _$AiutaDebugSettingsToJson(AiutaDebugSettings instance) =>
@@ -30,6 +33,8 @@ Map<String, dynamic> _$AiutaDebugSettingsToJson(AiutaDebugSettings instance) =>
           _$AiutaValidationPolicyEnumMap[instance.infoPlistDescriptionsPolicy]!,
       'listSizePolicy':
           _$AiutaValidationPolicyEnumMap[instance.listSizePolicy]!,
+      'modeFallbackPolicy':
+          _$AiutaValidationPolicyEnumMap[instance.modeFallbackPolicy]!,
     };
 
 const _$AiutaValidationPolicyEnumMap = {

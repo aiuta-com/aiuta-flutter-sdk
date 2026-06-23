@@ -22,5 +22,20 @@ data class FlutterAiutaTryOnInputImageValidationStringsCustom(
     val invalidInputImageDescription: String,
 
     @SerialName("invalidInputImageChangePhotoButton")
-    val invalidInputImageChangePhotoButton: String
+    val invalidInputImageChangePhotoButton: String,
+
+    @SerialName("noPeopleDetectedDescription")
+    val noPeopleDetectedDescription: String,
+
+    @SerialName("tooManyPeopleDetectedDescription")
+    val tooManyPeopleDetectedDescription: String,
+
+    @SerialName("childDetectedDescription")
+    val childDetectedDescription: String,
+
+    @SerialName("insufficientTargetAreaDescription")
+    val insufficientTargetAreaDescription: String,
+
+    @SerialName("internalRestrictionDescription")
+    val internalRestrictionDescription: String
 ) : FlutterAiutaTryOnInputImageValidationStrings

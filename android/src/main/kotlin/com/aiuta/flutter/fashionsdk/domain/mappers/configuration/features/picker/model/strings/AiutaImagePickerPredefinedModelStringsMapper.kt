@@ -9,7 +9,7 @@ fun FlutterAiutaImagePickerPredefinedModelStrings.toNative(): AiutaImagePickerPr
     return when (this) {
         is FlutterAiutaImagePickerPredefinedModelStringsBuiltIn -> AiutaImagePickerPredefinedModelFeatureStrings.Default()
         is FlutterAiutaImagePickerPredefinedModelStringsCustom -> object : AiutaImagePickerPredefinedModelFeatureStrings {
-            override val predefinedModelPageTitle = this@toNative.predefinedModelPageTitle
+            override val predefinedModelPageButton = this@toNative.predefinedModelPageButton
             override val predefinedModelOr = this@toNative.predefinedModelOr
             override val predefinedModelErrorEmptyModelsList = this@toNative.predefinedModelErrorEmptyModelsList
             override val predefinedModelCategories = this@toNative.predefinedModelCategories

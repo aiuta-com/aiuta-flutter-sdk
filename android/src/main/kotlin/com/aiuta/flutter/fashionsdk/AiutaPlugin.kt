@@ -15,6 +15,7 @@ import com.aiuta.fashionsdk.logger.AiutaLogger
 import com.aiuta.fashionsdk.logger.d
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.CONFIGURATION_KEY
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.MODE_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCTS_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaFlutterConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
@@ -252,10 +253,19 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         type: AiutaFlowType,
         block: (configuration: FlutterAiutaConfiguration) -> Unit,
     ) {
-        // Init product
+        // Init product and mode
         when (type) {
-            AiutaFlowType.SINGLE_TRY_ON -> AiutaFlutterConfigurationHolder.setProduct(argument<String>(PRODUCT_KEY))
-            AiutaFlowType.MULTI_TRY_ON -> AiutaFlutterConfigurationHolder.setProducts(argument<String>(PRODUCTS_KEY))
+            AiutaFlowType.SINGLE_TRY_ON -> {
+                AiutaFlutterConfigurationHolder.setProduct(argument<String>(PRODUCT_KEY))
+                AiutaFlutterConfigurationHolder.setMode(argument<String>(MODE_KEY))
+            }
+
+            AiutaFlowType.MULTI_TRY_ON -> {
+                AiutaFlutterConfigurationHolder.setProducts(argument<String>(PRODUCTS_KEY))
+                // Outfit try-on is always general mode
+                AiutaFlutterConfigurationHolder.setMode(null)
+            }
+
             AiutaFlowType.HISTORY -> Unit
         }
 

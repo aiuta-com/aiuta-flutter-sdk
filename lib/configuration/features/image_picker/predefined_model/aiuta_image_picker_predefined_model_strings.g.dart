@@ -27,7 +27,8 @@ AiutaImagePickerPredefinedModelStringsCustom
     _$AiutaImagePickerPredefinedModelStringsCustomFromJson(
             Map<String, dynamic> json) =>
         AiutaImagePickerPredefinedModelStringsCustom(
-          predefinedModelPageTitle: json['predefinedModelPageTitle'] as String,
+          predefinedModelPageButton:
+              json['predefinedModelPageButton'] as String,
           predefinedModelOr: json['predefinedModelOr'] as String,
           predefinedModelErrorEmptyModelsList:
               json['predefinedModelErrorEmptyModelsList'] as String,
@@ -39,7 +40,7 @@ Map<String, dynamic> _$AiutaImagePickerPredefinedModelStringsCustomToJson(
         AiutaImagePickerPredefinedModelStringsCustom instance) =>
     <String, dynamic>{
       'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
-      'predefinedModelPageTitle': instance.predefinedModelPageTitle,
+      'predefinedModelPageButton': instance.predefinedModelPageButton,
       'predefinedModelOr': instance.predefinedModelOr,
       'predefinedModelErrorEmptyModelsList':
           instance.predefinedModelErrorEmptyModelsList,

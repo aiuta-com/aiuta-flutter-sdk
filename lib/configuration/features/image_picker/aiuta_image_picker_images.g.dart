@@ -25,13 +25,12 @@ const _$AiutaCustomizationTypeEnumMap = {
 AiutaImagePickerImagesCustom _$AiutaImagePickerImagesCustomFromJson(
         Map<String, dynamic> json) =>
     AiutaImagePickerImagesCustom(
-      examples:
-          (json['examples'] as List<dynamic>).map((e) => e as String).toList(),
+      example: AiutaMedia.fromJson(json['example'] as Map<String, dynamic>),
     )..type = $enumDecode(_$AiutaCustomizationTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$AiutaImagePickerImagesCustomToJson(
         AiutaImagePickerImagesCustom instance) =>
     <String, dynamic>{
       'type': _$AiutaCustomizationTypeEnumMap[instance.type]!,
-      'examples': instance.examples,
+      'example': instance.example,
     };

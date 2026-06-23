@@ -1,4 +1,5 @@
 import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
+import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
 import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -55,19 +56,22 @@ class AiutaOnboardingDataProviderBuiltIn extends AiutaOnboardingDataProvider {
 /// and a callback to handle the completion of onboarding.
 @JsonSerializable()
 class AiutaOnboardingDataProviderCustom extends AiutaOnboardingDataProvider {
-  /// A [ValueListenable] bool that indicates whether the onboarding process
-  /// has been completed and it should not be shown again.
+  /// A [ValueListenable] map that indicates, per [AiutaMode], whether the
+  /// onboarding process has been completed and should not be shown again.
+  /// A mode that is absent from the map (or mapped to `false`) is treated as
+  /// not completed.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final ValueListenable<bool> isOnboardingCompleted;
+  final ValueListenable<Map<AiutaMode, bool>> isOnboardingCompleted;
 
-  /// A callback function that is called when the onboarding process is completed.
+  /// A callback function that is called when the onboarding process is completed
+  /// for the given [AiutaMode].
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final void Function() completeOnboarding;
+  final void Function(AiutaMode mode) completeOnboarding;
 
   /// Creates an [AiutaOnboardingDataProviderCustom] with the listenable [isOnboardingCompleted]
-  /// indicating whether the onboarding process has been completed and the
-  /// callback [completeOnboarding] that is called when the onboarding
-  /// process is completed.
+  /// indicating, per [AiutaMode], whether the onboarding process has been
+  /// completed and the callback [completeOnboarding] that is called when the
+  /// onboarding process is completed for a mode.
   AiutaOnboardingDataProviderCustom({
     required this.isOnboardingCompleted,
     required this.completeOnboarding,

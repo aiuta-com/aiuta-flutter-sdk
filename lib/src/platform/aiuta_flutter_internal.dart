@@ -247,7 +247,7 @@ void _observeAiutaDataActions(
             if (dataProvider is AiutaOnboardingDataProviderCustom) {
               _handleDataActionCompletion(
                 action: action,
-                impl: () async => dataProvider.completeOnboarding(),
+                impl: () async => dataProvider.completeOnboarding(action.mode),
               );
             }
             break;

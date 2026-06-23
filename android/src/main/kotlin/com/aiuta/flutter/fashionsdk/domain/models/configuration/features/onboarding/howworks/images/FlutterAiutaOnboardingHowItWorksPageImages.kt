@@ -1,6 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.howworks.images
 
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterCustomizationType
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.media.FlutterAiutaMedia
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -18,15 +19,6 @@ object FlutterAiutaOnboardingHowItWorksPageImagesBuiltIn : FlutterAiutaOnboardin
 @Serializable
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 class FlutterAiutaOnboardingHowItWorksPageImagesCustom(
-    @SerialName("onboardingHowItWorksItems")
-    val onboardingHowItWorksItems: List<FlutterOnboardingHowItWorksItem>
-) : FlutterAiutaOnboardingHowItWorksPageImages {
-    @Serializable
-    data class FlutterOnboardingHowItWorksItem(
-        @SerialName("itemPhoto")
-        val itemPhotoPath: String,
-
-        @SerialName("itemPreview")
-        val itemPreviewPath: String
-    )
-}
+    @SerialName("onboardingHowItWorksItem")
+    val onboardingHowItWorksItem: FlutterAiutaMedia
+) : FlutterAiutaOnboardingHowItWorksPageImages

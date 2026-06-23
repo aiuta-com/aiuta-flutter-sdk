@@ -4,6 +4,7 @@ import 'package:aiuta_flutter/configuration/debug/aiuta_debug_settings.dart';
 import 'package:aiuta_flutter/configuration/experimental/aiuta_experimental_settings.dart';
 import 'package:aiuta_flutter/configuration/features/aiuta_features.dart';
 import 'package:aiuta_flutter/configuration/features/try_on/cart/aiuta_try_on_cart_handler.dart';
+import 'package:aiuta_flutter/configuration/mode/aiuta_modes.dart';
 import 'package:aiuta_flutter/configuration/ui/aiuta_user_interface.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -44,6 +45,11 @@ class AiutaConfiguration {
   /// Use with caution — these settings may change or be removed in future releases.
   final AiutaExperimentalSettings experimentalSettings;
 
+  /// Optional per-mode configuration overrides (e.g. shoes mode).
+  /// When omitted, no mode overrides are applied and the default behavior is used.
+  @JsonKey(includeIfNull: false)
+  final AiutaModes? modes;
+
   /// Creates an [AiutaConfiguration] with [auth] to authenticate Aiuta to use
   /// digital try-on API with your credentials, [userInterface] to configure
   /// the user interface behavior, themes, and colors, [features] to configure
@@ -57,6 +63,7 @@ class AiutaConfiguration {
     this.analytics,
     required this.debugSettings,
     required this.experimentalSettings,
+    this.modes,
   });
 
   /// Creates a built-in configuration with default settings.

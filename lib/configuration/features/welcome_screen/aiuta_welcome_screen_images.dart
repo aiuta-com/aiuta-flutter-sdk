@@ -1,4 +1,5 @@
 import 'package:aiuta_flutter/configuration/features/base/aiuta_customization_type.dart';
+import 'package:aiuta_flutter/configuration/mode/media/aiuta_media.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_welcome_screen_images.g.dart';
@@ -29,10 +30,10 @@ sealed class AiutaWelcomeScreenImages {
 /// This class allows for custom images to be provided for the welcome screen feature.
 @JsonSerializable()
 class AiutaWelcomeScreenImagesCustom extends AiutaWelcomeScreenImages {
-  /// Background image for the welcome screen.
-  final String welcomeBackground;
+  /// Background media for the welcome screen.
+  final AiutaMedia welcomeBackground;
 
-  /// Creates an [AiutaWelcomeScreenImagesCustom] with the given [welcomeBackground].
+  /// Creates an [AiutaWelcomeScreenImagesCustom] with the given [welcomeBackground] media.
   AiutaWelcomeScreenImagesCustom({
     required this.welcomeBackground,
   }) : super(AiutaCustomizationType.custom);

@@ -12,8 +12,6 @@ AiutaImagePickerUploadsHistoryFeature
         AiutaImagePickerUploadsHistoryFeature(
           strings: AiutaImagePickerUploadsHistoryStrings.fromJson(
               json['strings'] as Map<String, dynamic>),
-          styles: AiutaImagePickerUploadsHistoryStyles.fromJson(
-              json['styles'] as Map<String, dynamic>),
           dataProvider: AiutaImagePickerUploadsHistoryDataProvider.fromJson(
               json['dataProvider'] as Map<String, dynamic>),
         );
@@ -22,6 +20,5 @@ Map<String, dynamic> _$AiutaImagePickerUploadsHistoryFeatureToJson(
         AiutaImagePickerUploadsHistoryFeature instance) =>
     <String, dynamic>{
       'strings': instance.strings,
-      'styles': instance.styles,
       'dataProvider': instance.dataProvider,
     };

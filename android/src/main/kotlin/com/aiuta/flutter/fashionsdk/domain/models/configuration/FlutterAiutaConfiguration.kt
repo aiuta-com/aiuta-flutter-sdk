@@ -4,6 +4,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.FlutterAiut
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.debug.FlutterAiutaDebugSettings
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.experimental.FlutterAiutaExperimentalSettings
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.FlutterAiutaFeatures
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.FlutterAiutaModes
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.ui.FlutterAiutaUserInterfaceConfiguration
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -24,4 +25,7 @@ data class FlutterAiutaConfiguration(
 
     @SerialName("experimentalSettings")
     val experimentalSettings: FlutterAiutaExperimentalSettings,
+
+    @SerialName("modes")
+    val modes: FlutterAiutaModes? = null,
 )

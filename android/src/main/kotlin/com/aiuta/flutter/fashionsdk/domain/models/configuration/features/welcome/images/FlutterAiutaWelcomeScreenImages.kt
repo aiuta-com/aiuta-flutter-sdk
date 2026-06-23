@@ -1,6 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.welcome.images
 
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterCustomizationType
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.media.FlutterAiutaMedia
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -15,5 +16,5 @@ sealed interface FlutterAiutaWelcomeScreenImages
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 class FlutterAiutaWelcomeScreenImagesCustom(
     @SerialName("welcomeBackground")
-    val welcomeBackgroundPath: String
+    val welcomeBackground: FlutterAiutaMedia
 ) : FlutterAiutaWelcomeScreenImages

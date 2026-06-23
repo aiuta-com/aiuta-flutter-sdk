@@ -1,3 +1,4 @@
+import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
 import 'package:aiuta_flutter/models/images/aiuta_generated_image.dart';
 import 'package:aiuta_flutter/models/images/aiuta_input_image.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_data_action_type.dart';
@@ -41,7 +42,12 @@ sealed class AiutaDataAction {
 
 @JsonSerializable()
 class CompleteOnboardingAction extends AiutaDataAction {
-  CompleteOnboardingAction() : super(AiutaDataActionType.completeOnboarding);
+  /// The mode whose onboarding has been completed.
+  final AiutaMode mode;
+
+  CompleteOnboardingAction({
+    required this.mode,
+  }) : super(AiutaDataActionType.completeOnboarding);
 
   factory CompleteOnboardingAction.fromJson(Map<String, dynamic> json) =>
       _$CompleteOnboardingActionFromJson(json);

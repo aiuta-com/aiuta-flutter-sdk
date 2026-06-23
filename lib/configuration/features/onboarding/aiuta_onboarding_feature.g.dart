@@ -9,16 +9,16 @@ part of 'aiuta_onboarding_feature.dart';
 AiutaOnboardingFeature _$AiutaOnboardingFeatureFromJson(
         Map<String, dynamic> json) =>
     AiutaOnboardingFeature(
-      howItWorksPage: AiutaOnboardingHowItWorksPageFeature.fromJson(
-          json['howItWorksPage'] as Map<String, dynamic>),
+      howItWorksPage: json['howItWorksPage'] == null
+          ? null
+          : AiutaOnboardingHowItWorksPageFeature.fromJson(
+              json['howItWorksPage'] as Map<String, dynamic>),
       bestResultsPage: json['bestResultsPage'] == null
           ? null
           : AiutaOnboardingBestResultsPageFeature.fromJson(
               json['bestResultsPage'] as Map<String, dynamic>),
       strings: AiutaOnboardingStrings.fromJson(
           json['strings'] as Map<String, dynamic>),
-      shapes: AiutaOnboardingShapes.fromJson(
-          json['shapes'] as Map<String, dynamic>),
       dataProvider: AiutaOnboardingDataProvider.fromJson(
           json['dataProvider'] as Map<String, dynamic>),
     );
@@ -29,6 +29,5 @@ Map<String, dynamic> _$AiutaOnboardingFeatureToJson(
       'howItWorksPage': instance.howItWorksPage,
       'bestResultsPage': instance.bestResultsPage,
       'strings': instance.strings,
-      'shapes': instance.shapes,
       'dataProvider': instance.dataProvider,
     };

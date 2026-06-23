@@ -1,6 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.features.picker.images
 
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.base.FlutterCustomizationType
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.media.FlutterAiutaMedia
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -18,6 +19,6 @@ object FlutterAiutaImagePickerImagesBuiltIn : FlutterAiutaImagePickerImages
 @Serializable
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 class FlutterAiutaImagePickerImagesCustom(
-    @SerialName("examples")
-    val examplePaths: List<String>
+    @SerialName("example")
+    val example: FlutterAiutaMedia
 ) : FlutterAiutaImagePickerImages

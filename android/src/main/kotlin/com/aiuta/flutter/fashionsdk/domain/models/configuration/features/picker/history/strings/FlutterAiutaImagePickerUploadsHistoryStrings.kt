@@ -13,10 +13,7 @@ sealed interface FlutterAiutaImagePickerUploadsHistoryStrings
 
 @Serializable
 @SerialName(FlutterCustomizationType.TYPE_BUILT_IN)
-class FlutterAiutaImagePickerUploadsHistoryStringsBuiltIn(
-    @SerialName("isPredefinedModelAvailable")
-    val isPredefinedModelAvailable: Boolean,
-) : FlutterAiutaImagePickerUploadsHistoryStrings
+object FlutterAiutaImagePickerUploadsHistoryStringsBuiltIn : FlutterAiutaImagePickerUploadsHistoryStrings
 
 @Serializable
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)

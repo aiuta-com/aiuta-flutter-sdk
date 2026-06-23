@@ -56,8 +56,8 @@ class AiutaImagePickerPredefinedModelStringsBuiltIn
 @JsonSerializable()
 class AiutaImagePickerPredefinedModelStringsCustom
     extends AiutaImagePickerPredefinedModelStrings {
-  /// Title for the predefined model page.
-  final String predefinedModelPageTitle;
+  /// Main button to navigate to the predefined models selection page.
+  final String predefinedModelPageButton;
 
   /// Text for the "or" separator in the predefined model page.
   final String predefinedModelOr;
@@ -85,7 +85,7 @@ class AiutaImagePickerPredefinedModelStringsCustom
   /// ids `man` and `woman`, but can be extended in the future or by your
   /// agreement with Aiuta.
   AiutaImagePickerPredefinedModelStringsCustom({
-    required this.predefinedModelPageTitle,
+    required this.predefinedModelPageButton,
     required this.predefinedModelOr,
     required this.predefinedModelErrorEmptyModelsList,
     required this.predefinedModelCategories,

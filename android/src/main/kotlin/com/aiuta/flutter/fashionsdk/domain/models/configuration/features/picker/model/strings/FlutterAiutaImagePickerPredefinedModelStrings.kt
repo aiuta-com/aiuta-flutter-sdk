@@ -18,8 +18,8 @@ object FlutterAiutaImagePickerPredefinedModelStringsBuiltIn : FlutterAiutaImageP
 @Serializable
 @SerialName(FlutterCustomizationType.TYPE_CUSTOM)
 data class FlutterAiutaImagePickerPredefinedModelStringsCustom(
-    @SerialName("predefinedModelPageTitle")
-    val predefinedModelPageTitle: String,
+    @SerialName("predefinedModelPageButton")
+    val predefinedModelPageButton: String,
 
     @SerialName("predefinedModelOr")
     val predefinedModelOr: String,

@@ -2,15 +2,11 @@ package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.features.onboa
 
 import com.aiuta.fashionsdk.configuration.defaults.images.features.onboarding.tryon.DefaultAiutaOnboardingHowItWorksPageFeatureImages
 import com.aiuta.fashionsdk.configuration.features.onboarding.howworks.images.AiutaOnboardingHowItWorksPageFeatureImages
-import com.aiuta.fashionsdk.configuration.features.onboarding.howworks.images.AiutaOnboardingHowItWorksPageFeatureImages.OnboardingHowItWorksItem
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.mode.media.toNative
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.AiutaResourceMapperScope
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.howworks.images.FlutterAiutaOnboardingHowItWorksPageImages
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.howworks.images.FlutterAiutaOnboardingHowItWorksPageImagesBuiltIn
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.howworks.images.FlutterAiutaOnboardingHowItWorksPageImagesCustom
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.features.onboarding.howworks.images.FlutterAiutaOnboardingHowItWorksPageImagesCustom.FlutterOnboardingHowItWorksItem
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.AiutaResourceMapperHandlerScope
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.AiutaResourceMapperScope
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.createNativeImage
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.ui.resources.withResourceHandling
 
 fun FlutterAiutaOnboardingHowItWorksPageImages.toNative(
     resourceScope: AiutaResourceMapperScope,
@@ -19,29 +15,8 @@ fun FlutterAiutaOnboardingHowItWorksPageImages.toNative(
 
     return when (this) {
         is FlutterAiutaOnboardingHowItWorksPageImagesBuiltIn -> defaultImages.value
-        is FlutterAiutaOnboardingHowItWorksPageImagesCustom -> resourceScope.withResourceHandling(
-            default = defaultImages,
-        ) {
-            object : AiutaOnboardingHowItWorksPageFeatureImages {
-                override val onboardingHowItWorksItems =
-                    this@toNative.onboardingHowItWorksItems.map {
-                        it.toNative(handlerScope)
-                    }
-            }
+        is FlutterAiutaOnboardingHowItWorksPageImagesCustom -> object : AiutaOnboardingHowItWorksPageFeatureImages {
+            override val onboardingHowItWorksItem = this@toNative.onboardingHowItWorksItem.toNative(resourceScope)
         }
     }
-}
-
-
-fun FlutterOnboardingHowItWorksItem.toNative(
-    handlerScope: AiutaResourceMapperHandlerScope,
-): OnboardingHowItWorksItem {
-    return OnboardingHowItWorksItem(
-        itemPhoto = handlerScope.createNativeImage(
-            resourcePath = itemPhotoPath,
-        ),
-        itemPreview = handlerScope.createNativeImage(
-            resourcePath = itemPreviewPath,
-        )
-    )
 }
