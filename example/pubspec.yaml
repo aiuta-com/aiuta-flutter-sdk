@@ -21,7 +21,7 @@ dependencies:
     path: ../
 
   cupertino_icons: ^1.0.6
-  envied: ^0.5.4+1
+  envied: ^1.0.0
 
 dev_dependencies:
   integration_test:
